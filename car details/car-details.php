@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vanguard CX2 Convertible</title>
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/fontawesome.min.css">
     <style>
         * {
             margin: 0;
@@ -116,20 +114,34 @@
         .spec-item {
             display: flex;
             align-items: center;
-            
+            gap: 10px;
         }
 
-        #icon {
-            width: 10%;
+        .color-options {
+            margin-top: 30px;
+        }
+
+        .color-dots {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .color-dot {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .color-dot.active {
+            border-color: #333;
+        }
+
+        .icon {
+            width: 20%;
             height: 80%;
-            font-size: 20px;
-        }
-        span{
-            font-size: 20px;
-        }
-        button{
-            position: absolute;
-            bottom: 90px;
         }
     </style>
 </head>
@@ -138,11 +150,11 @@
 
     <div class="container">
         <div class="product-images">
-            <img src="image/wp10875074.jpg" alt="Vanguard CX2 Convertible" class="main-image">
+            <img src="file (2).png" alt="Vanguard CX2 Convertible" class="main-image">
             <div class="thumbnail-container">
-                <img src="image/wp10875074.jpg" alt="Side view" class="thumbnail">
-                <img src="image/wp10875074.jpg" alt="Front view" class="thumbnail">
-                <img src="image/wp10875074.jpg" alt="Rear view" class="thumbnail">
+                <img src="file (2).png" alt="Side view" class="thumbnail">
+                <img src="file (2).png" alt="Front view" class="thumbnail">
+                <img src="file (2).png" alt="Rear view" class="thumbnail">
             </div>
         </div>
 
@@ -157,40 +169,29 @@
                 'specs</p>
 
             <div class="specifications">
-                <h1>SPECIFICATIONS</h1>
+                <h2>SPECIFICATIONS</h2>
                 <div class="specs-grid">
 
                     <div class="spec-item">
-                       <i class="fa-solid fa-car" id="icon"></i>
+                        <img class="icon" src="/capacity.png" alt="">
                         <span>4 people</span>
-
-                    </div>
-
-                    <div class="spec-item">
-                       <i class="fa-solid fa-car" id="icon"></i>
-                        <span>4 people</span>
-
-                    </div>
-
-                    <div class="spec-item">
-                       <i class="fa-solid fa-car" id="icon"></i>
-                        <span>4 people</span>
-
-                    </div>
-
-                    <div class="spec-item">
-                       <i class="fa-solid fa-car" id="icon"></i>
-                        <span>4 people</span>
-
                     </div>
 
                 </div>
             </div>
-            <button type="button">Rent Now</button>
 
 
         </div>
     </div>
+
+    <!-- <script>
+        function updateQuantity(change) {
+            const quantityElement = document.getElementById('quantity');
+            let quantity = parseInt(quantityElement.textContent) + change;
+            if (quantity < 1) quantity = 1;
+            quantityElement.textContent = quantity;
+        }
+    </script>-->
 </body>
 
 </html>
