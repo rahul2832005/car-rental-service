@@ -1,0 +1,199 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    
+}
+
+body{
+    /*background-color: #48d1cc;*/
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 62.5%;
+}
+
+main{
+    background-color: #48d1cc;
+    max-width: 1500px;
+    width: 100%;
+    margin: 30% auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+}
+
+main .card{
+    max-width: 314px;
+    flex: 1 1 210px;
+    text-align: center;
+    height: 640px;
+    /*border: 1.5px solid black;*/
+    margin: 20px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+main .card .image{
+    height: 50%;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+main .card .image img{
+    width: 100%;
+    height: 100%;
+    object-fit:fill;
+    border-radius: 10px;
+    margin: 7px 0px;
+}
+
+main .card .caption{
+    padding-left: 1em;
+    text-align: left;
+    line-height: 2em;
+    height: 25%;
+    font-weight: bold;
+    color: black;
+    
+}
+
+/*.card:hover{
+    background-color: #f63a40;
+    transition: 0.6s all;
+}*/
+
+
+#rate{
+    color: gold;
+    margin-right: 3px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+#car_name{
+    font-size: 30px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-family:Lucida Sans Unicode;
+}
+
+.content{
+    font-size: 15px;
+    color: #1c1d1d;
+}
+.rate{
+    font-size: 20px;
+}
+.hr{
+    margin-right: 5px;
+}
+
+.seat{
+    font-size: 17px;
+    margin-bottom: 13px;
+    margin-top: 13px;
+    color: #1c1d1d;
+}
+
+.price{
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 13px;
+    color:  #1c1d1d;
+}
+
+.fual{
+    font-size: 17px;
+    margin-bottom: 10px;
+    color: #1c1d1d;
+}
+
+
+main .card a{
+    width: 50%;
+}
+
+main .card button{
+    border: 2px solid black;
+    font-size: 23px;
+    width: 95%;
+    cursor: pointer;
+    margin-top: 95px;
+    font-weight: bold;
+    position: relative;
+    margin-left: 1px;
+    background-color:white;
+    border-radius: 3px;
+    font-family:Lucida Sans Unicode;
+    margin-bottom: 10px;
+    
+}
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+   
+}
+
+.header h1 {
+    font-size: 35px;
+    margin-bottom: 15px;
+    color: black;
+}
+
+.header button {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    color: red;
+    font-size: 17px;
+    font-family: sans-serif;
+    margin-bottom: 15px;
+}
+
+/*.header button:hover {
+    background-color: #e0e0e0;
+}*/
+#header{
+    margin-top: 60px;
+    background-color: #48d1cc;
+    width: 100%;
+}
+
+/*
+main .card button::before{
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    background-color: black;
+    transition: all .5s;
+    margin: 0;
+}
+
+main .card button::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    background-color: black;
+    transition: all .5s;
+    margin: 0;
+}
+
+main .card button:hover::before{
+    width: 30%;
+}
+
+main .card button:hover::after{
+    width: 30%;
+}*/
+
