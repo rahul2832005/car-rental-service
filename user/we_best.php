@@ -74,10 +74,20 @@
             color: #000;
         }
 
-        .cards  p{
+        .cards p {
             font-size: 0.9rem;
             color: #555;
             line-height: 1.5;
+        }
+
+        .badge {
+            background-color: #ffdddd;
+            color: #ff4d4d;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 18px;
+            display: inline-block;
+            margin-bottom: 10px;
         }
     </style>
 </head>

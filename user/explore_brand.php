@@ -53,7 +53,7 @@
         }
 
         .header h1 {
-            font-size: 26px;
+            font-size: 30px;
             color: black;
         }
 
@@ -82,45 +82,56 @@
         #tata{
             margin-top: 40px;
         }
+        h3{
+            color: black;
+        }
+        .badge {
+            background-color: #ffdddd;
+            color: #ff4d4d;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 18px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body>  
 
-    <div class="header">
-        <button>CAR TYPE</button>
-        <h1>Explore Premium Car Brands</h1>
-
-    </div>
+<div class="header">
+            <span class="badge">CAR BRANDS</span>
+            <h1 id="caption">Explore Car Brands</h1>
+        </div>
     <div class="container">
 
         <div class="card">
-            <img src="image/IMG_20241217_090325.jpg" alt="" srcset="">
+            <img src="image/mahindra_logo.jpg" alt="" srcset="">
             <h3>Mahindra</h3>
         </div>
 
         <div class="card">
-            <img src="image/IMG_20241215_113115.jpg" alt="" srcset="">
+            <img src="image/audi_logo.jpg" alt="" srcset="">
             <h3>Audi</h3>
         </div>
 
         <div class="card">
-            <img src="image/bmw-logo-1997.jpg" alt="" srcset="">
+            <img src="image/bmw-logo.jpg" alt="" srcset="">
             <h3>BMW</h3>
         </div>
 
         <div class="card">
-            <img src="image/IMG_20241215_103254.jpg" alt="" srcset="">
+            <img src="image/tesla_logo.jpg" alt="" srcset="">
             <h3>Tesla Motors</h3>
         </div>
 
         <div class="card">
-            <img src="image/0d8db9612e8fd50d09a152935ba34ec6.jpg" alt="" srcset="">
+            <img src="image/volkswagon_logo.jpg" alt="" srcset="">
             <h3>Valkswagon</h3>
         </div>
 
         <div class="card">
-            <img src="image/IMG_20241217_090341.jpg" alt="" srcset="">
+            <img src="image/tata_logo.jpg" alt="" srcset="">
             <h3 id="tata">TATA</h3>
         </div>
 

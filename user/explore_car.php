@@ -78,19 +78,30 @@
         #tata {
             margin-top: 40px;
         }
+        h3{
+            color: black;
+        }
+        .badge {
+            background-color: #ffdddd;
+            color: #ff4d4d;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 18px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body>
-    <div class="header">
-        <button>CAR TYPE</button>
-        <h1>Explore Car</h1>
-
-    </div>
+<div class="header">
+            <span class="badge">CAR TYPES</span>
+            <h1 id="caption">Explore Car Types</h1>
+        </div>
     <div class="container">
 
         <div class="card">
-            <img src="image/323-3232940_stock-j-a-used-hd-png-download.png" alt="" srcset="">
+            <img src="image/truck.png" alt="" srcset="">
             <h3>Truck</h3>
         </div>
 
@@ -100,22 +111,22 @@
         </div>
 
         <div class="card">
-            <img src="image/CAR-1-1024x622.png" alt="" srcset="">
+            <img src="image/luxury_sedan.png" alt="" srcset="">
             <h3>Luxury Sedan</h3>
         </div>
 
         <div class="card">
-            <img src="image/2024_chrysler_pacifica_limited_0.jpg" alt="" srcset="">
+            <img src="image/hatchback.jpg" alt="" srcset="">
             <h3>Hatchback</h3>
         </div>
 
         <div class="card">
-            <img src="image/360_F_316843223_qMHZM53H0mknBgSEkMBejP4EtFV6zpeg.jpg" alt="" srcset="">
+            <img src="image/sport_car.jpg" alt="" srcset="">
             <h3>Sport Car</h3>
         </div>
 
         <div class="card">
-            <img id='suv_img' src="image/suv-santa-fe.jpg" alt="" srcset="">
+            <img id='suv_img' src="image/suv.jpg" alt="" srcset="">
             <h3>SUV</h3>
         </div>
 

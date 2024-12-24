@@ -36,7 +36,6 @@
 
 <body>
     <div class="img_container">
-        <a href="">hello</a>
         <img id="img" src="image/view-car-running-high-speed-tunnel_23-2150635427.jpg" alt="" srcset="">
         <img id="img" src="image/slider2.jpg" alt="" srcset="">
         <img id="img" src="image/slider3.jpg" alt="" srcset="">

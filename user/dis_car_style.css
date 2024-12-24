@@ -45,6 +45,10 @@ main .card .image img{
     object-fit:fill;
     border-radius: 10px;
     margin: 7px 0px;
+    transition: transform 0.8s;
+}
+img:hover{
+    transform: scale();
 }
 
 main .card .caption{
@@ -126,6 +130,7 @@ main .card button{
     border-radius: 3px;
     font-family:Lucida Sans Unicode;
     margin-bottom: 10px;
+    color: black;
     
 }
 .header {
@@ -163,37 +168,3 @@ main .card button{
     background-color: #48d1cc;
     width: 100%;
 }
-
-/*
-main .card button::before{
-    content:"";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    background-color: black;
-    transition: all .5s;
-    margin: 0;
-}
-
-main .card button::after{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    background-color: black;
-    transition: all .5s;
-    margin: 0;
-}
-
-main .card button:hover::before{
-    width: 30%;
-}
-
-main .card button:hover::after{
-    width: 30%;
-}*/
-

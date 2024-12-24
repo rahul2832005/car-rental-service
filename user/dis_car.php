@@ -72,6 +72,11 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
     @include "slider.php";
     ?>
 
+
+<?php
+@include "footer.php";
+?>
+
 </body>
 
 </html>
