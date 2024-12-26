@@ -12,7 +12,7 @@ body{
 }
 
 main{
-    background-color: #48d1cc;
+    background-color: #b1d7d6;
     max-width: 1500px;
     width: 100%;
     margin: 30% auto;
@@ -165,6 +165,6 @@ main .card button{
 }*/
 #header{
     margin-top: 60px;
-    background-color: #48d1cc;
+    background-color: #b1d7d6;
     width: 100%;
 }
