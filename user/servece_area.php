@@ -173,9 +173,9 @@
         </div>
 
         <div class="card">
-            <div class="card-header">Gandhinagar, Gujarat</div>
+            <div class="card-header">Ahemdabad, Gujarat</div>
             <div class="card-image">
-                <img src="image/gandhinagar.jpg" alt="New York">
+                <img src="image/ahemdabad.jpg" alt="New York">
             </div>
         </div>
        
@@ -199,7 +199,6 @@
                 <img src="image/guwahati.jpg" alt="Sydney">
             </div>
         </div>
-
 
     </div>
 

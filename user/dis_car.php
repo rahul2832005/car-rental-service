@@ -14,8 +14,8 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
 </head>
-
 <body>
+
     <?php
     @include "explore_car.php"
     ?>
