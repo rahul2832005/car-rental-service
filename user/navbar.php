@@ -13,6 +13,8 @@ body {
 }
 
 .navbar {
+  width: 100%;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,6 +37,7 @@ body {
 .logo-text {
   font-size: 32px;
   font-weight: bold;
+  color: black;
 }
 
 .nav-links {
@@ -56,16 +59,17 @@ body {
   border-radius: 5px;
   font-size: 18px;
   font-weight: bold;
+  margin-left: 20px;
 }
 
 .login-btn a:hover {
-    transition: all 0.5s;
+    transition: all 0.7s;
   background-color: red;
   color: white;
 }
 #search{
-    margin-left: 20px;
-    margin-right: 20px;
+    font-size: 22px;
+    color:black;
 }
 #search:hover{
     cursor: pointer;
@@ -80,7 +84,7 @@ body {
       <span class="logo-text">Car<span style="color: red;">ola</span></span>
     </div>
     <nav class="nav-links">
-      <a href="#" class="active">Home</a>
+      <a href="dis_car.php" class="active">Home</a>
       <a href="#">Car Fleet</a>
       <a href="#">Pages</a>
       <a href="#">News</a>
@@ -88,9 +92,11 @@ body {
     </nav>
    
     <div class="login-btn">
+      
     <i id="search" class="fa-solid fa-magnifying-glass"></i>
       <a id="btn"href="#">Login</a>
     </div>
   </header>
+
 </body>
 </html>

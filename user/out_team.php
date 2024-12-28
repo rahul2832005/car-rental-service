@@ -16,17 +16,16 @@
 
         #bg_img {
             width: 1119px;
-            margin-top: 5px;
+            margin-top: -100px;
         }
 
         .banner-text {
             position: absolute;
-            top: 180px;
+            top: 170px;
             color: #fff;
             padding: 10px;
             font-size: 45px;
-            left: 32%;
-        
+            left: 35%;
         }
 
         .banner-card {
@@ -132,11 +131,8 @@
 </head>
 
 <body>
-<?php
-@include "navbar.php";
-?>
     <div class="banner-card">
-        <img id="bg_img" src="image/contact_bg.jpg" alt="" srcset="">
+        <img id="bg_img" src="image/tesla_roadster_01.jpg" alt="" srcset="">
         <div class="banner-text">
             <h1>Contact</h1>
         </div>

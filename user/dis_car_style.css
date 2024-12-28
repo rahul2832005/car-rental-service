@@ -9,6 +9,7 @@ body{
     /*background-color: #48d1cc;*/
     font-family: Arial, Helvetica, sans-serif;
     font-size: 62.5%;
+    width: 100%;
 }
 
 main{
@@ -40,7 +41,7 @@ main .card .image{
 }
 
 main .card .image img{
-    width: 100%;
+    width: 93%;
     height: 100%;
     object-fit:fill;
     border-radius: 10px;
@@ -59,6 +60,16 @@ main .card .caption{
     font-weight: bold;
     color: black;
     
+}
+.badge {
+    background-color: #f19898;
+    color: #ff4d4d;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 18px;
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-top: 14px;
 }
 
 /*.card:hover{
@@ -118,16 +129,16 @@ main .card a{
 }
 
 main .card button{
-    border: 2px solid black;
+    border: 1px solid black;
     font-size: 23px;
     width: 95%;
     cursor: pointer;
     margin-top: 95px;
-    font-weight: bold;
+    /* font-weight: bold; */
     position: relative;
     margin-left: 1px;
     background-color:white;
-    border-radius: 3px;
+    border-radius: 4px;
     font-family:Lucida Sans Unicode;
     margin-bottom: 10px;
     color: black;

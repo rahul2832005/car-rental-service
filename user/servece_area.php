@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html>
 <title>Service Area</title>
+
 <head>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-           /* background-color: rgb(240, 219, 219);*/
+            /* background-color: rgb(240, 219, 219);*/
         }
 
         #bg_img {
             width: 100%;
+            margin-top: 5px;
         }
 
         .banner-text {
             position: absolute;
-            top: 130px;
+            top: 180px;
             color: #fff;
             padding: 10px;
             font-size: 45px;
             left: 25%;
         }
+
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -47,7 +50,7 @@
         .card-header {
             margin-left: 10px;
             margin-top: 10px;
-            padding: 15px;
+            padding: 8px 15px;
             /*background-color: #f0f0f0;*/
             /*text-align: center;*/
             font-weight: bold;
@@ -112,21 +115,25 @@
             text-align: center;
             margin-top: 20px;
         }
-        #map{
+
+        #map {
             align-items: center;
             width: 80%;
             height: 850px;
             margin-left: 150px;
         }
-        .map{
+
+        .map {
             background-color: #fff;
         }
     </style>
 </head>
 
 <body>
-        
-        
+    <?php
+    @include "navbar.php";
+    ?>
+
     <div class="banner-card">
         <img id="bg_img" src="image/service_area_bg.png" alt="" srcset="">
         <div class="banner-text">
@@ -134,7 +141,6 @@
         </div>
     </div>
     <div class="map">
-    
         <h1 style="text-align:center;font-size:35px;color:black;margin-top:30px;">32 Location In the Country</h1>
         <img id="map" src="image/MapChart_Map.png" alt="" srcset="">
     </div>
@@ -144,7 +150,13 @@
     </div>
     <div class="container">
 
-    <div class="card">
+        <div class="card">
+            <div class="card-header">Ahemdabad, Gujarat</div>
+            <div class="card-image">
+                <img src="image/ahemdabad.jpg" alt="New York">
+            </div>
+        </div>
+        <div class="card">
             <div class="card-header">Udaipur, Rajasthan</div>
             <div class="card-image">
                 <img src="image/udaiput.jpg" alt="Tokyo">
@@ -172,13 +184,8 @@
             </div>
         </div>
 
-        <div class="card">
-            <div class="card-header">Ahemdabad, Gujarat</div>
-            <div class="card-image">
-                <img src="image/ahemdabad.jpg" alt="New York">
-            </div>
-        </div>
-       
+
+
         <div class="card">
             <div class="card-header">Agra, UttarPradesh</div>
             <div class="card-image">

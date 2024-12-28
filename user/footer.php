@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Footer</title>
     <style>
+        /* General Reset */
         * {
             margin: 0;
             padding: 0;
@@ -14,17 +16,16 @@
         }
 
         body {
+            background-color: #fff;
             color: #fff;
-
         }
 
         /* Footer Styles */
         footer {
-            background-image:url(image/footer.jpg);
+            background:url(image/footer.jpg);
             padding: 40px 0;
             bottom: 0; 
-            width: 100%; 
-            
+            width: 100%;
         }
 
         .footer-container {
@@ -43,14 +44,14 @@
             font-size: 35px;
         }
 
-        .h2,h3 {
+        .h2,
+        h3 {
             margin-bottom: 15px;
         }
         .h3{
             font-size: 20px;
             color: #fff;
         }
-
         .logo {
             color: #fff;
             font-weight: bold;
@@ -90,21 +91,21 @@
         }
 
         input[type="email"] {
-            margin-top: 10px;
             padding: 8px;
             border: none;
             border-radius: 5px;
             outline: none;
+            width: 200px;
         }
 
         button {
-    
             background-color: #e63946;
             color: #fff;
             border: none;
             padding: 8px;
             border-radius: 5px;
             cursor: pointer;
+            width: 200px;
         }
 
         button:hover {
@@ -116,12 +117,13 @@
             text-align: center;
             padding: 10px 0;
             border-top: 1px solid #333;
-            margin-top: 20px;
+            margin-top: 5px;
+            margin-bottom: -50px;
         }
-
         .bottom_text{
             font-size: 20px;
         }
+
         .social-icons a {
             color: #ccc;
             margin: 0 10px;
@@ -164,13 +166,13 @@
                     <li><a href="#">Gallery</a></li>
                     <li><a href="#">Our Team</a></li>
                     <li><a href="#">Pricing</a></li>
-                    <li><a href="extra.php">Contact</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </div>
             <!-- Newsletter -->
             <div class="footer-section newsletter">
                 <h3 class="h3">Subscribe Newsletter</h3>
-                <p>Our estimated global carbon emissions by investing in green house</p>
+                <p>Our estimated global carbon emissions by investing in greenhouse</p>
                 <form>
                     <input type="email" placeholder="Email Address" required>
                     <button type="submit">Subscribe</button>

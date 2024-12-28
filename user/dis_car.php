@@ -14,13 +14,16 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
 </head>
+<?php
+@include "navbar.php";
+?>
 <body>
 
     <?php
     @include "explore_car.php"
     ?>
     <div class="header" id="header">
-        <button>POPULAR CARS</button>
+    <span class="badge">POPULAR CARS</span>
         <h1>Most Popular Car</h1>
 
     </div>
