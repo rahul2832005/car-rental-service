@@ -26,6 +26,7 @@
             padding: 40px 0;
             bottom: 0; 
             width: 100%;
+            margin-bottom: 0px;
         }
 
         .footer-container {

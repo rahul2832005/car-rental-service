@@ -4,174 +4,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Information</title>
+    <title>Team Page</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: #f8f9fa;
         }
 
         #bg_img {
-            width: 1119px;
-            margin-top: -100px;
+            width: 100%;
+            margin-top: 5px;
         }
 
         .banner-text {
             position: absolute;
-            top: 170px;
+            top: 180px;
             color: #fff;
             padding: 10px;
             font-size: 45px;
-            left: 35%;
+            left: 30%;
+
         }
 
-        .banner-card {
-            margin-bottom: 100px;
-        }
-
-        .header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 30px;
-        }
-
-        .header h1 {
-            font-size: 35px;
-            color: black;
-        }
-
-        .contact-container {
+        .team-section {
             text-align: center;
             padding: 50px 20px;
         }
 
-        .contact-heading {
-            font-size: 14px;
-            color: #f55d7a;
-            text-transform: uppercase;
-            margin-bottom: 10px;
+        .team-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
         }
 
-        .main-heading {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 40px;
-        }
-
-        .contact-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
+            padding: 0 10%;
         }
 
-        .contact-card {
-            margin-top: 80px;
-            border: 1px solid #ffdddd;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        .team-member {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             padding: 20px;
-            width: 300px;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 25px;
         }
 
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        .team-member img {
+            border-radius: 50%;
+            width: 125px;
+            height: 150px;
+            margin-bottom: 15px;
         }
 
-        .icon {
-            background-color: #ff4d4d;
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px;
-            position: relative;
-            bottom: 74px;
-            margin-bottom: 0px;
+        .name {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: black;
         }
 
-        .icon img {
-            width: 100px;
-            height: 100px;
+        .team-member p {
+            color: #777;
+            margin-bottom: 15px;
         }
 
-        .contact-card h2 {
-            font-size: 25px;
-            margin-bottom: 10px;
-            color: #333;
-            margin-top: -30px;
+        .social-icons #icon {
+            color: #555;
+            margin: 0 5px;
+            text-decoration: none;
+            font-size: 24px;
+            color: black;
+            border-radius: 50%;
+
         }
 
-        .contact-card p {
-            font-size: 16px;
-            color: #666;
-            margin: 5px 0;
-        }
-
-        .badge {
-            background-color: #ffdddd;
-            color: #ff4d4d;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 18px;
-            display: inline-block;
-            margin-bottom: 10px;
+        .social-icons a:hover {
+            color: red;
+            transition: all 0.5s;
         }
     </style>
 </head>
+<?php
+@include "navbar.php";
+?>
 
 <body>
     <div class="banner-card">
-        <img id="bg_img" src="image/tesla_roadster_01.jpg" alt="" srcset="">
+        <img id="bg_img" src="image/our_team_bg1.png" alt="" srcset="">
         <div class="banner-text">
-            <h1>Contact</h1>
+            <h1>Our Team</h1>
         </div>
-    </div>
-    <div class="header">
-        <span class="badge">CAR TYPES</span>
-        <h1 id="caption">Explore Car Types</h1>
-    </div>
-    <div class="contact-container">
-        <div class="contact-grid">
-            <div class="contact-card">
-                <div class="icon">
-                    <img src="image/location.svg" alt="Location Icon">
+        <section class="team-section">
+            <h1 class="team-title">The Amazing Team Behind Our Company</h1>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="image/member1.png" alt="Alex Leeman">
+                    <h3 class="name">Alex Leeman</h3>
+                    <p>Director</p>
+                    <div class="social-icons">
+                        <a id="icon" href="#"><i class="fab fa-facebook"></i></a>
+                        <a id="icon" href="#"><i class="fab fa-linkedin"></i></a>
+                        <a id="icon" href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
-                <h2>Our Location</h2>
-                <p>Bhambhan Road,Ramdevnagar,Botad-364710</p>
-            </div>
-            <div class="contact-card">
-                <div class="icon">
-                    <img src="image/email.svg" alt="Email Icon">
+                <div class="team-member">
+                    <img src="image/member2.png" alt="Diago Johnson">
+                    <h3 class="name">Diago Johnson</h3>
+                    <p>Sales Manager</p>
+                    <div class="social-icons">
+                        <a id="icon" href="#"><i class="fab fa-facebook"></i></a>
+                        <a id="icon" href="#"><i class="fab fa-linkedin"></i></a>
+                        <a id="icon" href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
-                <h2>Email Address</h2>
-                <p>rahulbavaliya153@gmail.com</p>
-               
-            </div>
-            <div class="contact-card">
-                <div class="icon">
-                    <img src="image/phone.svg" alt="Phone Icon">
-                </div>
-                <h2>Phone Number</h2>
-                <p>Emergency Cases</p>
-                <p>+91 9824930580</p>
-            </div>
-        </div>
-    </div>
 
-    <?php
-    @include "footer.php";
-    ?>
+                <div class="team-member">
+                    <img src="image/member3.png" alt="Alex Leeman">
+                    <h3 class="name">Alex Leeman</h3>
+                    <p>Director</p>
+                    <div class="social-icons">
+                        <a id="icon" href="#"><i class="fab fa-facebook"></i></a>
+                        <a id="icon" href="#"><i class="fab fa-linkedin"></i></a>
+                        <a id="icon" href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="image/member4.png" alt="Diago Johnson">
+                    <h3 class="name">Diago Johnson</h3>
+                    <p>Sales Manager</p>
+                    <div class="social-icons">
+                        <a id="icon" href="#"><i class="fab fa-facebook"></i></a>
+                        <a id="icon" href="#"><i class="fab fa-linkedin"></i></a>
+                        <a id="icon" href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="image/member5.png" alt="Alex Leeman">
+                    <h3 class="name">Alex Leeman</h3>
+                    <p>Director</p>
+                    <div class="social-icons">
+                        <a id="icon" href="#"><i class="fab fa-facebook"></i></a>
+                        <a id="icon" href="#"><i class="fab fa-linkedin"></i></a>
+                        <a id="icon" href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="image/member6.png" alt="Diago Johnson">
+                    <h3 class="name">Diago Johnson</h3>
+                    <p>Sales Manager</p>
+                    <div class="social-icons">
+                        <a id="icon" href="#"><i class="fab fa-facebook"></i></a>
+                        <a id="icon" href="#"><i class="fab fa-linkedin"></i></a>
+                        <a id="icon" href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <!-- Add more team members as needed -->
+            </div>
+        </section>
+        <?php
+        @include "footer.php";
+        ?>
 </body>
+
 
 </html>
