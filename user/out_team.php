@@ -26,7 +26,7 @@
             color: #fff;
             padding: 10px;
             font-size: 45px;
-            left: 30%;
+            left: 28%;
 
         }
 
@@ -37,13 +37,15 @@
 
         .team-title {
             font-size: 2rem;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            color: black;
         }
 
         .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            display: flex;
+           flex-wrap: wrap;
+           justify-content: center;
+            gap: 30px;
             padding: 0 10%;
         }
 
@@ -51,7 +53,7 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            padding: 20px;
+            padding: 30px;
             text-align: center;
             margin-bottom: 25px;
         }

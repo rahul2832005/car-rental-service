@@ -18,7 +18,9 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
 @include "navbar.php";
 ?>
 <body>
-
+<?php
+@include "advertisement.php";
+?>
     <?php
     @include "explore_car.php"
     ?>
