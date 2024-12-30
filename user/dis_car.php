@@ -1,7 +1,9 @@
 <?php
 //@include "./connection.php";
 $conn = mysqli_connect("localhost", "root", "", "car_rent");
-
+    session_start();
+    error_reporting(0);
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +20,7 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
 @include "navbar.php";
 ?>
 <body>
-<?php
-@include "advertisement.php";
-?>
+
     <?php
     @include "explore_car.php"
     ?>
@@ -56,9 +56,19 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
                         <hr class="hr">
                         <p class="seat"><i class="fa-solid fa-car"></i> Capacity:<?php echo $row['seat']; ?> People</p>
                         <p class="fual"><i class="fa-solid fa-gas-pump"></i> Fual:<?php echo $row['fual']; ?></p>
+                      
+                   
                     </div>
-                    <button class="add">Rent Now</button>
+                    <?php if($_SESSION["alogin"])
+                    { ?>
+                    <button class="add" type="submit" name="rent-now"><a href="car-details.php">Rent Now  <?php  echo $_SESSION["alogin"]; ?></a></button>
+                    <?php } else { ?>
+                        
+                        <button class="add"><a href="login.php">Login For Book</a></button>
+                        <?php } ?>
                 </div>
+                   
+                    
         <?php
             };
         };
