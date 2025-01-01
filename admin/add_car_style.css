@@ -74,6 +74,35 @@ form .car_details .input-box{
 border-color:#d1001f;
 }
 
+.file{
+    margin-bottom: 15px;
+}
+
+.space{
+    margin-right: 50px;
+}
+#file{
+    font-size: 16px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px black;
+    width: 250px;
+    outline: none;
+}
+
+::-webkit-file-upload-button{
+    color: #fff;
+    background:#d71929;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+   
+}
+
+::-webkit-file-upload-button:hover{
+    background: #f94449;
+}
+
 #fual{
         margin-bottom: 27px;
         text-align: left;
@@ -103,10 +132,6 @@ form .button{
     color: #fff;
     background:linear-gradient(135deg,#f94449,#c30010);
     border-radius: 5px;
-}
-
-#file{
-    display: none;
 }
 
 label{

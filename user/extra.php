@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Rental Landing Page</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         /* styles.css */
         body {
@@ -40,10 +40,10 @@
             letter-spacing: 1px;
             margin-bottom: 15px;
             display: inline-block;
-            background:rgb(235, 216, 216);
+            background: rgb(235, 216, 216);
             padding: 5px 10px;
             border-radius: 5px;
-            
+
         }
 
         h1 {
@@ -89,7 +89,8 @@
             width: 115%;
             margin-left: -50px;
         }
-        .border{
+
+        .border {
             background-color: #e6f0f8;
             width: 386px;
             height: 476px;
@@ -120,7 +121,10 @@
 <body>
     <div class="hero-section">
         <div class="content">
-            <span class="tagline">CAR RENTAL</span>
+            
+                <span class="tagline">CAR RENTAL</span>
+            
+
             <h1>Find Affordable <br> Dream Cars for Rental</h1>
             <p>
                 Fulfill your automotive fantasies without breaking the bank. Check our affordable car
@@ -128,11 +132,18 @@
             </p>
             <a href="#" class="cta-button">Get in Touch</a>
         </div>
-        <div class="car-image">
-           <div class="border">
-            <img src="image/ad_car.png" alt="Luxury car"></div>
+       
+            <div class="car-image">
+                <div class="border">
+                    <img src="image/ad_car.png" alt="Luxury car">
+                </div>
+           
         </div>
     </div>
 </body>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 
 </html>

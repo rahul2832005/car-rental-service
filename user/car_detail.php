@@ -116,7 +116,7 @@
         .spec-item {
             display: flex;
             align-items: center;
-            
+
         }
 
         #icon {
@@ -124,12 +124,26 @@
             height: 80%;
             font-size: 20px;
         }
-        span{
+
+        span {
             font-size: 20px;
         }
-        button{
-            position: absolute;
+
+        #button {
+            
             bottom: 90px;
+            color: black;
+            line-height: 40px;
+            border-radius: 5px;
+            border: 1px solid black;
+            background: white;
+            margin-left: 10px;
+            width: 300px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 35px;
+            font-size: 30px;
+            /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); */
         }
     </style>
 </head>
@@ -161,32 +175,38 @@
                 <div class="specs-grid">
 
                     <div class="spec-item">
-                       <i class="fa-solid fa-car" id="icon"></i>
+                        <i class="fa-solid fa-car" id="icon"></i>
                         <span>4 people</span>
 
                     </div>
 
                     <div class="spec-item">
-                       <i class="fa-solid fa-car" id="icon"></i>
+                        <i class="fa-solid fa-car" id="icon"></i>
                         <span>4 people</span>
 
                     </div>
 
                     <div class="spec-item">
-                       <i class="fa-solid fa-car" id="icon"></i>
+                        <i class="fa-solid fa-car" id="icon"></i>
                         <span>4 people</span>
 
                     </div>
 
                     <div class="spec-item">
-                       <i class="fa-solid fa-car" id="icon"></i>
+                        <i class="fa-solid fa-car" id="icon"></i>
+                        <span>4 people</span>
+
+                    </div>
+
+                    <div class="spec-item">
+                        <i class="fa-solid fa-car" id="icon"></i>
                         <span>4 people</span>
 
                     </div>
 
                 </div>
             </div>
-            <button type="button">Rent Now</button>
+            <button type="button" id="button">Rent Now</button>
 
 
         </div>

@@ -44,7 +44,7 @@
             padding: 5px 10px;
             border-radius: 5px;
             animation-name:tag;
-            animation-duration: 3s;
+            animation-duration: 2s;
             
         }
 
@@ -93,9 +93,9 @@
             height: 75%;
             margin-top: 70px;
             width: 115%;
-            margin-left: -50px;
+            margin-left: -40px;
             animation-name: car;
-            animation-duration: 3s;
+            animation-duration: 2s;
         }
         .border{
             background-color: #e6f0f8;
@@ -128,7 +128,7 @@
                 margin-left: 100%;
             }
             to{
-                margin-left: -50px;
+                margin-left: -40px;
             }
     
         }

@@ -96,8 +96,22 @@ $conn=mysqli_connect("localhost","root","","car_rent");
                     <input type="number" name="capacity" id="" placeholder="Enter Car Capacity">
                 </div>
                
-               <input type="file" name="image" id="file">
-               <label for="file">Upload Image</label>
+                <div class="file">
+                <input type="file" name="image1" id="file"/>
+                </div>
+
+                <div class="file space">
+                <input type="file" name="image2" id="file"/>
+                </div>
+
+                <div class="file">
+                <input type="file" name="image3" id="file"/>
+                </div>
+
+                <div class="file space">
+                <input type="file" name="image4" id="file"/>
+                </div>
+               
 
                 <div class="fual-type">
                     <select name="fual" id="fual">
