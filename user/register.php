@@ -1,3 +1,118 @@
+
+<?php  
+ob_start();
+error_reporting(0);
+
+$conn=mysqli_connect("localhost","root","","car_rent");
+if(!$conn)
+{
+    echo "Not connect";
+}
+
+if(isset($_POST["sign-up"]))
+{
+    $count=0;
+
+    $fname=$_POST["fname"];
+    $no=$_POST["no"];
+    $email=$_POST["email"];
+    $pass=$_POST["pass"];
+    $com_pass=$_POST["com_pass"];
+    
+    $query="insert into reguser (name,mnumber,email,password)values('$fname','$no','$email','$pass');";
+    $exquery=mysqli_query($conn,$query);
+    if($count==0)
+        {
+            echo "<script>alert('Registeration Done !')</script>";
+            echo "<script>window.location.href='login.php'</script>";
+           
+        }
+        else
+        {
+            echo "<script>alert('Some Error Occur!')</script>";
+            echo "<script>window.location.href='register.php'</script>";
+        }
+
+    
+    if($fname=="")
+    {
+        $nm="Enter Name !";
+        $count++;
+    }
+    else
+    {
+        $ex='/^[a-zA-Z]*$/';
+        if(!preg_match($ex,$fname))
+        {
+        $nm="Enter Only Alpha !";
+        $count++;
+        }
+    }
+
+    if($no=="")
+        {
+            $num="Please Enter Number !";
+            $count++;
+        }
+        else
+        {
+            if(!is_numeric($no))
+            {
+                $num="Enter Only Numbers !";
+                 $count++;
+                
+            }
+            elseif(strlen($no)<10)
+                {
+                       $num="Not Number Compalate !";
+                        $count++;   
+                    } 
+         }
+            
+                 
+        
+        if($email=="")
+        {
+            $em="Enter Email ID !";
+            $count++;
+        }
+        else
+        {
+            $ex1= '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+            if(!preg_match($ex1,$email))
+            {
+                $em="Enter Valid Email Address !";
+                $count++;
+            }
+        }
+        if($pass=="")
+        {
+            $passer="Enter The Password";
+            $count++;
+        }
+        elseif(strlen($pass)<8)
+        {
+                $passer="Enter At lease 8 character !";
+                $count++;
+        }
+        
+        if($com_pass=="")
+        {
+            $cpas="Enter Confirm Pasword !";
+            $count++;
+        }
+        elseif($com_pass!=$pass) 
+        {
+            $cpas="Not Matched Password !";
+            $count++;
+        }
+       
+        
+
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -143,35 +258,42 @@
     <div class="container">
         <form action="#" method="post">
             <h1>Register</h1>
+            <p><?php echo $count; ?></p>
+            <div class="input-box">
+                <input type="text" placeholder="Full-Name" name="fname" value="<?php echo $fname ; ?>"/>
+                <p style="color: red;"><?php  echo $nm ; ?></p>
+            </div>
 
             <div class="input-box">
-                <input type="text" placeholder="Full-Name" name="fname" />
+                <input type="text" placeholder="number" name="no" value="<?php echo $no ; ?>"/>
+                <p style="color: red;"><?php  echo $num ; ?></p>
+            </div>
+
+            <div class="input-box">
+                <input type="text" placeholder="Email" name="email" value="<?php echo $email ; ?>" />
+                <p style="color: red;"><?php  echo $em ; ?></p>
 
             </div>
 
             <div class="input-box">
-                <input type="text" placeholder="number" name="no" />
+                <input type="password" placeholder="Password" name="pass" value="<?php echo $pass ; ?>" />
+                <p style="color: red;"><?php  echo $passer ; ?></p>
 
             </div>
 
             <div class="input-box">
-                <input type="text" placeholder="Email" name="email" />
+                <input type="password" placeholder="confirm password" name="com_pass"  value="<?php echo $com_pass ; ?>"/>
+                <p style="color: red;"><?php  echo $cpas ; ?></p>
+                <p style="color: green;"><?php  echo $match ; ?></p>
 
             </div>
 
             <div class="input-box">
-                <input type="password" placeholder="Password" name="pass" />
-
+            <button type="submit" class="btn" name="sign-up">Register</button>
             </div>
-
-            <div class="input-box">
-                <input type="password" placeholder="confirm password" name="com_pass" />
-
+            <div class="register-link">
+                <p>You Already have an account?<a href="login.php">Login Here!</a></p>
             </div>
-
-
-            <button type="submit" class="btn" name="submit">Register</button>
-
 
         </form>
     </div>
