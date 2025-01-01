@@ -130,6 +130,7 @@ main .card a{
     width: 50%;
 }
 
+
 main .card button{
     border: 1px solid black;
     font-size: 23px;
@@ -139,11 +140,11 @@ main .card button{
     /* font-weight: bold; */
     position: relative;
     margin-left: 1px;
-    background-color:white;
+    background-color:rgb(199, 46, 46);
     border-radius: 4px;
     font-family:Lucida Sans Unicode;
     margin-bottom: 10px;
-    color: black;
+    color: rgb(22, 20, 21);
     
 }
 .header {

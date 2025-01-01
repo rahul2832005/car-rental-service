@@ -94,7 +94,13 @@ body {
     <div class="login-btn">
       
     <i id="search" class="fa-solid fa-magnifying-glass"></i>
-      <a id="btn"href="#">Login</a>
+    <?php   if(!$_SESSION["alogin"])
+     { ?>
+      <a id="btn"href="login.php">Login/Register</a>
+      <?php } else { ?>
+
+      <a id="btn"href="logout.php">logout</a>
+      <?php } ?>
     </div>
   </header>
 
