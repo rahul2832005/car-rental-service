@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 30, 2024 at 04:49 AM
+-- Generation Time: Jan 01, 2025 at 03:30 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -56,25 +56,23 @@ INSERT INTO `car_list` (`name`, `modal`, `price`, `no_plate`, `company_name`, `i
 
 DROP TABLE IF EXISTS `reguser`;
 CREATE TABLE IF NOT EXISTS `reguser` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `ID` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `mnumber` int NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `reguser`
 --
 
-INSERT INTO `reguser` (`id`, `name`, `mnumber`, `email`, `password`) VALUES
-(1, 'bhupat', 2147483647, 'bcacourcebca@gmail.com', '12345678'),
-(2, 'bhupa', 2147483647, 'bcacourcebca@gmail.com', '12345678'),
-(3, 'bhupa', 2147483647, 'bcacourcebca@gmail.com', '12345678'),
-(5, 'sagar', 2147483647, 'bcacourcebca@gmail.com', '7359509387'),
-(6, 'kajal', 2147483647, 'jay123@gmail.com', '11111111'),
-(7, 'yara', 2147483647, 'khodal123@gmail.com', '123123123');
+INSERT INTO `reguser` (`ID`, `name`, `mnumber`, `email`, `password`) VALUES
+(1, 'bhupathupat', 2147483647, 'bhupatvatukiya1@gmail.com', '12121212'),
+(2, 'jay', 2147483647, 'jay123@gmail.com', '123456789'),
+(3, 'bhupathupat', 2147483647, 'bhupatvatukiya1@gmail.com', '12121212'),
+(4, 'sagar', 2147483647, 'jau@123gmail.com', '123123123');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
