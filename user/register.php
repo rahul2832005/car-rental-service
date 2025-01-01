@@ -19,21 +19,7 @@ if(isset($_POST["sign-up"]))
     $pass=$_POST["pass"];
     $com_pass=$_POST["com_pass"];
     
-    $query="insert into reguser (name,mnumber,email,password)values('$fname','$no','$email','$pass');";
-    $exquery=mysqli_query($conn,$query);
-    if($count==0)
-        {
-            echo "<script>alert('Registeration Done !')</script>";
-            echo "<script>window.location.href='login.php'</script>";
-           
-        }
-        else
-        {
-            echo "<script>alert('Some Error Occur!')</script>";
-            echo "<script>window.location.href='register.php'</script>";
-        }
-
-    
+   
     if($fname=="")
     {
         $nm="Enter Name !";
@@ -106,10 +92,15 @@ if(isset($_POST["sign-up"]))
             $cpas="Not Matched Password !";
             $count++;
         }
-       
-        
-
-
+        if($count==0)
+    {
+        $query="insert into reguser (name,mnumber,email,password)values('$fname','$no','$email','$pass');";
+        $exquery=mysqli_query($conn,$query);
+           
+        echo "<script>alert('Registeration Done !')</script>";
+        echo "<script>window.location.href='login.php'</script>";
+        }
+    
 }
 
 ?>
@@ -297,3 +288,5 @@ if(isset($_POST["sign-up"]))
 
         </form>
     </div>
+    </body>
+</html>
