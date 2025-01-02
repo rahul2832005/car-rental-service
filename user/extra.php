@@ -1,149 +1,97 @@
+<?php
+$conn = mysqli_connect("localhost", "root", "", "car_rent");
+mysqli_select_db($conn, 'demo');
+
+if (!$conn) {
+    echo "not connect";
+}
+
+if (isset($_POST['submit'])) {
+    $image = $_FILES['image'];
+
+    $filename = $_FILES['image']['name'];
+
+    $location="upload/";
+    $imgname=implode(",",$filename);
+
+    if(!empty($imgname))
+    {
+        foreach($filename as $key =>$val)
+        {
+            $target=$location.$val;
+            move_uploaded_file($_FILES['image']['tmp_name'][$key],$target);
+
+        }
+        $insert="insert into demo (image) values('$imgname')";
+
+        $run=mysqli_query($conn,$insert);
+
+        if($run)
+        {
+           echo "image upload"; 
+        }
+        else
+        {
+            echo "not upload";
+        }
+
+
+    }
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Rental Landing Page</title>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Document</title>
     <style>
-        /* styles.css */
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
-            width: 100%;
-        }
-
-        .hero-section {
-            margin-top: -50px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 50px;
-            background: linear-gradient(to top, #e6f0f8, #ffffff);
-            background-image: url('image/ad_bg.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-        }
-
-        .content {
-            max-width: 50%;
-        }
-
-        .tagline {
-            font-size: 14px;
-            font-weight: bold;
-            color: #ff6b6b;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            display: inline-block;
-            background: rgb(235, 216, 216);
-            padding: 5px 10px;
-            border-radius: 5px;
-
-        }
-
-        h1 {
-            font-size: 3rem;
-            line-height: 1.2;
-            color: #000;
-            margin: 0 0 20px;
-        }
-
-        p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: #000;
-            color: #fff;
-            padding: 15px 30px;
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 6px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s;
-        }
-
-        .cta-button:hover {
-            background-color: #333;
-        }
-
-        .car-image {
-            max-width: 50%;
-            /* border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); */
-        }
-
-        .car-image img {
-            height: 75%;
-            margin-top: 70px;
-            width: 115%;
-            margin-left: -50px;
-        }
-
-        .border {
-            background-color: #e6f0f8;
-            width: 386px;
-            height: 476px;
-            border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-section {
-                flex-direction: column;
-                text-align: center;
-                padding: 30px;
-            }
-
-            .content {
-                max-width: 100%;
-                margin-bottom: 20px;
-            }
-
-            .car-image {
-                max-width: 100%;
-            }
+        .design {
+            width: 50%;
+            margin: auto;
+            padding: 20px 15px;
+            background-color: #e91e63;
         }
     </style>
 </head>
 
 <body>
-    <div class="hero-section">
-        <div class="content">
-            
-                <span class="tagline">CAR RENTAL</span>
-            
+    <h2 align="center">multiple image uploading</h2>
 
-            <h1>Find Affordable <br> Dream Cars for Rental</h1>
-            <p>
-                Fulfill your automotive fantasies without breaking the bank. Check our affordable car
-                rentals for an opulent yet economical ride.
-            </p>
-            <a href="#" class="cta-button">Get in Touch</a>
-        </div>
-       
-            <div class="car-image">
-                <div class="border">
-                    <img src="image/ad_car.png" alt="Luxury car">
-                </div>
-           
-        </div>
+    <div class="design">
+        <form action="" method="post" enctype="multipart/form-data">
+            please select image<br><br>
+            <input type="file" name="image[]" multiple=""><br><br>
+            <input type="submit" name="submit" id="">
+        </form>
     </div>
+    <?php
+        $select="select * from demo where id='6'";
+        $r=mysqli_query($conn,$select);
+
+        $result=mysqli_fetch_array($r);
+
+        $image=explode(",",$result['image']);
+        print_r($image);
+
+        foreach($image as $img)
+        {
+            echo "<img src='upload/$img' height='120' width='120'/>";
+        }
+
+     /*   if(mysqli_num_rows($r)>0)
+       {
+         while($row=mysqli_fetch_array($r))
+         {
+            ?>
+            <img src="upload/<?php echo $row['image']; ?>">
+            <?php
+         }
+       }*/
+    ?>
 </body>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-</script>
 
 </html>
