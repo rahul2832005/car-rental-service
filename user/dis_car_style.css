@@ -140,12 +140,16 @@ main .card button{
     /* font-weight: bold; */
     position: relative;
     margin-left: 1px;
-    background-color:rgb(199, 46, 46);
+    /* background-color:rgb(199, 46, 46); */
     border-radius: 4px;
     font-family:Lucida Sans Unicode;
     margin-bottom: 10px;
     color: rgb(22, 20, 21);
     
+}
+
+.add{
+    background-color: #fff;
 }
 .header {
     display: flex;

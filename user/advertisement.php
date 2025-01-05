@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Rental Landing Page</title>
+    <link href="aos.css" rel="stylesheet">
     <style>
         /* styles.css */
         body {
@@ -122,46 +123,35 @@
                 max-width: 100%;
             }
         }
-        @keyframes car
-        {
-            from {
-                margin-left: 100%;
-            }
-            to{
-                margin-left: -40px;
-            }
-    
-        }
-
-        @keyframes tag
-        {
-            from {
-                margin-bottom: 230px;
-            }
-            to{
-                margin-bottom: 15px;
-            }
-    
-        }
+       
     </style>
 </head>
 
 <body>
     <div class="hero-section">
         <div class="content1">
+        <div data-aos="fade-down" data-aos-duration="2000">
             <span class="tagline">CAR RENTAL</span>
+            </div>
+            <div data-aos="fade-up" data-aos-duration="2000">
             <h1 id="h1">Find Affordable  Dream Cars for Rental</h1>
             <p id="p1">
                 Fulfill your automotive fantasies without breaking the bank. Check our affordable car
                 rentals for an opulent yet economical ride.
             </p>
             <a href="#" id="cta-button">Get in Touch</a>
+            </div>
         </div>
+        <div data-aos="fade-left" data-aos-duration="2500">
         <div class="car-image">
            <div class="border">
             <img src="image/ad_car.png" alt="Luxury car"></div>
         </div>
+        </div>
     </div>
 </body>
-
+<script src="aos.js"></script>
+<script>
+  AOS.init();
+</script>
 </html>

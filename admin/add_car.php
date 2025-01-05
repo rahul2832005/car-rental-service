@@ -3,6 +3,7 @@ $conn=mysqli_connect("localhost","root","","car_rent");
 
     if(isset($_POST['submit']))
     {
+        $car_id=$_POST['car_id'];
         $car_name=$_POST['car_name'];
         $modal=$_POST['modal'];
         $rent_price=$_POST['rent_price'];
@@ -14,13 +15,13 @@ $conn=mysqli_connect("localhost","root","","car_rent");
         $car_image_tmp_name=$_FILES['image']['tmp_name'];
         $car_image_folder='upload/'.$car_image;
 
-        if(empty($car_name) || empty($modal) || empty($rent_price) || empty($no_plate) || empty($company_name)||empty($seat) ||empty($fual)||empty($car_image) )
+        if(empty($car_id) ||empty($car_name) || empty($modal) || empty($rent_price) || empty($no_plate) || empty($company_name)||empty($seat) ||empty($fual)||empty($car_image) )
         {
             $message[]='please fill out all';
         }
         else
         {
-            $insert="insert into car_list values('$car_name','$modal','$rent_price','$no_plate','$company_name','$car_image','$seat','$fual')";
+            $insert="insert into car_list values('$car_id','$car_name','$modal','$rent_price','$no_plate','$company_name','$car_image','$seat','$fual')";
             $upload=mysqli_query($conn,$insert);
 
             if($upload)
@@ -70,6 +71,11 @@ $conn=mysqli_connect("localhost","root","","car_rent");
         </div>
         <form action="" method="post" enctype="multipart/form-data">
             <div class="car_details">
+
+            <div class="input-box">
+                    <span class="details">Car Id</span>
+                    <input type="text" name="car_id" id="" placeholder="Enter Car Id">
+                </div>
                 <div class="input-box">
                     <span class="details">Car Name</span>
                     <input type="text" name="car_name" id="" placeholder="Enter Car Name">
@@ -97,21 +103,8 @@ $conn=mysqli_connect("localhost","root","","car_rent");
                 </div>
                
                 <div class="file">
-                <input type="file" name="image1" id="file"/>
+                <input type="file" name="image" id="file"/>
                 </div>
-
-                <div class="file space">
-                <input type="file" name="image2" id="file"/>
-                </div>
-
-                <div class="file">
-                <input type="file" name="image3" id="file"/>
-                </div>
-
-                <div class="file space">
-                <input type="file" name="image4" id="file"/>
-                </div>
-               
 
                 <div class="fual-type">
                     <select name="fual" id="fual">

@@ -18,7 +18,6 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
 </head>
 <?php
 @include "navbar.php";
-@include "advertisement.php";
 ?>
 <body>
 <?php
