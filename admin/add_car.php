@@ -120,6 +120,7 @@ $conn=mysqli_connect("localhost","root","","car_rent");
             <button type="submit" name="submit" class="button">Add Car</button>
                     <!--<input type="button" value="Add Car" name="submit">-->
                 </div>
+                
         </form>
     </div>
 </body>

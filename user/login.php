@@ -120,7 +120,6 @@
         .container .input-box {
             position: relative;
             width: 100%;
-            height: 50%;
             margin: 30px 0;
         }
 
@@ -199,7 +198,7 @@
             height: 100%;
             width: 50%;
             display: flex;
-            /*justify-content: center;*/
+            justify-content: center;
             flex-direction: column;
             font-size: 45px;
             font-family: ARIAL;
@@ -222,6 +221,7 @@
             background-color: #fff;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             transition: all 0.4s ease;
+           
         }
 
         .social-links a:hover {
@@ -273,9 +273,9 @@
             </hr>
         </p>
         <div class="social-links">
-            <a href=""><i class="fa-brands fa-facebook"></i></a>
-            <a href=""><i class="fa-brands fa-twitter"></i></a>
-            <a href=""><i class="fa-brands fa-instagram"></i></a>
+            <a href=""><i style="margin-top:10px;" class="fa-brands fa-facebook"></i></a>
+            <a href=""><i style="margin-top:10px;" class="fa-brands fa-twitter"></i></a>
+            <a href=""><i style="margin-top:10px;" class="fa-brands fa-instagram"></i></a>
 
 
         </div>

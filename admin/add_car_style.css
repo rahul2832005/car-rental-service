@@ -33,7 +33,7 @@ position: absolute;
 left: 0;
 bottom: 0;
 height: 3px;
-width: 30px;
+width: 90px;
 background: linear-gradient(135deg,#f94449,#c30010);
 }
 
@@ -61,21 +61,18 @@ form .car_details .input-box{
     width: 100%;
     outline: none;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid #9a9696;
     padding-left: 15px;
     font-size: 16px;
-    border-bottom-width: 2px;
-    transition: all 0.3s ease;
+    /* border-bottom-width: 2px; */
+    /* transition: all 0.3s ease; */
 }
 
-.car_details .input-box input:focus,
-.car_details .input-box input:valid{
 
-border-color:#d1001f;
-}
 
 .file{
     margin-bottom: 15px;
+    margin-right: 50px;
 }
 
 .space{
@@ -85,7 +82,7 @@ border-color:#d1001f;
     font-size: 16px;
     background: white;
     border-radius: 5px;
-    box-shadow: 5px 5px 10px black;
+   border: 1px solid #9a9696;
     width: 250px;
     outline: none;
 }
@@ -110,7 +107,7 @@ border-color:#d1001f;
         width: 150px;
         border-radius: 4px;
         height: 43px;
-        border: 1px solid #d1001f;
+        border: 1px solid #9a9696;
         
 }
 
