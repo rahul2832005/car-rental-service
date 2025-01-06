@@ -249,7 +249,7 @@ if(isset($_POST["sign-up"]))
     <div class="container">
         <form action="#" method="post">
             <h1>Register</h1>
-            <p><?php echo $count; ?></p>
+            <!-- <p><?php /*echo $count;*/ ?></p> -->
             <div class="input-box">
                 <input type="text" placeholder="Full-Name" name="fname" value="<?php echo $fname ; ?>"/>
                 <p style="color: red;"><?php  echo $nm ; ?></p>
