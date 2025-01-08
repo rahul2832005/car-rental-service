@@ -1,157 +1,152 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Rental Landing Page</title>
-    <link href="aos.css" rel="stylesheet">
+    <title>Image Slider with Animations</title>
     <style>
-        /* styles.css */
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
+        /* Slider Container */
+        .slider {
+            position: relative;
             width: 100%;
+            max-width: 800px;
+            height: 400px;
+            margin: auto;
+            overflow: hidden;
         }
 
-        .hero-section {
-            margin-top: 2px;
+        /* Slide Wrapper */
+        .slides {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 50px;
-            background: linear-gradient(to top, #e6f0f8, #ffffff);
-            background-image: url('image/ad_bg.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
+            width: 500%;
+            animation: slide-animation 20s infinite;
         }
 
-        .content1 {
-            max-width: 50%;
+        /* Each Slide */
+        .slide {
+            width: 100%;
+            flex-shrink: 0;
+            position: relative;
         }
 
-        .tagline {
-            font-size: 14px;
-            font-weight: bold;
-            color: #ff6b6b;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            display: inline-block;
-            background:rgb(208, 176, 176);
-            padding: 5px 10px;
-            border-radius: 5px;
-            animation-name:tag;
-            animation-duration: 2s;
-            
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        #h1 {
-            font-size: 3rem;
-            line-height: 1.2;
-            color: #000;
-            margin: 0 0 20px;
-            
-            
+        /* Animations */
+        .slide:nth-child(1) {
+            animation: fade-in 5s infinite;
         }
 
-        #p1 {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #666;
-            margin-bottom: 30px;
-            
-           
+        .slide:nth-child(2) {
+            animation: slide-up 5s infinite;
         }
 
-        #cta-button {
-            display: inline-block;
-            background-color: #000;
-            color: #fff;
-            padding: 10px 25px;
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 6px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s;
+        .slide:nth-child(3) {
+            animation: zoom-in-out 5s infinite;
         }
 
-        #cta-button:hover {
-            background-color: #333;
+        .slide:nth-child(4) {
+            animation: rotate-in 5s infinite;
         }
 
-        .car-image {
-            max-width: 50%;
-            /* border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); */
-        }
-
-        .car-image img {
-            height: 75%;
-            margin-top: 70px;
-            width: 115%;
-            margin-left: -40px;
-            animation-name: car;
-            animation-duration: 2s;
-        }
-        .border{
-            background-color: #e6f0f8;
-            width: 386px;
-            height: 476px;
-            border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-section {
-                flex-direction: column;
-                text-align: center;
-                padding: 30px;
+        /* Animation Keyframes */
+        @keyframes slide-animation {
+            0% {
+                transform: translateX(0);
             }
 
-            .content {
-                max-width: 100%;
-                margin-bottom: 20px;
+            25% {
+                transform: translateX(-100%);
             }
 
-            .car-image {
-                max-width: 100%;
+            50% {
+                transform: translateX(-200%);
+            }
+
+            75% {
+                transform: translateX(-300%);
+            }
+
+            100% {
+                transform: translateX(-400%);
             }
         }
-       
+
+        @keyframes fade-in {
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slide-up {
+            0% {
+                transform: translateY(100%);
+            }
+
+            50% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        @keyframes zoom-in-out {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes rotate-in {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(360deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div class="hero-section">
-        <div class="content1">
-        <div data-aos="fade-down" data-aos-duration="2000">
-            <span class="tagline">CAR RENTAL</span>
+    <div class="slider">
+        <div class="slides">
+            <div class="slide">
+                <img src="image/ad_bg.jpg" alt="Slide 1">
             </div>
-            <div data-aos="fade-up" data-aos-duration="2000">
-            <h1 id="h1">Find Affordable  Dream Cars for Rental</h1>
-            <p id="p1">
-                Fulfill your automotive fantasies without breaking the bank. Check our affordable car
-                rentals for an opulent yet economical ride.
-            </p>
-            <a href="#" id="cta-button">Get in Touch</a>
+            <div class="slide">
+                <img src="image/ad_bg.jpg" alt="Slide 2">
             </div>
-        </div>
-        <div data-aos="fade-left" data-aos-duration="2500">
-        <div class="car-image">
-           <div class="border">
-            <img src="image/ad_car.png" alt="Luxury car"></div>
-        </div>
+            <div class="slide">
+                <img src="image/ad_bg.jpg" alt="Slide 3">
+            </div>
+            <div class="slide">
+                <img src="image/ad_bg.jpg" alt="Slide 4">
+            </div>
         </div>
     </div>
 </body>
-<script src="aos.js"></script>
-<script>
-  AOS.init();
-</script>
+
 </html>
