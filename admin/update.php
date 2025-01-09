@@ -15,10 +15,33 @@
         $sql="select * from car_list where id=$id";
 
         $result=mysqli_query($conn,$sql) or die("can not fetch the data.".mysqli_error($conn));
-        $user=mysqli_fetch_assoc($result);
+        $user=mysqli_fetch_assoc($result); 
+    }
+    if(isset($_POST['update']))
+    {
+        $id=$_POST['car_id'];
+        $car_name=$_POST['car_name'];
+        $modal=$_POST['modal'];
+        $rent_price=$_POST['rent_price'];
+        $number=$_POST['num_plate'];
+        $company_name=$_POST['company_name'];
+        $seat=$_POST['capacity'];
+        $fual=$_POST['fual'];
 
-       
-        
+        $sql="update car_list set name='$car_name',modal='$modal',price='$rent_price'
+        ,no_plate='$number',company_name='$company_name',seat='$seat',fual='$fual' where id='$id'";
+
+        $result=mysqli_query($conn,$sql);
+
+        if($result)
+        {
+            $message[]="car updated successfully";
+        }
+        else
+        {
+            $message[]="not update car!";
+        }
+
     }
    
 ?>
@@ -211,14 +234,7 @@ form .button input:hover{
 
     <div class="container">
         <div class="title">Update Car Details  
-        <?php
-        if(isset($message))
-        {
-            foreach($message as $message){
-                echo '<span class="message">'.$message.'</span>';
-            }
-        }
-        ?>
+       
         </div>
         <form action="" method="post" enctype="multipart/form-data">
             <div class="car_details">
@@ -297,6 +313,14 @@ form .button input:hover{
             <button type="submit" name="update" class="button">Update Car Details</button>
                     <!--<input type="button" value="Add Car" name="submit">-->
                 </div>
+                <?php
+        if(isset($message))
+        {
+            foreach($message as $message){
+                echo '<span class="message">'.$message.'</span>';
+            }
+        }
+        ?>
         </form>
     </div>
 </body>
