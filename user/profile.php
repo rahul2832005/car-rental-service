@@ -24,7 +24,7 @@ if (!$_SESSION["alogin"])
         <div class="profile-details">
             <img src="image/p2.jpg" alt="Profile Picture" class="profile-picture">
             <div class="profile-info">
-                <h1 > Kevin Smith</h1>
+               <h1 ><?php echo $_SESSION["alogin"]; ?></h1>
                  <!-- Services Section -->
        <div class="services-section">
            <a href="profile.php">
