@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="css/all.min.css">
+  
+  <!-- fontAWESOM LINK -->
     <link rel="stylesheet" href="css/fontawesome.min.css">
  <style>
     /* styles.css */
@@ -75,6 +78,9 @@ body {
     cursor: pointer;
 }
  </style> 
+ <!-- Font Awesome -->
+ <link rel="stylesheet" href="css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <title>Carola Navbar</title>
 </head>
 <body>
@@ -94,13 +100,17 @@ body {
     <div class="login-btn">
       
     <i id="search" class="fa-solid fa-magnifying-glass"></i>
-    <?php   if(!$_SESSION["alogin"])
+    <?php  if(!$_SESSION["alogin"])
      { ?>
-      <a id="btn"href="login.php">Login/Register</a>
+      <a id="btn" href="login.php">Login/Register</a>
       <?php } else { ?>
 
-      <a id="btn"href="logout.php">logout</a>
+      <a href="profile.php"><i  class="fa fa-user-circle"></i><?php echo $_SESSION["alogin"]; ?></a>
+
+      <a id="btn" href="logout.php">logout</a>
       <?php } ?>
+      
+
     </div>
   </header>
 
