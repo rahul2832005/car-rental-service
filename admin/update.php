@@ -16,6 +16,7 @@
 
         $result=mysqli_query($conn,$sql) or die("can not fetch the data.".mysqli_error($conn));
         $user=mysqli_fetch_assoc($result); 
+        
     }
     if(isset($_POST['update']))
     {
@@ -27,14 +28,31 @@
         $company_name=$_POST['company_name'];
         $seat=$_POST['capacity'];
         $fual=$_POST['fual'];
+        $new_image=$_FILES['image']['name'];
+        $old_image=$_POST['old_image'];
 
+        if($new_image!="")
+        {
+            $update_image=$_FILES['image']['name'];
+        }
+        else
+        {
+            $update_image=$_POST['old_image'];
+        }
+        
         $sql="update car_list set name='$car_name',modal='$modal',price='$rent_price'
-        ,no_plate='$number',company_name='$company_name',seat='$seat',fual='$fual' where id='$id'";
+        ,no_plate='$number',company_name='$company_name',seat='$seat',fual='$fual',image='$update_image' where id='$id'";
 
         $result=mysqli_query($conn,$sql);
 
         if($result)
         {
+            if($_FILES['image']['name']!="")
+            {
+                move_uploaded_file($_FILES['image']['tmp_name'],"upload/".$_FILES['image']['name']);
+                unlink("upload/".$_POST['old_image']);
+
+            }
             $message[]="car updated successfully";
         }
         else
@@ -271,7 +289,9 @@ form .button input:hover{
                
                 <div class="file">
                 <input type="file" name="image" id="file" value="<?php echo $user['image']; ?>"/ >
+                <input type="hidden" name="old_image" id="file" value="<?php echo $user['image']; ?>"/ >
                 </div>
+                
 
                 <div class="fual-type">
                     <select name="fual" id="fual">

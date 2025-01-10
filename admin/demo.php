@@ -12,15 +12,17 @@
         $sql="select * from rahul where id=1";
         $result=mysqli_query($conn,$sql);
 
-        while($row=mysqli_fetch_array($result))
+        while($row=mysqli_fetch_assoc($result))
         {
            ?>
            <img src="rahul/<?php echo $row['image'] ?>" height="80" width="80"> 
            <br><input type="text" name="old_image" value="<?php  echo $row['image'] ?>">
            <?php
+           $old_image=$row['image'];
+          
         }
+       
     }
-
     if(isset($_POST["update"]))
     {
         
@@ -28,13 +30,28 @@
         $tmp=$_FILES['image']['tmp_name'];
         $location='rahul/'.$image;
 
-        $sql="update rahul set image='$image' where id=1";
+        if($image!="")
+        {
+            $upload=$_FILES['image']['name'];
+        }
+        else
+        {
+            $upload=$old_image;
+        }
+
+        $sql="update rahul set image='$upload' where id=1";
         $result=mysqli_query($conn,$sql);
 
         if($result)
         {
-            move_uploaded_file($tmp,$location);
+            if($_FILES['image']['name']!="")
+            {
+                move_uploaded_file($tmp,$location);
+                unlink("rahul/".$old_image);
+                
+            }
             echo "success";
+           
         }
         else{
             echo "not";

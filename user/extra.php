@@ -1,10 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
     <title>About Us</title>
     <style>
         /* styles.css */
@@ -12,7 +13,7 @@
             font-family: sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
+            color: #000;
         }
 
         .header {
@@ -34,6 +35,71 @@
             height: auto;
         }
 
+        .container {
+            max-width: 800px;
+            margin: 20px 10px;
+            /* padding: 20px; */
+        }
+
+        .brand-tag {
+            display: inline-block;
+            background-color: #ffe4e4;
+            color: #f24b4b;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .h1 {
+            font-size: 40px;
+            font-weight: bold;
+            margin: 10px 0 20px;
+            color: #000;
+        }
+
+        .section {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .icon {
+            background-color: #ffe4e4;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            margin-top: 6px;
+            font-size: 25px;
+        }
+
+        .icon img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .content {
+            max-width: 700px;
+            line-height: 30px;
+        }
+
+        .content h3 {
+            font-size: 20px;
+            margin: 0;
+            color: #000;
+        }
+
+        .content p {
+            font-size: 16px;
+            color: #666;
+            margin: 5px 0 0;
+        }
+
         .about {
             /* text-align: center; */
             padding: 20px;
@@ -42,23 +108,6 @@
         .about h2 {
             font-size: 2.8rem;
             margin-bottom: 20px;
-        }
-
-        .features {
-            display: flex;
-            /* justify-content: center; */
-             /* gap: 30px;  */
-            margin-top: 20px;
-        }
-
-        .feature {
-            /* width: 300px; */
-            text-align: left;
-        }
-
-        .feature h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
         }
 
         .how-it-works {
@@ -98,6 +147,7 @@
         .step p {
             font-size: 0.9rem;
         }
+
         #bg_img {
             width: 100%;
             margin-top: 5px;
@@ -116,50 +166,60 @@
 </head>
 
 <body>
-<div class="banner-card">
+    <div class="banner-card">
         <img id="bg_img" src="image/our_team_bg1.png" alt="" srcset="">
         <div class="banner-text">
             <h1>About Us</h1>
         </div>
-    <section class="hero">
-        <img src="image/about.png" alt="Red Car" class="hero-image">
-    </section>
-    <section class="about">
-        <h2>Planning A Trip Should Be Very <br>Exciting Adventure</h2>
-        <div class="features">
-            <div class="feature">
-                <h3>International Tours</h3>
-                <p>Our team of travel professionals brings a wealth of knowledge and expertise to
-                    the table.</p>
+        <section class="hero">
+            <img src="image/about.png" alt="Red Car" class="hero-image">
+        </section>
+        <div class="container">
+            <div class="brand-tag">BRANDS</div>
+            <h1 class="h1">Planning A Trip Should Be Very <br>Exciting Adventure</h1>
+            <div class="section">
+                <div class="icon">
+                    <i class="fa-solid fa-earth-americas"></i>
+                </div>
+                <div class="content">
+                    <h3>All India Tours</h3>
+                    <p>Our team of travel professionals brings a wealth of knowledge and expertise to the
+                        table.</p>
+                </div>
             </div>
-            <!-- <div class="feature">
-                <h3>Multiple Options to Choose</h3>
-                <p>Planning a trip should be an exciting adventure, not a stressful ordeal. Let us
-                    handle the logistics.</p>
-            </div> -->
-        </div>
-    </section>
-    <section class="how-it-works">
-        <h2>How It Works</h2>
-        <div class="steps">
-            <div class="step">
-                <span class="step-number">1</span>
-                <p>Sign up Account</p>
-            </div>
-            <div class="step">
-                <span class="step-number">2</span>
-                <p>Search your Vehicle</p>
-            </div>
-            <div class="step">
-                <span class="step-number">3</span>
-                <p>Pay the Car Rent</p>
-            </div>
-            <div class="step">
-                <span class="step-number">4</span>
-                <p>Take Car to Road</p>
+            <div class="section">
+                <div class="icon">
+                <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div class="content">
+                    <h3>Multiple Options to Choose</h3>
+                    <p>Planning a trip should be an exciting adventure, not a stressful ordeal. Let us
+                        handle the logistics.</p>
+                </div>
             </div>
         </div>
-    </section>
+
+        <section class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <p>Sign up Account</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <p>Search your Vehicle</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <p>Pay the Car Rent</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <p>Take Car to Road</p>
+                </div>
+            </div>
+        </section>
 </body>
 
 </html>
