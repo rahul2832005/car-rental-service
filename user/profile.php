@@ -1,4 +1,9 @@
 <?php 
+session_start();
+if (!$_SESSION["alogin"])
+{
+    header("location:login.php");
+}
 
 ?>
 <!DOCTYPE html>
