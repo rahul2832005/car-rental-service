@@ -63,7 +63,7 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
                     </div>
                     <?php if($_SESSION["alogin"])
                     { ?>
-                    <button class="add" type="submit" name="rent-now"><a href="car-details.php" class="button">Rent Now  <?php  echo $_SESSION["alogin"]; ?></a></button>
+                    <button class="add" type="submit" name="rent-now"><a href="car-details.php" class="button">Rent Now</a></button>
                     <?php } else { ?>
                         
                         <button class="add"><a href="login.php" class="button">Login For Book</a></button>
