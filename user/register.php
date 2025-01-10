@@ -1,7 +1,7 @@
 
 <?php  
-ob_start();
-error_reporting(0);
+
+$nm=$count=$num=$email=$em=$pass=$passer=$com_pass=$cpas=$match=$fname=$no="";
 
 $conn=mysqli_connect("localhost","root","","car_rent");
 if(!$conn)
@@ -64,6 +64,14 @@ if(isset($_POST["sign-up"]))
         }
         else
         {
+            $emailquery="select * from reguser where email='$email'";
+            $exemailquery=mysqli_query($conn,$emailquery);
+            $row=mysqli_num_rows($exemailquery);
+            if($row>0)
+            {
+                $em="Email Already Exist!";
+                $count++;
+            }
             $ex1= '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
             if(!preg_match($ex1,$email))
             {
@@ -73,6 +81,7 @@ if(isset($_POST["sign-up"]))
         }
         if($pass=="")
         {
+            
             $passer="Enter The Password";
             $count++;
         }
@@ -92,14 +101,20 @@ if(isset($_POST["sign-up"]))
             $cpas="Not Matched Password !";
             $count++;
         }
+
+       
+
+
         if($count==0)
-    {
+       {
         $query="insert into reguser (name,mnumber,email,password)values('$fname','$no','$email','$pass');";
         $exquery=mysqli_query($conn,$query);
            
         echo "<script>alert('Registeration Done !')</script>";
         echo "<script>window.location.href='login.php'</script>";
         }
+        
+        
     
 }
 
