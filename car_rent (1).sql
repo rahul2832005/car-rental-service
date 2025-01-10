@@ -88,13 +88,6 @@ CREATE TABLE IF NOT EXISTS `rahul` (
 -- Dumping data for table `rahul`
 --
 
-INSERT INTO `rahul` (`id`, `image`) VALUES
-(1, 'bengaluru.jpg'),
-(2, 'bengaluru.jpg'),
-(3, 'gandhinagar.jpg'),
-(4, 'jaisalmer.webp');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `reguser`
@@ -121,42 +114,41 @@ INSERT INTO `reguser` (`ID`, `name`, `mnumber`, `email`, `password`) VALUES
 (4, 'sagar', 2147483647, 'jau@123gmail.com', '123123123');
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `user_detail`
+-- Table structure for table `demo`
 --
 
-DROP TABLE IF EXISTS `user_detail`;
-CREATE TABLE IF NOT EXISTS `user_detail` (
-  `full_name` varchar(255) NOT NULL,
-  `mobile` int NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS `demo`;
+CREATE TABLE IF NOT EXISTS `demo` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `image` varchar(255) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `model` int NOT NULL,
+  `price` int NOT NULL,
+  `no_plate` varchar(20) NOT NULL,
+  `company_name` varchar(80) NOT NULL,
+  `s_capacity` int NOT NULL,
+  `fual` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `user_detail`
+-- Dumping data for table `demo`
 --
 
-INSERT INTO `user_detail` (`full_name`, `mobile`, `email`, `password`) VALUES
-('bavaliya rahul', 2147483647, 'rahulbavaliya153@gmail.com', 12345678),
-('', 0, '', 0),
-('', 0, '', 0),
-('', 0, '', 0),
-('', 0, '', 98542102),
-('', 0, '', 0),
-('', 0, '', 0),
-('', 0, '', 0),
-('vatukiya', 2147483647, 'rahulbavaliya153@gmail.com', 78978945),
-('', 0, '', 0),
-('', 0, '', 0),
-('', 0, '', 0),
-('bavaliya', 2147483647, 'rahulbavaliya153@gmail.com', 123456),
-('hadik', 1234567890, 'hardik123@gmail.com', 123123123),
-('ABC', 1231231231, 'abc@gmail.com', 12121212),
-('urvish', 2147483647, 'rahulbavaliya153@gmail.com', 12312312);
+INSERT INTO `demo` (`id`, `image`, `name`, `model`, `price`, `no_plate`, `company_name`, `s_capacity`, `fual`) VALUES
+(1, 'download (1).png', '', 0, 0, '0', '', 0, ''),
+(2, 'download (1).png', '', 0, 0, '0', '', 0, ''),
+(3, '', '', 0, 0, '0', '', 0, ''),
+(4, 'download (4).png', '', 0, 0, '0', '', 0, ''),
+(5, 'download (4).png,download (5).png,download (6).png', '', 0, 0, '0', '', 0, ''),
+(6, 'download (4).png,download (5).png,download (6).png', '', 0, 0, '0', '', 0, ''),
+(7, 'front-left-side-47 (1).jpg,front-view-118.jpg,rear-view-119.jpg', '', 0, 0, '0', '', 0, ''),
+(8, 'download (4).png,download (5).png,download (6).png', 'Land Rover', 2025, 1520, 'qweqweqwe', 'tata', 5, 'Petrol'),
+(9, 'front-left-side-47 (1).jpg,front-left-side-47 (2).jpg,front-left-side-47.jpg,front-view-118 (1).jpg,front-view-118.jpg', 'ori', 1520, 1000, 'hj74lk55', 'tata', 6, 'Diesel');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+--
