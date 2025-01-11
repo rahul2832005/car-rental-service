@@ -36,15 +36,15 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
     <main>
         <?php
 
-        $select_car = mysqli_query($conn, "select * from car_list where id=5");
+        $select_car = mysqli_query($conn, "select * from car_list");
         if (mysqli_num_rows($select_car) > 0) {
             while ($row = mysqli_fetch_array($select_car)) {
                 $image=explode(",",$row['image']);
-               print_r($image); 
+               //print_r($image); 
         ?>
                 <div class="card">
                     <div class="image">
-                        <img src="/car-rental-service/admin/img/<?php echo $row['image'][0]; ?>">
+                        <img src="/projects/rental/car-rental-service/admin/img/<?php echo $image[0]; ?>">
                     </div>
                     <div class="caption">
                         <p class="rate">
