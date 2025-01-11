@@ -1,8 +1,10 @@
 <?php
+$em=$email=$pass=$password="";
+
 //login page
     ob_start();
     session_start();
-    // error_reporting(0);
+    //  error_reporting(0);
     $conn=mysqli_connect("localhost","root","","car_rent");
     if(!$conn)
     {

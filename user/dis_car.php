@@ -1,4 +1,5 @@
 <?php
+$index=0;
 //@include "./connection.php";
 $conn = mysqli_connect("localhost", "root", "", "car_rent");
     session_start();
@@ -35,14 +36,14 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
     <main>
         <?php
 
-        $select_car = mysqli_query($conn, "select * from car_list");
+        $select_car = mysqli_query($conn, "select * from demo");
         if (mysqli_num_rows($select_car) > 0) {
             while ($row = mysqli_fetch_array($select_car)) {
         ?>
 
                 <div class="card">
                     <div class="image">
-                        <img src="image/<?php echo $row['image']; ?>">
+                        <img src="img/<?php echo $row['image'][$index]; ?>">
                     </div>
                     <div class="caption">
                         <p class="rate">

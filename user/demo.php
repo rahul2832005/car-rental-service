@@ -80,28 +80,28 @@
             <i class="fa-solid fa-user"></i>
 
         </div>
-        <!-- <p>sign up account </p> -->
+        <p>sign up account </p>
 
         <div class="one">
             <p class="number">2</p>
             <i class="fa-solid fa-user"></i>
 
         </div>
-        <!-- <p> search your vehicle</p> -->
+        <p> search your vehicle</p>
 
         <div class="one">
             <p class="number">3</p>
             <i class="fa-solid fa-user"></i>
-
+            <p>pay the car rent</p>
         </div>
-        <!-- <p>pay the car rent</p> -->
+       
 
         <div class="one">
             <p class="number">4</p>
             <i class="fa-solid fa-user"></i>
-
+            <p>take car to road</p>
         </div>
-        <!-- <p>take car to road</p> -->
+       
     </div>
 </body>
 

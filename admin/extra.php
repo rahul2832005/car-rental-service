@@ -25,7 +25,7 @@ if (isset($_POST["btn"])) {
             $target = $location . $val;
             move_uploaded_file($_FILES['image']['tmp_name'][$key], $target);
         }
-        $insert = "insert into demo (image,name,model,price,no_plate,company_name,s_capacity,fual) values ('$image_name','$car_name',$modal,$rent_price,'$no_plate','$company_name',$seat,'$fual')";
+        $insert = "insert into  (image,name,modal,price,no_plate,company_name,seat,fual) values ('$image_name','$car_name',$modal,$rent_price,'$no_plate','$company_name',$seat,'$fual')";
 
         $run = mysqli_query($conn, $insert);
 
