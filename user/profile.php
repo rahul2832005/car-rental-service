@@ -50,7 +50,7 @@ if (!$_SESSION["alogin"])
             </a>
             <a href="profile.php"><div class="service-card">
                 <div class="icon"><img src="image/feed.png" height="50px"></div>
-                <h3>MY FEEDBACKS</h3>
+                <h3>MY FEEdBACKS</h3>
               
                 <!-- <a href="#" class="more-link">MORE</a> -->
             </div></a>
