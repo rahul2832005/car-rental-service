@@ -101,10 +101,10 @@ $result = mysqli_query($conn, $sql);
                 <td><?php echo $row['company_name'] ?></td>
                 <td><?php echo $row['seat'] ?></td>
                 <td><?php echo $row['fual'] ?></td>
-                <td><a id="edit" href="update.php?uid=<?php echo $row['id'] ?>"><i class="fa-solid fa-pen"></i></a>   <a id="delete" href=""><i class="fa-solid fa-trash"></i></a></td>
-                <!-- <td> 
+                <td><a id="edit" href="update.php?uid=<?php echo $row['id'] ?>""><i class="fa-solid fa-pen"></i></a>   <a id="delete" href=""><i class="fa-solid fa-trash"></i></a></td>
+                 <!-- <td> 
                  <img src="upload/<?php echo $row['image'] ?>" height="80" width="80"> 
-                </td>-->
+                </td> -->
             </tr>
 
         <?php
