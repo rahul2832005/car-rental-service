@@ -2,7 +2,7 @@
 //login page
     ob_start();
     session_start();
-    error_reporting(0);
+    // error_reporting(0);
     $conn=mysqli_connect("localhost","root","","car_rent");
     if(!$conn)
     {
@@ -11,6 +11,34 @@
 
     if(isset($_POST["login"]))
     {
+        if($email=="")
+        {
+            $em="Enter Email ID !";
+            $count++;
+        }
+        else
+        {
+            $ex1='/^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-z]/';
+            if(!preg_match($ex1,$email))
+            {
+                $em="Enter Valid Email Address !";
+                $count++;
+            }
+        }
+        if($password=="")
+        {
+            $pass="Enter The Password";
+            $count++;
+        }
+        else
+        {
+            if(strlen($password)<8)
+            {
+                $pass="Enter At leasr 8 character !";
+                $count++;
+            }
+        }
+        
         $count=0;
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -41,34 +69,7 @@
             alert("NO User Found Of  This Details !");</script>
 
         <?php  }
-        if($email=="")
-        {
-            $em="Enter Email ID !";
-            $count++;
-        }
-        else
-        {
-            $ex1='/^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-z]/';
-            if(!preg_match($ex1,$email))
-            {
-                $em="Enter Valid Email Address !";
-                $count++;
-            }
-        }
-        if($password=="")
-        {
-            $pass="Enter The Password";
-            $count++;
-        }
-        else
-        {
-            if(strlen($password)<8)
-            {
-                $pass="Enter At leasr 8 character !";
-                $count++;
-            }
-        }
-        
+       
     }
 ?>
 <!DOCTYPE html>
