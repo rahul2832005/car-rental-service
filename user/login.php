@@ -1,78 +1,57 @@
 <?php
-$em=$email=$pass=$password="";
-
 //login page
-    ob_start();
-    session_start();
-    //  error_reporting(0);
-    $conn=mysqli_connect("localhost","root","","car_rent");
-    if(!$conn)
-    {
-        echo "Not connect";
-    }
+$email = $password = $pass = $em = "";
+session_start();
 
-    if(isset($_POST["login"]))
-    {
-        if($email=="")
-        {
-            $em="Enter Email ID !";
+$conn = mysqli_connect("localhost", "root", "", "car_rent");
+if (!$conn) {
+    echo "Not connect";
+}
+if (isset($_POST["login"])) {
+    $count = 0;
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    if ($email == "") {
+        $em = "Enter Email ID !";
+        $count++;
+    } else {
+        $ex1 = '/^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-z]/';
+        if (!preg_match($ex1, $email)) {
+            $em = "Enter Valid Email Address !";
             $count++;
         }
-        else
-        {
-            $ex1='/^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-z]/';
-            if(!preg_match($ex1,$email))
-            {
-                $em="Enter Valid Email Address !";
-                $count++;
-            }
-        }
-        if($password=="")
-        {
-            $pass="Enter The Password";
+    }
+    if ($password == "") {
+        $pass = "Enter The Password";
+        $count++;
+    } else {
+        if (strlen($password) < 8) {
+            $pass = "Enter At leasr 8 character !";
             $count++;
         }
-        else
-        {
-            if(strlen($password)<8)
-            {
-                $pass="Enter At leasr 8 character !";
-                $count++;
-            }
-        }
-        
-        $count=0;
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        $query="select * from reguser where email='$email' && password='$password'";
-        $exquery=mysqli_query($conn,$query);
-
-        $row=mysqli_num_rows($exquery);
-
-        if($row==1)
-        {
-            $show="select * from reguser where email='$email'";
-            $data=mysqli_query($conn,$show);
-            $user=mysqli_fetch_assoc($data);
-            // $id = $user["id"];
-            // $_SESSION["userid"]=$id;
-            
-
-            $username=$user["name"];
-            $_SESSION["alogin"]=$username;
-           
-             header("location:dis_car.php");
-
-        }
-        else {
-        ?>
-            <script type="text/javascript">
-            alert("NO User Found Of  This Details !");</script>
-
-        <?php  }
-       
     }
+
+    $query = "select * from reguser where email='$email' && password='$password'";
+    $exquery = mysqli_query($conn, $query);
+
+    $row = mysqli_num_rows($exquery);
+
+    if ($row == 1) {
+
+        $show = "select * from reguser where email='$email'";
+        $data = mysqli_query($conn, $show);
+        $user = mysqli_fetch_assoc($data);
+        // $id = $user["id"];
+        // $_SESSION["userid"]=$id;
+        $username = $user["name"];
+        $_SESSION["alogin"] = $username;
+
+        header("location:dis_car.php");
+    } elseif ($row != 1 && $count == 0) {
+        echo "<script>alert('User Not Found')</script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,7 +80,7 @@ $em=$email=$pass=$password="";
             background-size: cover;
 
         }
-       
+
         .container {
             /* background:green;*/
             margin-left: 50px;
@@ -112,7 +91,7 @@ $em=$email=$pass=$password="";
             border-radius: 10px;
             padding: 30px 40px;
             backdrop-filter: blur(6px);
-          
+
         }
 
         .container h1 {
@@ -188,7 +167,7 @@ $em=$email=$pass=$password="";
         .register-link p a {
             color: #fff;
             text-decoration: none;
-           
+
         }
 
         .register-link p a:hover {
@@ -224,7 +203,7 @@ $em=$email=$pass=$password="";
             background-color: #fff;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             transition: all 0.4s ease;
-           
+
         }
 
         .social-links a:hover {
@@ -236,7 +215,6 @@ $em=$email=$pass=$password="";
             border: 3px solid white;
             margin-bottom: 10px;
         }
-        
     </style>
 </head>
 
@@ -246,20 +224,18 @@ $em=$email=$pass=$password="";
             <h1>Login</h1>
 
             <div class="input-box">
-                <input type="text" placeholder="Email" name="email" value="<?php echo $email; ?>"/>
+                <input type="text" placeholder="Email" name="email" value="<?php echo $email; ?>" />
                 <p style="color: red;"><?php echo $em; ?></p>
-                
-
             </div>
 
             <div class="input-box">
-                <input type="password" placeholder="Password" name="password" value="<?php echo $password; ?>"/>
+                <input type="password" placeholder="Password" name="password" value="<?php echo $password; ?>" />
                 <p style="color: red;"><?php echo $pass; ?></p>
             </div>
 
             <div class="remember-forgot">
                 <label><input type="checkbox" /> Remember me</label>
-                <a href="#"> Forgot Password?</a>
+                <a href="f_pass.php"> Forgot Password?</a>
             </div>
             <button type="submit" class="btn" name="login">Log in</button>
 
