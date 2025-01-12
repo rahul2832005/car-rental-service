@@ -1,0 +1,186 @@
+/* General Reset */
+
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+h1, h2, p, input, select, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.user-menu .user-dropdown {
+    background-color: #5a5cdb;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* User Banner */
+.user-banner {
+    display: flex;
+    align-items: center;
+    background-color: #b6acd1;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    justify-content: space-between;
+}
+
+.profile-pic img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.user-info{
+    display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+ h2 {
+    position: relative;
+    margin-bottom: 5px;
+    margin-left: -35%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:15px;
+}
+
+
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.tab.active {
+    background-color: #5a5cdb;
+    color: #fff;
+    border: none;
+}
+.tab.active:hover{
+    background-color: #2427e7;
+   
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.form-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    margin-right: 200px;
+    font-size: 24px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+.form-group .error {
+    color: red;
+    font-size: 0.875rem;
+}
+.form-group input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.submit-btn:hover {
+    background: #0056b3;
+}
+.profile-info h2{
+    position: absolute;
+    margin-left: -140px;
+    margin-top: -30px;
+    padding-right: 0px;
+    font-size: 35px;
+    color: rgb(51, 49, 49);
+}
+.a1 p{
+    color: rgb(94, 45, 53);
+    margin-right: 210px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.a2 p{
+    color: rgb(92, 45, 45);
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}

@@ -1,0 +1,53 @@
+   /* General Styles */
+       
+   .sidebar1 {
+    width: 100%;
+    background-color:white;
+    height: 10%;
+    
+    
+    
+}
+.sidebar1 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar1 ul li {
+    position: relative;
+    
+    cursor: pointer;
+}
+.sidebar1 ul li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    font-size: 16px;
+}
+
+.sidebar1 ul .submenu {
+    display: none;    
+}
+.sidebar1 ul .submenu li {
+    padding: -10px;
+}
+.sidebar1 ul .submenu li a {
+    font-size: 14px;
+}
+.sidebar1 ul li.active .submenu {
+    display: block;
+background-color: white;
+}
+.sidebar1 ul li i {
+    margin-right: 10px;
+}
+.toggle-icon {
+    position: absolute;
+    right: 20px;
+    top: 18px;
+    font-size: 12px;
+    transform: rotate(30deg);
+}
+.toggle-icon li.active{
+    transform: rotate(90deg);
+}

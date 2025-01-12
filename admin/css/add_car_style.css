@@ -7,16 +7,15 @@
 
 body{
     display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg,#f94449,#d1001f);
+    height:auto;
+    width:auto;
+
 }
 
 .container{
     max-width: 700px;
     width: 100%;
-    background: #fff;
+    background:     #f1eeee;
     padding: 25px 30px;
     border-radius: 5px;
 }
@@ -33,7 +32,7 @@ position: absolute;
 left: 0;
 bottom: 0;
 height: 3px;
-width: 90px;
+width: 30px;
 background: linear-gradient(135deg,#f94449,#c30010);
 }
 
@@ -61,43 +60,17 @@ form .car_details .input-box{
     width: 100%;
     outline: none;
     border-radius: 5px;
-    border: 1px solid #9a9696;
+    border: 1px solid black;
     padding-left: 15px;
     font-size: 16px;
-    /* border-bottom-width: 2px; */
-    /* transition: all 0.3s ease; */
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
 }
 
+.car_details .input-box input:focus,
+.car_details .input-box input:valid{
 
-
-.file{
-    margin-bottom: 15px;
-    margin-right: 50px;
-}
-
-.space{
-    margin-right: 50px;
-}
-#file{
-    font-size: 16px;
-    background: white;
-    border-radius: 5px;
-   border: 1px solid #9a9696;
-    width: 250px;
-    outline: none;
-}
-
-::-webkit-file-upload-button{
-    color: #fff;
-    background:#d71929;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-   
-}
-
-::-webkit-file-upload-button:hover{
-    background: #f94449;
+border-color:#d1001f;
 }
 
 #fual{
@@ -107,7 +80,7 @@ form .car_details .input-box{
         width: 150px;
         border-radius: 4px;
         height: 43px;
-        border: 1px solid #9a9696;
+        border: 1px solid #d1001f;
         
 }
 
@@ -129,6 +102,10 @@ form .button{
     color: #fff;
     background:linear-gradient(135deg,#f94449,#c30010);
     border-radius: 5px;
+}
+
+#file{
+    display: none;
 }
 
 label{
@@ -168,4 +145,26 @@ form .button input:hover{
     .car_details::-webkit-scrollbar{
         width: 0;
     }
+}
+.up-img-txt{
+    margin-top: -10px;;
+    margin-right: 350px;
+    padding-bottom: 10px;
+}
+.bi-txt{
+    padding-top: 10px;
+}
+.ace-chk{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+  padding: 10px;
+  margin-left: 20px;
+}
+.ace-chk input{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+form{
+    width: auto;
+    background-color: white;
 }

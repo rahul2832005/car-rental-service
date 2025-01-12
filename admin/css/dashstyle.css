@@ -1,0 +1,123 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    
+}
+
+
+/* Sidebar Styles */
+.sidebar {
+    width: 200px;
+    background-color: white;
+    color: black;
+    padding: 20px;
+   
+}
+
+.sidebar h2 {
+    margin: 0;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.sidebar .menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar .menu li {
+    margin-bottom: 10px;
+}
+
+.sidebar .menu li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+    
+}
+
+.sidebar .menu li a:hover {
+    background-color: rgb(199, 54, 54);
+    
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    background-color: #0e96f1;
+    padding: 20px;
+    width: 800px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.header .account {
+    background-color: #2D3748;
+    color: #FFF;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Dashboard Cards */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.card {
+    background-color: #FFF;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #FFF;
+}
+
+.card h2 {
+    margin: 0;
+    font-size: 36px;
+}
+
+.card p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.card a {
+    text-decoration: none;
+    color: #FFF;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.card a:hover {
+    background-color: rgba(245, 9, 9, 0.5);
+}
+
+ 
