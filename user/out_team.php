@@ -53,7 +53,7 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            padding: 30px;
+            padding: 40px;
             text-align: center;
             margin-bottom: 25px;
         }
@@ -90,6 +90,10 @@
             color: red;
             transition: all 0.5s;
         }
+        .red{
+            background-color: red;
+            position: relative;
+        }
     </style>
 </head>
 <?php
@@ -113,6 +117,9 @@
                         <a id="icon" href="#"><i class="fab fa-facebook"></i></a>
                         <a id="icon" href="#"><i class="fab fa-linkedin"></i></a>
                         <a id="icon" href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <div class="red">
+
                     </div>
                 </div>
                 <div class="team-member">
