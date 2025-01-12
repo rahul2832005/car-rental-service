@@ -73,18 +73,20 @@ body {
 
 .step .icon .number {
   position: absolute;
-  top: -10px;
-  left: -10px;
-  width: 20px;
-  height: 20px;
-  background: #ff7755;
-  color: #fff;
-  font-size: 12px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
+    top: -15px;
+    left: -16px;
+    width: 20px;
+    height: 20px;
+    background: #ff7755;
+    color: #fff;
+    font-size: 26px;
+    border-radius: 50%;
+    display: flex;
+    padding: 10px 10px;
+    border: 3px solid white;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }
 
 .step p {
@@ -104,7 +106,7 @@ body {
       <div class="step">
         <div class="icon" style="background-color: #F9C9B6;">
           <span class="number">1</span>
-          <img src="image/download.svg" alt="User Icon">
+          <img src="image/profile.svg" alt="User Icon">
         </div>
         <p>Sign up Account</p>
       </div>
