@@ -1,108 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/fontawesome.min.css">
     <style>
-        body {
-            font-family: sans-serif;
-            display: flex;
-            flex-direction: column;
-
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-        .header {
-            display: flex;
-            flex-direction: column;
+        body{
             align-items: center;
-            margin-top: 20px;
-        }
-
-        .header h1 {
-            font-size: 26px;
-            color: black;
-        }
-
-        .badge {
-            background-color: #ffdddd;
-            color: #ff4d4d;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 18px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        .work {
-            margin-top: -40px;
-            display: flex;
             justify-content: center;
+            min-height: 100vh;
+            font-family: "quicksand",sans-serif;
+            background: #fff;
+            color: #1c1c1c;
+        }
+        section{
+           
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .title{
+            
+            font-size: 34px;
+
+        }
+        .faq{
+            max-width: 700px;
+            margin-top: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #fff;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .question{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .question h3{
+            margin-top: 10px;
+            margin-left: 10px;
+            font-size: 1.5rem;
         }
 
-        .one {
-            padding: 10px 50px;
-            text-align: center;
+        .answer{
+            color: #555;
+            margin-top: 10px;
+            margin-left: 10px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 1.4s ease;
+
+        }
+        .answer p{
+            padding-top: 1rem;
+            line-height: 1.6;
+            font-size: 1.2rem;
+
+        }
+         .faq.active .answer{
+            max-height: 300px;
+            animation: fade 1s ease-in-out;
+        } 
+
+        .faq.active svg{
+            transform: rotate(180deg);
         }
 
-        i {
-            background-color: blue;
-            padding: 28px 25px;
-            border-radius: 17px;
-            font-size: 30px;
+        svg{
+            margin-right: 15px;
+            transition: transform .5s ease-in;
         }
-
-        .number {
-            background-color: blue;
-            left: -31px;
-            margin: 19px;
-            font-size: 25px;
-            border-radius: 50%;
-            padding: 3px 3px;
-            border: 3px solid white;
-            position: relative;
-            top: 47px
+        @keyframes fade {
+            from{
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0px);
+            }
         }
     </style>
 </head>
-
 <body>
-    <div class="header">
-        <span class="badge">CAR TYPES</span>
-        <h1 id="caption">Explore Car Types</h1>
-    </div>
-    <div class="work">
-        <div class="one">
-            <p class="number">1</p>
-            <i class="fa-solid fa-user"></i>
+    <section>
+        <h2 class="title">FAQs</h2>
 
+        <div class="faq">
+            <div class="question">
+                <h3>Q. What is Javascript ?</h3>
+                <svg width="15" height="10" viewBox="0 0 42 25">
+                    <path d="M3 3L21 21L39 3" stroke="black" stroke-width="7" stroke-linecap="round"/>
+
+                </svg>
+            </div>
+            <div class="answer">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    Facere esse repellendus voluptates neque voluptate sapiente 
+                    odio a corporis error alias perferendis asperiores, 
+                    tempora voluptatibus numquam atque commodi sed dolores natus!
+                </p>
+            </div>
         </div>
-        <p>sign up account </p>
 
-        <div class="one">
-            <p class="number">2</p>
-            <i class="fa-solid fa-user"></i>
+        <div class="faq">
+            <div class="question">
+                <h3>Q. What is Javascript ?</h3>
+                <svg width="15" height="10" viewBox="0 0 42 25">
+                    <path d="M3 3L21 21L39 3" stroke="black" stroke-width="7" stroke-linecap="round"/>
 
+                </svg>
+            </div>
+            <div class="answer">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    Facere esse repellendus voluptates neque voluptate sapiente 
+                    odio a corporis error alias perferendis asperiores, 
+                    tempora voluptatibus numquam atque commodi sed dolores natus!
+                </p>
+            </div>
         </div>
-        <p> search your vehicle</p>
 
-        <div class="one">
-            <p class="number">3</p>
-            <i class="fa-solid fa-user"></i>
-            <p>pay the car rent</p>
-        </div>
-       
+        <div class="faq">
+            <div class="question">
+                <h3>Q. What is Javascript ?</h3>
+                <svg width="15" height="10" viewBox="0 0 42 25">
+                    <path d="M3 3L21 21L39 3" stroke="black" stroke-width="7" stroke-linecap="round"/>
 
-        <div class="one">
-            <p class="number">4</p>
-            <i class="fa-solid fa-user"></i>
-            <p>take car to road</p>
+                </svg>
+            </div>
+            <div class="answer">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    Facere esse repellendus voluptates neque voluptate sapiente 
+                    odio a corporis error alias perferendis asperiores, 
+                    tempora voluptatibus numquam atque commodi sed dolores natus!
+                </p>
+            </div>
         </div>
-       
-    </div>
+    </section>
 </body>
+<script>
+    const faqs=document.querySelectorAll(".faq");
 
+faqs.forEach(faq=>
+    {
+        faq.addEventListener("click",()=>{
+            faq.classList.toggle("active");
+        });
+    });
+</script>
 </html>
