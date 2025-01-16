@@ -1,0 +1,99 @@
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: #f7eaea;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: left;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            border: 1px solid #eaeaea;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #f8f4ed;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .alert {
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border-radius: 3px;
+        }
+
+        .alert.success {
+            background-color: #e9f7ef;
+            color: #155724;
+            border-left: 5px solid #28a745;
+        }
+       .danger{
+        padding: 10px 15px;
+        margin-bottom: 15px;
+        border-radius: 3px;
+        background-color: white;
+        color: red;
+        border-left: 5px solid #a72844;
+       }
+        
+      
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            display: block;
+            width: 100px;
+            padding: 10px;
+            text-align: center;
+            background-color: #0056b3;
+            color: #fff;
+            font-size: 14px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #004494;
+        }
