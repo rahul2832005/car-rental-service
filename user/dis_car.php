@@ -43,7 +43,11 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
         ?>
                 <div class="card">
                     <div class="image">
+<<<<<<< HEAD
                         <img src="/car%20rental%20service/admin/img/<?php echo $image[0]; ?>">
+=======
+                    <a href="car_detail.php?id=<?php echo $row['id']; ?>"><img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[0]; ?>"></a>
+>>>>>>> 969221af94a320d7f3443a77697dc5a4c9a94873
                     </div>
                     <div class="caption">
                         <p class="rate">
@@ -64,7 +68,7 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
                     </div>
                     <?php if($_SESSION["alogin"])
                     { ?>
-                    <button class="add" type="submit" name="rent-now"><a href="car-details.php" class="button">Rent Now</a></button>
+                    <button class="add" type="submit" name="rent-now"><a href="car_detail.php?id=<?php echo $row['id']; ?>" class="button">Rent Now</a></button>
                     <?php } else { ?>
                         
                         <button class="add"><a href="login.php" class="button">Login For Book</a></button>

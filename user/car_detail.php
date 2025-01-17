@@ -1,3 +1,13 @@
+
+<?php
+//@include "./connection.php";
+$conn = mysqli_connect("localhost", "root", "", "car_rent");
+    session_start();
+    //error_reporting(0);
+
+    $vid=$_GET['id'];
+   
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -150,21 +160,30 @@
 
 <body>
 
+
+   <?php  
+    $query="select * from car_list where id=$vid";
+    $exquery=mysqli_query($conn,$query);
+
+    while ($row = mysqli_fetch_array($exquery)) {
+        $image=explode(",",$row['image']);
+
+   ?>
     <div class="container">
         <div class="product-images">
-            <img src="image/wp10875074.jpg" alt="Vanguard CX2 Convertible" class="main-image">
+            <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[0];?>" alt="Vanguard CX2 Convertible" class="main-image">
             <div class="thumbnail-container">
-                <img src="image/wp10875074.jpg" alt="Side view" class="thumbnail">
-                <img src="image/wp10875074.jpg" alt="Front view" class="thumbnail">
-                <img src="image/wp10875074.jpg" alt="Rear view" class="thumbnail">
+                <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[1];?>" alt="Side view" class="thumbnail">
+                <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[2];?>" alt="Front view" class="thumbnail">
+                <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[3];?>" alt="Rear view" class="thumbnail">
             </div>
         </div>
 
         <div class="product-info">
-            <h1 class="product-title">Vanguard CX2 Convertible</h1>
+            <h1 class="product-title"><?php echo $row['name']; ?></h1>
             <div class="price">
                 <span>STARTING AT</span><br>
-                $ 59/day
+               <?php echo $row['price']; ?>
             </div>
 
             <p class="description">Elevate your journey with the Ford Mustang Convertible, the epitome of American muscle and open-air excitement.',
@@ -176,7 +195,7 @@
 
                     <div class="spec-item">
                         <i class="fa-solid fa-car" id="icon"></i>
-                        <span>4 people</span>
+                        <span><?php echo $row['seat']; ?> people</span>
 
                     </div>
 
@@ -206,11 +225,15 @@
 
                 </div>
             </div>
-            <button type="button" id="button">Rent Now</button>
+            <button type="submit" id="button">Rent Now</button>
 
 
         </div>
     </div>
+    <?php
+            };
+        
+        ?>
 </body>
 
 </html>
