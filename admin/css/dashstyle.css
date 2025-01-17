@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    margin: 0;
+    margin: 0px;
     font-family: Arial, sans-serif;
     display: flex;
     
@@ -9,10 +9,15 @@ body {
 
 /* Sidebar Styles */
 .sidebar {
-    width: 200px;
-    background-color: white;
+    width: 220px;
+    background-color:rgb(235, 24, 24);
+    height: 100vh;
+    top: 0;
+    left: 0;
+    align-items: center;
+  
     color: black;
-    padding: 20px;
+
    
 }
 
@@ -52,9 +57,12 @@ body {
 /* Main Content Styles */
 .main-content {
     flex: 1;
-    background-color: #0e96f1;
+    background-color: #0a80f7;
     padding: 20px;
-    width: 800px;
+    margin-left: 15px;
+   height: 100vh;
+ 
+   
 }
 
 .header {
@@ -120,4 +128,15 @@ body {
     background-color: rgba(245, 9, 9, 0.5);
 }
 
- 
+iframe {
+    position: fixed;
+    top: 0px;
+    /* Adjust this to match the height of your header */
+    left: 210px;
+    /* Adjust this to match the width of your sidebar */
+    width: calc(100vw - 210px);
+    /* Full width minus sidebar */
+    height: calc(100vh - 60px);
+    /* Full height minus header */
+    border: none;
+}

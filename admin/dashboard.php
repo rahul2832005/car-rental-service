@@ -11,8 +11,10 @@
 </head>
 
 <body>
- 
-         <!-- Sidebar -->
+    <header>
+<iframe name="navbar" src="navbar.php"  height="20%" width="100%"></iframe>
+</header>  
+<!-- Sidebar -->
          <aside class="sidebar">
             <h2>Car Rental Portal</h2>
             <ul class="menu">
@@ -30,7 +32,7 @@
         </aside>
     <div>
       
-      <iframe name="second" src="main.php"  height="100%" width="850px"></iframe>
+      <iframe name="second" src="main.php"  height="100%" width="100%"></iframe>
    
     </div>            
 </body>
