@@ -5,27 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+       
+         body {
+            /* font-family: poppins,sans-serif; */
+            font-family:Corbel;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        body{
-            align-items: center;
+            display: flex;
             justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            font-family: "quicksand",sans-serif;
-            background: #fff;
-            color: #1c1c1c;
+            background-color: #f9f9f9;
         }
         section{
            
-            width: 80%;
+            width: 75%;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
             padding: 20px;
         }
         .title{
@@ -35,7 +34,7 @@
         }
         .faq{
             max-width: 700px;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             padding-bottom: 1rem;
             border-bottom: 2px solid #fff;
             cursor: pointer;
@@ -43,19 +42,22 @@
             border-radius: 5px;
         }
         .question{
+            font-size: 18px;
+            font-family: Sitka Small;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         .question h3{
+            margin-bottom: -10px;
             margin-top: 10px;
             margin-left: 10px;
-            font-size: 1.5rem;
+            /* font-size: 1.5rem; */
         }
 
         .answer{
             color: #555;
-            margin-top: 10px;
+            /* margin-top: 10px; */
             margin-left: 10px;
             max-height: 0;
             overflow: hidden;
@@ -69,6 +71,7 @@
 
         }
          .faq.active .answer{
+            margin-bottom: -30px;
             max-height: 300px;
             animation: fade 1s ease-in-out;
         } 
@@ -95,7 +98,7 @@
 </head>
 <body>
     <section>
-        <h2 class="title">FAQs</h2>
+        <h2 class="title">Frequently Asked Questions</h2>
 
         <div class="faq">
             <div class="question">

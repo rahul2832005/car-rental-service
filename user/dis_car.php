@@ -32,7 +32,6 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
         <h1>Most Popular Car</h1>
 
     </div>
-
     <main>
         <?php
 
@@ -40,11 +39,11 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
         if (mysqli_num_rows($select_car) > 0) {
             while ($row = mysqli_fetch_array($select_car)) {
                 $image=explode(",",$row['image']);
-               //print_r($image); 
+                //print_r($image); 
         ?>
                 <div class="card">
                     <div class="image">
-                        <img src="/projects/rental/car-rental-service/admin/img/<?php echo $image[0]; ?>">
+                        <img src="/car%20rental%20service/admin/img/<?php echo $image[0]; ?>">
                     </div>
                     <div class="caption">
                         <p class="rate">
