@@ -199,17 +199,20 @@
 
     .banner-text {
       position: absolute;
-      top: 70px;
+      top: 45px;
       color: #fff;
       padding: 10px;
       font-size: 45px;
-      left: 28%;
+      left: 25%;
 
     }
   </style>
 </head>
 
 <body>
+  <?php
+@include "navbar.php";
+?>
   <div class="banner-card">
     <img id="bg_img" src="image/our_team_bg1.png" alt="" srcset="">
     <div class="banner-text">
@@ -280,5 +283,8 @@
       </div>
     </div>
 </body>
+<?php
+@include "footer.php";
+?>
 
 </html>
