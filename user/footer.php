@@ -32,7 +32,7 @@
         .footer-container {
             display: flex;
             justify-content: space-between;
-            padding: 0 10%;
+            padding: 0 3%;
             flex-wrap: wrap;
         }
 
@@ -65,8 +65,9 @@
         .footer-section p,
         a {
             color: #ccc;
-            font-size: 16px;
+            font-size: 18px;
             line-height: 1.6;
+            margin-bottom: 10px;
         }
 
         a {
@@ -74,6 +75,7 @@
         }
 
         a:hover {
+            transition: all 0.5s;
             color: #e63946;
         }
 
@@ -97,9 +99,10 @@
             border-radius: 5px;
             outline: none;
             width: 200px;
+            font-size: 18px;
         }
 
-        button {
+        .subscribe {
             background-color: #e63946;
             color: #fff;
             border: none;
@@ -107,9 +110,10 @@
             border-radius: 5px;
             cursor: pointer;
             width: 200px;
+            font-size: 18px;
         }
 
-        button:hover {
+        .subscribe:hover {
             background-color: #cc2f39;
         }
 
@@ -119,10 +123,10 @@
             padding: 10px 0;
             border-top: 1px solid #333;
             margin-top: 5px;
-            margin-bottom: -50px;
+            margin-bottom: -40px;
         }
         .bottom_text{
-            font-size: 20px;
+            font-size: 25px;
         }
 
         .social-icons a {
@@ -154,8 +158,8 @@
                 <ul>
                     <li><a href="#">Area Details</a></li>
                     <li><a href="#">Blog Grid</a></li>
-                    <li><a href="#">Faq</a></li>
-                    <li><a href="#">Service Areas</a></li>
+                    <li><a href="faq.php">Faq</a></li>
+                    <li><a href="servece_area.php">Service Areas</a></li>
                     <li><a href="#">Testimonials</a></li>
                 </ul>
             </div>
@@ -163,11 +167,11 @@
             <div class="footer-section resources">
                 <h3 class="h3">Resources</h3>
                 <ul>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="about_us.php">About Us</a></li>
                     <li><a href="#">Gallery</a></li>
-                    <li><a href="#">Our Team</a></li>
+                    <li><a href="out_team.php">Our Team</a></li>
                     <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="contact_us.php">Contact</a></li>
                 </ul>
             </div>
             <!-- Newsletter -->
@@ -176,7 +180,7 @@
                 <p>Our estimated global carbon emissions by investing in greenhouse</p>
                 <form>
                     <input type="email" placeholder="Email Address" required>
-                    <button type="submit">Subscribe</button>
+                    <button class="subscribe" type="submit">Subscribe</button>
                 </form>
             </div>
         </div>

@@ -65,8 +65,9 @@
       margin-bottom: 20px;
     }
 
-    .icon {
+    .icons {
       background-color: #ffe4e4;
+      color: black;
       width: 45px;
       height: 45px;
       border-radius: 50%;
@@ -78,7 +79,7 @@
       font-size: 25px;
     }
 
-    .icon img {
+    .icons img {
       width: 20px;
       height: 20px;
     }
@@ -114,6 +115,7 @@
     .how-it-works {
       text-align: center;
       padding: 2rem 1rem;
+      margin-bottom: 40px;
     }
 
     .header .tag {
@@ -131,7 +133,7 @@
       font-size: 3rem;
       font-weight: bold;
       margin: 0.5rem 0 2rem;
-      color: #333;
+      color: #000;
     }
 
     /* Steps container */
@@ -163,6 +165,7 @@
     .step .icon img {
       width: 45px;
       height: 45px;
+      cursor: pointer;
     }
 
     .step .icon .number {
@@ -176,7 +179,7 @@
       font-size: 26px;
       border-radius: 50%;
       display: flex;
-      padding: 10px 10px;
+      padding: 20px 17px;
       border: 3px solid white;
       align-items: center;
       justify-content: center;
@@ -199,11 +202,11 @@
 
     .banner-text {
       position: absolute;
-      top: 45px;
+      top: 170px;
       color: #fff;
       padding: 10px;
       font-size: 45px;
-      left: 25%;
+      left: 29%;
 
     }
   </style>
@@ -218,6 +221,7 @@
     <div class="banner-text">
       <h1>About Us</h1>
     </div>
+  </div>
     <section class="hero">
       <img src="image/about.png" alt="Red Car" class="hero-image">
     </section>
@@ -225,7 +229,7 @@
       <div class="brand-tag">BRANDS</div>
       <h1 class="h1">Planning A Trip Should Be Very <br>Exciting Adventure</h1>
       <div class="section">
-        <div class="icon">
+        <div class="icons">
           <i class="fa-solid fa-earth-americas"></i>
         </div>
         <div class="content">
@@ -235,7 +239,7 @@
         </div>
       </div>
       <div class="section">
-        <div class="icon">
+        <div class="icons">
           <i class="fa-solid fa-layer-group"></i>
         </div>
         <div class="content">

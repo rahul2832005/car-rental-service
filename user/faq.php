@@ -11,7 +11,7 @@
             font-family:Corbel;
             margin: 0;
             padding: 0;
-            display: flex;
+            /* display: flex; */
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -19,15 +19,19 @@
         }
 
         .faq-container {
+            margin-left: 200px;
             width: 90%;
             max-width: 600px;
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            margin-bottom: 50px;
+            margin-top: 50px;
         }
 
         .faq-container h1 {
+            color: black;
             font-size: 34px;
             margin-bottom: 20px;
             text-align: center;
@@ -75,12 +79,35 @@
             margin-left: 22px;
            
         }
+        #bg_img{
+            width: 100%;
+            height: 400px;
+            margin-bottom: 20px;
+            margin-top: 5px;
+        }
+        .banner-text {
+            position: absolute;
+            top: 180px;
+            color: #fff;
+            padding: 10px;
+            font-size: 45px;
+            left: 35%;
+        }
     </style>
 </head>
 
 <body>
+<?php
+@include "navbar.php";
+?>
+        <div class="banner">
+            <img id="bg_img" src="image/contact_bg.jpg" alt="" srcset="">
+            <div class="banner-text">
+            <h1>FAQs</h1>
+        </div>
+        </div>
     <div class="faq-container">
-        <h1>Frequently Asked Questions</h1>
+        <h1 >Frequently Asked Questions</h1>
         <div class="faq-item">
             <button>
                 Q. What is about rental car deals? <span class="plus">+</span>
@@ -115,7 +142,9 @@
             </div>
         </div>
     </div>
-
+    <?php
+    @include "footer.php";
+    ?>
     <script>
         document.querySelectorAll('.faq-item button').forEach(button => {
             button.addEventListener('click', () => {

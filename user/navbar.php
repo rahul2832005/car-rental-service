@@ -27,7 +27,7 @@ body {
 }
 
 .logo {
-  display: flex;
+  /* display: flex; */
   align-items: center;
 }
 

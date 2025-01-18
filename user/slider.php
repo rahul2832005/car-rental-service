@@ -10,14 +10,16 @@
             background-color: #fff;
         }
         .img_container{
-            margin: 100px 0 0 150px;
+            margin-left: -2px;
+            align-items: center;
+            /* margin: 90px 0 0 150px; */
             width: 70%;
             height: 450px;
             display: flex;
             justify-content: center;
             gap: 10px;
             margin-bottom: 50px;
-            margin-left: 20px
+            /* margin-left: 20px */
         }
         .img_container #img{
             width: 20%;

@@ -171,11 +171,11 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
    ?>
     <div class="container">
         <div class="product-images">
-            <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[0];?>" alt="Vanguard CX2 Convertible" class="main-image">
+            <img src="/car%20rental%20service/admin/img/<?php echo $image[0];?>" alt="Vanguard CX2 Convertible" class="main-image">
             <div class="thumbnail-container">
-                <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[1];?>" alt="Side view" class="thumbnail">
-                <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[2];?>" alt="Front view" class="thumbnail">
-                <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[3];?>" alt="Rear view" class="thumbnail">
+                <img src="/car%20rental%20service/admin/img/<?php echo $image[1];?>" alt="Side view" class="thumbnail">
+                <img src="/car%20rental%20service/admin/img/<?php echo $image[2];?>" alt="Front view" class="thumbnail">
+                <img src="/car%20rental%20service/admin/img/<?php echo $image[3];?>" alt="Rear view" class="thumbnail">
             </div>
         </div>
 
