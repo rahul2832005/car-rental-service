@@ -147,7 +147,7 @@
         <div class="footer-container">
             <!-- Company Info -->
             <div class="footer-section company-info">
-                <h2 class="h2"><span class="logo">Car</span><span class="highlight">ola</span></h2>
+                <h2 class="h2"><span>Car</span><span style="color: red;font-size: 35px; ;">ola</span></h2>
                 <p>57 Heol Isaf Station Road, <br>Cardiff, UK</p>
                 <p><a href="mailto:info@example.com">info@example.com</a></p>
                 <p>029-2021-4012</p>
