@@ -152,3 +152,56 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 --
+--
+-- Table structure for table `booking`
+--
+
+DROP TABLE IF EXISTS `booking`;
+CREATE TABLE IF NOT EXISTS `booking` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `bookingno` bigint NOT NULL,
+  `userEmail` varchar(100) NOT NULL,
+  `vid` int NOT NULL,
+  `FromDate` varchar(20) NOT NULL,
+  `ToDate` varchar(20) NOT NULL,
+  `message` varchar(200) NOT NULL,
+  `status` int NOT NULL,
+  `PostingDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `LastUpdationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`) VALUES
+(24, 163753437, 'abhupatvatukiya1@gmail.com', 50, '2025-01-05', '2025-01-05', 'fgjh', 0, '2025-01-19 11:53:58', '2025-01-19 11:53:58'),
+(23, 903317739, 'abhupatvatukiya1@gmail.com', 50, '2025-01-01', '2025-01-04', 'cvbh', 0, '2025-01-19 11:52:58', '2025-01-19 11:52:58'),
+(22, 352379733, 'jayraj1@gmail.com', 49, '2025-01-01', '2025-01-04', 'fghyu', 0, '2025-01-19 11:51:39', '2025-01-19 11:51:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `brands`
+--
+
+DROP TABLE IF EXISTS `brands`;
+CREATE TABLE IF NOT EXISTS `brands` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `bname` varchar(20) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `brands`
+--
+
+INSERT INTO `brands` (`id`, `bname`, `created_at`, `updated_at`) VALUES
+(2, 'creata', '2025-01-05 11:43:22', '2025-01-05 11:43:22'),
+(3, 'web', '2025-01-08 16:16:01', '2025-01-08 16:16:01'),
+(4, 'u', '2025-01-12 16:32:11', '2025-01-12 16:32:11');
+
+-- --------------------------------------------------------
