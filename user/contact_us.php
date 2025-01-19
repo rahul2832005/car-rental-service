@@ -15,7 +15,7 @@
         }
 
         #bg_img {
-            width: 1119px;
+            width: 100%;
             margin-top: 5px;
         }
 
@@ -26,7 +26,7 @@
             padding: 10px;
             font-size: 45px;
             left: 32%;
-        
+
         }
 
         .banner-card {
@@ -114,7 +114,7 @@
         }
 
         .contact-card p {
-            font-size: 16px;
+            font-size: 17px;
             color: #666;
             margin: 5px 0;
         }
@@ -128,13 +128,21 @@
             display: inline-block;
             margin-bottom: 10px;
         }
+        .location{
+            margin-top: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        iframe{
+            border-radius: 5px;
+        }
     </style>
 </head>
 
 <body>
-<?php
-@include "navbar.php";
-?>
+    <?php
+    @include "navbar.php";
+    ?>
     <div class="banner-card">
         <img id="bg_img" src="image/contact_bg.jpg" alt="" srcset="">
         <div class="banner-text">
@@ -152,7 +160,7 @@
                     <img src="image/location.svg" alt="Location Icon">
                 </div>
                 <h2>Our Location</h2>
-                <p>Bhambhan Road,Ramdevnagar,Botad-364710</p>
+                <p>Paliyad Road,Opposite of Lotus Hotel,Botad-364710</p>
             </div>
             <div class="contact-card">
                 <div class="icon">
@@ -160,7 +168,8 @@
                 </div>
                 <h2>Email Address</h2>
                 <p>rahulbavaliya153@gmail.com</p>
-               
+                <p>bhupatvatukiya123@gmail.com</p>
+
             </div>
             <div class="contact-card">
                 <div class="icon">
@@ -169,9 +178,14 @@
                 <h2>Phone Number</h2>
                 <p>Emergency Cases</p>
                 <p>+91 9824930580</p>
+                <p>+91 7359509387</p>
             </div>
         </div>
+        <div class="location">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14780.908402544715!2d71.75972828726873!3d22.155425800135852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3958d00f6c0348dd%3A0x7bf2837a0dbd4a4d!2sSalangpur%2C%20Gujarat%20382450!5e0!3m2!1sen!2sin!4v1737308652019!5m2!1sen!2sin" width="700" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+    </div>
+    
 
     <?php
     @include "footer.php";

@@ -40,7 +40,7 @@ error_reporting(0);
         {
             $update_image=$_POST['old_image'];
         }
-        
+
         $sql="update car_list set name='$car_name',modal='$modal',price='$rent_price'
         ,no_plate='$number',company_name='$company_name',seat='$seat',fual='$fual',image='$update_image' where id='$id'";
 
@@ -289,7 +289,7 @@ form .button input:hover{
                 </div>
                
                 <div class="file">
-                <input type="file" name="image" id="file" multiple value="<?php echo $user['image']; ?>"/ >
+                <input type="file" name="image" id="file" multiple="multiple" value="<?php echo $user['image']; ?>"/ >
                 <input type="hidden" name="old_image" id="file" value="<?php echo $user['image']; ?>"/ >
                 </div>
                 
