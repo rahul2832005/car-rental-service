@@ -11,9 +11,7 @@
 </head>
 
 <body>
-    <header>
-<iframe name="navbar" src="navbar.php"  height="20%" width="100%"></iframe>
-</header>  
+ 
 <!-- Sidebar -->
          <aside class="sidebar">
             <h2>Car Rental Portal</h2>

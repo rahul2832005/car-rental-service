@@ -13,26 +13,30 @@ body{
 }
 
 .container{
-    max-width: 700px;
+    
     width: 100%;
     background:     #f1eeee;
-    padding: 25px 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 45px;
+    padding-bottom: 30px;
+    /* padding: 25px 30px; */
     border-radius: 5px;
 }
 
 .container .title{
-    font-size: 25px;
-    font-weight: 500;
+    font-size: 35px;
+    font-weight: bold;
     position: relative;
 }
 
 .container .title::before{
 content: "";
 position: absolute;
-left: 0;
-bottom: 0;
-height: 3px;
-width: 30px;
+left: 0px;
+bottom: 0px;
+height: 5px;
+width: 130px;
 background: linear-gradient(135deg,#f94449,#c30010);
 }
 
@@ -147,9 +151,10 @@ form .button input:hover{
     }
 }
 .up-img-txt{
-    margin-top: -10px;;
-    margin-right: 350px;
-    padding-bottom: 10px;
+    margin-top: 0px;;
+    margin-right: 80%;
+    
+    
 }
 .bi-txt{
     padding-top: 10px;
@@ -157,8 +162,9 @@ form .button input:hover{
 .ace-chk{
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-  padding: 10px;
-  margin-left: 20px;
+   margin-right: 20px;
+    flex-wrap: wrap;
+    
 }
 .ace-chk input{
     margin-left: 10px;

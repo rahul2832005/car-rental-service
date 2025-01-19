@@ -62,14 +62,12 @@ if(isset($_POST['submit']))
             {
                 $target = $location . $val;
                 move_uploaded_file($_FILES['image']['tmp_name'][$key], $target);
-                
-               
             }
             $insert = "insert into car_list (name,modal,price,no_plate,company_name,image,seat,fual) values ('$car_name',$modal,$rent_price,'$no_plate','$company_name','$image_name',$seat,'$fual')";
             $run = mysqli_query($conn, $insert);
             if ($run == true)
             {
-                echo "<script>alert('Car Added Succesfull')</script>";
+                echo "Car Added Succesfully";
             }
             else
             {
@@ -100,9 +98,25 @@ if(isset($_POST['submit']))
 </head>
 
 <body>
-
+<?php
+       /* if(isset($message))
+        {
+            foreach($message as $message){
+                echo '<span class="message">'.$message.'</span>';
+            }
+        }*/
+        ?>
     <div class="container">
-        <div class="title">Add Car</div>
+        <div class="title">Add Car  
+        <?php
+        if(isset($message))
+        {
+            foreach($message as $message){
+                echo '<span class="message">'.$message.'</span>';
+            }
+        }
+        ?>
+        </div>
         
         <form action="" method="post" enctype="multipart/form-data" >
         <div class="bi-txt"><u><b>Basic Info.<span style="color: red;">*</span> </b></u></div>

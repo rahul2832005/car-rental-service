@@ -1,11 +1,6 @@
 /* General Reset */
 
-body{
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-}
+
 h1, h2, p, input, select, button {
     margin: 0;
     padding: 0;
@@ -15,8 +10,8 @@ h1, h2, p, input, select, button {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: whitesmoke;
+    color: #555050;
 }
 
 /* Header */
@@ -110,12 +105,13 @@ body {
 }
 
 .form-container {
-    max-width: 600px;
+    max-width: 1000px;
     margin: 50px auto;
     background: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 4px 20px 2px  rgb(29, 26, 26);
+    width: 80%;
 }
 .form-container h2 {
     text-align: center;
@@ -142,6 +138,7 @@ body {
 .form-group input:focus,
 .form-group select:focus {
     border-color: #007bff;
+    border-style: ridge;
     outline: none;
 }
 .form-group .error {
@@ -183,4 +180,9 @@ body {
     margin-right: 10px;
     font-weight: bold;
     font-size: 18px;
+}
+.form-group input:hover{
+    transform: translateY(2px);
+    box-shadow: 20px 8px 20px rgba(0, 0, 0, 0.3);
+ 
 }
