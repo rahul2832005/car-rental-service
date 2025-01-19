@@ -25,6 +25,7 @@
       background-color: white;
       padding: 10px 20px;
       border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 0px;
     }
 
     .logo {
