@@ -114,7 +114,7 @@
         }
 
         .contact-card p {
-            font-size: 16px;
+            font-size: 17px;
             color: #666;
             margin: 5px 0;
         }
@@ -160,6 +160,7 @@
                 </div>
                 <h2>Email Address</h2>
                 <p>rahulbavaliya153@gmail.com</p>
+                <p>bhupatvatukiya123@gmail.com</p>
                
             </div>
             <div class="contact-card">
@@ -169,6 +170,7 @@
                 <h2>Phone Number</h2>
                 <p>Emergency Cases</p>
                 <p>+91 9824930580</p>
+                <p>+91 7359509387</p>
             </div>
         </div>
     </div>

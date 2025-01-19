@@ -41,7 +41,7 @@ main .card .image{
 }
 
 main .card .image img{
-    width: 99%;
+    width: 93%;
     height: 100%;
     object-fit:fill;
     border-radius: 10px;

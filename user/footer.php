@@ -160,7 +160,7 @@
                     <li><a href="#">Blog Grid</a></li>
                     <li><a href="faq.php">Faq</a></li>
                     <li><a href="servece_area.php">Service Areas</a></li>
-                    <li><a href="#">Testimonials</a></li>
+                    <li><a href="Testimonials.php">Testimonials</a></li>
                 </ul>
             </div>
             <!-- Resources -->
