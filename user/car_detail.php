@@ -39,7 +39,7 @@ if (isset($_POST['Book'])) {
             if($ex)
             {
                 echo "<script>alert('Booking Done');</script>";
-                echo "<script type='text/javascript'> document.location = 'car_details.php'; </script>";
+              
             }
             else
             {
