@@ -157,7 +157,6 @@
                 <h3 class="h3">Community</h3>
                 <ul>
                     <li><a href="#">Area Details</a></li>
-                    <li><a href="#">Blog Grid</a></li>
                     <li><a href="faq.php">Faq</a></li>
                     <li><a href="servece_area.php">Service Areas</a></li>
                     <li><a href="Testimonials.php">Testimonials</a></li>
@@ -170,7 +169,6 @@
                     <li><a href="about_us.php">About Us</a></li>
                     <li><a href="#">Gallery</a></li>
                     <li><a href="out_team.php">Our Team</a></li>
-                    <li><a href="#">Pricing</a></li>
                     <li><a href="contact_us.php">Contact</a></li>
                 </ul>
             </div>

@@ -6,11 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/all.min.css">
   <link rel="stylesheet" href="css/fontawesome.min.css">
+  
   <title>About Us</title>
   <style>
     /* styles.css */
     body {
-      font-family: sans-serif;
+      font-family: "Poppins", serif;
       margin: 0;
       padding: 0;
       color: #000;
