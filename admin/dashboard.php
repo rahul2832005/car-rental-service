@@ -48,7 +48,7 @@
                     <ul class="dropdown-bk">
                         <li><a href="new-booking.php" target="second">New Bookings</a></li>
                         <li><a href="confirmed-booking.php" target="second"> Confirm Bookings</a></li>
-                        <li><a href="canceled-booking.php">Cancelled Bookings </a></li>
+                        <li><a href="canceled-booking.php" target="second">Cancelled Bookings </a></li>
 
                     </ul>
 
