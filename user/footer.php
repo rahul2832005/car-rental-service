@@ -167,7 +167,7 @@
                 <h3 class="h3">Resources</h3>
                 <ul>
                     <li><a href="about_us.php">About Us</a></li>
-                    <li><a href="#">Gallery</a></li>
+                    <li><a href="gallery.php">Gallery</a></li>
                     <li><a href="out_team.php">Our Team</a></li>
                     <li><a href="contact_us.php">Contact</a></li>
                 </ul>

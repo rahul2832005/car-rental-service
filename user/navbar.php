@@ -122,7 +122,7 @@
     </div>
     <nav class="nav-links">
       <a href="dis_car.php" class="active">Home</a>
-      <a href="#">Car Fleet</a>
+      <a href="car_list1.php">Car Fleet</a>
       <a href="#">Pages</a>
       <a href="#">News</a>
       <a href="#">Contact</a>
