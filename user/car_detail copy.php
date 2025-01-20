@@ -39,7 +39,7 @@ if (isset($_POST['Book'])) {
             if($ex)
             {
                 echo "<script>alert('Booking Done');</script>";
-              
+                echo "<script type='text/javascript'> document.location = 'car_details.php'; </script>";
             }
             else
             {
@@ -63,7 +63,7 @@ if (isset($_POST['Book'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>car details</title>
+    <title>Vanguard CX2 Convertible</title>
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <link rel="stylesheet" href="css/car_details_container2.css">

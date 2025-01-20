@@ -4,7 +4,6 @@ if (!$_SESSION["alogin"])
 {
     header("location:login.php");
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +12,7 @@ if (!$_SESSION["alogin"])
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="profile.css">
- 
+    
 </head>
 <body>
     <div>
@@ -24,45 +23,43 @@ if (!$_SESSION["alogin"])
         <div class="profile-details">
             <img src="image/p2.jpg" alt="Profile Picture" class="profile-picture">
             <div class="profile-info">
-               <h1 ><?php echo $_SESSION["alogin"]; ?></h1>
-                 <!-- Services Section -->
-       <div class="services-section">
-           <a href="profile.php">
-             <div class="service-card">
-                <div class="icon"><img src="image/pinfo.png" height="50px"></div>
+                <h1><?php echo $_SESSION["alogin"]; ?></h1>
+            </div>
+        </div>
+    </div>
+    <div class="services-section">
+        <a href="info.php" target="main">
+            <div class="service-card">
+                <div class="icon"><img src="image/pinfo.png"></div>
                 <h3>INFORMATION</h3>
-                <!-- <a href="#" class="more-link">MORE</a> -->
             </div>
-            </a>
-            <a href="profile.php"> 
+        </a>
+        <a href="p2.php" target="main"> 
             <div class="service-card">
-                <div class="icon"><img src="image/myboook.png" height="50px"></div>
+                <div class="icon"><img src="image/myboook.png"></div>
                 <h3>MY BOOKING</h3>
-                <!-- <a href="#" class="more-link">MORE</a> -->
             </div>
-            </a>
-            <a href="profile.php"> 
+        </a>
+        <a href="profile.php"> 
             <div class="service-card">
-                <div class="icon"><a><img src="image/picon.png" height="50px"></a></div>
+                <div class="icon"><img src="image/picon.png"></div>
                 <h3>PAYMENTS</h3>
-                <!-- <a href="#" class="more-link">MORE</a> -->
             </div>
-            </a>
-            <a href="profile.php"><div class="service-card">
-                <div class="icon"><img src="image/feed.png" height="50px"></div>
-                <h3>MY FEEdBACKS</h3>
-              
-                <!-- <a href="#" class="more-link">MORE</a> -->
-            </div></a>
-        </div>
-       
+        </a>
+        <a href="profile.php">
+            <div class="service-card">
+                <div class="icon"><img src="image/feed.png"></div>
+                <h3>MY FEEDBACKS</h3>
             </div>
-        </div>
+        </a>
+        <a href="info.php" target="main">
+            <div class="service-card">
+                <div class="icon"><img src="image/pinfo.png"></div>
+                <h3>FAVORITE CARS</h3>
+            </div>
+        </a>
     </div>
-
-    <div class="main-content">
-      
-    </div>
-    <?php  include('footer.php'); ?>
+    <iframe src="info.php" name="main" id="main"></iframe>
+    <?php include('footer.php'); ?>
 </body>
 </html>

@@ -27,9 +27,9 @@
                 <span class="toggle-icon">▼</span>
             </a>
             <ul class="submenu">
-                <li><a href="#" target="second">New Booking</a></li>
-                <li><a href="#" target="second">Confirm Booking</a></li>
-                <li><a href="#" target="second">Cancelled Booking</a></li>
+                <li><a href="new_booking.php" target="second">New Booking</a></li>
+                <li><a href="confirmed-bookings.php" target="second">Confirm Booking</a></li>
+                <li><a href="canceled-bookings.php" target="second">Cancelled Booking</a></li>
             </ul>
         </li>
     </ul>

@@ -135,7 +135,7 @@
         <a id="btn" href="login.php">Login/Register</a>
       <?php } else { ?>
 
-        <a href="p2.php"><i class="fa fa-user-circle"></i></a>
+      <a href="profile.php"><i  class="fa fa-user-circle"></i></a>
 
         <a id="btn" href="logout.php">logout</a>
       <?php } ?>

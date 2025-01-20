@@ -43,7 +43,9 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
         ?>
                 <div class="card">
                     <div class="image">
-                        <img src="/car%20rental%20service/admin/img/<?php echo $image[0]; ?>">
+
+                    <a href="car_detail.php?id=<?php echo $row['id']; ?>"><img src="/projects/rental/car-rental-service/admin/img/<?php echo $image[0]; ?>"></a>
+                        <!-- <img src="/car%20rental%20service/admin/img/"> -->
                     </div>
                     <div class="caption">
                         <p class="rate">
