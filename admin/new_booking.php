@@ -100,7 +100,7 @@ $result = mysqli_query($conn, $sql);
                 <td><?php echo $row['vid'] ?></td>
                 <td><?php echo $row['FromDate'] ?></td>
                 <td><?php echo $row['ToDate'] ?></td>
-                <td><?php echo $row['status'] ?></td>
+                <td><a name="Approve" class="Approve" href="Approve.php?vid=<?php echo $row['vid']; ?> & userEmail=<?php echo $row['userEmail'] ?>">Approve</a></td>
                 <td><?php echo $row['PostingDate'] ?></td>
                 <td><a id="edit" href="update.php?uid=<?php echo $row['id'] ?>"><i class="fa-solid fa-pen"></i></a>   <a id="delete" href=""><i class="fa-solid fa-trash"></i></a></td>
                
