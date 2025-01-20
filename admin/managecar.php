@@ -15,7 +15,7 @@ $result = mysqli_query($conn, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Brands</title>
+    <title>Manage Cars</title>
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <style>
@@ -78,7 +78,7 @@ $result = mysqli_query($conn, $sql);
         <table>
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>vehicle id</th>
                     <th>Car Name</th>
                     <th>Price</th>
                     <th>No Plate</th>

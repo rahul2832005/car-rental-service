@@ -3,22 +3,22 @@ body {
     margin: 0px;
     font-family: Arial, sans-serif;
     display: flex;
-    
+
 }
 
 
 /* Sidebar Styles */
 .sidebar {
     width: 220px;
-    background-color:rgb(235, 24, 24);
+    background-color: rgb(235, 24, 24);
     height: 100vh;
     top: 0;
     left: 0;
     align-items: center;
-  
+
     color: black;
 
-   
+
 }
 
 .sidebar h2 {
@@ -46,12 +46,12 @@ body {
     padding: 8px 12px;
     border-radius: 20px;
     transition: background-color 0.3s ease;
-    
+
 }
 
 .sidebar .menu li a:hover {
     background-color: rgb(199, 54, 54);
-    
+
 }
 
 /* Main Content Styles */
@@ -60,9 +60,9 @@ body {
     background-color: #0a80f7;
     padding: 20px;
     margin-left: 15px;
-   height: 100vh;
- 
-   
+    height: 100vh;
+
+
 }
 
 .header {
@@ -139,4 +139,40 @@ iframe {
     height: calc(100vh - 60px);
     /* Full height minus header */
     border: none;
+}
+
+.dropdown li {
+    list-style-type: none;
+    padding-right: 20px;
+    margin-left: -28px;
+
+}
+.dropdown-cr li {
+    list-style-type: none;
+    padding-right: 20px;
+    margin-left: -28px;
+
+}
+.dropdown-bk li {
+    list-style-type: none;
+    padding-right: 20px;
+    margin-left: -28px;
+
+}
+
+
+ul li ul.dropdown {
+   display: none;
+}
+ul li ul.dropdown-cr {
+    display: none;
+}
+ul li ul.dropdown-bk {
+    display: none;
+}
+
+.sub-icon {
+    position: absolute;
+    margin-left: 120px;
+
 }
