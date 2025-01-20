@@ -55,7 +55,7 @@
                 </li>
                 <li><a href="#" target="second">Manage Testimonials</a></li>
                 <li><a href="#" target="second">Manage Contactus Query</a></li>
-                <li><a href="#" target="second">Reg Users</a></li>
+                <li><a href="reguser.php" target="second">Reg Users</a></li>
                 <li><a href="#" target="second">Manage Pages</a></li>
                 <li><a href="#" target="second">Update Contact Info</a></li>
                 <li><a href="#" target="second">Manage Subscribers</a></li>
