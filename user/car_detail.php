@@ -12,7 +12,7 @@ if (isset($_POST['Book'])) {
     $tdate = $_POST['tdate'];
     $message = $_POST['message'];
     $useremail = $_SESSION['alogin'];
-    
+
     $status = 0;
     $bookingno = mt_rand(1000000, 999999999);
     if ($fdate == "") {
@@ -27,32 +27,26 @@ if (isset($_POST['Book'])) {
         $ms = "Write Message";
         $count++;
     }
-    
-        $avlquery = "select * from booking where '$fdate' between date(FromDate) AND date(ToDate)
-        OR '$tdate' BETWEEN date(FromDate) AND date(ToDate) and vid=$vid";
-        $exavlquery = mysqli_query($conn, $avlquery);
 
-        $row = mysqli_num_rows($exavlquery);
-        if ($row == 0) {
-            $sql="insert into booking (bookingno,userEmail,vid,FromDate,ToDate,message,status) values($bookingno,'$useremail',$vid,'$fdate','$tdate','$message',$status);";
-            $ex=mysqli_query($conn,$sql);
-            if($ex)
-            {
-                echo "<script>alert('Booking Done');</script>";
-              
-            }
-            else
-            {
-                echo "<script>alert('Something Wrong');</script>";
-            }
+
+
+    $avlquery = "select * from booking where '$fdate' between date(FromDate) AND date(ToDate) AND vid=$vid";
+    $exavlquery = mysqli_query($conn, $avlquery);
+
+    $row = mysqli_num_rows($exavlquery);
+    if ($row == 0) {
+        $sql = "insert into booking (bookingno,userEmail,vid,FromDate,ToDate,message,status) values($bookingno,'$useremail',$vid,'$fdate','$tdate','$message',$status);";
+        $ex = mysqli_query($conn, $sql);
+        if ($ex) {
+            echo "<script>alert('Booking Done');</script>";
+        } else {
+            echo "<script>alert('Something Wrong');</script>";
         }
-         else
-          {
-            echo "<script>alert('Car  Already Booked');</script>";
-            echo "<script type='text/javascript'> document.location = 'dis_car.php'; </script>";
-          }
+    } else {
+        echo "<script>alert('Car  Already Booked');</script>";
+        echo "<script type='text/javascript'> document.location = 'dis_car.php'; </script>";
     }
-
+}
 
 
 ?>
@@ -74,11 +68,11 @@ if (isset($_POST['Book'])) {
     </style>
 </head>
 <script>
-    if(window.history.replaceState)
-{
-    window.history.replaceState(null,null,window.location.href);
-}
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
 </script>
+
 <body>
 
     <div>
