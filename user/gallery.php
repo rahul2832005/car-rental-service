@@ -70,7 +70,7 @@
             font-size: 16px;
         }
 
-        .categories button.active,
+        /* .categories button.active, */
         .categories button:hover {
             background-color: #f54256;
             color: white;
