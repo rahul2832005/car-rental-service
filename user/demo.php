@@ -1,168 +1,162 @@
+<?php
+$conn = mysqli_connect("localhost", "root", "", "car_rent");
+if (!$conn) {
+    echo "not";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FAQ Section</title>
     <style>
-       
-         body {
+        body {
             /* font-family: poppins,sans-serif; */
-            font-family:Corbel;
+            font-family: Corbel;
             margin: 0;
             padding: 0;
-            display: flex;
+            /* display: flex; */
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             background-color: #f9f9f9;
         }
-        section{
-           
-            width: 75%;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-            padding: 20px;
-        }
-        .title{
-            
-            font-size: 34px;
 
+        .faq-container {
+            margin-left: 200px;
+            width: 90%;
+            max-width: 600px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 50px;
+            margin-top: 50px;
         }
-        .faq{
-            max-width: 700px;
-            margin-top: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #fff;
-            cursor: pointer;
+
+        .faq-container h1 {
+            color: black;
+            font-size: 34px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .faq-item {
             border: 1px solid #ddd;
             border-radius: 5px;
+            margin-bottom: 10px;
+            overflow: hidden;
         }
-        .question{
-            font-size: 18px;
+
+        .faq-item button {
             font-family: Sitka Small;
+            width: 100%;
+            background: #fff;
+            border: none;
+            padding: 15px;
+            text-align: left;
+            font-size: 18px;
+            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .question h3{
-            margin-bottom: -10px;
-            margin-top: 10px;
-            margin-left: 10px;
-            /* font-size: 1.5rem; */
+
+        .faq-item button:hover {
+            background-color: #f3f3f3;
         }
 
-        .answer{
+        .faq-item button .plus {
+
+            color: #ff4d4d;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+
+        .faq-item .faq-answer {
+            display: none;
+            padding: 15px;
+            font-size: 18px;
             color: #555;
-            /* margin-top: 10px; */
-            margin-left: 10px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 1.4s ease;
+            background-color: #f9f9f9;
+            margin-left: 22px;
 
         }
-        .answer p{
-            padding-top: 1rem;
-            line-height: 1.6;
-            font-size: 1.2rem;
 
-        }
-         .faq.active .answer{
-            margin-bottom: -30px;
-            max-height: 300px;
-            animation: fade 1s ease-in-out;
-        } 
-
-        .faq.active svg{
-            transform: rotate(180deg);
+        #bg_img {
+            width: 100%;
+            height: 400px;
+            margin-bottom: 20px;
+            margin-top: 5px;
         }
 
-        svg{
-            margin-right: 15px;
-            transition: transform .5s ease-in;
-        }
-        @keyframes fade {
-            from{
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to{
-                opacity: 1;
-                transform: translateY(0px);
-            }
+        .banner-text {
+            position: absolute;
+            top: 180px;
+            color: #fff;
+            padding: 10px;
+            font-size: 45px;
+            left: 35%;
         }
     </style>
 </head>
+
 <body>
-    <section>
-        <h2 class="title">Frequently Asked Questions</h2>
-
-        <div class="faq">
-            <div class="question">
-                <h3>Q. What is Javascript ?</h3>
-                <svg width="15" height="10" viewBox="0 0 42 25">
-                    <path d="M3 3L21 21L39 3" stroke="black" stroke-width="7" stroke-linecap="round"/>
-
-                </svg>
-            </div>
-            <div class="answer">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                    Facere esse repellendus voluptates neque voluptate sapiente 
-                    odio a corporis error alias perferendis asperiores, 
-                    tempora voluptatibus numquam atque commodi sed dolores natus!
-                </p>
-            </div>
+    <?php
+    @include "navbar.php";
+    ?>
+    <div class="banner">
+        <img id="bg_img" src="image/contact_bg.jpg" alt="" srcset="">
+        <div class="banner-text">
+            <h1>FAQs</h1>
         </div>
+    </div>
+    <div class="faq-container">
+        <h1>Frequently Asked Questions</h1>
+        <?php
 
-        <div class="faq">
-            <div class="question">
-                <h3>Q. What is Javascript ?</h3>
-                <svg width="15" height="10" viewBox="0 0 42 25">
-                    <path d="M3 3L21 21L39 3" stroke="black" stroke-width="7" stroke-linecap="round"/>
+        $faq = mysqli_query($conn, "select question,answer from faq");
+        if (mysqli_num_rows($faq) > 0) {
+            while ($row = mysqli_fetch_array($faq)) {
+        ?>
+                <div class="faq-item">
+                    <button>
+                    <?php echo $row['question']; ?> <span class="plus">+</span>
+                    </button>
+                    <div class="faq-answer">
+                    <?php echo $row['answer']; ?> 
+                         </div>
+                </div>
+               
+        <?php
+            };
+        };
+        ?>
+    </div>
+    <?php
+    @include "footer.php";
+    ?>
+    <script>
+        document.querySelectorAll('.faq-item button').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const isVisible = answer.style.display === 'block';
 
-                </svg>
-            </div>
-            <div class="answer">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                    Facere esse repellendus voluptates neque voluptate sapiente 
-                    odio a corporis error alias perferendis asperiores, 
-                    tempora voluptatibus numquam atque commodi sed dolores natus!
-                </p>
-            </div>
-        </div>
+                // Reset all answers
+                document.querySelectorAll('.faq-answer').forEach(ans => ans.style.display = 'none');
+                document.querySelectorAll('.faq-item .plus').forEach(plus => plus.textContent = '+');
 
-        <div class="faq">
-            <div class="question">
-                <h3>Q. What is Javascript ?</h3>
-                <svg width="15" height="10" viewBox="0 0 42 25">
-                    <path d="M3 3L21 21L39 3" stroke="black" stroke-width="7" stroke-linecap="round"/>
-
-                </svg>
-            </div>
-            <div class="answer">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                    Facere esse repellendus voluptates neque voluptate sapiente 
-                    odio a corporis error alias perferendis asperiores, 
-                    tempora voluptatibus numquam atque commodi sed dolores natus!
-                </p>
-            </div>
-        </div>
-    </section>
-</body>
-<script>
-    const faqs=document.querySelectorAll(".faq");
-
-faqs.forEach(faq=>
-    {
-        faq.addEventListener("click",()=>{
-            faq.classList.toggle("active");
+                // Toggle current answer
+                if (!isVisible) {
+                    answer.style.display = 'block';
+                    button.querySelector('.plus').textContent = '-';
+                }
+            });
         });
-    });
-</script>
+    </script>
+</body>
+
 </html>
