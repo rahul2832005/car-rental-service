@@ -76,10 +76,11 @@ $result = mysqli_query($conn, $sql);
         <table>
             <thead>
                 <tr>
-                    <th>#</th>
+                    
                     <th>id</th>
                     <th>Booking NO</th>
                     <th>User Email</th>
+                    <th>vehicle id</th>
                     <th>From Date</th>
                     <th>To Date</th>
                     <th>Status</th>

@@ -5,7 +5,7 @@ if (!$conn) {
     echo "not connect";
 }
 
-$sql = "select * from car_list";
+$sql = "select * from reguser";
 
 $result = mysqli_query($conn, $sql);
 
@@ -15,7 +15,7 @@ $result = mysqli_query($conn, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Cars</title>
+    <title>Manage Users</title>
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <style>
@@ -70,7 +70,7 @@ $result = mysqli_query($conn, $sql);
 </head>
 <body>
     <div class="container">
-        <h1>Manage Brands</h1>
+        <h1>Manage Users</h1>
         <div class="search-container">
            
             <input type="text" placeholder="Search...">
@@ -78,14 +78,12 @@ $result = mysqli_query($conn, $sql);
         <table>
             <thead>
                 <tr>
-                    <th>vehicle id</th>
-                    <th>Car Name</th>
-                    <th>Price</th>
-                    <th>No Plate</th>
-                    <th>Company Name</th>
-                    <th>Seat</th>
-                    <th>Fual</th>
-                    <th>Action</th>
+                    <th>Id</th>
+                    <th>User Name</th>
+                    <th>Number</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                
                 </tr>
             </thead>
             <tbody>
@@ -94,17 +92,11 @@ $result = mysqli_query($conn, $sql);
         ?>
 
             <tr>
-                <td><?php echo $row['id'] ?></td>
+                <td><?php echo $row['ID'] ?></td>
                 <td><?php echo $row['name'] ?></td>
-                <td><?php echo $row['price'] ?></td>
-                <td><?php echo $row['no_plate'] ?></td>
-                <td><?php echo $row['company_name'] ?></td>
-                <td><?php echo $row['seat'] ?></td>
-                <td><?php echo $row['fual'] ?></td>
-                <td><a id="edit" href="update.php?uid=<?php echo $row['id'] ?>"><i class="fa-solid fa-pen"></i></a>   <a id="delete" href=""><i class="fa-solid fa-trash"></i></a></td>
-                <!-- <td> 
-                 <img src="upload/<?php echo $row['image'] ?>" height="80" width="80"> 
-                </td>-->
+                <td><?php echo $row['mnumber'] ?></td>
+                <td><?php echo $row['email'] ?></td>
+                <td><?php echo md5($row['password'])?></td>
             </tr>
 
         <?php
