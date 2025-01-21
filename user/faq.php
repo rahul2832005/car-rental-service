@@ -1,3 +1,9 @@
+<?php
+$conn = mysqli_connect("localhost", "root", "", "car_rent");
+if (!$conn) {
+    echo "not";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +14,7 @@
     <style>
         body {
             /* font-family: poppins,sans-serif; */
-            font-family:Corbel;
+            font-family: Corbel;
             margin: 0;
             padding: 0;
             /* display: flex; */
@@ -63,12 +69,12 @@
         }
 
         .faq-item button .plus {
-            
+
             color: #ff4d4d;
             font-weight: bold;
             font-size: 25px;
         }
-        
+
 
         .faq-item .faq-answer {
             display: none;
@@ -77,14 +83,16 @@
             color: #555;
             background-color: #f9f9f9;
             margin-left: 22px;
-           
+
         }
-        #bg_img{
+
+        #bg_img {
             width: 100%;
             height: 400px;
             margin-bottom: 20px;
             margin-top: 5px;
         }
+
         .banner-text {
             position: absolute;
             top: 180px;
@@ -97,50 +105,36 @@
 </head>
 
 <body>
-<?php
-@include "navbar.php";
-?>
-        <div class="banner">
-            <img id="bg_img" src="image/contact_bg.jpg" alt="" srcset="">
-            <div class="banner-text">
+    <?php
+    @include "navbar.php";
+    ?>
+    <div class="banner">
+        <img id="bg_img" src="image/contact_bg.jpg" alt="" srcset="">
+        <div class="banner-text">
             <h1>FAQs</h1>
         </div>
-        </div>
+    </div>
     <div class="faq-container">
-        <h1 >Frequently Asked Questions</h1>
-        <div class="faq-item">
-            <button>
-                Q. What is about rental car deals? <span class="plus">+</span>
-            </button>
-            <div class="faq-answer">
-            The prices were reasonable, and the staff was friendly and accommodating. Definitely my go-to 
-            car rental company. Outstanding Customer Service!
-            </div>
-        </div>
-        <div class="faq-item">
-            <button>
-                Q. In which areas do you operate? <span class="plus">+</span>
-            </button>
-            <div class="faq-answer">
-                Answer about operation areas.
-            </div>
-        </div>
-        <div class="faq-item">
-            <button>
-                Q. Do you rent to international visitors? <span class="plus">+</span>
-            </button>
-            <div class="faq-answer">
-                Answer about renting to international visitors.
-            </div>
-        </div>
-        <div class="faq-item">
-            <button>
-                Q. If I rent a vehicle can I choose the chauffeur? <span class="plus">+</span>
-            </button>
-            <div class="faq-answer">
-                Answer about choosing the chauffeur.
-            </div>
-        </div>
+        <h1>Frequently Asked Questions</h1>
+        <?php
+
+        $faq = mysqli_query($conn, "select question,answer from faq");
+        if (mysqli_num_rows($faq) > 0) {
+            while ($row = mysqli_fetch_array($faq)) {
+        ?>
+                <div class="faq-item">
+                    <button>
+                    <?php echo $row['question']; ?> <span class="plus">+</span>
+                    </button>
+                    <div class="faq-answer">
+                    <?php echo $row['answer']; ?> 
+                         </div>
+                </div>
+               
+        <?php
+            };
+        };
+        ?>
     </div>
     <?php
     @include "footer.php";

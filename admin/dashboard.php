@@ -11,9 +11,10 @@
 </head>
 
 <body>
- 
+
 <!-- Sidebar -->
          <aside class="sidebar">
+         <span class="logo-text">Car<span style="color: red;">ola</span></span> 
             <h2>Car Rental Portal</h2>
             <ul class="menu">
                 <li><a href="main.php" target="second">Dashboard</a></li>
