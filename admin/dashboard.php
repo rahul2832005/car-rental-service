@@ -48,13 +48,13 @@
                     <a href="#">Bookings<span class="sub-icon">▼</span></a>
                     <ul class="dropdown-bk">
                         <li><a href="new-booking.php" target="second">New Bookings</a></li>
-                        <li><a href="confirmed-bookings.php" target="second">Confirm Bookings</a></li>
-                        <li><a href="canceled-bookings.php" target="second">Cancelled Bookings </a></li>
+                        <li><a href="confirmed-booking.php" target="second">Confirm Bookings</a></li>
+                        <li><a href="canceled-booking.php" target="second">Cancelled Bookings </a></li>
 
                     </ul>
 
                 </li>
-                <li><a href="brandsub.php" target="second">Manage Testimonials</a></li>
+                <li><a href="#" target="second">Manage Testimonials</a></li>
                 <li><a href="#" target="second">Manage Contactus Query</a></li>
                 <li><a href="reguser.php" target="second">Reg Users</a></li>
                 <li><a href="#" target="second">Manage Pages</a></li>

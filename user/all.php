@@ -1,21 +1,12 @@
-<?php
-session_start();
-$conn = mysqli_connect("localhost", "root", "", "car_rent");
-if (!$conn) {
-    echo "not";
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
+    <title>Document</title>
     <style>
-        /* General Reset */
-        * {
+            /* General Reset */
+            * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -133,43 +124,35 @@ if (!$conn) {
         }
     </style>
 </head>
-
 <body>
-    <?php
-    @include "navbar.php";
-    ?>
+<section>
+                    <div class="gallery">
+                        <div class='card'>
+                        <img src="../admin/gallery/gallery_1.jpg" />
+                        <? /* src='/car%20rental%20service/admin/gallery/gallery_1.jpg'*/?>
+                        </div>
 
+                        <div class='card'>
+                        <img src="../admin/gallery/gallery_1.jpg" />
+                        <!-- <img src='/car%20rental%20service/admin/gallery/gallery_1.jpg'/> -->
+                        </div>
 
+                        <div class='card'>
+                        <img src="../admin/gallery/gallery_1.jpg" />
+                        <!-- <img src='/car%20rental%20service/admin/gallery/gallery_1.jpg'/> -->
+                        </div>
 
-    <div class="banner-card">
-        <img id="bg_img" src="image/service_area_bg.png" alt="" srcset="">
-        <div class="banner-text">
-            <h1>Gallery</h1>
-        </div>
-    </div>
-    <div class="container">
-        <header>
-            <span class="badge">DETAILS</span>
-            <h1 class="head">Planning A Trip Should Be</h1>
-        </header>
- 
-            <nav class="categories">
-                <a href="all.php" target="gallery"><button name="all">All</button></a>
-                <a href="truck.php" target="gallery"><button name="truck">Truck</button></a>
-                <button name="luxury">Luxury Sedan</button>
-                <button name="sedan">Sedan</button>
-                <button name="sport">Sports Car</button>
-                <button name="hatchback">Hatchback</button>
-            </nav>
-        
+                        <div class='card'>
+                        <img src="../admin/gallery/gallery_1.jpg" />
+                        <!-- <img src='/car%20rental%20service/admin/gallery/gallery_1.jpg'/> -->
+                        </div>
 
-        <iframe src="all.php" frameborder="0" width="100%" height="800px" name="gallery"></iframe>
-
-    </div>
-
-    <?php
-    @include "footer.php";
-    ?>
+                        <div class='card'>
+                        <img src="../admin/gallery/gallery_1.jpg" />
+                        <!-- <img src='/car%20rental%20service/admin/gallery/gallery_1.jpg'/> -->
+                        </div>
+                        </div>
+              
+        </section>
 </body>
-
 </html>
