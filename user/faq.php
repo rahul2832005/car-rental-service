@@ -1,9 +1,3 @@
-<?php
-$conn = mysqli_connect("localhost", "root", "", "car_rent");
-if (!$conn) {
-    echo "not";
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,24 +110,28 @@ if (!$conn) {
     </div>
     <div class="faq-container">
         <h1>Frequently Asked Questions</h1>
-        <?php
-
-        $faq = mysqli_query($conn, "select question,answer from faq");
-        if (mysqli_num_rows($faq) > 0) {
-            while ($row = mysqli_fetch_array($faq)) {
-        ?>
+      
                 <div class="faq-item">
-                    <button>
-                    <?php echo $row['question']; ?> <span class="plus">+</span>
-                    </button>
-                    <div class="faq-answer">
-                    <?php echo $row['answer']; ?> 
-                         </div>
+                    <button>hello<span class="plus">+</span></button>
+                    <div class="faq-answer">rahul</div>
+                </div>
+
+                <div class="faq-item">
+                    <button>hello<span class="plus">+</span></button>
+                    <div class="faq-answer">rahul</div>
+                </div>
+
+                <div class="faq-item">
+                    <button>hello<span class="plus">+</span></button>
+                    <div class="faq-answer">rahul</div>
+                </div>
+
+                <div class="faq-item">
+                    <button>hello<span class="plus">+</span></button>
+                    <div class="faq-answer">rahul</div>
                 </div>
                
-        <?php
-            };
-        };
+       
         ?>
     </div>
     <?php

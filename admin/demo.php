@@ -3,17 +3,35 @@ $conn=mysqli_connect("localhost","root","","car_rent");
 if (!$conn) {
     echo "not";
 }
-
-    if(isset($_POST['submit']))
+    if(isset($_POST["submit"]))
     {
-        $question=$_POST['question'];
-        $answer=$_POST['answer'];
-
-        $sql="insert into faq(question,answer) values('$question','$answer')";
-
-        $run=mysqli_query($conn,$sql);
-
        
+        $image=$_FILES['image']['name'];
+
+        $category=$_POST['category'];
+
+
+            if(!empty($image))
+            {
+                $tmp=$_FILES['image']['tmp_name'];
+                $des="gallery/".$_FILES['image']['name'];
+
+                move_uploaded_file($tmp,$des);
+            }
+
+            $sql="insert into gallery(image,category)values('$image','$category')";
+
+            $run=mysqli_query($conn,$sql);
+
+            if($run==true)
+            {
+                echo "success";
+            }
+            else
+            {
+                echo "not";
+            }
+
     }
 ?>
 <!DOCTYPE html>
@@ -49,11 +67,11 @@ if (!$conn) {
             max-width: 500px;
         }
 
-        .faq {
+        .get-in-touch {
             display: inline-block;
             background-color: #fdeaea;
             color: #e96d6d;
-            font-size: 17px;
+            font-size: 14px;
             font-weight: bold;
             padding: 5px 10px;
             border-radius: 12px;
@@ -96,7 +114,7 @@ if (!$conn) {
         .submit-button {
             background-color: #000;
             color: #fff;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: bold;
             padding: 12px;
             border: none;
@@ -109,29 +127,40 @@ if (!$conn) {
             background-color: #444;
         }
        p{
-        font-size: 18px;
-        margin-bottom: -12px;
-        margin-left: -347px;
+
+        font-size: 19px;
+        margin-bottom: -10px;
+        margin-top: -12px;
+        margin-left: -350px;
+       }
+       #category{
+        font-size: 24px;
+        height: 36px;
+        width: 200px;
        }
     </style>
 </head>
 
 <body>
     <div class="contact-form-container">
-        <span class="faq">FAQs</span>
-        <h1 class="form-title">Add A Faq</h1>
-        <form class="contact-form" method="post">
-            <p>enter question</p>
-            <input type="text" name="question" placeholder="question" class="input-field" required>
-            <p>enter answer</p>
-            <textarea name="answer" placeholder="answer" class="input-field textarea"
-                required></textarea>
-                
-            <button type="submit" class="submit-button" name="submit">Post Comment</button>
-      
+        <span class="get-in-touch">GET IN TOUCH</span>
+        <h1 class="form-title">Send A Message</h1>
+        <form class="contact-form" method="post" enctype="multipart/form-data">
+        <p>select image</p>
+            <input type="file" name="image" placeholder="select image" class="input-field" required style="margin-bottom:20px ;">
+            <p style="margin-left: -330px;">select category</p>
+          <select name="category" id="category" required>
+          <option>select category</option>
+            <option value="truck">truck</option>
+            <option value="sedan">sedan</option>
+            <option value="luxury sedan">luxury sedan</option>
+            <option value="sport car">sport car</option>
+            <option value="hatchback">hatchback</option>
+          </select>  
+
+            <button type="submit" class="submit-button" name="submit">Post Gallery Image</button>
         </form>
     </div>
-    
 </body>
 
 </html>

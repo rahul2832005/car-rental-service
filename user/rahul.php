@@ -8,7 +8,6 @@
    
 
 ?>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +16,7 @@
     
 </head>
 <body>
-    <form action="" method="post">
+    <form action="rahul.php" method="post">
         <?php
         if(isset($_POST['submit']))
         {
