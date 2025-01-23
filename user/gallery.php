@@ -1,3 +1,11 @@
+<?php
+
+$conn = mysqli_connect("localhost", "root", "", "car_rent");
+if (!$conn) {
+    echo "not";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,12 +46,12 @@
         .details {
             font-size: 18px;
             font-weight: bold;
-            
+
             color: #ff4d4d;
             text-transform: uppercase;
             padding: 10px 10px;
-            
-            
+
+
         }
 
         .head {
@@ -87,16 +95,17 @@
         .card {
             overflow: hidden;
             border-radius: 10px;
-            
+
         }
 
         .card img {
             width: 100%;
             height: auto;
             display: block;
-           
-           
+
+
         }
+
         #bg_img {
             width: 100%;
             margin-top: 5px;
@@ -110,8 +119,9 @@
             font-size: 45px;
             left: 33%;
         }
+
         .badge {
-            background-color:  #e0e0e0;
+            background-color: #e0e0e0;
             color: #ff4d4d;
             padding: 5px 10px;
             border-radius: 15px;
@@ -125,10 +135,13 @@
 </head>
 
 <body>
-<?php
+    <?php
     @include "navbar.php";
     ?>
-     <div class="banner-card">
+
+
+
+    <div class="banner-card">
         <img id="bg_img" src="image/service_area_bg.png" alt="" srcset="">
         <div class="banner-text">
             <h1>Gallery</h1>
@@ -136,24 +149,47 @@
     </div>
     <div class="container">
         <header>
-        <span class="badge">DETAILS</span>
+            <span class="badge">DETAILS</span>
             <h1 class="head">Planning A Trip Should Be</h1>
         </header>
-        <nav class="categories">
-            <button class="active">All</button>
-            <button>Truck</button>
-            <button>Luxury Sedan</button>
-            <button>Sedan</button>
-            <button>Sports Car</button>
-            <button>Hatchback</button>
-        </nav>
+        <form action="" method="post">
+            <nav class="categories">
+                <button name="all">All</button>
+                <button name="truck">Truck</button>
+                <button name="luxury">Luxury Sedan</button>
+                <button name="sedan">Sedan</button>
+                <button name="sport">Sports Car</button>
+                <button name="hatchback">Hatchback</button>
+            </nav>
+        </form>
+
         <section class="gallery">
-            <div class="card"><img src="image/ahemdabad.jpg" alt="Yellow Sports Car"></div>
-            <div class="card"><img src="image/ahemdabad.jpg" alt="White SUV"></div>
-            <div class="card"><img src="image/ahemdabad.jpg" alt="Red and Yellow Sports Cars"></div>
-            <div class="card"><img src="image/ahemdabad.jpg" alt="Yellow Car in Desert"></div>
+            
+                        <div class='card'>
+                        <img src='/car%20rental%20service/admin/gallery/gallery_1.jpg'/>
+                        </div>
+
+                        <div class='card'>
+                        <img src='/car%20rental%20service/admin/gallery/gallery_1.jpg'/>
+                        </div>
+
+                        <div class='card'>
+                        <img src='/car%20rental%20service/admin/gallery/gallery_1.jpg'/>
+                        </div>
+
+                        <div class='card'>
+                        <img src='/car%20rental%20service/admin/gallery/gallery_1.jpg'/>
+                        </div>
+
+                        <div class='card'>
+                        <img src='/car%20rental%20service/admin/gallery/gallery_1.jpg'/>
+                        </div>
+                    
+              
         </section>
+
     </div>
+
     <?php
     @include "footer.php";
     ?>
