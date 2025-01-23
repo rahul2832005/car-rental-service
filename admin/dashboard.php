@@ -39,7 +39,7 @@
                     <a href="#">Cars<span class="sub-icon">▼</span></a>
                     <ul class="dropdown-cr">
                         <li><a href="add_car.php" target="second">Add Cars</a></li>
-                        <li><a href="managecar.php" target="second">Manage Cars</a></li>
+                        <li><a href="display_car.php" target="second">Manage Cars</a></li>
 
                     </ul>
 
