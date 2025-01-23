@@ -92,73 +92,10 @@ if (isset($_POST['Book'])) {
         $image = explode(",", $row['image']);
 
     ?>
-<<<<<<< HEAD
-        <div class="container">
-            <div class="product-images">
-                <img src="/project/car-rental-service/admin/img/<?php echo $image[0]; ?>" alt="Vanguard CX2 Convertible" class="main-image">
-                <div class="thumbnail-container">
-                    <img src="/project/car-rental-service/admin/img/<?php echo $image[1]; ?>" alt="Side view" class="thumbnail">
-                    <img src="/project/car-rental-service/admin/img/<?php echo $image[2]; ?>" alt="Front view" class="thumbnail">
-                    <img src="/project/car-rental-service/admin/img/<?php echo $image[3]; ?>" alt="Rear view" class="thumbnail">
-                    <!-- /project/car-rental-service/admin/img/ -->
-                </div>
-            </div>
-
-            <div class="product-infor">
-                <h1 class="product-title"><?php echo $row['name']; ?></h1>
-                <div class="price">
-                    <span>STARTING AT</span><br>
-                    <?php echo $row['price']; ?>
-                </div>
-
-                <p class="description">Elevate your journey with the Ford Mustang Convertible, the epitome of American muscle and open-air excitement.',
-                    'specs</p>
-
-                <div class="specifications">
-                    <h1>SPECIFICATIONS</h1>
-                    <div class="specs-grid">
-
-                        <div class="spec-item">
-                            <i class="fa-solid fa-car" id="icon"></i>
-                            <span><?php echo $row['seat']; ?> people</span>
-
-                        </div>
-
-                        <div class="spec-item">
-                            <i class="fa-solid fa-car" id="icon"></i>
-                            <span>4 people</span>
-
-                        </div>
-
-                        <div class="spec-item">
-                            <i class="fa-solid fa-car" id="icon"></i>
-                            <span>4 people</span>
-
-                        </div>
-
-                        <div class="spec-item">
-                            <i class="fa-solid fa-car" id="icon"></i>
-                            <span>4 people</span>
-
-                        </div>
-
-                        <div class="spec-item">
-                            <i class="fa-solid fa-car" id="icon"></i>
-                            <span>4 people</span>
-
-                        </div>
-
-                    </div>
-                </div>
-                <button type="submit" id="button">Rent Now</button>
-            </div>
-
-=======
     <div class="container">
     <div class="image-showcase">
         <div class="main-image">
         <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[0]; ?>" alt="Not ">
->>>>>>> 8d33eb710932f28b88529f6842641c9eec0d5f25
         </div>
         <div class="side-images">
         <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[1]; ?>" alt="Car Interior Front">

@@ -138,18 +138,12 @@ if(isset($_POST['submit']))
         }*/
     ?>
     <div class="container">
-        <div class="title">Add Car  
-        <?php
-        if(isset($message))
-        {
-            foreach($message as $message){
-                echo '<span class="message">'.$message.'</span>';
-            }
-        }
-        ?>
-        </div>
+      
         
         <form action="" method="post" enctype="multipart/form-data" >
+        <div class="title">Add Car  
+        
+        </div>
         <div class="bi-txt"><u><b>Basic Info.<span style="color: red;">*</span> </b></u></div>
         <div class="car_details">
                 <div class="input-box">
@@ -200,7 +194,7 @@ if(isset($_POST['submit']))
                 
                 
             <div class="up-img">
-            <b>Upload Images<span style="color: red;">*</span>
+            Upload Images<span style="color: red;">*</span>
                 <span style="color: red;"><?php echo $ier; ?></span>
                 <input type="file" name="image[]" multiple="multiple" id="file"><br>
                 <label for="file">Upload Image</label>     
@@ -249,7 +243,7 @@ if(isset($_POST['submit']))
                 <p style="color: red;"><?php echo $et; ?></p>
                 <span class="details">Select Engine Type :</span>
                     <select name="engine" id="engine">
-                        <option value="">Select Engine Type</option>
+                        <option value=""> Engine Type</option>
                         <option value="Automatic">Automatic</option>
                         <option value="Diesel engine">Diesel engine</option>
                         <option value=" Gas Engines"> Gas Engines</option>
@@ -261,7 +255,7 @@ if(isset($_POST['submit']))
                 <p style="color: red;"><?php echo $pr; ?></p>
                 <span class="details">Select Engine Power : </span>
                     <select name="engine-power" id="engine-power">
-                        <option value="">Select HorsePower</option>
+                        <option value="">Engine Power</option>
                         <option value="400 Hp">400 Hp</option>
                         <option value="261 Hp">261 Hp</option>
                         <option value="300 Hp"> 300 Hp</option>

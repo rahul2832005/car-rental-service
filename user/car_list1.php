@@ -235,7 +235,7 @@ error_reporting(0);
                 <div class="card">
                     <div class="image">
 
-                        <a href="car_detail.php?id=<?php echo $row['id']; ?>"><img src="/car%20rental%20service/admin/img/<?php echo $image[0]; ?>"></a>
+                        <a href="car_detail.php?id=<?php echo $row['id']; ?>"><img src="/project/car-rental-service/admin/img/<?php echo $image[0]; ?>"></a>
                         <!-- <img src="/car%20rental%20service/admin/img/"> -->
                     </div>
                     <div class="caption">
