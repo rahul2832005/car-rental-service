@@ -52,8 +52,24 @@ form .car_details .input-box{
     width: calc(100% / 2 - 20px);
 }
 
+form .car_details .up-img{
+   margin-left: 35px;
+}
+
 .car_details .input-box .details{
     display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+.car_details .fual-type .details{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+.accessories .select-box .details{
+    
     font-weight: 500;
     margin-bottom: 5px;
     font-size: 20px;
@@ -72,20 +88,24 @@ form .car_details .input-box{
 }
 
 .car_details .input-box input:focus,
+.mil input:focus,
 .car_details .input-box input:valid{
 
 border-color:#d1001f;
 }
 
-#fual{
-        margin-bottom: 27px;
-        text-align: left;
-        font-size: 22px;
-        width: 150px;
-        border-radius: 4px;
-        height: 43px;
-        border: 1px solid #d1001f;
-        
+
+#door,#fual,#fual-tank,#break,#engine,#engine-power{
+    margin-bottom: 27px;
+    text-align: left;
+    font-size: 22px;
+    width: 150px;
+    border-radius: 4px;
+    height: 43px;
+    border: 1px solid #d1001f;
+}
+#mil{
+    border: 1px solid red;
 }
 
 .fual-type{
@@ -132,7 +152,36 @@ label:hover{
 form .button input:hover{
     background:linear-gradient(-135deg,#f94449,#c30010);
 }
+form .accessories{
+    display: flex;
+    flex-wrap: wrap; 
+    padding-top: 25px;    
+}
+form .accessories .select-box{
+    width: calc(100% / 3 - 20px);
+}
 
+form .mil{
+    display:flex;
+}
+.mil .mi-de{
+    margin-top: 5px;
+    font-size: 20px;
+}
+form .mil input{
+
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    margin-left: 25px;
+    margin-bottom: 22px;
+}
 @media (max-width:584px){
     .container{
         max-width: 100%;
@@ -158,17 +207,6 @@ form .button input:hover{
 }
 .bi-txt{
     padding-top: 10px;
-}
-.ace-chk{
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-   margin-right: 20px;
-    flex-wrap: wrap;
-    
-}
-.ace-chk input{
-    margin-left: 10px;
-    margin-right: 10px;
 }
 form{
     width: auto;
