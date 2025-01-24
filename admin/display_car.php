@@ -24,8 +24,10 @@ $result = mysqli_query($conn, $sql);
             margin: 20px;
         }
         .container {
+            
             max-width: 800px;
-            margin: auto;
+            margin: 80px 31px;
+            
         }
         h1 {
             text-align: center;

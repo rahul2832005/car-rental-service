@@ -130,6 +130,7 @@ body {
 }
 
 iframe {
+    margin-left: 15px;
     position: fixed;
     top: 0px;
     /* Adjust this to match the height of your header */
