@@ -65,7 +65,8 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .service-card:hover {
+       .service-card:hover{
+        
             transform: translateY(20px);
             box-shadow: 20px 8px 20px rgba(0, 0, 0, 0.3);
             cursor: pointer;
