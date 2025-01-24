@@ -95,11 +95,11 @@ if (isset($_POST['Book'])) {
     <div class="container">
     <div class="image-showcase">
         <div class="main-image">
-        <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[0]; ?>" alt="Not ">
+        <img src="../admin/img/<?php echo $image[0]; ?>" alt="Not ">
         </div>
         <div class="side-images">
-        <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[1]; ?>" alt="Car Interior Front">
-        <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[2]; ?>" alt="Car Interior Back">
+        <img src="/project/car-rental-service/admin/img/<?php echo $image[1]; ?>" alt="Car Interior Front">
+        <img src="../admin/img/<?php echo $image[2]; ?>" alt="Car Interior Back">
         </div>
     </div>
     <div class="car-details">
@@ -107,16 +107,16 @@ if (isset($_POST['Book'])) {
        <h1 class="car-title"><?php echo $row['name']; ?></h1>
        <div class="car-info">
            <div class="car-info-item">
-               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Seat Capacity Icon">
+               <img src="../admin/img/capacity.png" alt="Seat Capacity Icon">
                
                <span><?php echo $row['seat'] ?>   People</span>
            </div>
            <div class="car-info-item">
-               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Doors Icon">
+               <img src="../admin/img/capacity.png" alt="Doors Icon">
                <span><?php echo $row['door'] ?> Doors</span>
            </div>
            <div class="car-info-item">
-               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Fuel Tank Icon">
+               <img src="/admin/img/capacity.png" alt="Fuel Tank Icon">
                <span><?php echo $row['fual_capacity'] ?> Liters</span>
            </div>
            <div class="car-info-item">

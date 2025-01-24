@@ -184,7 +184,7 @@
                     <li><a href="about_us.php">About Us</a></li>
                     <li><a href="out_team.php">Our Team</a></li>
                     <li><a href="t&c.php">T&C</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="privacy.php">Privacy Policy</a></li>
                     <li><a href="contact_us.php">Contact</a></li>
                     
                 </ul>
