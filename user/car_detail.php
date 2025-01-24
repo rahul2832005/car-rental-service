@@ -12,7 +12,7 @@ if (isset($_POST['Book'])) {
     $tdate = $_POST['tdate'];
     $message = $_POST['message'];
     $useremail = $_SESSION['alogin'];
-
+    
     $status = 0;
     $bookingno = mt_rand(1000000, 999999999);
     if ($fdate == "") {
@@ -27,26 +27,32 @@ if (isset($_POST['Book'])) {
         $ms = "Write Message";
         $count++;
     }
-
-
-
-    $avlquery = "select * from booking where '$fdate' between date(FromDate) AND date(ToDate) AND vid=$vid";
-    $exavlquery = mysqli_query($conn, $avlquery);
-
-    $row = mysqli_num_rows($exavlquery);
-    if ($row == 0) {
-        $sql = "insert into booking (bookingno,userEmail,vid,FromDate,ToDate,message,status) values($bookingno,'$useremail',$vid,'$fdate','$tdate','$message',$status);";
-        $ex = mysqli_query($conn, $sql);
-        if ($ex) {
-            echo "<script>alert('Booking Done');</script>";
-        } else {
-            echo "<script>alert('Something Wrong');</script>";
+    
+        $avlquery = "select * from booking where '$fdate' between date(FromDate) AND date(ToDate) AND vid=$vid";
+        $exavlquery = mysqli_query($conn, $avlquery);
+       
+        $row = mysqli_num_rows($exavlquery);
+        if ($row == 0) {
+            $sql="insert into booking (bookingno,userEmail,vid,FromDate,ToDate,message,status) values($bookingno,'$useremail',$vid,'$fdate','$tdate','$message',$status);";
+            $ex=mysqli_query($conn,$sql);
+            if($ex)
+            {
+                echo "<script>alert('Booking Done');</script>";
+                
+                
+            }
+            else
+            {
+                echo "<script>alert('Something Wrong');</script>";
+            }
         }
-    } else {
-        echo "<script>alert('Car  Already Booked');</script>";
-        echo "<script type='text/javascript'> document.location = 'dis_car.php'; </script>";
+         else
+          {
+            echo "<script>alert('Car  Already Booked');</script>";
+            echo "<script type='text/javascript'> document.location = 'dis_car.php'; </script>";
+          }
     }
-}
+
 
 
 ?>
@@ -57,28 +63,28 @@ if (isset($_POST['Book'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>car details</title>
+    <title>Vanguard CX2 Convertible</title>
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
-    <link rel="stylesheet" href="css/car_details_container2.css">
-    <link rel="stylesheet" href="css/booking.css">
-    <link rel="stylesheet" href="css/car_details_container1.css">
-    <style>
 
-    </style>
+    <link rel="stylesheet" href="css/booking.css">
+    <link rel="stylesheet" href="css/car_details.css">
+    
+    
 </head>
 <script>
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href);
-    }
+    if(window.history.replaceState)
+{
+    window.history.replaceState(null,null,window.location.href);
+}
 </script>
-
 <body>
 
     <div>
         <?php include('navbar.php'); ?>
     </div>
     <?php
+    
     $query = "select * from car_list where id=$vid";
     $exquery = mysqli_query($conn, $query);
 
@@ -86,172 +92,60 @@ if (isset($_POST['Book'])) {
         $image = explode(",", $row['image']);
 
     ?>
-        <div class="container">
-            <div class="product-images">
-                <img src="/car%20rental%20service/admin/img/<?php echo $image[0]; ?>" alt="Vanguard CX2 Convertible" class="main-image">
-                <div class="thumbnail-container">
-                    <img src="/car%20rental%20service/admin/img/<?php echo $image[1]; ?>" alt="Side view" class="thumbnail">
-                    <img src="/car%20rental%20service/admin/img/<?php echo $image[2]; ?>" alt="Front view" class="thumbnail">
-                    <img src="/car%20rental%20service/admin/img/<?php echo $image[3]; ?>" alt="Rear view" class="thumbnail">
-                    <!-- /project/car-rental-service/admin/img/ -->
-                </div>
-            </div>
-
-            <div class="product-infor">
-                <h1 class="product-title"><?php echo $row['name']; ?></h1>
-                <div class="price">
-                    <span>STARTING AT</span><br>
-                    <?php echo $row['price']; ?>
-                </div>
-
-                <p class="description">Elevate your journey with the Ford Mustang Convertible, the epitome of American muscle and open-air excitement.',
-                    'specs</p>
-
-                <div class="specifications">
-                    <h1>SPECIFICATIONS</h1>
-                    <div class="specs-grid">
-
-                        <div class="spec-item">
-                            <i class="fa-solid fa-car" id="icon"></i>
-                            <span><?php echo $row['seat']; ?> people</span>
-
-                        </div>
-
-                        <div class="spec-item">
-                            <i class="fa-solid fa-car" id="icon"></i>
-                            <span>4 people</span>
-
-                        </div>
-
-                        <div class="spec-item">
-                            <i class="fa-solid fa-car" id="icon"></i>
-                            <span>4 people</span>
-
-                        </div>
-
-                        <div class="spec-item">
-                            <i class="fa-solid fa-car" id="icon"></i>
-                            <span>4 people</span>
-
-                        </div>
-
-                        <div class="spec-item">
-                            <i class="fa-solid fa-car" id="icon"></i>
-                            <span>4 people</span>
-
-                        </div>
-
-                    </div>
-                </div>
-                <button type="submit" id="button">Rent Now</button>
-            </div>
-
+    <div class="container">
+    <div class="image-showcase">
+        <div class="main-image">
+        <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[0]; ?>" alt="Not ">
         </div>
-
-
-    <?php
-    };
-
-    ?>
-    <div class="container2">
-        <div class="product-info">
-
-            <table>
-                <tr>
-                    <th style="background-color: gray;" colspan="2">Accessories</th>
-                </tr>
-                <tr>
-                    <th>Air Conditioner</th>
-                    <td>✔</td>
-                </tr>
-                <tr>
-                    <th>AntiLock Braking System</th>
-                    <td>✔</td>
-                </tr>
-                <tr>
-                    <th>Power Steering</th>
-                    <td>✔</td>
-                </tr>
-                <tr>
-                    <th>Central Locking</th>
-                    <td>✔</td>
-                </tr>
-                <tr>
-                    <th>Power Door Locks</th>
-                    <td>✔</td>
-                </tr>
-                <tr>
-                    <th>Driver Airbag</th>
-                    <td>✔</td>
-                </tr>
-                <tr>
-                    <th>Passenger Airbag</th>
-                    <td>✔</td>
-                </tr>
-                <tr>
-                    <th>Crash Sensor</th>
-                    <td>✔</td>
-                </tr>
-                <tr>
-                    <th>CD Player</th>
-                    <td>✔</td>
-                </tr>
-            </table>
-        </div>
-        <div class="review-section">
-            <div class="review-header">Reviews (10)</div>
-            <div class="rating-summary">
-                <div class="rating-row">
-                    <span class="rating-label">5.0</span>
-                    <div class="progress-bar">
-                        <span style="width: 66%;"></span>
-                    </div>
-                    <span class="rating-percentage">66%</span>
-                </div>
-                <div class="rating-row">
-                    <span class="rating-label">4.0</span>
-                    <div class="progress-bar">
-                        <span style="width: 33%;"></span>
-                    </div>
-                    <span class="rating-percentage">33%</span>
-                </div>
-                <div class="rating-row">
-                    <span class="rating-label">3.0</span>
-                    <div class="progress-bar">
-                        <span style="width: 16%;"></span>
-                    </div>
-                    <span class="rating-percentage">16%</span>
-                </div>
-                <div class="rating-row">
-                    <span class="rating-label">2.0</span>
-                    <div class="progress-bar">
-                        <span style="width: 8%;"></span>
-                    </div>
-                    <span class="rating-percentage">8%</span>
-                </div>
-                <div class="rating-row">
-                    <span class="rating-label">1.0</span>
-                    <div class="progress-bar">
-                        <span style="width: 6%;"></span>
-                    </div>
-                    <span class="rating-percentage">6%</span>
-                </div>
-            </div>
-            <div class="review-item">
-                <img src="image/member1.png" alt="User" class="review-avatar">
-                <div class="review-content">
-                    <div>
-                        <span class="name">John Doe</span>
-                        <span class="stars">⭐⭐⭐⭐⭐</span>
-                        <span class="time">2 mins ago</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
-            <a href="#" class="read-more">Read all reviews</a>
+        <div class="side-images">
+        <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[1]; ?>" alt="Car Interior Front">
+        <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[2]; ?>" alt="Car Interior Back">
         </div>
     </div>
-
+    <div class="car-details">
+       
+       <h1 class="car-title"><?php echo $row['name']; ?></h1>
+       <div class="car-info">
+           <div class="car-info-item">
+               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Seat Capacity Icon">
+               
+               <span><?php echo $row['seat'] ?>   People</span>
+           </div>
+           <div class="car-info-item">
+               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Doors Icon">
+               <span><?php echo $row['door'] ?> Doors</span>
+           </div>
+           <div class="car-info-item">
+               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Fuel Tank Icon">
+               <span><?php echo $row['fual_capacity'] ?> Liters</span>
+           </div>
+           <div class="car-info-item">
+               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Fuel Type Icon">
+               <span><?php echo $row['fual'] ?></span>
+           </div>
+           <div class="car-info-item">
+               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Mileage Icon">
+               <span><?php echo $row['mileage'] ?> Kmpl</span>
+           </div>
+           <div class="car-info-item">
+               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Engine Type Icon">
+               <span><?php echo $row['en_type'] ?></span>
+           </div>
+           <div class="car-info-item">
+               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Brake Type Icon">
+               <span><?php echo $row['break_type'] ?></span>
+           </div>
+           <div class="car-info-item">
+               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Engine Power Icon">
+               <span><?php echo $row['en_power'] ?></span>
+           </div>
+       </div>
+       <button type="submit" id="button">Rent Now</button>
+   </div>
+   </div>
+    <?php  
+    }
+    ?>
 
     <div class="pop-up">
         <div class="book-container">

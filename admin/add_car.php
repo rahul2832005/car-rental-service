@@ -1,12 +1,12 @@
 <?php
-//error_reporting(0);
+// error_reporting(0);
 $conn=mysqli_connect("localhost","root","","car_rent");
 if (!$conn) {
     echo "not";
 }
 
-$cn=$mod=$rp=$np=$cname=$se=$fu=$ier="";
-$car_name=$modal=$rent_price=$no_plate=$company_name=$seat=$fual="";
+$cn=$mod=$rp=$np=$cname=$se=$fu=$ier=$mile=$dr=$et=$pr=$br=$mile=$ft=$ml="";
+$car_name=$modal=$rent_price=$no_plate=$company_name=$seat=$fual=$power=$engine=$f_tank=$break=$door="";
 if(isset($_POST['submit']))
 {
     $car_name=$_POST['car_name'];
@@ -16,7 +16,13 @@ if(isset($_POST['submit']))
     $company_name=$_POST['company_name'];
     $seat=$_POST['capacity'];
     $fual=$_POST['fual'];
-
+    $door=$_POST['door'];
+    $power=$_POST['engine-power'];
+    $engine=$_POST['engine'];
+    $break=$_POST['break'];
+    $f_tank=$_POST['fual-tank'];
+    $mile=$_POST['mile'];
+    
    
 
     if($car_name=="")
@@ -51,6 +57,30 @@ if(isset($_POST['submit']))
         {
             $fu="Select Fual Type";
         }
+        if($door=="")
+        {
+            $dr="Please Select Door";
+        }
+        if($power=="")
+        {
+            $pr="Please Select  Engine Power";
+        }
+        if($engine=="")
+        {
+            $et="Please Select  Engine Type";
+        }
+        if($f_tank=="")
+        {
+            $ft="Please Select FuaL capacity";
+        }
+        if($break=="")
+        {
+            $br="Please Select Break type";
+        }
+        if($mile=="")
+        {
+            $ml="Please Enter Milage";
+        }
      $file_name = $_FILES['image']['name'];
      $location = "img/";
      $image_name = implode(",", $file_name);
@@ -63,15 +93,16 @@ if(isset($_POST['submit']))
                 $target = $location . $val;
                 move_uploaded_file($_FILES['image']['tmp_name'][$key], $target);
             }
-            $insert = "insert into car_list (name,modal,price,no_plate,company_name,image,seat,fual) values ('$car_name',$modal,$rent_price,'$no_plate','$company_name','$image_name',$seat,'$fual')";
+            $insert = "insert into car_list (name,modal,price,no_plate,company_name,image,seat,fual,door,en_power,en_type,break_type,fual_capacity,mileage)
+             values ('$car_name',$modal,$rent_price,'$no_plate','$company_name','$image_name',$seat,'$fual',$door,'$power','$engine','$break',$f_tank,$mile);";
             $run = mysqli_query($conn, $insert);
             if ($run == true)
             {
-                echo "Car Added Succesfully";
+                echo "<script>alert('Car Added Succesfully')</script>";
             }
             else
             {
-                echo "not";
+               echo "<script>alert('Someing Went Wrong')</script>";
             }
         
     
@@ -105,20 +136,14 @@ if(isset($_POST['submit']))
                 echo '<span class="message">'.$message.'</span>';
             }
         }*/
-        ?>
+    ?>
     <div class="container">
-        <div class="title">Add Car  
-        <?php
-        if(isset($message))
-        {
-            foreach($message as $message){
-                echo '<span class="message">'.$message.'</span>';
-            }
-        }
-        ?>
-        </div>
+      
         
         <form action="" method="post" enctype="multipart/form-data" >
+        <div class="title">Add Car  
+        
+        </div>
         <div class="bi-txt"><u><b>Basic Info.<span style="color: red;">*</span> </b></u></div>
         <div class="car_details">
                 <div class="input-box">
@@ -157,45 +182,96 @@ if(isset($_POST['submit']))
                 
                 <div class="fual-type">
                 <p style="color: red;"><?php echo $fu; ?></p>
+                <span class="details">Select Fual </span>
                     <select name="fual" id="fual">
-                        <option value="type" id="option">Fual Type</option>
-                        <option value="Petrol" id="option">Petrol</option>
-                        <option value="Diesel" id="option">Diesel</option>
-                        <option value="CNG" id="option">CNG</option>
+                        <option value="type" >Fual Type</option>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="CNG">CNG</option>
                     </select>
                    
                 </div>
-                <div class="up-img-txt"><u><b>Upload Images<span style="color: red;">*</span> </b></u></div>
                 
-
-                <p>Image1<span style="color: red;">*</span><span style="color: red;"><?php echo $ier; ?></span>
+                
+            <div class="up-img">
+            Upload Images<span style="color: red;">*</span>
+                <span style="color: red;"><?php echo $ier; ?></span>
                 <input type="file" name="image[]" multiple="multiple" id="file"><br>
                 <label for="file">Upload Image</label>     
-           </p> 
+                
             </div>
-            <div class="ace-txt"><u><b>Acessories<span style="color: red;">*</span> </b></u></div>
+            </div>
             
-                <div class="ace-chk">
-                <input type="checkbox" id="airconditioner" name="airconditioner" value="1">Air Conditioner
-                <input type="checkbox" id="powerdoorlocks" name="powerdoorlocks" value="1">Power Door Locks
-                <input type="checkbox" id="antilockbrakingsys" name="antilockbrakingsys" value="1">AntiLock Braking System
+            <div class="bi-txt"><u><b>Accessories.<span style="color: red;">*</span> </b></u></div>
+            <div class="accessories">
+            <div class="select-box">
+                <p style="color: red;"><?php echo $dr; ?></p>
+                <span class="details">Select Doors :</span>
+                    <select name="door" id="door">
+                        <option value="">Doors</option>
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                   
+                </div>
+                <div class="select-box">
+                <p style="color: red;"><?php echo $ft; ?></p>
+                <span class="details">Select Fual Capacity :</span>
+                    <select name="fual-tank" id="fual-tank">
+                        <option value="">Fual Capacity</option>
+                        <option value="20">20</option>
+                        <option value="40">40</option>
+                        <option value="50">50</option>
+                    </select>
+                   
+                </div>
+
+                <div class="select-box">
+                <p style="color: red;"><?php echo $br; ?></p>
+                <span class="details">Select Break Type :</span>
+                    <select name="break" id="break">
+                        <option value="">Break-Type</option>
+                        <option value="disc brakes">disc brakes</option>
+                        <option value="drum brakes">drum brakes</option>
+                        <option value="anti-lock brakes">anti-lock brakes</option>
+                    </select>
+                   
+                </div>
+
+                <div class="select-box">
+                <p style="color: red;"><?php echo $et; ?></p>
+                <span class="details">Select Engine Type :</span>
+                    <select name="engine" id="engine">
+                        <option value=""> Engine Type</option>
+                        <option value="Automatic">Automatic</option>
+                        <option value="Diesel engine">Diesel engine</option>
+                        <option value=" Gas Engines"> Gas Engines</option>
+                       
+                    </select>
+                   
+                </div>
+                <div class="select-box">
+                <p style="color: red;"><?php echo $pr; ?></p>
+                <span class="details">Select Engine Power : </span>
+                    <select name="engine-power" id="engine-power">
+                        <option value="">Engine Power</option>
+                        <option value="400 Hp">400 Hp</option>
+                        <option value="261 Hp">261 Hp</option>
+                        <option value="300 Hp"> 300 Hp</option>
+                        <option value="500  Hp"> 500 Hp</option>
+                       
+                    </select>
+                   
+                </div>
+              
+                </div>
+                <p style="color: red;"><?php echo $ml; ?></p>
+                <div class="mil">
+                    <span class="mi-de">Milage: </span>
+                    <input type="text" name="mile" id="mil" placeholder="Enter Car No.Plate">
+                </div>
                 
-            </div>
-            <div class="ace-chk">
-                <input type="checkbox" id="powersteering" name="powersteering" value="1">Power Steering 
-                <input type="checkbox" id="driverairbag" name="driverairbag" value="1">Driver Airbag
-                <input type="checkbox" id="passengerairbag" name="passengerairbag" value="1">Passenger Airbag
-                <input type="checkbox" id="powerwindow" name="powerwindow" value="1">Power Windows 
-                
-            </div>
-            <div class="ace-chk">
-                <input type="checkbox" id="centrallocking" name="centrallocking" value="1">Central Locking
-                <input type="checkbox" id="crashcensor" name="crashcensor" value="1">Crash Sensor
-                <input type="checkbox" id="leatherseats" name="leatherseats" value="1">Leather Seats 
-                <input type="checkbox" id="brakeassist" name="brakeassist" value="1">Brake Assist
-            </div>
-        
-        
             <div class="button">
             <button type="submit" name="submit" class="button">Add Car</button>
                     <!--<input type="button" value="Add Car" name="submit">-->

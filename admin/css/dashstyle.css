@@ -1,20 +1,36 @@
+
+@font-face {
+    
+    font-family: 'pop-reg';
+    src: url('../../font/Poppins-Regular.ttf');
+    
+
+}
+@font-face {
+    font-family: 'pop-bold';
+    src: url('../../font/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: 'pop-Light';
+    src: url('../../font/Poppins-Light.ttf');
+}
 /* General Styles */
 body {
     margin: 0px;
-    font-family:sans-serif;
+    font-family: Arial, sans-serif;
     display: flex;
-
+    font-family: 'pop-Light';
 }
-
 
 /* Sidebar Styles */
 .sidebar {
-    width: 220px;
+    width: 300px;
     background-color: white;
     height: 100vh;
     top: 0;
     left: 0;
     align-items: center;
+    background-color: red;
     color: black;
 
 
@@ -25,7 +41,6 @@ body {
     font-size: 19px;
     text-transform: uppercase;
     margin-bottom: 20px;
-    margin-top: 15px;
 }
 
 .sidebar .menu {
@@ -39,6 +54,7 @@ body {
 }
 
 .sidebar .menu li a {
+    font-family: 'pop-bold';
     color: black;
     text-decoration: none;
     font-weight: bold;
@@ -62,6 +78,10 @@ body {
     padding: 20px;
     margin-left: 15px;
     height: 100vh;
+    margin-top: 80px;
+    top: 0;
+    left: 0;
+  
 
 
 }
@@ -74,8 +94,9 @@ body {
 }
 
 .header h1 {
-    font-size: 24px;
+    font-size: 50px;
     margin: 0;
+    font-family: 'pop-Light';
 }
 
 .header .account {
@@ -121,8 +142,8 @@ body {
     margin-top: 10px;
     background-color: rgba(255, 255, 255, 0.3);
     padding: 8px 12px;
-    border-radius: 3px;
-    transition: background-color 1s ease;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .card a:hover {
@@ -134,14 +155,14 @@ iframe {
     position: fixed;
     top: 0px;
     /* Adjust this to match the height of your header */
-    left: 210px;
+    /* left: 210px; */
     /* Adjust this to match the width of your sidebar */
-    width: calc(100vw - 210px);
+    width: 100%;
     /* Full width minus sidebar */
-    height: calc(100vh - 60px);
+    height: 100%;
     /* Full height minus header */
     border: none;
-    margin-top: 24px;
+    /* margin-left: 100px; */
 }
 
 .dropdown li {
