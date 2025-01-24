@@ -7,12 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Footer</title>
     <style>
+        @font-face {
+    font-family: 'pop-regular';
+    src: url('../font/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'pop-bold';
+    src: url('../font/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'pop-light';
+    src: url('../font/Poppins-Light.ttf');
+}
         /* General Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family:'pop-regular';
         }
 
         body {
@@ -148,9 +162,9 @@
             <!-- Company Info -->
             <div class="footer-section company-info">
                 <h2 class="h2"><span>Car</span><span style="color: red;font-size: 35px; ;">ola</span></h2>
-                <p>57 Heol Isaf Station Road, <br>Cardiff, UK</p>
-                <p><a href="mailto:info@example.com">info@example.com</a></p>
-                <p>029-2021-4012</p>
+                <p>57,opp Hotel Lotus <br>Botad, Gujarat</p>
+                <p><a href="#">www.carola.com</a></p>
+                <p>+91-9824930580</p>
             </div>
             <!-- Community -->
             <div class="footer-section community">
@@ -159,6 +173,7 @@
                     <li><a href="#">Area Details</a></li>
                     <li><a href="faq.php">Faq</a></li>
                     <li><a href="servece_area.php">Service Areas</a></li>
+                    <li><a href="gallery.php">Gallery</a></li>
                     <li><a href="Testimonials.php">Testimonials</a></li>
                 </ul>
             </div>
@@ -167,9 +182,11 @@
                 <h3 class="h3">Resources</h3>
                 <ul>
                     <li><a href="about_us.php">About Us</a></li>
-                    <li><a href="gallery.php">Gallery</a></li>
                     <li><a href="out_team.php">Our Team</a></li>
+                    <li><a href="t&c.php">T&C</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
                     <li><a href="contact_us.php">Contact</a></li>
+                    
                 </ul>
             </div>
             <!-- Newsletter -->

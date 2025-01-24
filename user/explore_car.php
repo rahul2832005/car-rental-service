@@ -6,8 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>explore car</title>
     <style>
+        @font-face {
+    font-family: 'pop-regular';
+    src: url('../font/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'pop-bold';
+    src: url('../font/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'pop-light';
+    src: url('../font/Poppins-Light.ttf');
+}
         body {
-            font-family: sans-serif;
+            font-family:'pop-regular';
             display: flex;
             flex-direction: column;
             align-items: center;

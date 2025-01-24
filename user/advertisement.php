@@ -8,10 +8,24 @@
     <title>Car Rental Landing Page</title>
     <link href="aos.css" rel="stylesheet">
     <style>
+        @font-face {
+    font-family: 'pop-regular';
+    src: url('../font/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'pop-bold';
+    src: url('../font/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'pop-light';
+    src: url('../font/Poppins-Light.ttf');
+}
         /* styles.css */
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: 'pop-regular';
             background-color: #f5f5f5;
             width: 100%;
         }

@@ -56,7 +56,7 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
                             <i id="rate" class="fa-solid fa-star"></i>
                         </p>
                         <p id="car_name"><?php echo $row['name']; ?></p>
-                        <p class="content">Lorem ipsum dolor sit amet dfds sdf sdf consectetur adipisicing el</p>
+                        <p class="content">Lorem ipsum dolor sit amet dfds  sdf consectetur adipisicing el</p>
                         <p class="price"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['price']; ?>/-</p>
                         <hr class="hr">
                         <p class="seat"><i class="fa-solid fa-car"></i> Capacity:<?php echo $row['seat']; ?> People</p>

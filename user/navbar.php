@@ -10,10 +10,25 @@
   <!-- fontAWESOM LINK -->
   <link rel="stylesheet" href="css/fontawesome.min.css">
   <style>
+
+@font-face {
+    font-family: 'pop-regular';
+    src: url('../font/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'pop-bold';
+    src: url('../font/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'pop-light';
+    src: url('../font/Poppins-Light.ttf');
+}
     /* styles.css */
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'pop-regular';
     }
 
     .navbar {

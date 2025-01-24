@@ -6,8 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>explore brand</title>
     <style>
+        @font-face {
+            font-family: 'pop-regular';
+            src: url('../font/Poppins-Regular.ttf');
+        }
+
+        @font-face {
+            font-family: 'pop-bold';
+            src: url('../font/Poppins-Bold.ttf');
+        }
+
+        @font-face {
+            font-family: 'pop-light';
+            src: url('../font/Poppins-Light.ttf');
+        }
+
+
         body {
-            font-family: sans-serif;
+            font-family:'pop-regular';
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -67,7 +83,7 @@
             color: red;
         }
 
-       /* .header button:hover {
+        /* .header button:hover {
             background-color: #e0e0e0;
         }*/
 
@@ -79,12 +95,15 @@
         #suv_img {
             margin-bottom: 20px;
         }
-        #tata{
+
+        #tata {
             margin-top: 40px;
         }
-        h3{
+
+        h3 {
             color: black;
         }
+
         .badge {
             background-color: #ffdddd;
             color: #ff4d4d;
@@ -97,12 +116,12 @@
     </style>
 </head>
 
-<body>  
+<body>
 
-<div class="header">
-            <span class="badge">CAR BRANDS</span>
-            <h1 id="caption">Explore Car Brands</h1>
-        </div>
+    <div class="header">
+        <span class="badge">CAR BRANDS</span>
+        <h1 id="caption">Explore Car Brands</h1>
+    </div>
     <div class="container">
 
         <div class="card">

@@ -1,15 +1,34 @@
+@font-face {
+    font-family: 'pop-regular';
+    src: url('../font/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'pop-bold';
+    src: url('../font/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'pop-light';
+    src: url('../font/Poppins-Light.ttf');
+}
 *{
     padding: 0%;
     margin: 0%;
     box-sizing: border-box;
+   
+    
     
 }
 
 body{
     /*background-color: #48d1cc;*/
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
     font-size: 62.5%;
     width: 100%;
+    font-family: 'pop-regular';
+    
+   
 }
 
 main{
@@ -89,7 +108,7 @@ main .card .caption{
     font-size: 30px;
     margin-bottom: 20px;
     margin-top: 10px;
-    font-family:Lucida Sans Unicode;
+    
 }
 
 .content{
