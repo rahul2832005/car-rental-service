@@ -1,13 +1,20 @@
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'car_rent');
-
+$res=$sql1=$row1=$re="";
 if (!$conn) {
     echo "not connect";
 }
+// $sta="select status from booking where vid=(select  vid from car_list)";
+//  $ex=mysqli_query($conn,$sta);
+ 
+
+
+
 
 $sql = "select * from car_list";
 
 $result = mysqli_query($conn, $sql);
+
 
 
 ?>
@@ -88,11 +95,17 @@ $result = mysqli_query($conn, $sql);
                     <th>Seat</th>
                     <th>Fual</th>
                     <th>Action</th>
+                    <th>Status</th>
+                  
+
                 </tr>
             </thead>
             <tbody>
             <?php
+          
         while ($row = mysqli_fetch_assoc($result)) {
+           
+    
         ?>
 
             <tr>
@@ -107,10 +120,12 @@ $result = mysqli_query($conn, $sql);
                  <!-- <td> 
                  <img src="upload/<?php echo $row['image'] ?>" height="80" width="80"> 
                 </td> -->
+               
             </tr>
 
         <?php
         }
+        
         ?>
         </table>
        
