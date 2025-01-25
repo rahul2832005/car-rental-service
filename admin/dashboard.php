@@ -12,7 +12,9 @@
 </head>
 
 <body>
-       
+       <div>
+        <?php include('navbar.php');?>
+       </div>
     <div class="sidebar">
 
 
@@ -26,35 +28,29 @@
         <div class="sidebar">
             <ul class="menu">
                 <li><a href="main.php" target="second">Dashboard</a></li>
-                <li id="br-drop">
-                    <a href="#">Brands<span class="sub-icon">▼</span></a>
-                    <ul class="dropdown">
-                        <li><a href="createbrand.php" target="second">Add Brands</a></li>
-                        <li><a href="managebrand.php" target="second">Manage Brands</a></li>
-
-                    </ul>
-
-                </li>
-                <li id="cr-drop">
-                    <a href="#">Cars<span class="sub-icon">▼</span></a>
-                    <ul class="dropdown-cr">
-                        <li><a href="add_car.php" target="second">Add Cars</a></li>
-                        <li><a href="display_car.php" target="second">Manage Cars</a></li>
-
-                    </ul>
-
-                </li>
-                <li id="bk-drop">
-                    <a href="#">Bookings<span class="sub-icon">▼</span></a>
-                    <ul class="dropdown-bk">
-                        <li><a href="new-booking.php" target="second">New Bookings</a></li>
-                        <li><a href="confirmed-booking.php" target="second">Confirm Bookings</a></li>
-                        <li><a href="canceled-booking.php" target="second">Cancelled Bookings </a></li>
-
-                    </ul>
-
-                </li>
-                <li><a href="#" target="second">Manage Testimonials</a></li>
+                <li>
+                <a href="#" id="br-drop">Brands ▼</a>
+                <ul class="dropdown" id="br-dropdown">
+                    <li><a href="createbrand.php" target="second">Add Brands</a></li>
+                    <li><a href="managebrand.php" target="second">Manage Brands</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" id="cr-drop">Cars ▼</a>
+                <ul class="dropdown" id="cr-dropdown">
+                    <li><a href="add_car.php" target="second">Add Cars</a></li>
+                    <li><a href="managecar.php" target="second">Manage Cars</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" id="bk-drop">Bookings ▼</a>
+                <ul class="dropdown" id="bk-dropdown">
+                    <li><a href="new_booking.php" target="second">New Bookings</a></li>
+                    <li><a href="confirmed-bookings.php" target="second">Confirm Bookings</a></li>
+                    <li><a href="canceled-bookings.php" target="second">Cancelled Bookings</a></li>
+                </ul>
+            </li>
+                <li><a href="brandsub.php" target="second">Manage Testimonials</a></li>
                 <li><a href="#" target="second">Manage Contactus Query</a></li>
                 <li><a href="reguser.php" target="second">Reg Users</a></li>
                 <li><a href="#" target="second">Manage Pages</a></li>
@@ -67,37 +63,26 @@
     </div>
     <div>
 
-        <iframe name="second" src="main.php" height="100%" width=""></iframe>
+        <iframe name="second" src="main.php" height="100%" width="850px"></iframe>
 
     </div>
   
     <script>
-        document.getElementById("br-drop").addEventListener('click', function() {
-            document.querySelector(".dropdown").style.display = "block";
-        })
-        document.getElementById("br-drop").addEventListener('dblclick', function() {
-            document.querySelector(".dropdown").style.display = "none";
-        })
+        
+        function toggleDropdown(triggerId, dropdownId) {
+            const trigger = document.getElementById(triggerId);
+            const dropdown = document.getElementById(dropdownId);
 
+            trigger.addEventListener('click', () => {
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            });
+        }
 
-        document.getElementById("cr-drop").addEventListener('click', function() {
-            document.querySelector(".dropdown-cr").style.display = "block";
-        })
-
-
-        document.getElementById("cr-drop").addEventListener('dblclick', function() {
-            document.querySelector(".dropdown-cr").style.display = "none";
-        })
-
-        document.getElementById("bk-drop").addEventListener('click', function() {
-            document.querySelector(".dropdown-bk").style.display = "block";
-        })
-
-
-        document.getElementById("bk-drop").addEventListener('dblclick', function() {
-            document.querySelector(".dropdown-bk").style.display = "none";
-        })
+        toggleDropdown('br-drop', 'br-dropdown');
+        toggleDropdown('cr-drop', 'cr-dropdown');
+        toggleDropdown('bk-drop', 'bk-dropdown');
     </script>
+    
 </body>
 
 </html>
