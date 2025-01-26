@@ -29,7 +29,7 @@ if (!$_SESSION["alogin"])
     </div>
     <div class="services-section">
         <a href="info.php" target="main">
-            <div class="service-card">
+            <div class="service-card id="card">
                 <div class="icon"><img src="image/pinfo.png"></div>
                 <h3>INFORMATION</h3>
             </div>
@@ -61,5 +61,6 @@ if (!$_SESSION["alogin"])
     </div>
     <iframe src="info.php" name="main" id="main"></iframe>
     <?php include('footer.php'); ?>
+  
 </body>
 </html>
