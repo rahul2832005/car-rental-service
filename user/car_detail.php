@@ -95,11 +95,12 @@ if (isset($_POST['Book'])) {
     <div class="container">
     <div class="image-showcase">
         <div class="main-image">
-        <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[0]; ?>" alt="Not ">
+        <img src="/car%20rental%20service/admin/img/<?php echo $image[0]; ?>" alt="Not ">
         </div>
+        <!-- /projects/git_test/7-1/car-rental-service-main/admin/img/ -->
         <div class="side-images">
-        <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[1]; ?>" alt="Car Interior Front">
-        <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/<?php echo $image[2]; ?>" alt="Car Interior Back">
+        <img src="/car%20rental%20service/admin/img/<?php echo $image[1]; ?>" alt="Car Interior Front">
+        <img src="/car%20rental%20service/admin/img/<?php echo $image[2]; ?>" alt="Car Interior Back">
         </div>
     </div>
     <div class="car-details">

@@ -22,16 +22,15 @@ body {
 
 /* Sidebar Styles */
 .sidebar {
-    width: 300px;
+    width: 240px;
     background-color: white;
-    height: 100vh;
+    height: 115vh;
     top: 0;
     left: 0;
     align-items: center;
-    background-color: red;
+    /* background-color: red; */
     color: black;
-
-
+    border: 2px solid black;
 }
 
 .sidebar h2 {
@@ -48,20 +47,20 @@ body {
 
 .sidebar .menu li {
     margin-left: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .sidebar .menu li a {
-    font-family: 'pop-bold';
+    font-family: 'pop-reg';
     color: black;
     text-decoration: none;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 16px;
     display: block;
-    padding: 8px 14px;
+    padding: 4px 14px;
     border-radius: 10px;
     transition: background-color 0.6s ease;
-    margin-bottom: 10px;
+    margin-right: 10px;
 
 }
 .sidebar .menu li a:hover {
@@ -76,9 +75,10 @@ body {
     padding: 20px;
     margin-left: 15px;
     height: 100vh;
-    margin-top: 80px;
+    /* margin-top: 80px; */
     top: 0;
     left: 0;
+    margin-right: 247px;
   
 
 
@@ -89,6 +89,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    margin-top: -30px;
 }
 
 .header h1 {
@@ -164,19 +165,19 @@ iframe {
 }
 
 .dropdown li {
-    list-style-type: none;
+    list-style-type: circle;
     padding-right: 20px;
     margin-left: -28px;
 
 }
 .dropdown-cr li {
-    list-style-type: none;
+    list-style-type: circle;
     padding-right: 20px;
     margin-left: -28px;
 
 }
 .dropdown-bk li {
-    list-style-type: none;
+    list-style-type: circle;
     padding-right: 20px;
     margin-left: -28px;
 
@@ -187,11 +188,11 @@ ul li ul.dropdown {
    display: none;
 }
 ul li ul.dropdown-cr {
-    margin-left: -30px;
+    /* margin-left: -30px; */
     display: none;
 }
 ul li ul.dropdown-bk {
-    margin-left: -30px;
+    /* margin-left: -30px; */
     display: none;
 }
 
