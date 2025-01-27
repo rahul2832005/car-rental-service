@@ -22,7 +22,6 @@ body {
 
 /* Sidebar Styles */
 .sidebar {
-<<<<<<< HEAD
     width: 240px;
     background-color: white;
     height: 115vh;
@@ -32,24 +31,6 @@ body {
     /* background-color: red; */
     color: black;
     border: 2px solid black;
-=======
-    width: 220px;
-    background-color: rgb(235, 24, 24);
-    height: 90vh;
-    top: 0;
-    left: 10px;
-    align-items: center;
-    /* margin-top: 75px; */
-    color: black;
-    /* position: fixed; */
-    /* width: 250px;
-            height: 100vh;
-            background-color: #f8f9fa;
-            position: fixed;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
-
->>>>>>> 194fdc88c8132f478bfcb0f40c863d3da374911b
 }
 
 .sidebar h2 {
@@ -65,35 +46,21 @@ body {
 }
 
 .sidebar .menu li {
-<<<<<<< HEAD
     margin-left: 5px;
     margin-bottom: 5px;
 }
 
 .sidebar .menu li a {
     font-family: 'pop-reg';
-=======
-    margin-bottom: 10px;
-}
-
-.sidebar .menu li a {
->>>>>>> 194fdc88c8132f478bfcb0f40c863d3da374911b
     color: black;
     text-decoration: none;
     /* font-weight: bold; */
     font-size: 16px;
-<<<<<<< HEAD
     display: block;
     padding: 4px 14px;
     border-radius: 10px;
     transition: background-color 0.6s ease;
     margin-right: 10px;
-=======
-   display: block;
-    padding: 5px 12px;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
->>>>>>> 194fdc88c8132f478bfcb0f40c863d3da374911b
 
 }
 
@@ -112,7 +79,6 @@ body {
     flex: 1;
     background-color: #0a80f7;
     padding: 20px;
-<<<<<<< HEAD
     margin-left: 15px;
     height: 100vh;
     /* margin-top: 80px; */
@@ -121,16 +87,6 @@ body {
     margin-right: 247px;
   
 
-=======
-    margin-left: 61px;
-    height: 90vh;
-    width: 90%;
-    position: absolute;
-    
-    /* top: 0;
-    left: 0;
-    position: relative; */
->>>>>>> 194fdc88c8132f478bfcb0f40c863d3da374911b
 
 }
 
@@ -239,17 +195,11 @@ ul li ul.dropdown {
    display: none;
 }
 ul li ul.dropdown-cr {
-<<<<<<< HEAD
     /* margin-left: -30px; */
     display: none;
 }
 ul li ul.dropdown-bk {
     /* margin-left: -30px; */
-=======
-    display: none;
-}
-ul li ul.dropdown-bk {
->>>>>>> 194fdc88c8132f478bfcb0f40c863d3da374911b
     display: none;
 }
 

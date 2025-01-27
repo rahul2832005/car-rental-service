@@ -3,9 +3,10 @@
 $conn = mysqli_connect("localhost", "root", "", "car_rent");
 session_start();
 error_reporting(0);
-$sdate=date('Y-m-d');
+$dates = date('Y-m-d');
 $fdate = $tdate = $message = $er = $ms = $td = $fd = "";
 $vid = $_GET['id'];
+
 
 if (isset($_POST['Book'])) {
     $count = 0;
@@ -13,7 +14,7 @@ if (isset($_POST['Book'])) {
     $tdate = $_POST['tdate'];
     $message = $_POST['message'];
     $useremail = $_SESSION['alogin'];
-    
+
     $status = 0;
     $bookingno = mt_rand(1000000, 999999999);
     if ($fdate == "") {
@@ -28,31 +29,24 @@ if (isset($_POST['Book'])) {
         $ms = "Write Message";
         $count++;
     }
-    
-        $avlquery = "select * from booking where '$fdate' between date(FromDate) AND date(ToDate) AND vid=$vid";
-        $exavlquery = mysqli_query($conn, $avlquery);
-       
-        $row = mysqli_num_rows($exavlquery);
-        if ($row == 0) {
-            $sql="insert into booking (bookingno,userEmail,vid,FromDate,ToDate,message,status) values($bookingno,'$useremail',$vid,'$fdate','$tdate','$message',$status);";
-            $ex=mysqli_query($conn,$sql);
-            if($ex)
-            {
-                echo "<script>alert('Booking Done');</script>";
-                
-                
-            }
-            else
-            {
-                echo "<script>alert('Something Wrong');</script>";
-            }
+
+    $avlquery = "select * from booking where '$fdate' between date(FromDate) AND date(ToDate) AND vid=$vid";
+    $exavlquery = mysqli_query($conn, $avlquery);
+
+    $row = mysqli_num_rows($exavlquery);
+    if ($row == 0) {
+        $sql = "insert into booking (bookingno,userEmail,vid,FromDate,ToDate,message,status) values($bookingno,'$useremail',$vid,'$fdate','$tdate','$message',$status);";
+        $ex = mysqli_query($conn, $sql);
+        if ($ex) {
+            echo "<script>alert('Booking Done');</script>";
+        } else {
+            echo "<script>alert('Something Wrong');</script>";
         }
-         else
-          {
-            echo "<script>alert('Car  Already Booked');</script>";
-            echo "<script type='text/javascript'> document.location = 'dis_car.php'; </script>";
-          }
+    } else {
+        echo "<script>alert('Car  Already Booked');</script>";
+        echo "<script type='text/javascript'> document.location = 'dis_car.php'; </script>";
     }
+}
 
 
 
@@ -70,22 +64,22 @@ if (isset($_POST['Book'])) {
 
     <link rel="stylesheet" href="css/booking.css">
     <link rel="stylesheet" href="css/car_details.css">
-    
-    
+
+
 </head>
 <script>
-    if(window.history.replaceState)
-{
-    window.history.replaceState(null,null,window.location.href);
-}
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
 </script>
+
 <body>
 
     <div>
         <?php include('navbar.php'); ?>
     </div>
     <?php
-    
+
     $query = "select * from car_list where id=$vid";
     $exquery = mysqli_query($conn, $query);
 
@@ -93,68 +87,59 @@ if (isset($_POST['Book'])) {
         $image = explode(",", $row['image']);
 
     ?>
-    <div class="container">
-    <div class="image-showcase">
-        <div class="main-image">
-<<<<<<< HEAD
-        <img src="/car%20rental%20service/admin/img/<?php echo $image[0]; ?>" alt="Not ">
-=======
-        <img src="../admin/img/<?php echo $image[0]; ?>" alt="Not ">
->>>>>>> 194fdc88c8132f478bfcb0f40c863d3da374911b
+        <div class="container">
+            <div class="image-showcase">
+                <div class="main-image">
+                    <img src="../admin/img/<?php echo $image[0]; ?>" alt="Not ">
+                </div>
+                <!-- /projects/git_test/7-1/car-rental-service-main/admin/img/ -->
+                <div class="side-images">
+                    <img src="../admin/img/<?php echo $image[1]; ?>" alt="Car Interior Front">
+                    <img src="../admin/img/<?php echo $image[2]; ?>" alt="Car Interior Back">
+                </div>
+            </div>
+            <div class="car-details">
+
+                <h1 class="car-title"><?php echo $row['name']; ?> </h1>
+                <div class="car-info">
+                    <div class="car-info-item">
+                        <img src="../admin/img/capacity.png" alt="Seat Capacity Icon">
+
+                        <span><?php echo $row['seat'] ?> People</span>
+                    </div>
+                    <div class="car-info-item">
+                        <img src="../admin/img/capacity.png" alt="Doors Icon">
+                        <span><?php echo $row['door'] ?> Doors</span>
+                    </div>
+                    <div class="car-info-item">
+                        <img src="../admin/img/capacity.png" alt="Fuel Tank Icon">
+                        <span><?php echo $row['fual_capacity'] ?> Liters</span>
+                    </div>
+                    <div class="car-info-item">
+                        <img src="../admin/img/capacity.png" alt="Fuel Type Icon">
+                        <span><?php echo $row['fual'] ?></span>
+                    </div>
+                    <div class="car-info-item">
+                        <img src="../admin/img/capacity.png" alt="Mileage Icon">
+                        <span><?php echo $row['mileage'] ?> Kmpl</span>
+                    </div>
+                    <div class="car-info-item">
+                        <img src="../admin/img/capacity.png" alt="Engine Type Icon">
+                        <span><?php echo $row['en_type'] ?></span>
+                    </div>
+                    <div class="car-info-item">
+                        <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Brake Type Icon">
+                        <span><?php echo $row['break_type'] ?></span>
+                    </div>
+                    <div class="car-info-item">
+                        <img src="../admin/img/capacity.png" alt="Engine Power Icon">
+                        <span><?php echo $row['en_power'] ?></span>
+                    </div>
+                </div>
+                <button type="submit" id="button">Rent Now</button>
+            </div>
         </div>
-        <!-- /projects/git_test/7-1/car-rental-service-main/admin/img/ -->
-        <div class="side-images">
-<<<<<<< HEAD
-        <img src="/car%20rental%20service/admin/img/<?php echo $image[1]; ?>" alt="Car Interior Front">
-        <img src="/car%20rental%20service/admin/img/<?php echo $image[2]; ?>" alt="Car Interior Back">
-=======
-        <img src="/project/car-rental-service/admin/img/<?php echo $image[1]; ?>" alt="Car Interior Front">
-        <img src="../admin/img/<?php echo $image[2]; ?>" alt="Car Interior Back">
->>>>>>> 194fdc88c8132f478bfcb0f40c863d3da374911b
-        </div>
-    </div>
-    <div class="car-details">
-       
-       <h1 class="car-title"><?php echo $row['name']; ?></h1>
-       <div class="car-info">
-           <div class="car-info-item">
-               <img src="../admin/img/capacity.png" alt="Seat Capacity Icon">
-               
-               <span><?php echo $row['seat'] ?>   People</span>
-           </div>
-           <div class="car-info-item">
-               <img src="../admin/img/capacity.png" alt="Doors Icon">
-               <span><?php echo $row['door'] ?> Doors</span>
-           </div>
-           <div class="car-info-item">
-               <img src="/admin/img/capacity.png" alt="Fuel Tank Icon">
-               <span><?php echo $row['fual_capacity'] ?> Liters</span>
-           </div>
-           <div class="car-info-item">
-               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Fuel Type Icon">
-               <span><?php echo $row['fual'] ?></span>
-           </div>
-           <div class="car-info-item">
-               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Mileage Icon">
-               <span><?php echo $row['mileage'] ?> Kmpl</span>
-           </div>
-           <div class="car-info-item">
-               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Engine Type Icon">
-               <span><?php echo $row['en_type'] ?></span>
-           </div>
-           <div class="car-info-item">
-               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Brake Type Icon">
-               <span><?php echo $row['break_type'] ?></span>
-           </div>
-           <div class="car-info-item">
-               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Engine Power Icon">
-               <span><?php echo $row['en_power'] ?></span>
-           </div>
-       </div>
-       <button type="submit" id="button">Rent Now</button>
-   </div>
-   </div>
-    <?php  
+    <?php
     }
     ?>
 
@@ -164,7 +149,7 @@ if (isset($_POST['Book'])) {
             <h2>Book Now</h2>
             <form method="post">
                 From Date :<br>
-                <input type="date" id="from-date" placeholder="dd-mm-yyyy" name="fdate" value="<?php echo $fdate; ?>" min="<?php  echo $sdate; ?>"; required>
+                <input type="date" id="from-date" placeholder="dd-mm-yyyy" name="fdate" value="<?php echo $fdate; ?>" min="<?php echo $dates; ?>" required>
                 <p style="color: red;"><?php echo $fd; ?></p>
                 To Date:<br>
                 <input type="date" id="to-date" placeholder="dd-mm-yyyy" name="tdate" value="<?php echo $tdate; ?>" required>
@@ -191,6 +176,14 @@ if (isset($_POST['Book'])) {
         document.querySelector(".close").addEventListener('click', function() {
             document.querySelector(".pop-up").style.display = "none";
         })
+
+        const fromDateInput = document.getElementById('from-date');
+        const toDateInput = document.getElementById('to-date');
+
+        fromDateInput.addEventListener('change', function() {
+            const fromDate = this.value; // Get selected "From Date"
+            toDateInput.min = fromDate; // Set "To Date" minimum value
+        });
     </script>
 
 
