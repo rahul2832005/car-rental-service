@@ -3,6 +3,7 @@
 $conn = mysqli_connect("localhost", "root", "", "car_rent");
 session_start();
 error_reporting(0);
+$sdate=date('Y-m-d');
 $fdate = $tdate = $message = $er = $ms = $td = $fd = "";
 $vid = $_GET['id'];
 
@@ -153,7 +154,7 @@ if (isset($_POST['Book'])) {
             <h2>Book Now</h2>
             <form method="post">
                 From Date :<br>
-                <input type="date" id="from-date" placeholder="dd-mm-yyyy" name="fdate" value="<?php echo $fdate; ?>" required>
+                <input type="date" id="from-date" placeholder="dd-mm-yyyy" name="fdate" value="<?php echo $fdate; ?>" min="<?php  echo $sdate; ?>"; required>
                 <p style="color: red;"><?php echo $fd; ?></p>
                 To Date:<br>
                 <input type="date" id="to-date" placeholder="dd-mm-yyyy" name="tdate" value="<?php echo $tdate; ?>" required>

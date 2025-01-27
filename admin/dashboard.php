@@ -63,7 +63,9 @@
     </div>
     <div>
 
-        <iframe name="second" src="main.php" height="100%" width="850px"></iframe>
+        <iframe name="second" src="main.php" height="100%" 
+        
+        ></iframe>
 
     </div>
   
