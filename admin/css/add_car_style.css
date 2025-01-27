@@ -14,11 +14,11 @@ body{
 
 .container{
     
-    width: 100%;
-    background:     #f1eeee;
+    width: 76%;
+    background:#f1eeee;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 45px;
+    padding-top: 10px;
     padding-bottom: 30px;
     /* padding: 25px 30px; */
     border-radius: 5px;
