@@ -42,9 +42,9 @@
                 <li>
                     <a href="#" id="bk-drop">Bookings <span class="down-icon3">▶</span></a>
                     <ul class="dropdown" id="bk-dropdown">
-                        <li><a href="new_booking.php" target="second">New Bookings</a></li>
-                        <li><a href="confirmed-bookings.php" target="second">Confirm Bookings</a></li>
-                        <li><a href="canceled-bookings.php" target="second">Cancelled Bookings</a></li>
+                        <li><a href="new-booking.php" target="second">New Bookings</a></li>
+                        <li><a href="confirmed-booking.php" target="second">Confirm Bookings</a></li>
+                        <li><a href="canceled-booking.php" target="second">Cancelled Bookings</a></li>
                     </ul>
                 </li>
                 <li><a href="brandsub.php" target="second">Manage Testimonials</a></li>

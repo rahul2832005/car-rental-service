@@ -32,24 +32,24 @@ $result = mysqli_fetch_assoc($exquery);
     <form action="process_form.php" method="post">
         <div class="form-group">
             <label for="first_name">First Name*</label>
-            <input type="text" id="first_name" name="first_name" value="<?php echo $result['name']; ?>" required>
+            <input type="text" id="first_name" name="first_name" value="<?php echo $result['name']; ?>" disabled required>
         </div>
         
         <div class="form-group">
             <label for="phone">Phone No.*</label>
-            <input type="text" id="phone" name="phone" required>
+            <input type="text" id="phone" name="phone" value="<?php  echo $result['mnumber']; ?>" disabled required>
         </div>
         <div class="form-group">
             <label for="email">Email*</label>
-            <input type="email" id="email" name="email" value="<?php echo $result['email']; ?>" required>
+            <input type="email" id="email" name="email" value="<?php echo $result['email']; ?>" disabled required>
         </div>
         <div class="form-group">
             <label for="dob">DOB*</label>
-            <input type="date" id="dob" name="dob" required>
+            <input type="date" id="dob" name="dob" disabled required>
         </div>
         <div class="form-group">
             <label for="gender">Gender*</label>
-            <select id="gender" name="gender" required>
+            <select id="gender" name="gender" disabled required>
                 <option value="">Select Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -58,7 +58,7 @@ $result = mysqli_fetch_assoc($exquery);
         </div>
         <div class="form-group">
             <label for="state">State*</label>
-            <select id="state" name="state" required>
+            <select id="state" name="state" disabled required>
                 <option value="">Select State</option>
                 <option value="state1">State 1</option>
                 <option value="state2">State 2</option>
@@ -67,7 +67,7 @@ $result = mysqli_fetch_assoc($exquery);
         </div>
         <div class="form-group">
             <label for="address_type">Address Type*</label>
-            <select id="address_type" name="address_type" required>
+            <select id="address_type" name="address_type" disabled required>
                 <option value="">Select Address Type</option>
                 <option value="home">Home</option>
                 <option value="office">Office</option>
@@ -75,11 +75,11 @@ $result = mysqli_fetch_assoc($exquery);
         </div>
         <div class="form-group">
             <label for="pincode">Pincode*</label>
-            <input type="text" id="pincode" name="pincode" required>
+            <input type="text" id="pincode" name="pincode" disabled required>
         </div>
         <div class="form-group">
             <label for="address">Address*</label>
-            <input type="text" id="address" name="address" required>
+            <input type="text" id="address" name="address" disabled required>
         </div>
         <button type="submit" class="submit-btn">Save</button>
     </form>

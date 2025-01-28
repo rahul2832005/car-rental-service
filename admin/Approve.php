@@ -27,7 +27,7 @@ $q=mysqli_query($conn,$update);
 if($q){
 
     echo "<script>alert('Approve')</script>";
-    header("Location:new_booking.php");
+    header("Location:new-booking.php");
 }
 else{
     echo "<script>alert('book not  approved')</script>";

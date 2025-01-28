@@ -55,16 +55,17 @@ if(!$conn)
                         </thead>
                         <tbody>
                             <?php
-                           
+                           $n=1;
                             $query="select * from brands";
                             $exquery=mysqli_query($conn,$query);
                             $total=mysqli_num_rows($exquery);
                             if($total != 0)
                             {
+                            
                               while ($row = mysqli_fetch_assoc($exquery)) {
                                 ?>
                                   <tr align="center">
-                                    <td><?php echo $row["id"]?></td>
+                                    <td><?php echo $n ?></td>
                                     <td><?php echo $row["bname"] ?></td>
                                     <td><?php echo $row["created_at"]?></td>
                                     <td><?php echo $row["updated_at"]?></td>
@@ -77,6 +78,7 @@ if(!$conn)
                                     </td>
                                   </tr>
                                 <?php
+                                $n++;
                                 }
                             }
                             ?>

@@ -78,7 +78,7 @@ $result = mysqli_query($conn, $sql);
         <table>
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>No</th>
                     <th>User Name</th>
                     <th>Number</th>
                     <th>Email</th>
@@ -88,18 +88,20 @@ $result = mysqli_query($conn, $sql);
             </thead>
             <tbody>
             <?php
+            $n=1;
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
 
             <tr>
-                <td><?php echo $row['ID'] ?></td>
+                <td><?php echo $n ?></td>
                 <td><?php echo $row['name'] ?></td>
                 <td><?php echo $row['mnumber'] ?></td>
                 <td><?php echo $row['email'] ?></td>
-                <td><?php echo md5($row['password'])?></td>
+               
             </tr>
 
         <?php
+        $n++;
         }
         ?>
         </table>
