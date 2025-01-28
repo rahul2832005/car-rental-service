@@ -197,7 +197,7 @@ margin-top: -80px;
 
 }
 .dropdown-bk li {
-    list-style-type: circle;
+    list-style-type:circle;
     padding-right: 20px;
     /* margin-left: -28px; */
 
@@ -219,3 +219,25 @@ ul li ul.dropdown-bk {
     margin-left: 120px;
 
 }
+.down-icon{
+    display: inline-block;
+   
+    transition: transform 0.3s ease;
+    margin-left: 93px;
+  }
+  .down-icon2{
+    display: inline-block;
+  
+    transition: transform 0.3s ease;
+    margin-left: 113px;
+  }
+  .down-icon3{
+    display: inline-block;
+
+    transition: transform 0.3s ease;
+    margin-left: 78px;
+  }
+  .down-icon.rotate,.down-icon2.rotate,.down-icon3.rotate {
+    transform: rotate(90deg);
+  }
+   
