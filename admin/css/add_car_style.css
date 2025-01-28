@@ -14,7 +14,7 @@ body{
 
 .container{
     
-    width: 76%;
+    width: 100%;
     background:#f1eeee;
     padding-left: 20px;
     padding-right: 20px;
@@ -140,7 +140,7 @@ label{
     width: 150px;
     border-radius: 6px;
     border: 1px dashed #999;
-    margin-right: 292px;
+    margin-right: 160px;
     text-align: center;
     display: grid;
     place-items: center;

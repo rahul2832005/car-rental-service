@@ -137,7 +137,7 @@ if(isset($_POST['submit']))
             }
         }*/
     ?>
-    <div class="container">
+    <div class="container" style="width:100%;">
       
         
         <form action="" method="post" enctype="multipart/form-data" >
@@ -197,7 +197,7 @@ if(isset($_POST['submit']))
             Upload Images<span style="color: red;">*</span>
                 <span style="color: red;"><?php echo $ier; ?></span>
                 <input type="file" name="image[]" multiple="multiple" id="file"><br>
-                <label for="file">Upload Image</label>     
+                <label for="file" style="margin-right:160px;">Upload Image</label>     
                 
             </div>
             </div>
@@ -206,7 +206,7 @@ if(isset($_POST['submit']))
             <div class="accessories">
             <div class="select-box">
                 <p style="color: red;"><?php echo $dr; ?></p>
-                <span class="details">Select Doors :</span>
+                <span class="details">Select Doors :</span><br>
                     <select name="door" id="door">
                         <option value="">Doors</option>
                         <option value="2">2</option>
@@ -269,7 +269,7 @@ if(isset($_POST['submit']))
                 <p style="color: red;"><?php echo $ml; ?></p>
                 <div class="mil">
                     <span class="mi-de">Milage: </span>
-                    <input type="text" name="mile" id="mil" placeholder="Enter Car No.Plate">
+                    <input type="text" name="mile" id="mil" placeholder="Enter Car Mielage">
                 </div>
                 
             <div class="button">

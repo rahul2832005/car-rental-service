@@ -12,9 +12,6 @@
 </head>
 
 <body>
-       <div>
-        <?php include('navbar.php');?>
-       </div>
     <div class="sidebar">
 
 
