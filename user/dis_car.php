@@ -1,10 +1,10 @@
 <?php
-$index=0;
+$index = 0;
 //@include "./connection.php";
 $conn = mysqli_connect("localhost", "root", "", "car_rent");
-    session_start();
-    error_reporting(0);
-   
+session_start();
+error_reporting(0);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,15 +20,16 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
 <?php
 @include "navbar.php";
 ?>
+
 <body>
-<?php
-@include "advertisement.php";
-?>
+    <?php
+    @include "advertisement.php";
+    ?>
     <?php
     @include "explore_car.php"
     ?>
     <div class="header" id="header">
-    <span class="badge">POPULAR CARS</span>
+        <span class="badge">POPULAR CARS</span>
         <h1>Most Popular Car</h1>
 
     </div>
@@ -38,13 +39,19 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
         $select_car = mysqli_query($conn, "select * from car_list");
         if (mysqli_num_rows($select_car) > 0) {
             while ($row = mysqli_fetch_array($select_car)) {
-                $image=explode(",",$row['image']);
+                $image = explode(",", $row['image']);
                 //print_r($image); 
         ?>
                 <div class="card">
                     <div class="image">
+                        <?php if ($_SESSION["alogin"]) { ?>
+                            <a href="car_detail.php?id=<?php echo $row['id']; ?>"><img src="../admin/img/<?php echo $image[0] ?>"></a>
 
-                    <a href="car_detail.php?id=<?php echo $row['id']; ?>"><img src="../admin/img/<?php echo $image[0] ?>"></a>
+                        <?php } else { ?>
+
+                        <img src="../admin/img/<?php echo $image[0] ?>"></a>
+                        <?php } ?>
+
                         <!-- <img src="/car%20rental%20service/admin/img/"> -->
                         <!-- /project/car-rental-service/admin/img/ -->
                     </div>
@@ -57,24 +64,23 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
                             <i id="rate" class="fa-solid fa-star"></i>
                         </p>
                         <p id="car_name"><?php echo $row['name']; ?></p>
-                        <p class="content">Lorem ipsum dolor sit amet dfds  sdf consectetur adipisicing el</p>
+                        <p class="content">Lorem ipsum dolor sit amet dfds sdf consectetur adipisicing el</p>
                         <p class="price"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['price']; ?>/-</p>
                         <hr class="hr">
                         <p class="seat"><i class="fa-solid fa-car"></i> Capacity:<?php echo $row['seat']; ?> People</p>
                         <p class="fual"><i class="fa-solid fa-gas-pump"></i> Fual:<?php echo $row['fual']; ?></p>
-                      
-                   
+
+
                     </div>
-                    <?php if($_SESSION["alogin"])
-                    { ?>
-                    <button class="add" type="submit" name="rent-now"><a href="car_detail.php?id=<?php echo $row['id']; ?>" class="button">Rent Now</a></button>
+                    <?php if ($_SESSION["alogin"]) { ?>
+                        <button class="add" type="submit" name="rent-now"><a href="car_detail.php?id=<?php echo $row['id']; ?>" class="button">Rent Now</a></button>
                     <?php } else { ?>
-                        
+
                         <button class="add"><a href="login.php" class="button">Login For Book</a></button>
-                        <?php } ?>
+                    <?php } ?>
                 </div>
-                   
-                    
+
+
         <?php
             };
         };
@@ -85,18 +91,18 @@ $conn = mysqli_connect("localhost", "root", "", "car_rent");
     @include "explore_brand.php";
     ?>
 
-<?php
+    <?php
     @include "we_best.php";
     ?>
 
-<?php
+    <?php
     @include "slider.php";
     ?>
 
 
-<?php
-@include "footer.php";
-?>
+    <?php
+    @include "footer.php";
+    ?>
 
 </body>
 
