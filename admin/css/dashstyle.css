@@ -23,17 +23,6 @@ body {
 
 /* Sidebar Styles */
 .sidebar {
-<<<<<<< Updated upstream
-    width: 240px;
-    background-color: white;
-    height: 115vh;
-    top: 0;
-    left: 0;
-    align-items: center;
-    /* background-color: red; */
-    color: black;
-    border: 2px solid black;
-=======
     margin-left: 15px;
     width: 220px;
     background-color:white;
@@ -45,7 +34,6 @@ body {
     color: black;
     /* position: fixed; */
 
->>>>>>> Stashed changes
 }
 
 .sidebar h2 {
@@ -62,35 +50,18 @@ body {
 }
 
 .sidebar .menu li {
-<<<<<<< Updated upstream
-    margin-left: 5px;
-    margin-bottom: 5px;
-}
-
-.sidebar .menu li a {
-    font-family: 'pop-reg';
-=======
     margin-bottom: 10px;
 }
 
 .sidebar .menu li a {
->>>>>>> Stashed changes
     color: black;
     text-decoration: none;
     /* font-weight: bold; */
     font-size: 16px;
-<<<<<<< Updated upstream
-    display: block;
-    padding: 4px 14px;
-    border-radius: 10px;
-    transition: background-color 0.6s ease;
-    margin-right: 10px;
-=======
    display: block;
     padding: 5px 12px;
     border-radius: 20px;
     transition: background-color 0.3s ease;
->>>>>>> Stashed changes
 
 }
 
@@ -109,16 +80,6 @@ body {
     flex: 1;
     background-color: #0a80f7;
     padding: 20px;
-<<<<<<< Updated upstream
-    margin-left: 15px;
-    height: 100vh;
-    /* margin-top: 80px; */
-    top: 0;
-    left: 0;
-    margin-right: 247px;
-  
-
-=======
     margin-left: 61px;
     height: 90vh;
     width: 90%;
@@ -127,7 +88,6 @@ body {
     /* top: 0;
     left: 0;
     position: relative; */
->>>>>>> Stashed changes
 
 }
 
@@ -237,17 +197,9 @@ ul li ul.dropdown {
    display: none;
 }
 ul li ul.dropdown-cr {
-<<<<<<< Updated upstream
-    /* margin-left: -30px; */
     display: none;
 }
 ul li ul.dropdown-bk {
-    /* margin-left: -30px; */
-=======
-    display: none;
-}
-ul li ul.dropdown-bk {
->>>>>>> Stashed changes
     display: none;
 }
 
