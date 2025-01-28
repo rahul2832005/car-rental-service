@@ -46,11 +46,11 @@
                     <p>Queries</p>
                     <a href="#">Full Detail →</a>
                 </div>
-                <div class="card" style="background-color: #60A5FA;">
+                <!-- <div class="card" style="background-color: #60A5FA;">
                     <h2>1</h2>
                     <p>Testimonials</p>
                     <a href="#">Full Detail →</a>
-                </div>
+                </div> -->
             </section>
         </main>
 

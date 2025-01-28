@@ -33,20 +33,29 @@ body {
     /* margin-top: 75px; */
     color: black;
     /* position: fixed; */
+    overflow-y: auto;
+    overflow-x: hidden;
 
 }
+.sidebar{
+    scrollbar-width: none;
+}
+
 
 .sidebar h2 {
+    padding-top: 15px;
     margin: 0;
-    font-size: 18px;
+    font-size: 20px;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-left: 3px;
 }
 
 .sidebar .menu {
-    margin-left: -11px;
+    /* margin-left: -11px; */
     list-style-type: none;
     padding: 0;
+    margin-right: 25px;
 }
 
 .sidebar .menu li {
@@ -65,8 +74,10 @@ body {
 
 }
 
+
 .sidebar .menu li a:hover {
     background-color: rgb(199, 54, 54);
+    color: #FFF;
 
 }
 .nav{
@@ -80,7 +91,7 @@ body {
     flex: 1;
     background-color: #0a80f7;
     padding: 20px;
-    margin-left: 61px;
+    margin-left: 35px;
     height: 90vh;
     width: 90%;
     position: absolute;

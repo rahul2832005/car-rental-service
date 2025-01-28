@@ -137,7 +137,7 @@ if(isset($_POST['submit']))
             }
         }*/
     ?>
-    <div class="container" style="width:100%;">
+    <div class="container">
       
         
         <form action="" method="post" enctype="multipart/form-data" >
@@ -197,7 +197,7 @@ if(isset($_POST['submit']))
             Upload Images<span style="color: red;">*</span>
                 <span style="color: red;"><?php echo $ier; ?></span>
                 <input type="file" name="image[]" multiple="multiple" id="file"><br>
-                <label for="file" style="margin-right:160px;">Upload Image</label>     
+                <label for="file">Upload Image</label>     
                 
             </div>
             </div>
@@ -220,9 +220,9 @@ if(isset($_POST['submit']))
                 <span class="details">Select Fual Capacity :</span>
                     <select name="fual-tank" id="fual-tank">
                         <option value="">Fual Capacity</option>
-                        <option value="20">20</option>
-                        <option value="40">40</option>
-                        <option value="50">50</option>
+                        <option value="20">20 Ltr</option>
+                        <option value="40">40 Ltr</option>
+                        <option value="50">50 Ltr</option>
                     </select>
                    
                 </div>
@@ -245,7 +245,7 @@ if(isset($_POST['submit']))
                     <select name="engine" id="engine">
                         <option value=""> Engine Type</option>
                         <option value="Automatic">Automatic</option>
-                        <option value="Diesel engine">Diesel engine</option>
+                        <option value="Diesel engine">Diesel Engine</option>
                         <option value=" Gas Engines"> Gas Engines</option>
                        
                     </select>

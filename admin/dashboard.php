@@ -48,7 +48,7 @@
                 </ul>
             </li>
                 <li><a href="brandsub.php" target="second">Manage Testimonials</a></li>
-                <li><a href="#" target="second">Manage Contactus Query</a></li>
+                <li><a href="#" target="second">Manage Contact Us</a></li>
                 <li><a href="reguser.php" target="second">Reg Users</a></li>
                 <li><a href="#" target="second">Manage Pages</a></li>
                 <li><a href="#" target="second">Update Contact Info</a></li>

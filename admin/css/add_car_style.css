@@ -1,5 +1,5 @@
 *{
-    margin: 25%;
+    /* margin: 25%; */
     padding: 0%;
     box-sizing: border-box;
     font-family:arial;
@@ -127,7 +127,7 @@ form .button{
     font-size: 30px;
     font-weight: 500;
     color: #fff;
-    background:linear-gradient(135deg,#f94449,#c30010);
+    background:#d23d49;
     border-radius: 5px;
 }
 
@@ -140,7 +140,7 @@ label{
     width: 150px;
     border-radius: 6px;
     border: 1px dashed #999;
-    margin-right: 160px;
+    margin-right: 145px;
     text-align: center;
     display: grid;
     place-items: center;
@@ -152,9 +152,6 @@ label:hover{
     border: 1px dashed ;
 }
 
-form .button input:hover{
-    background:linear-gradient(-135deg,#f94449,#c30010);
-}
 form .accessories{
     display: flex;
     flex-wrap: wrap; 
