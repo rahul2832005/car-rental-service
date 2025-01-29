@@ -209,9 +209,9 @@ if(isset($_POST['submit']))
                 <span class="details">Select Doors :</span><br>
                     <select name="door" id="door">
                         <option value="">Doors</option>
-                        <option value="2">2</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        <option value="2">2 Door</option>
+                        <option value="4">4 Door</option>
+                        <option value="5">5 Door</option>
                     </select>
                    
                 </div>
@@ -232,9 +232,9 @@ if(isset($_POST['submit']))
                 <span class="details">Select Break Type :</span>
                     <select name="break" id="break">
                         <option value="">Break-Type</option>
-                        <option value="disc brakes">disc brakes</option>
-                        <option value="drum brakes">drum brakes</option>
-                        <option value="anti-lock brakes">anti-lock brakes</option>
+                        <option value="disc break">Disc Break</option>
+                        <option value="Carbon break">Carbon Break</option>
+                        <option value="ABS break">ABS Break</option>
                     </select>
                    
                 </div>
@@ -244,9 +244,10 @@ if(isset($_POST['submit']))
                 <span class="details">Select Engine Type :</span>
                     <select name="engine" id="engine">
                         <option value=""> Engine Type</option>
-                        <option value="Automatic">Automatic</option>
+                        <option value="Petrol ">Petrol Engine</option>
                         <option value="Diesel engine">Diesel Engine</option>
-                        <option value=" Gas Engines"> Gas Engines</option>
+                        <option value="EV">EV Engine</option>
+                        <option value="Hybrid">Hybrid Engine</option>
                        
                     </select>
                    
