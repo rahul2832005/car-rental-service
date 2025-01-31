@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 25, 2025 at 04:48 PM
+-- Generation Time: Jan 31, 2025 at 04:47 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `car_rent`
+-- Database: `car_rentnew`
 --
 
 -- --------------------------------------------------------
@@ -29,29 +29,23 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `booking`;
 CREATE TABLE IF NOT EXISTS `booking` (
-  `id` int NOT NULL AUTO_INCREMENT,
   `bookingno` bigint NOT NULL,
   `userEmail` varchar(100) NOT NULL,
-  `vid` int NOT NULL,
+  `id` int NOT NULL,
   `FromDate` varchar(20) NOT NULL,
   `ToDate` varchar(20) NOT NULL,
   `message` varchar(200) NOT NULL,
   `status` int NOT NULL,
   `PostingDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `LastUpdationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `LastUpdationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`) VALUES
-(26, 767196256, '', 49, '2025-01-07', '2025-01-18', 'sda', 0, '2025-01-24 02:22:03', '2025-01-24 02:22:03'),
-(27, 608641699, 'asdbhupatvatukiya1@gmail.com', 49, '2025-01-04', '2025-01-09', 'assda', 0, '2025-01-25 16:45:32', '2025-01-25 16:45:32'),
-(25, 465211289, 'abhupatvatukiya1@gmail.com', 51, '2025-01-30', '2025-01-24', 'wsd', 1, '2025-01-20 05:33:30', '2025-01-20 05:33:30'),
-(24, 163753437, 'abhupatvatukiya1@gmail.com', 50, '2025-01-05', '2025-01-05', 'fgjh', 1, '2025-01-19 11:53:58', '2025-01-19 11:53:58'),
-(23, 903317739, 'abhupatvatukiya1@gmail.com', 50, '2025-01-01', '2025-01-04', 'cvbh', 1, '2025-01-19 11:52:58', '2025-01-19 11:52:58');
+INSERT INTO `booking` (`bookingno`, `userEmail`, `id`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`) VALUES
+(437452828, 'abhupatvatukiya1@gmail.com', 63, '2025-01-03', '2025-01-18', 'qwe', 0, '2025-01-27 05:22:42', '2025-01-27 05:22:42');
 
 -- --------------------------------------------------------
 
@@ -87,6 +81,7 @@ DROP TABLE IF EXISTS `car_list`;
 CREATE TABLE IF NOT EXISTS `car_list` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `brand` varchar(255) NOT NULL,
   `modal` int NOT NULL,
   `price` int NOT NULL,
   `no_plate` varchar(255) NOT NULL,
@@ -101,17 +96,19 @@ CREATE TABLE IF NOT EXISTS `car_list` (
   `fual_capacity` int NOT NULL,
   `mileage` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `car_list`
 --
 
-INSERT INTO `car_list` (`id`, `name`, `modal`, `price`, `no_plate`, `company_name`, `image`, `seat`, `fual`, `door`, `en_power`, `en_type`, `break_type`, `fual_capacity`, `mileage`) VALUES
-(49, 'bmw x7', 2015, 1500, 'dfw', 'bmw', 'a.jpeg,b.jpeg,c.jpeg,d.jpeg', 5, 'type', 0, '', '', '', 0, 0),
-(50, 'audi q7', 2024, 25000, '1234', 'audi', 'front.jpeg,rear.jpeg,right-cross.jpeg,side.jpeg', 6, 'CNG', 0, '', '', '', 0, 0),
-(47, 'audi x7', 2121, 111111, 'GJ33AB1212', 'audi', 'download (1).png,download (2).png,download (3).png,download (4).png', 6, 'Diesel', 0, '', '', '', 0, 0),
-(60, 'Land Rover new Model', 2026, 25000, 'GJ33AB1212', 'Tata', 'b.jpeg,c.jpeg,d.jpeg', 4, 'Diesel', 4, '500  Hp', 'Automatic', 'drum brakes', 40, 25);
+INSERT INTO `car_list` (`id`, `name`, `brand`, `modal`, `price`, `no_plate`, `company_name`, `image`, `seat`, `fual`, `door`, `en_power`, `en_type`, `break_type`, `fual_capacity`, `mileage`) VALUES
+(64, 'BMW X7', '', 2025, 13000, 'NL25LK2150', 'BMW', 'a.jpeg,b.jpeg,c.jpeg', 4, 'Petrol', 2, '300 Hp', 'Automatic', 'drum brakes', 40, 29),
+(63, 'Audi Q7', '', 2023, 15000, 'GJ25IO2152', 'Audi', 'front.jpeg,rear.jpeg,right-cross.jpeg', 5, 'Petrol', 4, '500  Hp', 'Diesel engine', 'anti-lock brakes', 50, 12),
+(62, 'Mahindra BE 6', '', 2025, 12000, 'GJ19BG2150', 'Mahindra', 'mahidra2.jpeg,mahindra1.jpeg,mahindra3.jpeg', 4, 'Petrol', 4, '500  Hp', 'Diesel engine', 'disc brakes', 40, 22),
+(65, 'Mercedes-Benz EQS', '', 2024, 25000, 'MH02UK1542', 'Mercedes', 'mer1.jpeg,mer2.jpeg,mer3.jpeg', 5, 'Diesel', 4, '500  Hp', 'Diesel engine', 'drum brakes', 50, 8),
+(66, 'Kia  carens', '', 2024, 11000, 'MH02UK1544', 'KIa', 'kia1.jpeg,kia2.jpeg,kia3.jpeg', 4, 'CNG', 2, '500  Hp', 'Automatic', 'drum brakes', 40, 120),
+(67, '1dgd', 'creata', 2025, 1524, 'GJ33AB1212', '', 'front.jpeg,rear.jpeg,right-cross.jpeg,side.jpeg', 5, 'Petrol', 2, '300 Hp', 'Automatic', 'drum brakes', 20, 5);
 
 -- --------------------------------------------------------
 
@@ -158,24 +155,19 @@ DROP TABLE IF EXISTS `reguser`;
 CREATE TABLE IF NOT EXISTS `reguser` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `mnumber` int NOT NULL,
+  `mnumber` bigint NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `reguser`
 --
 
 INSERT INTO `reguser` (`ID`, `name`, `mnumber`, `email`, `password`) VALUES
-(31, 'Bhupat', 2147483647, 'asdbhupatvatukiya1@gmail.com', '123123123'),
-(27, 'bhupat', 2147483647, 'bhupatvatukiya1@gmail.com', '1414141414'),
-(25, 'kalu', 2147483647, 'kalu@123gmail.com', '1515151515'),
-(26, 'vatukiya', 2147483647, 'abhupatvatukiya1@gmail.com', '1111111111'),
-(24, 'jadav', 2147483647, 'jadav123@gmail.com', '1515151515'),
-(29, 'Bhupat', 2147483647, 'bcacourcebca@gmail.com', '123123123'),
-(30, 'jayraj', 2147483647, 'jayraj1@gmail.com', '12345678');
+(39, 'rahul', 9824545454, 'rahul123@gmail.com', '123123123'),
+(38, 'Bhupat', 7359509387, 'abhupatvatukiya1@gmail.com', '123123123');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

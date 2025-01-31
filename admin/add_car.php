@@ -93,8 +93,8 @@ if(isset($_POST['submit']))
                 $target = $location . $val;
                 move_uploaded_file($_FILES['image']['tmp_name'][$key], $target);
             }
-            $insert = "insert into car_list (name,modal,price,no_plate,company_name,image,seat,fual,door,en_power,en_type,break_type,fual_capacity,mileage)
-             values ('$car_name',$modal,$rent_price,'$no_plate','$company_name','$image_name',$seat,'$fual',$door,'$power','$engine','$break',$f_tank,$mile);";
+            $insert = "insert into car_list (name,modal,price,no_plate,company_name,image,seat,fual)
+             values ('$car_name',$modal,$rent_price,'$no_plate','$company_name','$image_name',$seat,'$fual');";
             $run = mysqli_query($conn, $insert);
             if ($run == true)
             {
