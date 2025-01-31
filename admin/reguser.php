@@ -82,7 +82,7 @@ $result = mysqli_query($conn, $sql);
                     <th>User Name</th>
                     <th>Number</th>
                     <th>Email</th>
-                    <th>Password</th>
+                    
                 
                 </tr>
             </thead>

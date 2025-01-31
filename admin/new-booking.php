@@ -22,7 +22,7 @@ $result = mysqli_query($conn, $sql);
             margin: 20px;
         }
         .container {
-            max-width: 800px;
+            /* width: 800px; */
             margin: auto;
         }
         h1 {
@@ -91,6 +91,7 @@ $result = mysqli_query($conn, $sql);
             </thead>
             <tbody>
             <?php
+            $n=1;
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
 
@@ -108,6 +109,7 @@ $result = mysqli_query($conn, $sql);
             </tr>
 
         <?php
+        $n++;
         }
         ?>
         </table>
