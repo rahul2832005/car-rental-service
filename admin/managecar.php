@@ -1,12 +1,18 @@
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'car_rent');
-
+$search="";
 if (!$conn) {
     echo "not connect";
 }
+if (isset($_POST['search'])) 
+{
+    $search = trim($_POST['search']);
+}
 
-
-$sql = "select * from car_list";
+$sql = "SELECT car_list.*, 
+booking.status     
+FROM booking JOIN car_list ON car_list.vid = booking.vid 
+WHERE name LIKE  '%$search%'  or fual LIKE '%$search%'";
 
 $result = mysqli_query($conn, $sql);
 
@@ -70,7 +76,7 @@ $result = mysqli_query($conn, $sql);
         }
     </style>
 </head>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="ajax.js"></script>
 
 <body>
     <div class="container">
@@ -78,12 +84,12 @@ $result = mysqli_query($conn, $sql);
         <div class="search-container">
            
             <input type="text" id="search" placeholder="Search by name..." autocomplete="off">
-            <a href="managecar.php"><button type="submit">refresh</button></a>
+            <!-- <a href="managecar.php"><button type="submit">refresh</button></a> -->
         </div>
         <table class="tbl">
             <thead>
                 <tr>
-                    <th>vehicle id</th>
+                    <th>#</th>
                     <th>Car Name</th>
                     <th>Price</th>
                     <th>No Plate</th>
@@ -92,17 +98,33 @@ $result = mysqli_query($conn, $sql);
                     <th>Fual</th>
                     <th>status</th>
                     <th>Action</th>
-                    <th></th>
+                   
                 </tr>
             </thead>
+            <tfoot>
+                <tr>
+                    <th>#</th>
+                    <th>Car Name</th>
+                    <th>Price</th>
+                    <th>No Plate</th>
+                    <th>Company Name</th>
+                    <th>Seat</th>
+                    <th>Fual</th>
+                    <th>status</th>
+                    <th>Action</th>
+                   
+                </tr>
+            </tfoot>
+
             <tbody>
             <div id="result">
             <?php
+            $n=1;
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
 
             <tr>
-                <td><?php echo $row['vid'] ?></td>
+                <td><?php echo $n; ?></td>
                 <td><?php echo $row['name'] ?></td>
                 <td><?php echo $row['price'] ?></td>
                 <td><?php echo $row['no_plate'] ?></td>
@@ -117,7 +139,7 @@ $result = mysqli_query($conn, $sql);
                     echo "<td>Booked</td>";
                 }
                 elseif($row['status']==2){
-                    echo "<td>In Maintanance</td>";
+                    echo "<td>Cancelled</td>";
                 }
                 else
                 {
@@ -126,12 +148,11 @@ $result = mysqli_query($conn, $sql);
 
                 ?>
                 <td><a id="edit" href="update.php?uid=<?php echo $row['vid'] ?>"><i class="fa-solid fa-pen"></i></a>   <a id="delete" href=""><i class="fa-solid fa-trash"></i></a></td>
-                <!-- <td> 
-                 <img src="upload/<?php echo $row['image'] ?>" height="80" width="80"> 
-                </td>-->
+
             </tr>
 
         <?php
+        $n++;
         }
         ?>
         </div>
@@ -153,6 +174,7 @@ $result = mysqli_query($conn, $sql);
                         }
                     });
                 } else {
+                    window.location.href="managecar.php";
                     $("#result").html("");
                 }
             });

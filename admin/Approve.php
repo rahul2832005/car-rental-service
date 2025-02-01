@@ -2,30 +2,15 @@
 
 $conn=mysqli_connect("localhost","root","","car_rent");
 
-
-$vid = $_GET['vid'];
-$userEmail = $_GET['userEmail'];
-
-
-$query="select * from booking where vid=$vid";
-$res=mysqli_query($conn,$query);
-
-if($res){
-    $row=mysqli_fetch_assoc($res); }
-else{
-    echo "data not found";
-}
-
-
-
 // for approve 
-if(isset($_POST['approve'])){
+if(isset($_REQUEST['aid'])){
+    $aid=intval($_GET['aid']);
     $status=1;
-$update="update booking set status=$status where vid=$vid";
+$update="update booking set status=$status where vid=$aid";
 $q=mysqli_query($conn,$update);
 
-$update1="update car_list set status=$status where vid=$vid";
-$q1=mysqli_query($conn,$update1);
+// $update1="update car_list set status=$status where vid=$aid";
+// $q1=mysqli_query($conn,$update1);
 
 if($q){
 
@@ -40,13 +25,14 @@ else{
 
 
 // for cancel booking
-if(isset($_POST['cancel'])){
+if(isset($_REQUEST['eaid'])){
+    $eaid=$_GET['eaid'];
     $status=2;
-$update="update booking set status=$status where vid=$vid";
+$update="update booking set status=$status where vid=$eaid";
 $q=mysqli_query($conn,$update);
 
-$update1="update car_list set status=$status where vid=$vid";
-$q1=mysqli_query($conn,$update1);
+// $update1="update car_list set status=$status where vid=$eaid";
+// $q1=mysqli_query($conn,$update1);
 
 if($q){
 
@@ -271,7 +257,7 @@ h3 {
                     echo "<td>Booked</td>";
                 }
                 elseif($row['status']==2){
-                    echo "<td>In Maintanance</td>";
+                    echo "<td>Cancelled</td>";
                 }
                 else
                 {
@@ -286,13 +272,17 @@ h3 {
                 </tr>
             </table>
         </div>
-    <?php } ?>
+        <?php if($row['status']==0)
+        { ?>
         <div class="buttons">
-            <form method="post">
-           <a> <button class="confirm-button" name="approve" onclick="return confirm('Do you really want to Approve this Booking')">Confirm Booking</button>
-            <button class="cancel-button" name="cancel" onclick="return confirm('Do you really want to Cancel this Booking')">Cancel Booking</button>
-            </form>
+            
+                <a href="Approve.php?aid=<?php echo $row['vid'] ?>"> <button class="confirm-button" name="approve" onclick="return confirm('Do you really want to Approve this Booking')">Confirm Booking</button></a>
+                <a href="Approve.php?eaid=<?php echo $row['vid'] ?>"> <button class="cancel-button" name="cancel" onclick="return confirm('Do you really want to Cancel this Booking')">Cancel Booking</button></a>
+          
         </div>
+  <?php  } 
+  }?>
+       
 
         <div class="print-button">
             <button onclick="window.print()">Print</button>

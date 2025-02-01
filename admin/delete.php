@@ -12,7 +12,7 @@
         $id=$_GET['uid'];
         // echo $id;
 
-        $sql="select * from car_list where id=$id";
+        $sql="select * from car_list where vid=$id";
 
         $result=mysqli_query($conn,$sql) or die("can not fetch the data.".mysqli_error($conn));
         $user=mysqli_fetch_array($result); 
@@ -22,7 +22,7 @@
 
         // print_r($image);
 
-        $sql="delete from car_list where id=$id";;
+        $sql="delete from car_list where vid=$id";;
 
         $run=mysqli_query($conn,$sql);
 

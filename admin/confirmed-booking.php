@@ -77,7 +77,7 @@ $result = mysqli_query($conn, $sql);
             <thead>
                 <tr>
                     
-                    <th>id</th>
+                    <th>#</th>
                     <th>Booking NO</th>
                     <th>User Email</th>
                     <th>vehicle id</th>
@@ -90,11 +90,12 @@ $result = mysqli_query($conn, $sql);
             </thead>
             <tbody>
             <?php
+            $n=1;
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
 
             <tr>
-                <td><?php echo $row['id'] ?></td>
+                <td><?php echo $n; ?></td>
                 <td><?php echo $row['bookingno'] ?></td>
                 <td><?php echo $row['userEmail'] ?></td>
                 <td><?php echo $row['vid'] ?></td>
@@ -107,11 +108,12 @@ $result = mysqli_query($conn, $sql);
                     }
                 ?>
                 <td><?php echo $row['PostingDate'] ?></td>
-                <td><a name="Approve" class="Approve" href="Approve.php?vid=<?php echo $row['vid']; ?> & userEmail=<?php echo $row['userEmail'] ?>">View</a></td>
+                <td><a name="Approve" class="Approve" href="Approve.php?vid=<?php echo $row['vid']; ?> ">View</a></td>
 
             </tr>
 
         <?php
+        $n++;
         }
         ?>
         </table>

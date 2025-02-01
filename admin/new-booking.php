@@ -77,7 +77,7 @@ $result = mysqli_query($conn, $sql);
         <table>
             <thead>
                 <tr>
-                    <th>id</th>
+                    <th>#</th>
                  
                     <th>Booking NO</th>
                     <th>User Email</th>
@@ -97,7 +97,7 @@ $result = mysqli_query($conn, $sql);
         ?>
 
             <tr>
-                <td><?php echo $row['id'] ?></td>
+                <td><?php echo $n; ?></td>
                 <td><?php echo $row['bookingno'] ?></td>
                 <td><?php echo $row['userEmail'] ?></td>
                 <td><?php echo $row['vid'] ?></td>
