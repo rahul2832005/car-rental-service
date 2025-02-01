@@ -2,7 +2,7 @@
 //@include "./connection.php";
 $conn = mysqli_connect("localhost", "root", "", "car_rent");
 session_start();
-error_reporting(0);
+// error_reporting(0);
 $sdate=date('Y-m-d');
 $fdate = $tdate = $message = $er = $ms = $td = $fd = "";
 $vid = $_GET['id'];
@@ -16,7 +16,7 @@ if (isset($_POST['Book'])) {
     $useremail = $_SESSION['alogin'];
     
     $status = 0;
-    $bookingno = mt_rand(1000000, 999999999);
+    $bookingno = mt_rand(1000, 9999);
     if ($fdate == "") {
         $fd = "Select From Date";
         $count++;

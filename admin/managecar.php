@@ -18,6 +18,7 @@ $result = mysqli_query($conn, $sql);
     <title>Manage Cars</title>
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -68,14 +69,17 @@ $result = mysqli_query($conn, $sql);
         }
     </style>
 </head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <body>
     <div class="container">
         <h1>Manage Brands</h1>
         <div class="search-container">
            
-            <input type="text" placeholder="Search...">
+            <input type="text" id="search" placeholder="Search by name..." autocomplete="off">
+            <a href="managecar.php"><button type="submit">refresh</button></a>
         </div>
-        <table>
+        <table class="tbl">
             <thead>
                 <tr>
                     <th>vehicle id</th>
@@ -86,9 +90,11 @@ $result = mysqli_query($conn, $sql);
                     <th>Seat</th>
                     <th>Fual</th>
                     <th>Action</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
+            <div id="result">
             <?php
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
@@ -110,8 +116,29 @@ $result = mysqli_query($conn, $sql);
         <?php
         }
         ?>
+        </div>
         </table>
        
     </div>
+    <script>
+        $(document).ready(function() {
+            $("#search").on("keyup", function() {
+                var query = $(this).val();
+                if (query.length > 0) {
+                    document.querySelector(".tbl").style.display='none';
+                    $.ajax({
+                        url: "search2.php",
+                        method: "POST",
+                        data: { search: query },
+                        success: function(data) {
+                            $("#result").html(data);
+                        }
+                    });
+                } else {
+                    $("#result").html("");
+                }
+            });
+        });
+    </script>
 </body>
 </html>
