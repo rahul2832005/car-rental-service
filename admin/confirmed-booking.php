@@ -103,12 +103,12 @@ $result = mysqli_query($conn, $sql);
                 <?php 
                     if($row['status']==1)
                     {
-                        echo "<td>confirm</td>";
+                        echo "<td>confirmed</td>";
                     }
                 ?>
                 <td><?php echo $row['PostingDate'] ?></td>
-                <td><a id="edit" href="update.php?uid=<?php echo $row['id'] ?>"><i class="fa-solid fa-pen"></i></a>   <a id="delete" href=""><i class="fa-solid fa-trash"></i></a></td>
-               
+                <td><a name="Approve" class="Approve" href="Approve.php?vid=<?php echo $row['vid']; ?> & userEmail=<?php echo $row['userEmail'] ?>">View</a></td>
+
             </tr>
 
         <?php

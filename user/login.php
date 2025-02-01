@@ -60,14 +60,17 @@
            
             $username=$user["email"];
             $_SESSION["alogin"]=$username;
-            // $id = $user["id"];
-            //  $_SESSION["userid"]=$id;
             
+   
+            $id = $user["uid"];
+            $_SESSION["userid"]=$id;
+
             
 
            
            
             header("location:dis_car.php");
+           
              
         }
         elseif($row!=1 && $count==0)

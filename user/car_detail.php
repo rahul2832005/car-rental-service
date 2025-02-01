@@ -5,7 +5,9 @@ session_start();
 // error_reporting(0);
 $sdate=date('Y-m-d');
 $fdate = $tdate = $message = $er = $ms = $td = $fd = "";
-$vid = $_GET['id'];
+
+$vid = $_GET['vid'];
+$uid = $_SESSION['userid'];
 
 
 if (isset($_POST['Book'])) {
@@ -14,6 +16,7 @@ if (isset($_POST['Book'])) {
     $tdate = $_POST['tdate'];
     $message = $_POST['message'];
     $useremail = $_SESSION['alogin'];
+    
     
     $status = 0;
     $bookingno = mt_rand(1000, 9999);
@@ -32,11 +35,14 @@ if (isset($_POST['Book'])) {
     
         $avlquery = "select * from booking where '$fdate' between date(FromDate) AND date(ToDate) AND vid=$vid";
         $exavlquery = mysqli_query($conn, $avlquery);
+
+     
        
         $row = mysqli_num_rows($exavlquery);
         if ($row == 0) {
             $sql="insert into booking (bookingno,userEmail,vid,FromDate,ToDate,message,status) values($bookingno,'$useremail',$vid,'$fdate','$tdate','$message',$status);";
             $ex=mysqli_query($conn,$sql);
+        
             if($ex)
             {
                 echo "<script>alert('Booking Done');</script>";
@@ -86,8 +92,8 @@ if (isset($_POST['Book'])) {
         <?php include('navbar.php'); ?>
     </div>
     <?php
-    
-    $query = "select * from car_list where id=$vid";
+   
+    $query = "select * from car_list where vid=$vid";
     $exquery = mysqli_query($conn, $query);
 
     while ($row = mysqli_fetch_array($exquery)) {

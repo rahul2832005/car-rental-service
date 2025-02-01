@@ -23,7 +23,7 @@ if (!$_SESSION["alogin"])
         <div class="profile-details">
             <img src="image/p2.jpg" alt="Profile Picture" class="profile-picture">
             <div class="profile-info">
-                <h1><?php echo $_SESSION["alogin"]; ?></h1>
+                <h1><?php echo $_SESSION["alogin"];  echo $_SESSION['userid']; ?></h1>
             </div>
         </div>
     </div>

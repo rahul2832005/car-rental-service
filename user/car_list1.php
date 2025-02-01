@@ -231,7 +231,7 @@ session_start();
                 <div class="card">
                     <div class="image">
 
-                        <a href="car_detail.php?id=<?php echo $row['id']; ?>"> <img src="../admin/img/<?php echo $image[0];?>">  </a>
+                        <a href="car_detail.php?vid=<?php echo $row['vid']; ?>"> <img src="../admin/img/<?php echo $image[0];?>">  </a>
                             <!-- <img src="/project/car-rental-service/admin/img/"> -->
                         <!-- <img src="/car%20rental%20service/admin/img/"> -->
                     </div>
@@ -253,7 +253,7 @@ session_start();
 
                     </div>
                     <?php if ($_SESSION["alogin"]) { ?>
-                        <button class="add" type="submit" name="rent-now"><a href="car_detail.php?id=<?php echo $row['id']; ?>" class="button">Rent Now</a></button>
+                        <button class="add" type="submit" name="rent-now"><a href="car_detail.php?vid=<?php echo $row['vid']; ?>" class="button">Rent Now</a></button>
                     <?php } else { ?>
 
                         <button class="add"><a href="login.php" class="button">Login For Book</a></button>

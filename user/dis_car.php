@@ -36,7 +36,7 @@ error_reporting(0);
     <main>
         <?php
 
-        $select_car = mysqli_query($conn, "select * from car_list where id in(15,13,14)");
+        $select_car = mysqli_query($conn, "select * from car_list where vid in(15,13,14)");
         if (mysqli_num_rows($select_car) > 0) {
             while ($row = mysqli_fetch_array($select_car)) {
                 $image = explode(",", $row['image']);
@@ -45,7 +45,7 @@ error_reporting(0);
                 <div class="card">
                     <div class="image">
                         <?php if ($_SESSION["alogin"]) { ?>
-                            <a href="car_detail.php?id=<?php echo $row['id']; ?>"><img src="../admin/img/<?php echo $image[0] ?>"></a>
+                            <a href="car_detail.php?vid=<?php echo $row['vid']; ?>"><img src="../admin/img/<?php echo $image[0] ?>"></a>
 
                         <?php } else { ?>
 
@@ -73,7 +73,7 @@ error_reporting(0);
 
                     </div>
                     <?php if ($_SESSION["alogin"]) { ?>
-                        <button class="add" type="submit" name="rent-now"><a href="car_detail.php?id=<?php echo $row['id']; ?>" class="button">Rent Now</a></button>
+                        <button class="add" type="submit" name="rent-now"><a href="car_detail.php?vid=<?php echo $row['vid']; ?>" class="button">Rent Now</a></button>
                     <?php } else { ?>
 
                         <button class="add"><a href="login.php" class="button">Login For Book</a></button>

@@ -5,6 +5,7 @@ if (!$conn) {
     echo "not connect";
 }
 
+
 $sql = "select * from car_list";
 
 $result = mysqli_query($conn, $sql);
@@ -89,6 +90,7 @@ $result = mysqli_query($conn, $sql);
                     <th>Company Name</th>
                     <th>Seat</th>
                     <th>Fual</th>
+                    <th>status</th>
                     <th>Action</th>
                     <th></th>
                 </tr>
@@ -100,14 +102,30 @@ $result = mysqli_query($conn, $sql);
         ?>
 
             <tr>
-                <td><?php echo $row['id'] ?></td>
+                <td><?php echo $row['vid'] ?></td>
                 <td><?php echo $row['name'] ?></td>
                 <td><?php echo $row['price'] ?></td>
                 <td><?php echo $row['no_plate'] ?></td>
                 <td><?php echo $row['company_name'] ?></td>
                 <td><?php echo $row['seat'] ?></td>
                 <td><?php echo $row['fual'] ?></td>
-                <td><a id="edit" href="update.php?uid=<?php echo $row['id'] ?>"><i class="fa-solid fa-pen"></i></a>   <a id="delete" href=""><i class="fa-solid fa-trash"></i></a></td>
+                <?php 
+                if($row['status']==0){
+                    echo "<td>Available</td>"; 
+                }
+                elseif($row['status']==1){
+                    echo "<td>Booked</td>";
+                }
+                elseif($row['status']==2){
+                    echo "<td>In Maintanance</td>";
+                }
+                else
+                {
+                    echo "<td>Not Available</td>";
+                }
+
+                ?>
+                <td><a id="edit" href="update.php?uid=<?php echo $row['vid'] ?>"><i class="fa-solid fa-pen"></i></a>   <a id="delete" href=""><i class="fa-solid fa-trash"></i></a></td>
                 <!-- <td> 
                  <img src="upload/<?php echo $row['image'] ?>" height="80" width="80"> 
                 </td>-->
