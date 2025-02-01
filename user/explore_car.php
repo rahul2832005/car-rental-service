@@ -27,7 +27,7 @@
             align-items: center;
         }
 
-        .container {
+        .c-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -35,7 +35,7 @@
             margin-top: 20px;
         }
 
-        .card {
+        .c-card {
             width: 250px;
             height: 250px;
             border: 1px solid #ccc;
@@ -47,30 +47,31 @@
             position: relative;
         }
 
-        .card img {
+        .c-card img {
             width: 100%;
             height: auto;
             cursor: pointer;
         }
 
-        .card h3 {
+        .c-card h3 {
             margin-top: 10px;
             font-size: 16px;
         }
 
-        .header {
+        .c-header {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 20px;
+            margin-left: 384px;
         }
 
-        .header h1 {
+        .c-header h1 {
             font-size: 26px;
             color: black;
         }
 
-        .header button {
+        .c-header button {
             background-color: #e0e0e0;
             border: none;
             border-radius: 5px;
@@ -95,7 +96,7 @@
         h3{
             color: black;
         }
-        .badge {
+        .c-badge {
             background-color: #ffdddd;
             color: #ff4d4d;
             padding: 5px 10px;
@@ -108,38 +109,38 @@
 </head>
 
 <body>
-<div class="header">
-            <span class="badge">CAR TYPES</span>
-            <h1 id="caption">Explore Car Types</h1>
+<div class="c-header">
+            <span class="c-badge">CAR TYPES</span>
+            <h1 id="c-caption">Explore Car Types</h1>
         </div>
-    <div class="container">
+    <div class="c-container">
 
-        <div class="card">
+        <div class="c-card">
             <img src="image/truck.png" alt="" srcset="">
             <h3>Truck</h3>
         </div>
 
-        <div class="card">
+        <div class="c-card">
             <img id='sedan_img' src="image/sedan.jpg" alt="" srcset="">
             <h3 id='sedan'>Sedan</h3>
         </div>
 
-        <div class="card">
+        <div class="c-card">
             <img src="image/luxury_sedan.png" alt="" srcset="">
             <h3>Luxury Sedan</h3>
         </div>
 
-        <div class="card">
+        <div class="c-card">
             <img src="image/hatchback.jpg" alt="" srcset="">
             <h3>Hatchback</h3>
         </div>
 
-        <div class="card">
+        <div class="c-card">
             <img src="image/sport_car.jpg" alt="" srcset="">
             <h3>Sport Car</h3>
         </div>
 
-        <div class="card">
+        <div class="c-card">
             <img id='suv_img' src="image/suv.jpg" alt="" srcset="">
             <h3>SUV</h3>
         </div>

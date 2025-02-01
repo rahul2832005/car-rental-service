@@ -29,7 +29,7 @@
             align-items: center;
         }
 
-        .container {
+        .b-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -38,7 +38,7 @@
             margin-bottom: 60px;
         }
 
-        .card {
+        .b-card {
             width: 250px;
             height: 250px;
             border: 1px solid #ccc;
@@ -50,30 +50,31 @@
             position: relative;
         }
 
-        .card img {
+        .b-card img {
             width: 100%;
             height: auto;
             cursor: pointer;
         }
 
-        .card h3 {
+        .b-card h3 {
             margin-top: 10px;
             font-size: 16px;
         }
 
-        .header {
+        .b-header {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 20px;
+            margin-left: 360px;
         }
 
-        .header h1 {
+        .b-header h1 {
             font-size: 30px;
             color: black;
         }
 
-        .header button {
+        .b-header button {
             background-color: #e0e0e0;
             border: none;
             border-radius: 5px;
@@ -104,7 +105,7 @@
             color: black;
         }
 
-        .badge {
+        .b-badge {
             background-color: #ffdddd;
             color: #ff4d4d;
             padding: 5px 10px;
@@ -118,38 +119,38 @@
 
 <body>
 
-    <div class="header">
-        <span class="badge">CAR BRANDS</span>
-        <h1 id="caption">Explore Car Brands</h1>
+    <div class="b-header">
+        <span class="b-badge">CAR BRANDS</span>
+        <h1 id="b-caption">Explore Car Brands</h1>
     </div>
-    <div class="container">
+    <div class="b-container">
 
-        <div class="card">
+        <div class="b-card">
             <img src="image/mahindra_logo.jpg" alt="" srcset="">
             <h3>Mahindra</h3>
         </div>
 
-        <div class="card">
+        <div class="b-card">
             <img src="image/audi_logo.jpg" alt="" srcset="">
             <h3>Audi</h3>
         </div>
 
-        <div class="card">
+        <div class="b-card">
             <img src="image/bmw-logo.jpg" alt="" srcset="">
             <h3>BMW</h3>
         </div>
 
-        <div class="card">
+        <div class="b-card">
             <img src="image/tesla_logo.jpg" alt="" srcset="">
             <h3>Tesla Motors</h3>
         </div>
 
-        <div class="card">
+        <div class="b-card">
             <img src="image/volkswagon_logo.jpg" alt="" srcset="">
             <h3>Valkswagon</h3>
         </div>
 
-        <div class="card">
+        <div class="b-card">
             <img src="image/tata_logo.jpg" alt="" srcset="">
             <h3 id="tata">TATA</h3>
         </div>

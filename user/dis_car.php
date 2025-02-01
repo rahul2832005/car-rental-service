@@ -36,7 +36,7 @@ error_reporting(0);
     <main>
         <?php
 
-        $select_car = mysqli_query($conn, "select * from car_list");
+        $select_car = mysqli_query($conn, "select * from car_list where id in(15,13,14)");
         if (mysqli_num_rows($select_car) > 0) {
             while ($row = mysqli_fetch_array($select_car)) {
                 $image = explode(",", $row['image']);

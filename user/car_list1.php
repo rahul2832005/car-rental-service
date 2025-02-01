@@ -3,7 +3,7 @@ $index = 0;
 //@include "./connection.php";
 $conn = mysqli_connect("localhost", "root", "", "car_rent");
 session_start();
-// error_reporting(0);
+ error_reporting(0);
 
 ?>
 <!DOCTYPE html>
@@ -179,16 +179,12 @@ session_start();
             display: flex;
             flex-direction: column;
             align-items: center;
-
-
         }
-
         .header h1 {
             font-size: 35px;
             margin-bottom: 15px;
             color: black;
         }
-
         .header button {
             background-color: #e0e0e0;
             border: none;

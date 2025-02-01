@@ -40,7 +40,7 @@
             padding: 5px 10px;
             border-radius: 15px;
             font-size: 18px;
-
+            width: 167px;
             display: inline-block;
             margin-bottom: 10px;
         }
