@@ -162,6 +162,7 @@ h3 {
     <div class="container">
         <?php  
         $vid=$_GET['vid'];
+        $uid=$_GET['userEmail'];
         $sql = "SELECT reguser.*, 
         car_list.name, 
         booking.FromDate, 
@@ -178,7 +179,8 @@ h3 {
  FROM booking 
  JOIN car_list ON car_list.vid = booking.vid 
  JOIN reguser ON reguser.email = booking.userEmail 
- WHERE booking.vid = $vid";
+ WHERE booking.vid = $vid && booking.userEmail='$uid'
+ ORDER BY booking.PostingDate DESC LIMIT 1" ;
 //  JOIN brands ON car_list.VehiclesBrand = tblbrands.id 
 
  $result = mysqli_query($conn, $sql);

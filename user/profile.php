@@ -34,7 +34,7 @@ if (!$_SESSION["alogin"])
                 <h3>INFORMATION</h3>
             </div>
         </a>
-        <a href="p2.php" target="main"> 
+        <a href="my_booking" target="main"> 
             <div class="service-card">
                 <div class="icon"><img src="image/myboook.png"></div>
                 <h3>MY BOOKING</h3>
