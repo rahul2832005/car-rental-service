@@ -11,8 +11,11 @@ if (isset($_POST['search']))
 
 $sql = "SELECT car_list.*, 
 booking.status     
-FROM booking JOIN car_list ON car_list.vid = booking.vid 
-WHERE name LIKE  '%$search%'  or fual LIKE '%$search%'";
+FROM car_list 
+LEFT JOIN booking ON car_list.vid = booking.vid
+WHERE car_list.name LIKE '%$search%'  
+OR car_list.fual LIKE '%$search%'";
+
 
 $result = mysqli_query($conn, $sql);
 
@@ -147,7 +150,8 @@ $result = mysqli_query($conn, $sql);
                 }
 
                 ?>
-                <td><a id="edit" href="update.php?uid=<?php echo $row['vid'] ?>"><i class="fa-solid fa-pen"></i></a>   <a id="delete" href=""><i class="fa-solid fa-trash"></i></a></td>
+                <td><a id="edit" href="update.php?uid=<?php echo $row['vid'] ?>"><i class="fa-solid fa-pen"></i></a>   
+                <a id="delete" href="delete.php?uid=<?php echo $row['vid']  ?>"><i class="fa-solid fa-trash"></i></a></td>
 
             </tr>
 

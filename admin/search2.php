@@ -8,7 +8,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 if (!$conn) 
 {
-    echo "Connection failed: " ;
+    echo "Connection failed:";
 }
 
 if (isset($_POST['search'])) 
@@ -18,10 +18,10 @@ if (isset($_POST['search']))
     // $sql = "SELECT * FROM car_list WHERE name LIKE  '%$search%'  or fual LIKE '%$search%'";
     $sql = "SELECT car_list.*, 
     booking.status     
-FROM booking 
-
-JOIN car_list ON car_list.vid = booking.vid 
-WHERE name LIKE  '%$search%'  or fual LIKE '%$search%'";
+    FROM car_list 
+    LEFT JOIN booking ON car_list.vid = booking.vid
+    WHERE car_list.name LIKE '%$search%'  
+    OR car_list.fual LIKE '%$search%'";
     $ex=mysqli_query($conn,$sql);
    
     $result=mysqli_num_rows($ex);
