@@ -17,11 +17,12 @@ if (isset($_POST['search']))
     
     // $sql = "SELECT * FROM car_list WHERE name LIKE  '%$search%'  or fual LIKE '%$search%'";
     $sql = "SELECT car_list.*, 
-    booking.status     
-    FROM car_list 
-    LEFT JOIN booking ON car_list.vid = booking.vid
-    WHERE car_list.name LIKE '%$search%'  
-    OR car_list.fual LIKE '%$search%'";
+    MAX(booking.status) AS status     
+FROM car_list 
+LEFT JOIN booking ON car_list.vid = booking.vid
+WHERE car_list.name LIKE '%$search%'  
+OR car_list.fual LIKE '%$search%'
+GROUP BY car_list.vid";
     $ex=mysqli_query($conn,$sql);
    
     $result=mysqli_num_rows($ex);

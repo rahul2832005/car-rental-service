@@ -108,7 +108,7 @@ $result = mysqli_query($conn, $sql);
                     }
                 ?>
                 <td><?php echo $row['PostingDate'] ?></td>
-                <td><a name="Approve" class="Approve" href="Approve.php?vid=<?php echo $row['vid']; ?> ">View</a></td>
+                <td><a name="Approve" class="Approve" href="Approve.php?vid=<?php echo $row['vid']; ?>  && userEmail=<?php echo $row['userEmail']; ?> ">View</a></td>
 
             </tr>
 

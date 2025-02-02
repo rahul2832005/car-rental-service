@@ -9,13 +9,19 @@ if (isset($_POST['search']))
     $search = trim($_POST['search']);
 }
 
+// $sql = "SELECT car_list.*, 
+// booking.status     
+// FROM car_list 
+// LEFT JOIN booking ON car_list.vid = booking.vid
+// WHERE car_list.name LIKE '%$search%'  
+// OR car_list.fual LIKE '%$search%'";
 $sql = "SELECT car_list.*, 
-booking.status     
-FROM car_list 
-LEFT JOIN booking ON car_list.vid = booking.vid
-WHERE car_list.name LIKE '%$search%'  
-OR car_list.fual LIKE '%$search%'";
-
+               MAX(booking.status) AS status     
+        FROM car_list 
+        LEFT JOIN booking ON car_list.vid = booking.vid
+        WHERE car_list.name LIKE '%$search%'  
+           OR car_list.fual LIKE '%$search%'
+        GROUP BY car_list.vid";
 
 $result = mysqli_query($conn, $sql);
 
@@ -168,7 +174,7 @@ $result = mysqli_query($conn, $sql);
             $("#search").on("keyup", function() {
                 var query = $(this).val();
                 if (query.length > 0) {
-                    document.querySelector(".tbl").style.display='none';
+                    $(".tbl").hide(); 
                     $.ajax({
                         url: "search2.php",
                         method: "POST",
@@ -178,7 +184,7 @@ $result = mysqli_query($conn, $sql);
                         }
                     });
                 } else {
-                    window.location.href="managecar.php";
+                    $(".tbl").show(); 
                     $("#result").html("");
                 }
             });

@@ -11,15 +11,8 @@ $q=mysqli_query($conn,$update);
 
 // $update1="update car_list set status=$status where vid=$aid";
 // $q1=mysqli_query($conn,$update1);
-
-if($q){
-
-    echo "<script>alert('Approve')</script>";
-    header("Location:new-booking.php");
-}
-else{
-    echo "<script>alert('book not  approved')</script>";
-}
+echo "<script>alert('Approve success')
+window.open('confirmed-booking.php', 'second');</script>";
 
 }
 
@@ -33,15 +26,13 @@ $q=mysqli_query($conn,$update);
 
 // $update1="update car_list set status=$status where vid=$eaid";
 // $q1=mysqli_query($conn,$update1);
+$sdate=date('Y-m-d');
+$next_date = date('Y-m-d', strtotime('+1 day'));
+    $update1="update booking set FromDate='$sdate',ToDate='$next_date' where vid=$eaid";
+    $q1=mysqli_query($conn,$update1);
 
-if($q){
-
-    echo "<script>alert('Approve')</script>";
-    header("Location:new-booking.php");
-}
-else{
-    echo "<script>alert('book not  approved')</script>";
-}
+    echo "<script>alert('Booking Cancelled')
+window.open('canceled-booking.php', 'second');</script>";
 
 }
 

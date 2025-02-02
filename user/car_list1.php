@@ -35,6 +35,7 @@ error_reporting(0);
             display: flex;
             flex-wrap: wrap;
             background-color: #b1d7d6;
+            justify-content: center;
         }
 
         .card {
@@ -169,7 +170,7 @@ error_reporting(0);
         </div>
         <?php
 
-        $select_car = mysqli_query($conn, "select * from car_list where vid in(47,49,50)");
+        $select_car = mysqli_query($conn, "select * from car_list ");
         if (mysqli_num_rows($select_car) > 0) {
             while ($row = mysqli_fetch_array($select_car)) {
                 $image = explode(",", $row['image']);
@@ -177,24 +178,24 @@ error_reporting(0);
         ?>
                 <div class="card">
                     <div class="card-image">
-                        <img src="../admin/img/<?php echo $image[0] ?>image/ahemdabad.jpg">
+                        <img src="../admin/img/<?php echo $image[0] ?>">
                     </div>
                     <div class="card-header">
-                        <h2 class="card-title">abc</h2>
+                        <h2 class="card-title"><?php echo $row['name']; ?></h2>
                     </div>
                     <div class="card-body">
                         <p class="description">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         <hr>
                         <div class="card-footer">
-                            <h3 class="price"><i class="fa-solid fa-indian-rupee-sign"></i> 5000/-</h3>
+                            <h3 class="price"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['price']; ?>/-</h3>
                         </div>
-                        <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: People</h3>
-                        <h3 class="fual"><i class="fa-solid fa-gas-pump"></i>fual: petrol</h3>
+                        <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: <?php echo $row['seat']; ?></h3>
+                        <h3 class="fual"><i class="fa-solid fa-gas-pump"></i>fual: <?php echo $row['fual']; ?></h3>
 
                         <div>
                             <?php if ($_SESSION["alogin"]) { ?>
-                                <button class="order-button" type="submit" name="rent-now"><a href="car_detail.php?id=<?php echo $row['id']; ?>" class="button">Rent Now</a></button>
+                                <button class="order-button" type="submit" name="rent-now"><a href="car_detail.php?vid=<?php echo $row['vid']; ?>" class="button">Rent Now</a></button>
                             <?php } else { ?>
 
                                 <button class="order-button"><a href="login.php" class="button">Login For Book</a></button>
