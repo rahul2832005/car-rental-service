@@ -2,6 +2,7 @@
 session_start();
 $conn=mysqli_connect("localhost","root","","car_rent");
 $uid=$_SESSION['alogin'];
+if (isset($_GET['all']) && $_GET['all'] == 'true') {
 $sql = "SELECT reguser.*, 
 car_list.name, 
 car_list.image,
@@ -19,7 +20,28 @@ car_list.price,
 FROM booking 
 JOIN car_list ON car_list.vid = booking.vid 
 JOIN reguser ON reguser.email = booking.userEmail 
-WHERE booking.userEmail = '$uid'";
+WHERE booking.userEmail = '$uid'  ORDER BY booking.PostingDate DESC";
+}else{
+    $sql = "SELECT reguser.*, 
+car_list.name, 
+car_list.image,
+booking.FromDate, 
+booking.ToDate, 
+booking.message, 
+booking.vid as vid, 
+booking.status, 
+booking.PostingDate, 
+booking.id, 
+booking.bookingno, 
+DATEDIFF(booking.ToDate, booking.FromDate) as totalnodays, 
+car_list.price, 
+(DATEDIFF(booking.ToDate, booking.FromDate) * car_list.price) AS grand_total
+FROM booking 
+JOIN car_list ON car_list.vid = booking.vid 
+JOIN reguser ON reguser.email = booking.userEmail 
+WHERE booking.userEmail = '$uid'  ORDER BY booking.PostingDate DESC LIMIT 1";
+}
+
 $result = mysqli_query($conn, $sql);
 
 ?>
@@ -96,7 +118,7 @@ $result = mysqli_query($conn, $sql);
     <div class="booking-container">
         <div class="booking-header">
             <span>Recent Bookings</span>
-            <a href="#">View All Bookings →</a>
+            <a href="my_booking.php?all=true">View All Bookings →</a>
         </div>
         <table>
 
