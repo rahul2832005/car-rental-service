@@ -139,12 +139,12 @@ if (isset($_POST['Book'])) {
         h1 {
             margin-top: 0px;
             font-size: 29px;
-            margin-bottom: 10px;
+            margin-bottom: -20px;
         }
 
         .price {
             font-size: 20px;
-            margin-bottom: 10px;
+            margin-bottom: -10px;
         }
 
         .price span {
@@ -164,7 +164,10 @@ if (isset($_POST['Book'])) {
             gap: 10px;
         } */
 
-
+        .specifications
+        {
+            margin-top: -50px;
+        }
         .specifications h3,
         .color-options h3 {
             margin-top: 30px;
@@ -182,8 +185,8 @@ if (isset($_POST['Book'])) {
             margin-bottom: 5px;
         } */
 
-        #button {
-            margin-top: 40px;
+        .button {
+            /* margin-top: 40px; */
             color: black;
             background: white;
             border: 2px solid black;
@@ -230,9 +233,9 @@ if (isset($_POST['Book'])) {
         <div class="car-image">
             <img src="../admin/img/<?php echo $image[0]; ?>" alt="Not " id="mainImg">
             <div class="thumbnail-gallery">
-                <img  src="../admin/img/<?php echo $image[1]; ?>" alt="Car Interior Front" id="thumb1">
-                <img src="../admin/img/<?php echo $image[2]; ?>" alt="Car Interior Back" id="thumb2">
-                <img src="../admin/img/<?php echo $image[3]; ?>" alt="Car Interior Back" id="thumb3">
+                <img  src="../admin/img/<?php echo $image[0]; ?>" alt="Car Interior Front" id="thumb1">
+                <img src="../admin/img/<?php echo $image[1]; ?>" alt="Car Interior Back" id="thumb2">
+                <img src="../admin/img/<?php echo $image[2]; ?>" alt="Car Interior Back" id="thumb3">
             </div>
         </div>
 
@@ -281,9 +284,9 @@ if (isset($_POST['Book'])) {
                 </ul> -->
             </div>
             <?php if($row['status']==0 || $row['status']=="") {?>
-                <button type="submit" id="button">Rent Now</button>
+                <button type="submit" id="button" class="button">Rent Now</button>
             <?php  } else {?>
-                <button type="submit" id="button1">Booked</button>
+                <button type="submit" id="button1" class="button">Booked</button>
             <?php  }?>
         </div>
     </div>

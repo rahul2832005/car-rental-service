@@ -105,7 +105,7 @@ $result = mysqli_query($conn, $sql);
                    
                 </tr>
             </thead>
-            <tfoot>
+            <!-- <tfoot>
                 <tr>
                     <th>#</th>
                     <th>Car Name</th>
@@ -118,7 +118,7 @@ $result = mysqli_query($conn, $sql);
                     <th>Action</th>
                    
                 </tr>
-            </tfoot>
+            </tfoot> -->
 
             <tbody>
             <div id="result">

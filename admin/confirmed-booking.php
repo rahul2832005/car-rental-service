@@ -22,6 +22,7 @@ $result = mysqli_query($conn, $sql);
             margin: 20px;
         }
         .container {
+            margin-left: 30px;
             max-width: 800px;
             margin: auto;
         }
@@ -29,7 +30,7 @@ $result = mysqli_query($conn, $sql);
             text-align: center;
         }
         table {
-            width: 100%;
+            width: 130%;
             border-collapse: collapse;
             margin-top: 20px;
         }
