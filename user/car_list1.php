@@ -3,7 +3,7 @@ $index = 0;
 //@include "./connection.php";
 $conn = mysqli_connect("localhost", "root", "", "car_rent");
 session_start();
- error_reporting(0);
+error_reporting(0);
 
 ?>
 <!DOCTYPE html>
@@ -12,167 +12,136 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car List</title>
+    <title>Product Card</title>
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <style>
-        * {
-            padding: 0%;
-            margin: 0%;
-            box-sizing: border-box;
-
+        @font-face {
+            font-family: 'pop-regular';
+            src: url('../font/Poppins-Regular.ttf');
         }
 
         body {
-            /*background-color: #48d1cc;*/
-            font-family: Arial, sans-serif;
-            font-size: 62.5%;
-            width: 100%;
+            font-family: 'pop-regular';
+            background-color: #f5f5f5;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+            margin: 0;
         }
 
-        main {
-            background-color: #b1d7d6;
-            max-width: 1500px;
-            width: 100%;
-            margin: 30% auto;
+        .fleet {
+            margin-top: 5px;
             display: flex;
             flex-wrap: wrap;
+            background-color: #b1d7d6;
+        }
+
+        .card {
+            background-color: rgb(220, 250, 249);
+            width: 305px;
+            max-width: 1050px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px -5px rgba(0.5, 0.5, 0.5, 0.5);
+            overflow: hidden;
+            padding: 20px;
+            margin: 17px 13px;
+            margin-left: 17px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
             justify-content: space-between;
-            margin: auto;
+            margin-top: -20px;
+            /* margin-bottom: -25px; */
         }
 
-        main .card {
-            max-width: 295px;
-            flex: 1 1 210px;
-            text-align: center;
-            height: 640px;
-            /*border: 1.5px solid black;*/
-            margin: 20px;
-            border-radius: 10px;
-            background-color: white;
-        }
-
-        main .card .image {
-            height: 50%;
-            width: 300px;
-            margin-bottom: 20px;
-        }
-
-        main .card .image img {
-            width: 93%;
-            height: 100%;
-            object-fit: fill;
-            border-radius: 10px;
-            margin: 7px 2px;
-            transition: transform 0.8s;
-            margin-left: -4px;
-        }
-
-        img:hover {
-            transform: scale();
-        }
-
-        main .card .caption {
-            padding-left: 1em;
-            text-align: left;
-            line-height: 2em;
-            height: 25%;
+        .card-title {
+            margin-bottom: 5px;
+            font-size: 29px;
+            color: #333;
             font-weight: bold;
-            color: black;
+        }
 
+        .card-image img {
+            width: 290px;
+            margin: 20px 0px;
+            border-radius: 5px;
+            margin-top: 0px;
+            height: 280px;
+            align-items: center;
+            margin-left: -13px;
+            margin-top: -12px;
+        }
+
+        .description {
+            font-size: 0.875rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* margin-top: -14px; */
+            /* flex-wrap: wrap; */
+        }
+
+        .price {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .order-button {
+            background-color: #fff;
+            color: #000;
+            padding: 4px 15px;
+            font-size: 0.875rem;
+            border: 1px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 267px;
+        }
+
+        .capacity {
+            font-size: 18px;
+            margin-top: -7px;
+            color: #333;
+        }
+
+        .fual {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .button {
+            text-decoration: none;
+            color: #000;
+            font-size: 24px;
+        }
+
+        #header {
+            margin-top: 10px;
+            /* background-color: #b1d7d6; */
+            width: 100%;
         }
 
         .badge {
-            background-color: #ddbebe;
+            background-color: rgb(214, 191, 191);
             color: #ff4d4d;
-            padding: 5px 10px;
+            padding: 4px 10px;
             border-radius: 15px;
             font-size: 18px;
             display: inline-block;
             margin-bottom: 10px;
             margin-top: 14px;
-        }
-
-        /*.card:hover{
-    background-color: #f63a40;
-    transition: 0.6s all;
-}*/
-
-
-        #rate {
-            color: gold;
-            margin-right: 3px;
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-
-        #car_name {
-            font-size: 30px;
-            margin-bottom: 20px;
-            margin-top: 10px;
-            font-family: Lucida Sans Unicode;
-        }
-
-        .content {
-            font-size: 15px;
-            color: #1c1d1d;
-        }
-
-        .rate {
-            font-size: 20px;
-        }
-
-        .hr {
-            margin-right: 5px;
-        }
-
-        .seat {
-            font-size: 17px;
-            margin-bottom: 13px;
-            margin-top: 13px;
-            color: #1c1d1d;
-        }
-
-        .price {
-            font-size: 20px;
-            margin-bottom: 10px;
-            margin-top: 13px;
-            color: #1c1d1d;
-        }
-
-        .fual {
-            font-size: 17px;
-            margin-bottom: 10px;
-            color: #1c1d1d;
-        }
-
-
-        main .card a {
-            font-size: 23px;
-            color: black;
-            width: 50%;
-        }
-
-
-        main .card button {
-            border: 1px solid black;
-            font-size: 23px;
-            width: 95%;
-            cursor: pointer;
-            margin-top: 95px;
-            /* font-weight: bold; */
-            position: relative;
-            margin-left: 1px;
-            /* background-color:rgb(199, 46, 46); */
-            border-radius: 4px;
-            font-family: Lucida Sans Unicode;
-            margin-bottom: 10px;
-            color: rgb(22, 20, 21);
-
-        }
-
-        .add {
-            background-color: #fff;
+            padding-left: 20px;
+            width: 127px;
         }
 
         .header {
@@ -180,31 +149,11 @@ session_start();
             flex-direction: column;
             align-items: center;
         }
+
         .header h1 {
             font-size: 35px;
             margin-bottom: 15px;
             color: black;
-        }
-        .header button {
-            background-color: #e0e0e0;
-            border: none;
-            border-radius: 8px;
-            padding: 8px 16px;
-            margin-top: 10px;
-            cursor: pointer;
-            color: red;
-            font-size: 17px;
-            font-family: sans-serif;
-            margin-bottom: 15px;
-        }
-
-        /*.header button:hover {
-    background-color: #e0e0e0;
-}*/
-        #header {
-            margin-top: 10px;
-            background-color: #b1d7d6;
-            width: 100%;
         }
     </style>
 </head>
@@ -214,12 +163,15 @@ session_start();
 
 <body>
 
-    <div class="header" id="header">
-        <span class="badge">CAR LIST</span>
-        <h1>Car Fleet-1</h1>
 
-    </div>
-    <main>
+    <div class="fleet">
+
+
+        <div class="header" id="header">
+            <span class="badge">CAR FLEET</span>
+            <h1>Car Fleet-1</h1>
+
+        </div>
         <?php
 
         $select_car = mysqli_query($conn, "select * from car_list");
@@ -229,48 +181,64 @@ session_start();
                 //print_r($image); 
         ?>
                 <div class="card">
+<<<<<<< Updated upstream
                     <div class="image">
 
                         <a href="car_detail.php?vid=<?php echo $row['vid']; ?>"> <img src="../admin/img/<?php echo $image[0];?>">  </a>
                             <!-- <img src="/project/car-rental-service/admin/img/"> -->
                         <!-- <img src="/car%20rental%20service/admin/img/"> -->
+=======
+                    <div class="card-image">
+                        <img src="../admin/img/<?php echo $image[0] ?>">
+>>>>>>> Stashed changes
                     </div>
-                    <div class="caption">
-                        <p class="rate">
-                            <i id="rate" class="fa-solid fa-star"></i>
-                            <i id="rate" class="fa-solid fa-star"></i>
-                            <i id="rate" class="fa-solid fa-star"></i>
-                            <i id="rate" class="fa-solid fa-star"></i>
-                            <i id="rate" class="fa-solid fa-star"></i>
-                        </p>
-                        <p id="car_name"><?php echo $row['name']; ?></p>
-                        <p class="content">Lorem ipsum dolor sit amet dfds sdf sdf consectetur adipisicing el</p>
-                        <p class="price"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['price']; ?>/-</p>
-                        <hr class="hr">
-                        <p class="seat"><i class="fa-solid fa-car"></i> Capacity:<?php echo $row['seat']; ?> People</p>
-                        <p class="fual"><i class="fa-solid fa-gas-pump"></i> Fual:<?php echo $row['fual']; ?></p>
 
+                    <div class="card-header">
+                        <h2 class="card-title"><?php echo $row['name']; ?></h2>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <hr>
+                        <div class="card-footer">
+                            <h3 class="price"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['price']; ?>/-</h3>
+                        </div>
+                        <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: <?php echo $row['seat']; ?> People</h3>
+                        <h3 class="fual"><i class="fa-solid fa-gas-pump"></i> Fual: <?php echo $row['fual']; ?></h3>
+
+                        <!-- <button type="button" class="order-button">Order now</button> -->
+                        <div>
+                            <?php if ($_SESSION["alogin"]) { ?>
+                                <button class="order-button" type="submit" name="rent-now"><a href="car_detail.php?id=<?php echo $row['id']; ?>" class="button">Rent Now</a></button>
+                            <?php } else { ?>
+
+                                <button class="order-button"><a href="login.php" class="button">Login For Book</a></button>
+                            <?php } ?>
+                        </div>
 
                     </div>
+<<<<<<< Updated upstream
                     <?php if ($_SESSION["alogin"]) { ?>
                         <button class="add" type="submit" name="rent-now"><a href="car_detail.php?vid=<?php echo $row['vid']; ?>" class="button">Rent Now</a></button>
                     <?php } else { ?>
 
                         <button class="add"><a href="login.php" class="button">Login For Book</a></button>
                     <?php } ?>
+=======
+>>>>>>> Stashed changes
                 </div>
-
-
         <?php
             };
         };
         ?>
-    </main>
+        <?php
+        @include "footer.php";
+        ?>
+    </div>
 
-    <?php
-    @include "footer.php";
-    ?>
 
 </body>
+
 
 </html>

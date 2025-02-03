@@ -10,7 +10,7 @@
             background-color: #fff;
         }
         .img_container{
-            margin-left: 147px;
+            /* margin-left: 147px; */
             align-items: center;
             /* margin: 90px 0 0 150px; */
             width: 70%;

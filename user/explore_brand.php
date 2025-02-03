@@ -66,7 +66,7 @@
             flex-direction: column;
             align-items: center;
             margin-top: 20px;
-            margin-left: 360px;
+            /* margin-left: 360px; */
         }
 
         .b-header h1 {

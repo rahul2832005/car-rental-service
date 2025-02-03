@@ -63,7 +63,7 @@
             flex-direction: column;
             align-items: center;
             margin-top: 20px;
-            margin-left: 384px;
+            /* margin-left: 384px; */
         }
 
         .c-header h1 {
