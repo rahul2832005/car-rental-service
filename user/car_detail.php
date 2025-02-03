@@ -36,7 +36,8 @@ if (isset($_POST['Book'])) {
     }
     
         $avlquery =  "SELECT * FROM booking 
-        WHERE userEmail='$useremail'
+        WHERE vid=$vid
+        AND status!=2
         AND ('$fdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
              OR '$tdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
              OR (FromDate BETWEEN '$fdate' AND '$tdate') 

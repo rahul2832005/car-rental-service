@@ -112,7 +112,7 @@ $result = mysqli_query($conn, $sql);
                         echo "<td>Confirmed</td>";
                     }
                 ?>
-                <td><a name="Approve" class="Approve" href="Approve.php?vid=<?php echo $row['vid']; ?> & userEmail=<?php echo $row['userEmail'] ?>">Action</a></td>
+                <td><a name="Approve" class="Approve" href="Approve.php?bno=<?php echo $row['bookingno']; ?> & userEmail=<?php echo $row['userEmail'] ?>">Action</a></td>
 
                
             </tr>
