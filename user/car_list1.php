@@ -12,7 +12,7 @@ error_reporting(0);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Card</title>
+    <title>Car Fleet</title>
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <style>
@@ -39,7 +39,7 @@ error_reporting(0);
 
         .card {
             background-color: rgb(220, 250, 249);
-            width: 305px;
+            width: 303px;
             max-width: 1050px;
             border-radius: 10px;
             box-shadow: 0 4px 12px -5px rgba(0.5, 0.5, 0.5, 0.5);
@@ -162,52 +162,36 @@ error_reporting(0);
 ?>
 
 <body>
-
-
     <div class="fleet">
-
-
         <div class="header" id="header">
             <span class="badge">CAR FLEET</span>
             <h1>Car Fleet-1</h1>
-
         </div>
         <?php
 
-        $select_car = mysqli_query($conn, "select * from car_list");
+        $select_car = mysqli_query($conn, "select * from car_list where vid in(47,49,50)");
         if (mysqli_num_rows($select_car) > 0) {
             while ($row = mysqli_fetch_array($select_car)) {
                 $image = explode(",", $row['image']);
                 //print_r($image); 
         ?>
                 <div class="card">
-<<<<<<< Updated upstream
-                    <div class="image">
-
-                        <a href="car_detail.php?vid=<?php echo $row['vid']; ?>"> <img src="../admin/img/<?php echo $image[0];?>">  </a>
-                            <!-- <img src="/project/car-rental-service/admin/img/"> -->
-                        <!-- <img src="/car%20rental%20service/admin/img/"> -->
-=======
                     <div class="card-image">
-                        <img src="../admin/img/<?php echo $image[0] ?>">
->>>>>>> Stashed changes
+                        <img src="../admin/img/<?php echo $image[0] ?>image/ahemdabad.jpg">
                     </div>
-
                     <div class="card-header">
-                        <h2 class="card-title"><?php echo $row['name']; ?></h2>
+                        <h2 class="card-title">abc</h2>
                     </div>
-
                     <div class="card-body">
                         <p class="description">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         <hr>
                         <div class="card-footer">
-                            <h3 class="price"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['price']; ?>/-</h3>
+                            <h3 class="price"><i class="fa-solid fa-indian-rupee-sign"></i> 5000/-</h3>
                         </div>
-                        <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: <?php echo $row['seat']; ?> People</h3>
-                        <h3 class="fual"><i class="fa-solid fa-gas-pump"></i> Fual: <?php echo $row['fual']; ?></h3>
+                        <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: People</h3>
+                        <h3 class="fual"><i class="fa-solid fa-gas-pump"></i>fual: petrol</h3>
 
-                        <!-- <button type="button" class="order-button">Order now</button> -->
                         <div>
                             <?php if ($_SESSION["alogin"]) { ?>
                                 <button class="order-button" type="submit" name="rent-now"><a href="car_detail.php?id=<?php echo $row['id']; ?>" class="button">Rent Now</a></button>
@@ -216,17 +200,7 @@ error_reporting(0);
                                 <button class="order-button"><a href="login.php" class="button">Login For Book</a></button>
                             <?php } ?>
                         </div>
-
                     </div>
-<<<<<<< Updated upstream
-                    <?php if ($_SESSION["alogin"]) { ?>
-                        <button class="add" type="submit" name="rent-now"><a href="car_detail.php?vid=<?php echo $row['vid']; ?>" class="button">Rent Now</a></button>
-                    <?php } else { ?>
-
-                        <button class="add"><a href="login.php" class="button">Login For Book</a></button>
-                    <?php } ?>
-=======
->>>>>>> Stashed changes
                 </div>
         <?php
             };
@@ -238,7 +212,7 @@ error_reporting(0);
     </div>
 
 
-</body>
 
+</body>
 
 </html>

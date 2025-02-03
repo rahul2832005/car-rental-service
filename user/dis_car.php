@@ -23,7 +23,7 @@ error_reporting(0);
 
         body {
             font-family: 'pop-regular';
-            background-color: #f5f5f5;
+            /* background-color: #f5f5f5; */
             /* display: flex; */
             justify-content: center;
             align-items: center;
@@ -61,11 +61,6 @@ error_reporting(0);
             font-size: 27px;
             color: #333;
             font-weight: bold;
-        }
-
-        .icon {
-            fill: #2563eb;
-            cursor: pointer;
         }
 
         .card-image img {
@@ -172,60 +167,28 @@ error_reporting(0);
     ?>
 
     <div class="fleet">
-
-
         <div class="header" id="header">
             <span class="badge" style="padding: 4px 11px; width: 178px;">Most Popular Car</span>
             <h1>Most Popular Car</h1>
 
         </div>
-        <?php
-
-<<<<<<< Updated upstream
-        $select_car = mysqli_query($conn, "select * from car_list where vid in(15,13,14)");
-=======
-        $select_car = mysqli_query($conn, "select * from car_list where id in(13,12,15)");
->>>>>>> Stashed changes
-        if (mysqli_num_rows($select_car) > 0) {
-            while ($row = mysqli_fetch_array($select_car)) {
-                $image = explode(",", $row['image']);
-                //print_r($image); 
-        ?>
-                <div class="card">
-<<<<<<< Updated upstream
-                    <div class="image">
-                        <?php if ($_SESSION["alogin"]) { ?>
-                            <a href="car_detail.php?vid=<?php echo $row['vid']; ?>"><img src="../admin/img/<?php echo $image[0] ?>"></a>
-
-                        <?php } else { ?>
-
-                        <img src="../admin/img/<?php echo $image[0] ?>"></a>
-                        <?php } ?>
-
-                        <!-- <img src="/car%20rental%20service/admin/img/"> -->
-                        <!-- /project/car-rental-service/admin/img/ -->
-=======
-                    <div class="card-image">
-                        <img src="../admin/img/<?php echo $image[0] ?>">
->>>>>>> Stashed changes
-                    </div>
-
-                    <div class="card-header">
-                        <h2 class="card-title"><?php echo $row['name']; ?></h2>
-                    </div>
-
-                    <div class="card-body">
-                        <p class="description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <hr>
-                        <div class="card-footer">
-                            <h3 class="price"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['price']; ?>/-</h3>
-                        </div>
-                        <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: <?php echo $row['seat']; ?> People</h3>
-                        <h3 class="fual"><i class="fa-solid fa-gas-pump"></i> Fual: <?php echo $row['fual']; ?></h3>
-
-                        <!-- <button type="button" class="order-button">Order now</button> -->
-                        <div>
+        <div class="card">
+            <div class="card-image">
+                <img src="image/ahemdabad.jpg">
+            </div>
+            <div class="card-header">
+                <h2 class="card-title">abc</h2>
+            </div>
+            <div class="card-body">
+                <p class="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <hr>
+                <div class="card-footer">
+                    <h3 class="price"><i class="fa-solid fa-indian-rupee-sign"></i> 5000/-</h3>
+                </div>
+                <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: People</h3>
+                <h3 class="fual"><i class="fa-solid fa-gas-pump"></i>fual: petrol</h3>
+                <div>
                             <?php if ($_SESSION["alogin"]) { ?>
                                 <button class="order-button" type="submit" name="rent-now"><a href="car_detail.php?id=<?php echo $row['id']; ?>" class="button">Rent Now</a></button>
                             <?php } else { ?>
@@ -233,27 +196,13 @@ error_reporting(0);
                                 <button class="order-button"><a href="login.php" class="button">Login For Book</a></button>
                             <?php } ?>
                         </div>
-
-                    </div>
-<<<<<<< Updated upstream
-                    <?php if ($_SESSION["alogin"]) { ?>
-                        <button class="add" type="submit" name="rent-now"><a href="car_detail.php?vid=<?php echo $row['vid']; ?>" class="button">Rent Now</a></button>
-                    <?php } else { ?>
-
-                        <button class="add"><a href="login.php" class="button">Login For Book</a></button>
-                    <?php } ?>
-=======
->>>>>>> Stashed changes
-                </div>
-        <?php
-            };
-        };
-        ?>
-
-    </div>
+            </div>
+        </div>  
+    </div> 
     <?php
     @include "explore_brand.php";
     ?>
+    
     <?php
     @include "we_best.php";
     ?>
@@ -266,6 +215,5 @@ error_reporting(0);
     ?>
 
 </body>
-
 
 </html>
