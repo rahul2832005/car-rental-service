@@ -2,7 +2,7 @@
 //@include "./connection.php";
 $conn = mysqli_connect("localhost", "root", "", "car_rent");
 session_start();
-// error_reporting(0);
+error_reporting(0);
 $sdate=date('Y-m-d');
 $fdate = $tdate = $message = $er = $ms = $td = $fd = "";
 
@@ -36,7 +36,7 @@ if (isset($_POST['Book'])) {
     }
     
         $avlquery =  "SELECT * FROM booking 
-        WHERE vid='$vid' AND  status=0
+        WHERE userEmail='$useremail'
         AND ('$fdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
              OR '$tdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
              OR (FromDate BETWEEN '$fdate' AND '$tdate') 
@@ -214,9 +214,11 @@ if (isset($_POST['Book'])) {
     <div>
         <?php include('navbar.php'); ?>
     </div>
-    <?php
+    <?php   
+    $query = "SELECT * from car_list where vid=$vid";
    
-    $query = "select * from car_list where vid=$vid";
+    // $query = "select * from car_list where vid=$vid";
+
     $exquery = mysqli_query($conn, $query);
 
     while ($row = mysqli_fetch_array($exquery)) {
@@ -277,7 +279,11 @@ if (isset($_POST['Book'])) {
                     <li style="font-size: 18px;margin-bottom: 5px;"><i class="fa-solid fa-car"></i> 450 HP</li>
                 </ul> -->
             </div>
-            <button type="submit" id="button">Rent Now</button>
+            <?php if($row['status']==0 || $row['status']=="") {?>
+                <button type="submit" id="button">Rent Now</button>
+            <?php  } else {?>
+                <button type="submit" id="button1">Booked</button>
+            <?php  }?>
         </div>
     </div>
     <?php  
@@ -302,6 +308,7 @@ if (isset($_POST['Book'])) {
             </form>
         </div>
     </div>
+ 
 
     <div>
 

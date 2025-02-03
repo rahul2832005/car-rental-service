@@ -15,13 +15,8 @@ if (isset($_POST['search']))
 // LEFT JOIN booking ON car_list.vid = booking.vid
 // WHERE car_list.name LIKE '%$search%'  
 // OR car_list.fual LIKE '%$search%'";
-$sql = "SELECT car_list.*, 
-               MAX(booking.status) AS status     
-        FROM car_list 
-        LEFT JOIN booking ON car_list.vid = booking.vid
-        WHERE car_list.name LIKE '%$search%'  
-           OR car_list.fual LIKE '%$search%'
-        GROUP BY car_list.vid";
+$sql = "SELECT * FROM car_list WHERE name LIKE '%$search%'  
+           OR fual LIKE '%$search%' ";
 
 $result = mysqli_query($conn, $sql);
 
@@ -148,7 +143,7 @@ $result = mysqli_query($conn, $sql);
                     echo "<td>Booked</td>";
                 }
                 elseif($row['status']==2){
-                    echo "<td>Cancelled</td>";
+                    echo "<td>Maintanance</td>";
                 }
                 else
                 {
