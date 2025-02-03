@@ -45,7 +45,7 @@ GROUP BY car_list.vid";
             <th>Action</th>
         </tr>
     </thead>
-    <tfoot>
+    <!-- <tfoot>
         <tr>
             <th># </th>
             <th>Car Name</th>
@@ -56,7 +56,7 @@ GROUP BY car_list.vid";
             <th>Fual</th>
             <th>Action</th>
         </tr>
-    </tfoot>
+    </tfoot> -->
     <tbody>
     <div id="result">
     <?php
@@ -99,7 +99,7 @@ $n++;
             <th>Action</th>
         </tr>
     </thead>
-    <tfoot>
+    <!-- <tfoot>
         <tr>
             <th>#</th>
             <th>Car Name</th>
@@ -110,7 +110,7 @@ $n++;
             <th>Fual</th>
             <th>Action</th>
         </tr>
-    </tfoot>
+    </tfoot> -->
  <tbody>
         <tr>
             <td colspan="8">
