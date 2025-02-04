@@ -313,7 +313,7 @@ button .circle {
 
             <div class="remember-forgot">
                 <label><input type="checkbox" required /> Remember me</label>
-                <a href="f_pass.php"> Forgot Password?</a>
+                <a href="forgot/forgot_password.php"> Forgot Password?</a>
             </div>
             <!-- <button type="submit" class="btn" name="login">Log in</button> -->
             <button type="submit" name="login" class="ripple btn">Login <span class="circle"></span></button>
