@@ -36,6 +36,7 @@
                     <a href="#" id="cr-drop">Cars <span class="down-icon2">▶</span></a>
                     <ul class="dropdown" id="cr-dropdown">
                         <li><a href="add_car.php" target="second">Add Cars</a></li>
+                        <!-- <li><a href="validationjs.php" target="second">Add Cars</a></li> -->
                         <li><a href="managecar.php" target="second">Manage Cars</a></li>
                     </ul>
                 </li>

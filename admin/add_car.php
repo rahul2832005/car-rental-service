@@ -4,8 +4,10 @@ $conn=mysqli_connect("localhost","root","","car_rent");
 if (!$conn) {
     echo "not";
 }
-
-$cn=$mod=$rp=$np=$cname=$se=$fu=$ier=$mile=$dr=$et=$pr=$br=$mile=$ft=$ml="";
+$allimages = [];
+$count=0;
+$imageError1 = $imageError2 = $imageError3 = ""; 
+$cn=$mod=$rp=$np=$cname=$se=$fu=$ire=$mile=$dr=$et=$pr=$br=$mile=$ft=$ml="";
 $car_name=$modal=$rent_price=$no_plate=$company_name=$seat=$fual=$power=$engine=$f_tank=$break=$door="";
 if(isset($_POST['submit']))
 {
@@ -28,93 +30,144 @@ if(isset($_POST['submit']))
     if($car_name=="")
     {
         $cn="Enter Car Name";
+        $count++;
     }
     if($modal=="")
     {
         $mod="Enter Car Model";
+        $count++;
     }
     elseif(!is_numeric($modal))
     {
         $mod ="Enter Only Digit";
+        $count++;
     }
     if($rent_price==""){
-        $rp="Enter Car Rent Price";}
+        $rp="Enter Car Rent Price";
+        $count++;
+    }
     elseif(!is_numeric($modal)){
-        $rp ="Enter Only Digit";}
+        $rp ="Enter Only Digit";
+        $count++;
+    }
 
         if($no_plate==""){
-            $np="Enter Car Number";}
+            $np="Enter Car Number";
+            $count++;
+        }
 
         if($company_name==""){
-                $cname="Enter Car Company Name";}   
+                $cname="Enter Car Company Name";
+                $count++;
+            
+            }   
         
          if($seat==""){
-             $se="Enter Capacity";}
+             $se="Enter Capacity";
+             $count++;
+            }
         elseif(!is_numeric($seat)){
-              $se ="Enter Only Digit";}
+              $se ="Enter Only Digit";
+              $count++;
+            }
 
         if($fual=="type")
         {
             $fu="Select Fual Type";
+            $count++;
         }
         if($door=="")
         {
             $dr="Please Select Door";
+            $count++;
         }
         if($power=="")
         {
             $pr="Please Select  Engine Power";
+            $count++;
         }
         if($engine=="")
         {
             $et="Please Select  Engine Type";
+            $count++;
         }
         if($f_tank=="")
         {
             $ft="Please Select FuaL capacity";
+            $count++;
         }
         if($break=="")
         {
             $br="Please Select Break type";
+            $count++;
         }
         if($mile=="")
         {
             $ml="Please Enter Milage";
+            $count++;
         }
-     $file_name = $_FILES['image']['name'];
-     $location = "img/";
-     $image_name = implode(",", $file_name);
-    if($image_name!="")
-    {
-        if (!empty($file_name))
-         {
-            foreach ($file_name as $key => $val) 
-            {
-                $target = $location . $val;
-                move_uploaded_file($_FILES['image']['tmp_name'][$key], $target);
-            }
-            $insert = "insert into car_list (name,modal,price,no_plate,company_name,image,seat,fual)
-             values ('$car_name',$modal,$rent_price,'$no_plate','$company_name','$image_name',$seat,'$fual');";
-            $run = mysqli_query($conn, $insert);
-            if ($run == true)
-            {
-                echo "<script>alert('Car Added Succesfully')</script>";
-            }
-            else
-            {
-               echo "<script>alert('Someing Went Wrong')</script>";
-            }
-        
-    
+        if (empty($_FILES['image1']['name'][0])) {
+            $imageError1 = "Please upload  at least one image in image 1.";
+            $count++;
         }
-    }
-    else
-    {
-        $ier="Please select File";
-    }
-    
-   
+        if (empty($_FILES['image2']['name'][0])) {
+            $imageError2 = "Please upload at least one image in Image 2.";
+            $count++;
+        }
+        if (empty($_FILES['image3']['name'][0])) {
+            $imageError3 = "Please upload at least one image in Image 3.";
+            $count++;
+        }
+       
+      if($count==0)
+      {
+    // Loop through each input field (image1[], image2[], image3[]) and process files
+    foreach ($_FILES as $inputName => $file) {
+        // Check if files are uploaded for this field
+        if (isset($file['name']) && is_array($file['name'])) {
+            $fileNames = $file['name'];
+            $location = "img/";
 
+            // Loop through each file uploaded for this input
+            foreach ($fileNames as $key => $val) {
+                $target = $location . $val;
+                // Move the file to the target directory
+                if (move_uploaded_file($file['tmp_name'][$key], $target)) {
+                    // Add the file path to the allimages array
+                    $allimages[] = $target;
+                } else {
+                    echo "<script>alert('Error uploading file: $val');</script>";
+                }
+            }
+        }
+    }
+
+    
+    // $insert = "INSERT INTO car_img (img) VALUES ('$imagePathsWithoutPrefix  ')";
+    // $run = mysqli_query($conn, $insert);
+
+      // Insert image paths into the database
+      if (count($allimages) > 0) {
+        // Join the image paths into a comma-separated string
+        $imagePaths = implode(",", $allimages);
+        $imagePathsWithoutimg = str_replace("img/", "", $imagePaths);
+        
+        $insert = "insert into car_list (name,modal,price,no_plate,company_name,image,seat,fual,door,en_power,en_type,break_type,fual_capacity,mileage)
+    values ('$car_name',$modal,$rent_price,'$no_plate','$company_name','$imagePathsWithoutimg',$seat,'$fual',$door,'$power','$engine','$break',$f_tank,$mile)";
+        $run = mysqli_query($conn, $insert);
+
+        if ($run) {
+            echo "<script>alert('Car Added Successfully');</script>";
+      
+        } else {
+            echo "<script>alert('Something went wrong');</script>";
+        }
+        echo "<script>window.open('add_car.php', 'second');</script>";
+    } 
+   
+    
+    
+}
     }
 
 ?>
@@ -126,24 +179,36 @@ if(isset($_POST['submit']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/add_car_style.css">
     <title>add car</title>
+    <script>
+        function previewImages(input, id) {
+            const fileList = input.files;
+            const previewContainer = document.getElementById(id);
+            previewContainer.innerHTML = ""; // Clear previous previews
+
+            if (fileList) {
+                for (let i = 0; i < fileList.length; i++) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.createElement("img");
+                        img.src = e.target.result;
+                        img.style.maxWidth = "100px";
+                        img.style.margin = "10px";
+                        previewContainer.appendChild(img);
+                    };
+                    reader.readAsDataURL(fileList[i]);
+                }
+            }
+        }
+    </script>
 </head>
 
 <body>
-<?php
-       /* if(isset($message))
-        {
-            foreach($message as $message){
-                echo '<span class="message">'.$message.'</span>';
-            }
-        }*/
-    ?>
+
     <div class="container">
       
         
         <form action="" method="post" enctype="multipart/form-data" >
-        <div class="title">Add Car  
-        
-        </div>
+        <div class="title">Add Car</div>
         <div class="bi-txt"><u><b>Basic Info.<span style="color: red;">*</span> </b></u></div>
         <div class="car_details">
                 <div class="input-box">
@@ -193,13 +258,35 @@ if(isset($_POST['submit']))
                 </div>
                 
                 
+            <!-- Input for multiple images for the first input -->
             <div class="up-img">
-            Upload Images<span style="color: red;">*</span>
-                <span style="color: red;"><?php echo $ier; ?></span>
-                <input type="file" name="image[]" multiple="multiple" id="file"><br>
-                <label for="file">Upload Image</label>     
-                
-            </div>
+                    Upload Image1<span style="color: red;">*</span>
+                    <span style="color: red;"><?php echo $ire; ?></span>
+                    <input type="file" name="image1[]" multiple onchange="previewImages(this, 'imagePreview1')"><br>
+                    <div id="imagePreview1"></div> <!-- Preview container for image1 -->
+                    <p style="color: red;"><?php echo $imageError1; ?></p>
+
+                </div>
+    
+                <!-- Input for multiple images for the second input -->
+                <div class="up-img">
+                    Upload Image2<span style="color: red;">*</span>
+                    <input type="file" name="image2[]" multiple onchange="previewImages(this, 'imagePreview2')"><br>
+                    <div id="imagePreview2"></div> <!-- Preview container for image1 -->
+                    <p style="color: red;"><?php echo $imageError2; ?></p>
+
+                </div>
+
+                <!-- Input for multiple images for the third input -->
+                <div class="up-img">
+                    Upload Image3<span style="color: red;">*</span>
+                    <input type="file" name="image3[]" multiple onchange="previewImages(this, 'imagePreview3')"><br>
+                    <div id="imagePreview3"></div> <!-- Preview container for image1 -->
+                    <p style="color: red;"><?php echo $imageError3; ?></p>
+
+                </div>
+           
+          
             </div>
             
             <div class="bi-txt"><u><b>Accessories.<span style="color: red;">*</span> </b></u></div>
@@ -279,6 +366,7 @@ if(isset($_POST['submit']))
                 </div>
         </form>
     </div>
+    
 </body>
 
 </html>
