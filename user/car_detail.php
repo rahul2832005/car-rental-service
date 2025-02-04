@@ -2,7 +2,11 @@
 //@include "./connection.php";
 $conn = mysqli_connect("localhost", "root", "", "car_rent");
 session_start();
+<<<<<<< Updated upstream
 error_reporting(0);
+=======
+ error_reporting(0);
+>>>>>>> Stashed changes
 $sdate=date('Y-m-d');
 $fdate = $tdate = $message = $er = $ms = $td = $fd = "";
 

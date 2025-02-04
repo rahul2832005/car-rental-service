@@ -37,6 +37,8 @@ error_reporting(0);
             background-color: rgb(203, 231, 230);
             margin-top: 20px;
             justify-content: center;
+            margin-left: -28px;
+            margin-right: -28px;
         }
 
         .card {
@@ -47,7 +49,8 @@ error_reporting(0);
             box-shadow: 0 4px 12px -5px rgba(0, 0, 0, 0.4);
             overflow: hidden;
             padding: 20px;
-            margin: 17px 50px;
+            margin: 17px 15px;
+
            
         }
 
@@ -176,7 +179,7 @@ error_reporting(0);
         </div>
         <?php
 
-$select_car = mysqli_query($conn, "select * from car_list where vid=68 or vid=69 or  vid=70");
+$select_car = mysqli_query($conn, "select * from car_list where vid in(60,47,49)");
 if (mysqli_num_rows($select_car) > 0) {
     while ($row = mysqli_fetch_array($select_car)) {
         $image=explode(",",$row['image']);

@@ -136,11 +136,11 @@
 
     <div class="container">
         <div class="car-image">
-            <img src="image/rahul.jpg" alt="Vanguard CX2 Convertible" id="mainImg">
+            <img src="image/rahul1.jpg" alt="Vanguard CX2 Convertible" id="mainImg">
             <div class="thumbnail-gallery">
-                <img src="image/rahul.jpg" alt="Car Thumbnail" id="thumb1">
-                <img src="image/ahemdabad.jpg" alt="Car Thumbnail" id="thumb2">
-                <img src="image/guwahati.jpg" alt="Car Thumbnail" id="thumb3">
+                <img src="image/rahul1.jpg" alt="Car Thumbnail" id="thumb1">
+                <img src="image/thar2.jpg" alt="Car Thumbnail" id="thumb2">
+                <img src="image/thar3.jpg" alt="Car Thumbnail" id="thumb3">
             </div>
         </div>
 
