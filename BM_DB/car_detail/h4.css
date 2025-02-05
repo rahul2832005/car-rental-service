@@ -1,0 +1,163 @@
+
+.section {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.section h2 {
+    margin-top: 32px;
+    margin-bottom: 40px;
+    color: #333; /* Darker heading color */
+    position: relative; /* For the orange line */
+}
+
+.section h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Adjust position as needed */
+    width: 50px; /* Adjust width as needed */
+    height: 3px;
+    background-color: #FFA500; /* Orange color */
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-gap: 15px;
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center icon and text */
+    text-align: center;
+}
+
+.spec-item i {
+    font-size: 24px; /* Adjust icon size */
+    margin-bottom: 10px;
+    color: #555; /* Slightly darker icon color */
+}
+
+.spec-item p {
+    margin: 0;
+    color: #333;
+}
+
+/* features css*/
+
+
+
+.feature-container {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    width: 80%;
+    max-width: 960px;
+}
+
+.features h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+    position: relative;
+}
+
+.features h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 50px;
+    height: 3px;
+    background-color: #FFA500; /* Orange color */
+}
+
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    grid-gap: 20px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+}
+
+.feature-item i {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #008000; /* Green checkmark color */
+}
+
+.feature-item p {
+    margin: 0;
+    color: #333;
+}
+/* ... (Existing CSS for .section, .spec-item, etc.) */
+
+/* Responsive adjustments */
+@media (max-width: 768px) { /* Example breakpoint - adjust as needed */
+    .container, .feature-container { /* Target both containers */
+        width: 95%; /* Make containers take up more width on smaller screens */
+        padding: 10px; /* Reduce padding */
+    }
+
+    .content {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Adjust minmax for specs */
+        grid-gap: 10px; /* Reduce grid gap */
+    }
+
+    .spec-item i {
+        font-size: 20px; /* Slightly smaller icons */
+        margin-bottom: 5px;
+    }
+
+    .features h2 {
+        font-size: 1.5em; /* Smaller heading */
+        margin-top: 20px; /* Adjust margins */
+        margin-bottom: 20px;
+    }
+
+    .feature-list {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust minmax for features */
+        grid-gap: 10px; /* Reduce grid gap */
+    }
+
+    .feature-item i {
+        font-size: 18px; /* Slightly smaller icons */
+        margin-right: 5px;
+    }
+
+    .feature-item p {
+        font-size: 0.9em; /* Smaller font size for text */
+    }
+}
+
+@media (max-width: 480px) { /* Another example breakpoint for even smaller screens */
+    .content {
+        grid-template-columns: 1fr; /* Single column for specs */
+    }
+
+    .feature-list {
+        grid-template-columns: 1fr; /* Single column for features */
+    }
+    .spec-item {
+        /* display: flex; */
+       padding-bottom: 15px;
+        flex-direction: column;
+        align-items: center; /* Center icon and text */
+        text-align: center;
+    }
+    
+    .spec-item i {
+       
+        font-size: 40px; /* Adjust icon size */
+        margin-bottom: 10px;
+        color: #555; /* Slightly darker icon color */
+    }
+    /* ... other adjustments as needed for very small screens */
+}
