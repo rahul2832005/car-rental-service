@@ -2,10 +2,8 @@
 session_start();
 require 'vendor/autoload.php'; // If using Composer
 
-$conn = mysqli_connect("localhost", "root", "", "car_rent");
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+@include "/wamp64/www/projects/rental/car-rental-service/user/include/config.php";
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

@@ -1,122 +1,104 @@
 
 <?php  
-
+@include "include/config.php";
 $nm=$count=$num=$email=$em=$pass=$passer=$com_pass=$cpas=$match=$fname=$no="";
 
-$conn=mysqli_connect("localhost","root","","car_rent");
-if(!$conn)
-{
-    echo "Not connect";
-}
+// if(isset($_POST["sign-up"]))
+// {
+//     $count=0;
 
-if(isset($_POST["sign-up"]))
-{
-    $count=0;
-
-    $fname=$_POST["fname"];
-    $no=$_POST["no"];
-    $email=$_POST["email"];
-    $pass=$_POST["pass"];
-    $com_pass=$_POST["com_pass"];
+//     $fname=$_POST["fname"];
+//     $no=$_POST["no"];
+//     $email=$_POST["email"];
+//     $pass=$_POST["pass"];
+//     $com_pass=$_POST["com_pass"];
+//     $token = bin2hex(random_bytes(50)); // Generate a random token
     
    
-    if($fname=="")
-    {
-        $nm="Enter Name !";
-        $count++;
-    }
-    else
-    {
-        $ex='/^[a-zA-Z]*$/';
-        if(!preg_match($ex,$fname))
-        {
-        $nm="Enter Only Alpha !";
-        $count++;
-        }
-    }
+//     if($fname=="")
+//     {
+//         $nm="Enter Name !";
+//         $count++;
+//     }
+//     else
+//     {
+//         $ex='/^[a-zA-Z]*$/';
+//         if(!preg_match($ex,$fname))
+//         {
+//         $nm="Enter Only Alpha !";
+//         $count++;
+//         }
+//     }
 
-    if($no=="")
-        {
-            $num="Please Enter Number !";
-            $count++;
-        }
-        else
-        {
-            if(!is_numeric($no))
-            {
-                $num="Enter Only Numbers !";
-                 $count++;
+//     if($no=="")
+//         {
+//             $num="Please Enter Number !";
+//             $count++;
+//         }
+//         else
+//         {
+//             if(!is_numeric($no))
+//             {
+//                 $num="Enter Only Numbers !";
+//                  $count++;
                 
-            }
-            elseif(strlen($no)<10)
-                {
-                       $num="Not Number Compalate !";
-                        $count++;   
-                    } 
-         }
+//             }
+//             elseif(strlen($no)<10)
+//                 {
+//                        $num="Not Number Compalate !";
+//                         $count++;   
+//                     } 
+//          }
             
                  
         
-        if($email=="")
-        {
-            $em="Enter Email ID !";
-            $count++;
-        }
-        else
-        {
-            $emailquery="select * from reguser where email='$email'";
-            $exemailquery=mysqli_query($conn,$emailquery);
-            $row=mysqli_num_rows($exemailquery);
-            if($row>0)
-            {
-                $em="Email Already Exist!";
-                $count++;
-            }
-            $ex1= '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
-            if(!preg_match($ex1,$email))
-            {
-                $em="Enter Valid Email Address !";
-                $count++;
-            }
-        }
-        if($pass=="")
-        {
+//         if($email=="")
+//         {
+//             $em="Enter Email ID !";
+//             $count++;
+//         }
+//         else
+//         {
+//             $emailquery="select * from reguser where email='$email'";
+//             $exemailquery=mysqli_query($conn,$emailquery);
+//             $row=mysqli_num_rows($exemailquery);
+//             if($row>0)
+//             {
+//                 $em="Email Already Exist!";
+//                 $count++;
+//             }
+//             $ex1= '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+//             if(!preg_match($ex1,$email))
+//             {
+//                 $em="Enter Valid Email Address !";
+//                 $count++;
+//             }
+//         }
+//         if($pass=="")
+//         {
             
-            $passer="Enter The Password";
-            $count++;
-        }
-        elseif(strlen($pass)<8)
-        {
-                $passer="Enter At lease 8 character !";
-                $count++;
-        }
+//             $passer="Enter The Password";
+//             $count++;
+//         }
+//         elseif(strlen($pass)<8)
+//         {
+//                 $passer="Enter At lease 8 character !";
+//                 $count++;
+//         }
         
-        if($com_pass=="")
-        {
-            $cpas="Enter Confirm Pasword !";
-            $count++;
-        }
-        elseif($com_pass!=$pass) 
-        {
-            $cpas="Not Matched Password !";
-            $count++;
-        }
+//         if($com_pass=="")
+//         {
+//             $cpas="Enter Confirm Pasword !";
+//             $count++;
+//         }
+//         elseif($com_pass!=$pass) 
+//         {
+//             $cpas="Not Matched Password !";
+//             $count++;
+//         }
 
        
-
-
-        if($count==0)
-       {
-        $query="insert into reguser (name,mnumber,email,password)values('$fname','$no','$email','$pass');";
-        $exquery=mysqli_query($conn,$query);
-           
-        echo "<script>alert('Registeration Done !')</script>";
-        echo "<script>window.location.href='login.php'</script>";
-        }
-        
-        
-    
-}
+// }
 
 ?>
 <!DOCTYPE html>
@@ -262,7 +244,7 @@ if(isset($_POST["sign-up"]))
         BEGINS!
     </div>
     <div class="container">
-        <form action="#" method="post">
+        <form action="register_link.php" method="post">
             <h1>Register</h1>
             <!-- <p><?php /*echo $count;*/ ?></p> -->
             <div class="input-box">
