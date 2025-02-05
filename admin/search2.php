@@ -1,16 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";  
-$password = "";
-$dbname = "car_rent"; 
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if (!$conn) 
-{
-    echo "Connection failed:";
-}
-
+@include "include/config.php";
 if (isset($_POST['search'])) 
 {
     $search = trim($_POST['search']);

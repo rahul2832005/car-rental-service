@@ -1,8 +1,5 @@
 <?php
-$conn=mysqli_connect("localhost","root","","car_rent");
-if (!$conn) {
-    echo "not";
-}
+@include "include/config.php";
     if(isset($_POST["submit"]))
     {
        

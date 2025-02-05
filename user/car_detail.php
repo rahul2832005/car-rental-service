@@ -1,6 +1,6 @@
 <?php
 //@include "./connection.php";
-$conn = mysqli_connect("localhost", "root", "", "car_rent");
+@include "include/config.php";
 session_start();
 error_reporting(0);
 $sdate=date('Y-m-d');

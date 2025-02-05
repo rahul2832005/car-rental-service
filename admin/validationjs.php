@@ -1,8 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "car_rent");
-if (!$conn) {
-    die("Database connection failed!");
-}
+@include "include/config.php";
 error_reporting(0);
 $errors = [];
 $allimages = [];

@@ -6,7 +6,7 @@ if(!$_SESSION['mailcheck'])
 {
     header("location:f_pass.php");
 }
-$conn=mysqli_connect('localhost','root','','car_rent');
+@include "include/config.php";
 if(!$conn)
 {
     echo "Not Conect";

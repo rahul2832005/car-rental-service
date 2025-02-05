@@ -1,9 +1,7 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'car_rentnew');
+@include "include/config.php";
 $res = $sql1 = $row1 = $re = "";
-if (!$conn) {
-    echo "not connect";
-}
+
 
 $brand=$_POST['brand'];
 $fual=$_POST['fual'];

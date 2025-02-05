@@ -1,9 +1,6 @@
 <?php
 // error_reporting(0);
-$conn=mysqli_connect("localhost","root","","car_rent");
-if (!$conn) {
-    echo "not";
-}
+@include "include/config.php";
 $allimages = [];
 $count=0;
 $imageError1 = $imageError2 = $imageError3 = ""; 

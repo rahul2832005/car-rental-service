@@ -1,9 +1,6 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'car_rent');
-$search="";
-if (!$conn) {
-    echo "not connect";
-}
+@include "include/config.php";$search="";
+
 if (isset($_POST['search'])) 
 {
     $search = trim($_POST['search']);

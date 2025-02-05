@@ -1,9 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "car_rent");
-if (!$conn) {
-    echo "Connection failed!";
-}
-
+@include "include/config.php";
 $allimages = [];
 
 if (isset($_POST['submit'])) {

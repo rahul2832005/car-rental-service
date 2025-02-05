@@ -1,15 +1,9 @@
 <?php
 //login page
+@include "include/config.php";
     $email=$password=$pass=$em="";
     session_start();
 
-    $conn=mysqli_connect("localhost","root","","car_rent");
-    if(!$conn)
-    {
-        echo "Not connect";
-    }
-
-    
     if(isset($_POST["login"]))
     {
         $count=0;
@@ -45,7 +39,7 @@
             }
         }
       
-        $query="select * from reguser where email='$email' && password='$password'";
+        $query="select * from reguser where email='$email' && password='$password' && is_verified=1";
         $exquery=mysqli_query($conn,$query);
 
         $row=mysqli_num_rows($exquery);
@@ -75,7 +69,7 @@
         }
         elseif($row!=1 && $count==0)
         {
-            echo "<script>alert('User Not Found')</script>";
+            echo "<script>alert('⚠️ User Not Found Or Not Verified!');</script>";
         }
        
        
