@@ -128,7 +128,7 @@ if (isset($_POST['Book'])) {
 
         .thumbnail-gallery img {
             width: 167px;
-            height: 120px;
+            height: 140px;
             margin: 5px;
             border-radius: 5px;
             cursor: pointer;

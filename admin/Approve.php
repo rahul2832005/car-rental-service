@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 @include "include/config.php";
 // for approve 
 if(isset($_REQUEST['aid'])){

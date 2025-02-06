@@ -17,6 +17,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .page-container {
@@ -34,7 +35,7 @@
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    overflow: auto;
+    overflow: hidden;
     margin: 20px; /* Add margin for spacing */
 }
 
@@ -43,6 +44,9 @@
     flex: 1;
     position: relative;
     margin: 10px 10px;
+    max-height: 500px; /* Set max height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden;
 }
 
 .car-image img {
@@ -75,13 +79,15 @@
 } */
 
 .form-container {
-    width: 250px;
+    max-width: 350px;
     flex: 1;
     padding: 20px;
     display: flex;
     flex-direction: column;
     background-color: wheat;
     position: relative;
+    max-height: 500px; /* Set max height */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .pricing-details {
@@ -100,11 +106,6 @@
 }
 
 
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
 input, select {
     width: calc(100% - 15px);
     padding: 8px;
@@ -174,11 +175,11 @@ button {
 /* Responsive Styles */
 @media (max-width: 1024px) {
     .container {
-        width: 100%;
+        max-width: 90%;
     }
     .image-slider img {
-        width: 155px;
-        height: 120px;
+        width: 160px;
+        height: 130px;
     }
 }
 
@@ -215,101 +216,6 @@ button {
         height: 60px;
     }
 }
-
-/*  rating css*/
-
-/* From Uiverse.io by SelfMadeSystem */ 
-.rating {
-    display: flex;
-    flex-direction: row-reverse;
-  gap: 1rem;
-  --stroke: #666;
-  --fill: #ffc73a;
-  padding-right:218px ;
-}
-h2{
-    display: inline;
-}
-
-.rating input {
-  appearance: unset;
-  display: none;
-}
-
-.rating label {
-  cursor: pointer;
-}
-
-.rating svg {
-  width: 40px;
-  height: 40px;
-  overflow: visible;
-  fill: transparent;
-  padding-right: 20px;
-  stroke: var(--stroke);
-  stroke-linejoin: bevel;
-  stroke-dasharray: 12;
-  animation: idle 4s linear infinite;
-  transition: stroke 0.2s, fill 0.5s;
-}
-
-@keyframes idle {
-  from {
-    stroke-dashoffset: 24;
-  }
-}
-
-.rating label:hover svg {
-  stroke: var(--fill);
-}
-
-.rating input:checked ~ label svg {
-  transition: 0s;
-  animation: idle 4s linear infinite, yippee 0.75s backwards;
-  fill: var(--fill);
-  stroke: var(--fill);
-  stroke-opacity: 0;
-  stroke-dasharray: 0;
-  stroke-linejoin: miter;
-  stroke-width: 8px;
-}
-
-@keyframes yippee {
-  0% {
-    transform: scale(1);
-    fill: var(--fill);
-    fill-opacity: 0;
-    stroke-opacity: 1;
-    stroke: var(--stroke);
-    stroke-dasharray: 10;
-    stroke-width: 1px;
-    stroke-linejoin: bevel;
-  }
-
-  30% {
-    transform: scale(0);
-    fill: var(--fill);
-    fill-opacity: 0;
-    stroke-opacity: 1;
-    stroke: var(--stroke);
-    stroke-dasharray: 10;
-    stroke-width: 1px;
-    stroke-linejoin: bevel;
-  }
-
-  30.1% {
-    stroke: var(--fill);
-    stroke-dasharray: 0;
-    stroke-linejoin: miter;
-    stroke-width: 8px;
-  }
-
-  60% {
-    transform: scale(1.2);
-    fill: var(--fill);
-  }
-}
-
     </style>
 </head>
 <body>
@@ -323,32 +229,6 @@ h2{
                     <img src="../../admin/img/thar3.jpg" alt="Car 3" id="thumb2">
                     <img src="../../admin/img/thar4.jpg" alt="Car 4" id="thumb3">
                 </div>
-            <h2>Ratings</h2>
-                <div class="rating"></h2>
-  <input type="radio" id="star-1" name="star-radio" value="star-1">
-  <label for="star-1">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path></svg>
-  </label>
-  <input type="radio" id="star-2" name="star-radio" value="star-1">
-  <label for="star-2">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path></svg>
-  </label>
-  <input type="radio" id="star-3" name="star-radio" value="star-1">
-  <label for="star-3">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path></svg>
-  </label>
-  <input type="radio" id="star-4" name="star-radio" value="star-1">
-  <label for="star-4">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path></svg>
-  </label>
-  <input type="radio" id="star-5" name="star-radio" value="star-1">
-  <label for="star-5">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path></svg>
-  </label>
-
-</div>
-
-
                 <div class="section">
             <h2>Extra Service</h2>
             <div class="content">
