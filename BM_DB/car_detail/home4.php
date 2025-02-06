@@ -99,12 +99,6 @@
     margin-bottom: 20px;
 }
 
-
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
 input, select {
     width: calc(100% - 15px);
     padding: 8px;
