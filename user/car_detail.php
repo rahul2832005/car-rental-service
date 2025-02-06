@@ -2,7 +2,7 @@
 //@include "./connection.php";
 $conn = mysqli_connect("localhost", "root", "", "car_rent");
 session_start();
-error_reporting(0);
+ error_reporting(0);
 $sdate=date('Y-m-d');
 $fdate = $tdate = $message = $er = $ms = $td = $fd = "";
 

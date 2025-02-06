@@ -179,7 +179,7 @@ error_reporting(0);
         </div>
         <?php
 
-$select_car = mysqli_query($conn, "select * from car_list where vid in(63,64,66)");
+$select_car = mysqli_query($conn, "select * from car_list where vid in(60,47,49)");
 if (mysqli_num_rows($select_car) > 0) {
     while ($row = mysqli_fetch_array($select_car)) {
         $image=explode(",",$row['image']);
