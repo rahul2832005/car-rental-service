@@ -156,31 +156,25 @@ h3 {
         <?php  
         $bno=$_GET['bno'];
         $uid=$_GET['userEmail'];
-//         $sql = "SELECT reguser.*, 
-//         car_list.name, 
-//         booking.FromDate, 
-//         booking.ToDate, 
-//         booking.message, 
-//         booking.vid, 
-//         booking.status, 
-//         booking.PostingDate, 
-//         booking.id, 
-//         booking.bookingno, 
-//         DATEDIFF(booking.ToDate, booking.FromDate) as totalnodays, 
-//         car_list.price, 
-//         (DATEDIFF(booking.ToDate, booking.FromDate) * car_list.price) AS grand_total
-//  FROM booking 
-//  JOIN car_list ON car_list.vid = booking.vid 
-//  JOIN reguser ON reguser.email = booking.userEmail 
-//  WHERE booking.bookingno = $bno AND booking.userEmail='$uid'
-//  ORDER BY booking.PostingDate" ;
-$sql="SELECT reguser.*,booking.FromDate,booking.userEmail,booking.bookingno,booking.ToDate,
- booking.vid,booking.status,booking.PostingDate,booking.message,
- DATEDIFF(booking.ToDate, booking.FromDate) as totalnodays
---  (DATEDIFF(booking.ToDate, booking.FromDate) * car_list.price) AS grand_total 
- from booking
-JOIN reguser ON reguser.email=booking.userEmail where booking.bookingno=$bno AND booking.userEmail='$uid'
+        $sql = "SELECT reguser.*, 
+        car_list.name, 
+        booking.FromDate, 
+        booking.ToDate, 
+        booking.message, 
+        booking.vid, 
+        booking.status, 
+        booking.PostingDate, 
+        booking.id, 
+        booking.bookingno, 
+        DATEDIFF(booking.ToDate, booking.FromDate) as totalnodays, 
+        car_list.price, 
+        (DATEDIFF(booking.ToDate, booking.FromDate) * car_list.price) AS grand_total
+ FROM booking 
+ JOIN car_list ON car_list.vid = booking.vid 
+ JOIN reguser ON reguser.email = booking.userEmail 
+ WHERE booking.bookingno = $bno AND booking.userEmail='$uid'
  ORDER BY booking.PostingDate" ;
+
  $result = mysqli_query($conn, $sql);
     $na=mysqli_num_rows($result);
  while($row=mysqli_fetch_assoc($result)){

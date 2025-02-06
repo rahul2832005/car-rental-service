@@ -1,6 +1,6 @@
 <?php
 session_start();
-@include "/wamp64/www/projects/rental/car-rental-service/user/include/config.php";
+@include "../include/config.php";
 if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
 }

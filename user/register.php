@@ -134,8 +134,10 @@ if(isset($_POST["sign-up"]))
             $mail->Body    = "
                 Welcome to CarOla! <br>
                 Click the link below to verify your account: <br>
-                <a href='http://localhost/projects/rental/car-rental-service/user/verify_user.php?token=$token&email=$email'>BM Verify Email</a> 
-                <a href='http://localhost/car%rental%service/user/verify_user.php?token=$token&email=$email'>RB Verify Email</a> 
+                <a href='http://localhost/projects/rental/car-rental-service/user/verify_user.php?token=$token&email=$email'>BM Verify Email</a><br> 
+                <a href='http://localhost/car%rental%service/user/verify_user.php?token=$token&email=$email'>RB Verify Email</a><br> 
+             <a href='http://localhost/project/car-rental-service/user/verify_user.php?token=$token&email=$email'>CLG Verify Email</a> 
+
                 <br><br>
                 If you did not request this, please ignore this email.
                 <br><br>

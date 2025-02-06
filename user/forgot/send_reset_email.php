@@ -2,8 +2,7 @@
 session_start();
 require 'vendor/autoload.php'; // If using Composer
 
-@include "/wamp64/www/projects/rental/car-rental-service/user/include/config.php";
-
+@include "../include/config.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -47,7 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <br>
             If You Forgot PassWord Then Click 
              <a href='http://localhost/projects/rental/car-rental-service/user/forgot/reset_password.php?token=$token'>ResetPassword</a>  to reset your password.<br>
-            <br>
+             <a href='http://localhost/car%rental%service/user/verify_user.php?token=$token&email=$email'>RB Verify Email</a><br> 
+             <a href='http://localhost/project/car-rental-service/user/forgot/reset_password.php?token=$token&email=$email'>RB Verify Email</a> 
+             <br>
             If you Cannot Send Request  Then Report To Carola.com. 
             <br>
             <br>

@@ -13,8 +13,13 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <style>
+         @font-face {
+            font-family: 'pop-regular';
+            src: url('../font/Poppins-Regular.ttf');
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'pop-regular';
             margin: 20px;
         }
         .container {

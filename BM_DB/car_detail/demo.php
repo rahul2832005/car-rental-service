@@ -24,6 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start; 
+    position: sticky;
     /* Align to top for tall content */
     /* width: 100%; */
 }
@@ -45,8 +46,8 @@
     position: relative;
     margin: 10px 10px;
     max-height: 500px; /* Set max height */
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: hidden;
+    /* overflow-y: auto; Enable vertical scrolling */
+    /* overflow-x: hidden; */
 }
 
 .car-image img {
@@ -66,8 +67,8 @@
 }
 
 .image-slider img {
-    width: 160px;
-    height: 120px;
+    width: 140px;
+    height: 115px;
     margin-right: 10px;
     border-radius: 6px;
     cursor: pointer;
@@ -79,7 +80,7 @@
 } */
 
 .form-container {
-    max-width: 350px;
+    max-width: 315px;
     flex: 1;
     padding: 20px;
     display: flex;
@@ -224,10 +225,10 @@ button {
             <div class="car-image">
                 <img src="../../admin/img/thar2.jpg" alt="Car Image" id="mainImg">
                 <div class="image-slider">
-                    <!-- <img src="../../admin/img/thar2.jpg" alt="Car 1" id="thumb1"> -->
-                    <img src="../../admin/img/thar2.jpg" alt="Car 2" id="thumb1">
-                    <img src="../../admin/img/thar3.jpg" alt="Car 3" id="thumb2">
-                    <img src="../../admin/img/thar4.jpg" alt="Car 4" id="thumb3">
+                     <img src="../../admin/img/thar2.jpg" alt="Car 1" id="thumb1">
+                    <img src="../../admin/img/thar2.jpg" alt="Car 2" id="thumb2">
+                    <img src="../../admin/img/thar3.jpg" alt="Car 3" id="thumb3">
+                    <img src="../../admin/img/thar4.jpg" alt="Car 4" id="thumb4">
                 </div>
                 <div class="section">
             <h2>Extra Service</h2>
@@ -397,8 +398,8 @@ button {
         thumb2src = document.getElementById('thumb2').src;
         thumb3 = document.getElementById('thumb3');
         thumb3src = document.getElementById('thumb3').src;
-        //thumb4 = document.getElementById('thumb4');
-        //thumb4src = document.getElementById('thumb4').src;
+        thumb4 = document.getElementById('thumb4');
+        thumb4src = document.getElementById('thumb4').src;
 
         thumb1.addEventListener("click", function() {
             mainImg.src = thumb1src;
@@ -411,9 +412,9 @@ button {
         thumb3.addEventListener("click", function() {
             mainImg.src = thumb3src;
         })
-        // thumb4.addEventListener("click", function() {
-        //     mainImg.src = thumb4src;
-        // })
+         thumb4.addEventListener("click", function() {
+             mainImg.src = thumb4src;
+         })
     </script>
 </body>
 </html>
