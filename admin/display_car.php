@@ -1,9 +1,7 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'car_rent');
+@include "include/config.php";
 $res=$sql1=$row1=$re="";
-if (!$conn) {
-    echo "not connect";
-}
+
 // $sta="select status from booking where vid=(select  vid from car_list)";
 //  $ex=mysqli_query($conn,$sta);
  

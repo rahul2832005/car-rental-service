@@ -1,6 +1,5 @@
 <?php
-$conn=mysqli_connect("localhost","root","","car_rent");
-
+@include "include/config.php";
     if(isset($_POST['submit']))
     {
         $car_id=$_POST['car_id'];

@@ -1,15 +1,15 @@
 <?php
 
-$conn=mysqli_connect("localhost","root","","car_rent");
-
+@include "include/config.php";
 // for approve 
 if(isset($_REQUEST['aid'])){
     $aid=intval($_GET['aid']);
+    $vid=$_GET['vid'];
     $status=1;
-$update="update booking set status=$status where vid=$aid";
+$update="update booking set status=$status where bookingno=$aid";
 $q=mysqli_query($conn,$update);
 
-$update1="update car_list set status=$status where vid=$aid";
+$update1="update car_list set status=$status where vid=$vid";
 $q1=mysqli_query($conn,$update1);
 echo "<script>alert('Approve success')
 window.open('confirmed-booking.php', 'second');</script>";
@@ -20,12 +20,12 @@ window.open('confirmed-booking.php', 'second');</script>";
 // for cancel booking
 if(isset($_REQUEST['eaid'])){
     $eaid=$_GET['eaid'];
+    $vid=$_GET['vid'];
     $status=2;
-$update="update booking set status=$status where vid=$eaid";
+$update="update booking set status=$status where bookingno=$eaid";
 $q=mysqli_query($conn,$update);
 
-$update1="update car_list set status=0 where vid=$eaid";
-$q1=mysqli_query($conn,$update1);
+
 $sdate=date('Y-m-d');
 $next_date = date('Y-m-d', strtotime('+1 day'));
     // $update1="update booking set FromDate='$sdate',ToDate='$next_date' where vid=$eaid";
@@ -154,30 +154,35 @@ h3 {
 <body>
     <div class="container">
         <?php  
-        $vid=$_GET['vid'];
+        $bno=$_GET['bno'];
         $uid=$_GET['userEmail'];
-        $sql = "SELECT reguser.*, 
-        car_list.name, 
-        booking.FromDate, 
-        booking.ToDate, 
-        booking.message, 
-        booking.vid as vid, 
-        booking.status, 
-        booking.PostingDate, 
-        booking.id, 
-        booking.bookingno, 
-        DATEDIFF(booking.ToDate, booking.FromDate) as totalnodays, 
-        car_list.price, 
-        (DATEDIFF(booking.ToDate, booking.FromDate) * car_list.price) AS grand_total
- FROM booking 
- JOIN car_list ON car_list.vid = booking.vid 
- JOIN reguser ON reguser.email = booking.userEmail 
- WHERE booking.vid = $vid && booking.userEmail='$uid'
- ORDER BY booking.PostingDate DESC LIMIT 1" ;
-//  JOIN brands ON car_list.VehiclesBrand = tblbrands.id 
-
+//         $sql = "SELECT reguser.*, 
+//         car_list.name, 
+//         booking.FromDate, 
+//         booking.ToDate, 
+//         booking.message, 
+//         booking.vid, 
+//         booking.status, 
+//         booking.PostingDate, 
+//         booking.id, 
+//         booking.bookingno, 
+//         DATEDIFF(booking.ToDate, booking.FromDate) as totalnodays, 
+//         car_list.price, 
+//         (DATEDIFF(booking.ToDate, booking.FromDate) * car_list.price) AS grand_total
+//  FROM booking 
+//  JOIN car_list ON car_list.vid = booking.vid 
+//  JOIN reguser ON reguser.email = booking.userEmail 
+//  WHERE booking.bookingno = $bno AND booking.userEmail='$uid'
+//  ORDER BY booking.PostingDate" ;
+$sql="SELECT reguser.*,booking.FromDate,booking.userEmail,booking.bookingno,booking.ToDate,
+ booking.vid,booking.status,booking.PostingDate,booking.message,
+ DATEDIFF(booking.ToDate, booking.FromDate) as totalnodays
+--  (DATEDIFF(booking.ToDate, booking.FromDate) * car_list.price) AS grand_total 
+ from booking
+JOIN reguser ON reguser.email=booking.userEmail where booking.bookingno=$bno AND booking.userEmail='$uid'
+ ORDER BY booking.PostingDate" ;
  $result = mysqli_query($conn, $sql);
-
+    $na=mysqli_num_rows($result);
  while($row=mysqli_fetch_assoc($result)){
         ?>
         <h2 class="title">#<?php echo $row['bookingno']; ?> Booking Details</h2>
@@ -271,8 +276,8 @@ h3 {
         { ?>
         <div class="buttons">
             
-                <a href="Approve.php?aid=<?php echo $row['vid'] ?>"> <button class="confirm-button" name="approve" onclick="return confirm('Do you really want to Approve this Booking')">Confirm Booking</button></a>
-                <a href="Approve.php?eaid=<?php echo $row['vid'] ?>"> <button class="cancel-button" name="cancel" onclick="return confirm('Do you really want to Cancel this Booking')">Cancel Booking</button></a>
+                <a href="Approve.php?aid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?>"> <button class="confirm-button" name="approve" onclick="return confirm('Do you really want to Approve this Booking')">Confirm Booking</button></a>
+                <a href="Approve.php?eaid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid'];?>"> <button class="cancel-button" name="cancel" onclick="return confirm('Do you really want to Cancel this Booking')">Cancel Booking</button></a>
           
         </div>
   <?php  } 
@@ -281,6 +286,7 @@ h3 {
 
         <div class="print-button">
             <button onclick="window.print()">Print</button>
+            <button onclick="window.print()"><?php echo $na;  ?></button>
         </div>
     </div>
 </body>

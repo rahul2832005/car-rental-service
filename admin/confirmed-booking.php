@@ -1,9 +1,5 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'car_rent');
-
-if (!$conn) {
-    echo "not connect";
-}
+@include "include/config.php";
 $status=1;
 $sql = "select * from booking where status=$status";
 
@@ -109,7 +105,7 @@ $result = mysqli_query($conn, $sql);
                     }
                 ?>
                 <td><?php echo $row['PostingDate'] ?></td>
-                <td><a name="Approve" class="Approve" href="Approve.php?vid=<?php echo $row['vid']; ?>  && userEmail=<?php echo $row['userEmail']; ?> ">View</a></td>
+                <td><a name="Approve" class="Approve" href="Approve.php?bno=<?php echo $row['bookingno']; ?>  && userEmail=<?php echo $row['userEmail']; ?> ">View</a></td>
 
             </tr>
 

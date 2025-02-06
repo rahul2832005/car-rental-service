@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn=mysqli_connect("localhost","root","","car_rent");
+@include "include/config.php";
 $uid=$_SESSION['alogin'];
 if (isset($_GET['all']) && $_GET['all'] == 'true') {
 $sql = "SELECT reguser.*, 

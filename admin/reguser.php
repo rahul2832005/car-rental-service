@@ -1,9 +1,6 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'car_rent');
+@include "include/config.php";
 
-if (!$conn) {
-    echo "not connect";
-}
 
 $sql = "select * from reguser";
 

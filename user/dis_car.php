@@ -1,7 +1,7 @@
 <?php
 $index = 0;
 //@include "./connection.php";
-$conn = mysqli_connect("localhost", "root", "", "car_rent");
+@include "include/config.php";
 session_start();
 error_reporting(0);
 
@@ -179,7 +179,7 @@ error_reporting(0);
         </div>
         <?php
 
-$select_car = mysqli_query($conn, "select * from car_list where vid in(60,47,49)");
+$select_car = mysqli_query($conn, "SELECT * from car_list order by vid  desc  LIMIT 3");
 if (mysqli_num_rows($select_car) > 0) {
     while ($row = mysqli_fetch_array($select_car)) {
         $image=explode(",",$row['image']);

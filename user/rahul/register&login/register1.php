@@ -1,10 +1,16 @@
-<? php/*
+<?php
 ob_start();
-$conn=mysqli_connect('localhost','root','','rahul');
-if(!$conn)
-{
-    echo "not connect";
+
+// error_reporting(0);
+$host="sql.freedb.tech";
+$username="freedb_Bhupat";
+$db="freedb_car_rent";
+$pass='hcXB%$e?A538wtY';
+$conn = mysqli_connect("$host", "$username", "$pass", "$db");
+if (!$conn) {
+    echo "not";
 }
+
 if(isset($_POST['submit']))
 {
 	$fname=$_POST['fname'];
@@ -23,7 +29,7 @@ if(isset($_POST['submit']))
         header("location:login1.php");
     }
 	
-}*/
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

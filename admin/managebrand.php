@@ -1,11 +1,5 @@
 <?php
-$conn=mysqli_connect("localhost","root","","car_rent");
-
-if(!$conn)
-{
-	echo "not connect";
-
-}
+@include "include/config.php";
 ?>
 
 <!DOCTYPE html>

@@ -1,7 +1,7 @@
 <?php
 $index = 0;
 //@include "./connection.php";
-$conn = mysqli_connect("localhost", "root", "", "car_rent");
+@include "include/config.php";
 session_start();
 error_reporting(0);
 

@@ -1,12 +1,7 @@
 <?php 
+@include "include/config.php";
 session_start();
 $id="";
-$conn=mysqli_connect("localhost","root","","car_rent");
-
-if(!$conn)
-{
-    echo "not";
-}
 
 $email=$_SESSION['alogin'];
 $query="select * from reguser where email='$email'";
