@@ -1,11 +1,17 @@
+@font-face {
+    font-family: 'pop-regular';
+    src: url('../../font/Poppins-Regular.ttf');
+}
 *{
     /* margin: 25%; */
     padding: 0%;
     box-sizing: border-box;
-    font-family:arial;
+    font-family:'pop-regular';
+    
 }
 
 body{
+   
     display: flex;
     height:auto;
     width:auto;

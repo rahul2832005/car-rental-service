@@ -31,8 +31,13 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="css/fontawesome.min.css">
 
     <style>
+        @font-face {
+            font-family: 'pop-regular';
+            src: url('../font/Poppins-Regular.ttf');
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'pop-regular';
             margin: 20px;
         }
         .container {
@@ -94,14 +99,14 @@ $result = mysqli_query($conn, $sql);
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Car Name</th>
+                    <th style="width:135px;">Car Name</th>
                     <th>Price</th>
                     <th>No Plate</th>
-                    <th>Company Name</th>
+                    <th style="width:76px;">Company Name</th>
                     <th>Seat</th>
                     <th>Fual</th>
-                    <th>status</th>
-                    <th>Action</th>
+                    <th style="width:92px;">status</th>
+                    <th style="width:70px;">Action</th>
                    
                 </tr>
             </thead>

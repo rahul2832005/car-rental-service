@@ -35,7 +35,7 @@ error_reporting(0);
             display: flex;
             flex-wrap: wrap;
             background-color: #b1d7d6;
-            justify-content: center;
+            /* justify-content: center; */
         }
 
         .card {
@@ -191,7 +191,7 @@ error_reporting(0);
                             <h3 class="price"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['price']; ?>/-</h3>
                         </div>
                         <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: <?php echo $row['seat']; ?></h3>
-                        <h3 class="fual"><i class="fa-solid fa-gas-pump"></i>fual: <?php echo $row['fual']; ?></h3>
+                        <h3 class="fual"><i class="fa-solid fa-gas-pump"></i> fual: <?php echo $row['fual']; ?></h3>
 
                         <div>
                             <?php if ($_SESSION["alogin"]) { ?>

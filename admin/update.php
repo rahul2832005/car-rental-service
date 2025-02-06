@@ -13,7 +13,7 @@ error_reporting(0);
         $id=$_GET['uid'];
         
 
-        $sql="select * from car_list where id=$id";
+        $sql="select * from car_list where vid=$id";
 
         $result=mysqli_query($conn,$sql) or die("can not fetch the data.".mysqli_error($conn));
         $user=mysqli_fetch_assoc($result); 
@@ -42,7 +42,7 @@ error_reporting(0);
         }
 
         $sql="update car_list set name='$car_name',modal='$modal',price='$rent_price'
-        ,no_plate='$number',company_name='$company_name',seat='$seat',fual='$fual',image='$update_image' where id='$id'";
+        ,no_plate='$number',company_name='$company_name',seat='$seat',fual='$fual',image='$update_image' where vid='$id'";
 
         $result=mysqli_query($conn,$sql);
 

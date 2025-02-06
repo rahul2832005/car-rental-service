@@ -97,7 +97,7 @@ if (isset($_POST['Book'])) {
         .container {
             color: black;
             display: flex;
-            max-width: 900px;
+            max-width: 925px;
             margin: 50px auto;
             background: white;
             padding: 20px;
@@ -106,24 +106,27 @@ if (isset($_POST['Book'])) {
         }
 
         .car-image {
-            flex: 1;
+            width: 520px;
+            /* flex: 1; */
             text-align: center;
+            margin-left: -5px;
         }
 
         .car-image img {
             width: 100%;
             border-radius: 10px;
-            height: 363px;
+            height: 435px;
         }
 
         .thumbnail-gallery {
             display: flex;
             justify-content: center;
             margin-top: 10px;
+            width: 520px;
         }
 
         .thumbnail-gallery img {
-            width: 140px;
+            width: 167px;
             height: 120px;
             margin: 5px;
             border-radius: 5px;
@@ -138,12 +141,12 @@ if (isset($_POST['Book'])) {
         h1 {
             margin-top: 0px;
             font-size: 29px;
-            margin-bottom: -20px;
+            margin-bottom: -43px;
         }
 
         .price {
             font-size: 20px;
-            margin-bottom: -10px;
+            margin-bottom: -36px;
         }
 
         .price span {
@@ -165,7 +168,7 @@ if (isset($_POST['Book'])) {
 
         .specifications
         {
-            margin-top: -50px;
+            margin-top: -100px;
         }
         .specifications h3,
         .color-options h3 {
@@ -191,9 +194,10 @@ if (isset($_POST['Book'])) {
             border: 2px solid black;
             font-size: 28px;
             height: 47px;
-            width: 390px;
+            width: 340px;
             border-radius: 6px;
             position: sticky;
+            margin-bottom: -40px;
         }
 
         tbody {
