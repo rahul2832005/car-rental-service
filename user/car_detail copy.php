@@ -1,13 +1,16 @@
 <?php
 //@include "./connection.php";
-$conn = mysqli_connect("localhost", "root", "", "car_rent");
+@include "include/config.php";
 session_start();
-// error_reporting(0);
+ error_reporting(0);
 $sdate=date('Y-m-d');
 $fdate = $tdate = $message = $er = $ms = $td = $fd = "";
 
 $vid = $_GET['vid'];
 $uid = $_SESSION['userid'];
+$useremail = $_SESSION['alogin'];
+
+
 
 
 if (isset($_POST['Book'])) {
@@ -15,7 +18,6 @@ if (isset($_POST['Book'])) {
     $fdate = $_POST['fdate'];
     $tdate = $_POST['tdate'];
     $message = $_POST['message'];
-    $useremail = $_SESSION['alogin'];
     
     
     $status = 0;
@@ -33,32 +35,35 @@ if (isset($_POST['Book'])) {
         $count++;
     }
     
-        $avlquery = "select * from booking where '$fdate' between date(FromDate) AND date(ToDate) AND vid=$vid";
+        $avlquery =  "SELECT * FROM booking 
+        WHERE vid=$vid
+        AND status!=2
+        AND ('$fdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
+             OR '$tdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
+             OR (FromDate BETWEEN '$fdate' AND '$tdate') 
+             OR (ToDate BETWEEN '$fdate' AND '$tdate'))";
         $exavlquery = mysqli_query($conn, $avlquery);
 
+        
      
        
         $row = mysqli_num_rows($exavlquery);
-        if ($row == 0) {
-            $sql="insert into booking (bookingno,userEmail,vid,FromDate,ToDate,message,status) values($bookingno,'$useremail',$vid,'$fdate','$tdate','$message',$status);";
-            $ex=mysqli_query($conn,$sql);
-        
-            if($ex)
-            {
+        if ($row > 0) {
+            echo "<script>alert('Car Already Booked for the selected dates');</script>";
+            echo "<script type='text/javascript'> document.location = 'dis_car.php'; </script>";
+        } else {
+            // Proceed with booking
+            $sql = "insert INTO booking (bookingno, userEmail, vid, FromDate, ToDate, message, status) 
+                    VALUES ($bookingno, '$useremail', $vid, '$fdate', '$tdate', '$message', $status)";
+            $ex = mysqli_query($conn, $sql);
+            
+            if ($ex) {   
                 echo "<script>alert('Booking Done');</script>";
-                
-                
-            }
-            else
-            {
-                echo "<script>alert('Something Wrong');</script>";
+            } else {
+                echo "<script>alert('Something went wrong');</script>";
             }
         }
-         else
-          {
-            echo "<script>alert('Car  Already Booked');</script>";
-            echo "<script type='text/javascript'> document.location = 'dis_car.php'; </script>";
-          }
+       
     }
 
 
@@ -74,9 +79,12 @@ if (isset($_POST['Book'])) {
     <title>Vanguard CX2 Convertible</title>
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="css/booking.css">
     <link rel="stylesheet" href="css/car_details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
          @font-face {
             font-family: 'pop-regular';
@@ -93,7 +101,7 @@ if (isset($_POST['Book'])) {
         .container {
             color: black;
             display: flex;
-            max-width: 900px;
+            max-width: 925px;
             margin: 50px auto;
             background: white;
             padding: 20px;
@@ -102,25 +110,28 @@ if (isset($_POST['Book'])) {
         }
 
         .car-image {
-            flex: 1;
+            width: 520px;
+            /* flex: 1; */
             text-align: center;
+            margin-left: -5px;
         }
 
         .car-image img {
             width: 100%;
             border-radius: 10px;
-            height: 363px;
+            height: 435px;
         }
 
         .thumbnail-gallery {
             display: flex;
             justify-content: center;
             margin-top: 10px;
+            width: 520px;
         }
 
         .thumbnail-gallery img {
-            width: 140px;
-            height: 120px;
+            width: 167px;
+            height: 140px;
             margin: 5px;
             border-radius: 5px;
             cursor: pointer;
@@ -134,12 +145,12 @@ if (isset($_POST['Book'])) {
         h1 {
             margin-top: 0px;
             font-size: 29px;
-            margin-bottom: 10px;
+            margin-bottom: -43px;
         }
 
         .price {
             font-size: 20px;
-            margin-bottom: 10px;
+            margin-bottom: -36px;
         }
 
         .price span {
@@ -159,7 +170,10 @@ if (isset($_POST['Book'])) {
             gap: 10px;
         } */
 
-
+        .specifications
+        {
+            margin-top: -100px;
+        }
         .specifications h3,
         .color-options h3 {
             margin-top: 30px;
@@ -177,16 +191,17 @@ if (isset($_POST['Book'])) {
             margin-bottom: 5px;
         } */
 
-        #button {
-            margin-top: 40px;
+        .button {
+            /* margin-top: 40px; */
             color: black;
             background: white;
             border: 2px solid black;
             font-size: 28px;
             height: 47px;
-            width: 390px;
+            width: 340px;
             border-radius: 6px;
             position: sticky;
+            margin-bottom: -40px;
         }
 
         tbody {
@@ -210,9 +225,12 @@ if (isset($_POST['Book'])) {
     <div>
         <?php include('navbar.php'); ?>
     </div>
-    <?php
+    
+    <?php   
+    $query = "SELECT * from car_list where vid=$vid";
    
-    $query = "select * from car_list where vid=$vid";
+    // $query = "select * from car_list where vid=$vid";
+
     $exquery = mysqli_query($conn, $query);
 
     while ($row = mysqli_fetch_array($exquery)) {
@@ -220,57 +238,66 @@ if (isset($_POST['Book'])) {
 
     ?>
     <div class="container">
-    <div class="image-showcase">
-        <div class="main-image">
-        <img src="../admin/img/<?php echo $image[0]; ?>" alt="Not ">
+        <div class="car-image">
+            <img src="../admin/img/<?php echo $image[0]; ?>" alt="Not " id="mainImg">
+            <div class="thumbnail-gallery">
+                <img  src="../admin/img/<?php echo $image[0]; ?>" alt="Car Interior Front" id="thumb1">
+                <img src="../admin/img/<?php echo $image[1]; ?>" alt="Car Interior Back" id="thumb2">
+                <img src="../admin/img/<?php echo $image[2]; ?>" alt="Car Interior Back" id="thumb3">
+            </div>
         </div>
-        <!-- /projects/git_test/7-1/car-rental-service-main/admin/img/ -->
-        <div class="side-images">
-        <img src="../admin/img/<?php echo $image[1]; ?>" alt="Car Interior Front">
-        <img src="../admin/img/<?php echo $image[2]; ?>" alt="Car Interior Back">
+
+        <div class="car-info">
+            <h1><?php echo $row['name']; ?></h1>
+            <p class="price">Starting at <span>₹<?php echo $row['price']; ?>/day</span></p>
+            <p class="description">
+                Elevate your journey with the Ford Mustang Convertible, the epitome of American
+                muscle and open-air excitement.
+            </p>
+
+            <div class="specifications">
+                <h3>Specifications</h3>
+                <table>
+                    <tr>
+                        <td id="col1"><i class="fa-solid fa-car"></i> Convertible</td>
+                        <td id="col2"><i class="fa-solid fa-car"></i> Convertible</td>
+                    </tr>
+                    <tr>
+                        <td id="col1"><i class="fa-solid fa-car"></i> Convertible</td>
+                        <td id="col2"><i class="fa-solid fa-car"></i> Convertible</td>
+                    </tr>
+                    <tr>
+                        <td id="col1"><i class="fa-solid fa-car"></i> Convertible</td>
+                        <td id="col2"><i class="fa-solid fa-car"></i> Convertible</td>
+                    </tr>
+                    <tr>
+                        <td id="col1"><i class="fa-solid fa-car"></i> Convertible</td>
+                        <td id="col2"><i class="fa-solid fa-car"></i> Convertible</td>
+                    </tr>
+
+                </table>
+                <!-- <ul style="display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            list-style: none;
+            padding: 0;">
+                    <li style="font-size: 18px;margin-bottom: 5px;"><i class="fa-solid fa-car"></i> Convertible</li>
+                    <li style="font-size: 18px;margin-bottom: 5px;"><i class="fa-solid fa-car"></i> Automatic</li>
+                    <li style="font-size: 18px;margin-bottom: 5px;"><i class="fa-solid fa-car"></i> 5.0-liter V8</li>
+                    <li style="font-size: 18px;margin-bottom: 5px;"><i class="fa-solid fa-car"></i> 450 HP</li>
+                    <li style="font-size: 18px;margin-bottom: 5px;"><i class="fa-solid fa-car"></i> 4 Passengers</li>
+                    <li style="font-size: 18px;margin-bottom: 5px;"><i class="fa-solid fa-car"></i> 450 HP</li>
+                    <li style="font-size: 18px;margin-bottom: 5px;"><i class="fa-solid fa-car"></i> 4 Passengers</li>
+                    <li style="font-size: 18px;margin-bottom: 5px;"><i class="fa-solid fa-car"></i> 450 HP</li>
+                </ul> -->
+            </div>
+            <?php if($row['status']==0 || $row['status']=="") {?>
+                <button type="submit" id="button" class="button">Rent Now</button>
+            <?php  } else {?>
+                <button type="submit" id="button1" class="button">Booked</button>
+            <?php  }?>
         </div>
     </div>
-    <div class="car-details">
-       
-       <h1 class="car-title"><?php echo $row['name'];?></h1>
-       <div class="car-info">
-           <div class="car-info-item">
-               <img src="../admin/img/capacity.png" alt="Seat Capacity Icon">
-               
-               <span><?php echo $row['seat'] ?>   People</span>
-           </div>
-           <div class="car-info-item">
-               <img src="../admin/img/capacity.png" alt="Doors Icon">
-               <span><?php echo $row['door'] ?> Doors</span>
-           </div>
-           <div class="car-info-item">
-               <img src="../admin/img/capacity.png" alt="Fuel Tank Icon">
-               <span><?php echo $row['fual_capacity'] ?> Liters</span>
-           </div>
-           <div class="car-info-item">
-               <img src="../admin/img/capacity.png" alt="Fuel Type Icon">
-               <span><?php echo $row['fual'] ?></span>
-           </div>
-           <div class="car-info-item">
-               <img src="../admin/img/capacity.png" alt="Mileage Icon">
-               <span><?php echo $row['mileage'] ?> Kmpl</span>
-           </div>
-           <div class="car-info-item">
-               <img src="../admin/img/capacity.png" alt="Engine Type Icon">
-               <span><?php echo $row['en_type'] ?></span>
-           </div>
-           <div class="car-info-item">
-               <img src="/projects/git_test/7-1/car-rental-service-main/admin/img/capacity.png" alt="Brake Type Icon">
-               <span><?php echo $row['break_type'] ?></span>
-           </div>
-           <div class="car-info-item">
-               <img src="../admin/img/capacity.png" alt="Engine Power Icon">
-               <span><?php echo $row['en_power'] ?></span>
-           </div>
-       </div>
-       <button type="submit" id="button">Rent Now</button>
-   </div>
-   </div>
     <?php  
     }
     ?>
@@ -293,6 +320,7 @@ if (isset($_POST['Book'])) {
             </form>
         </div>
     </div>
+ 
 
     <div>
 
@@ -319,6 +347,28 @@ if (isset($_POST['Book'])) {
         const fromDate = this.value; // Get selected "From Date"
         toDateInput.min = fromDate; // Set "To Date" minimum value
     });
+    </script>
+     <script>
+        mainImg = document.getElementById('mainImg');
+
+        thumb1 = document.getElementById('thumb1');
+        thumb1src = document.getElementById('thumb1').src;
+        thumb2 = document.getElementById('thumb2');
+        thumb2src = document.getElementById('thumb2').src;
+        thumb3 = document.getElementById('thumb3');
+        thumb3src = document.getElementById('thumb3').src;
+
+        thumb1.addEventListener("click", function() {
+            mainImg.src = thumb1src;
+        })
+
+        thumb2.addEventListener("click", function() {
+            mainImg.src = thumb2src;
+        })
+
+        thumb3.addEventListener("click", function() {
+            mainImg.src = thumb3src;
+        })
     </script>
 
 

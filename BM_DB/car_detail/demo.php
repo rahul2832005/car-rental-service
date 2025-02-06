@@ -27,28 +27,28 @@
     position: sticky;
     /* Align to top for tall content */
     /* width: 100%; */
+    overflow-y: auto;
 }
 
 .container {
-    display: flex;
-    width: 60%;
-    width: 1000px; /* Increased max-width */
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 20px; /* Add margin for spacing */
-}
-
+            display: flex;
+            width: 1000px; /* Increased max-width */
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px; /* Add margin for spacing */
+        }
 .car-image {
-    width: 520px;
-    flex: 1;
-    position: relative;
-    margin: 10px 10px;
-    max-height: 500px; /* Set max height */
-    /* overflow-y: auto; Enable vertical scrolling */
-    /* overflow-x: hidden; */
-}
+            width: 520px;
+            flex: 1;
+            position: relative;
+            margin: 10px 10px;
+            max-height: 600px; /* Set a max height */
+            overflow-y: auto; /* Enable vertical scrolling */
+            overflow-x: hidden; /* Hide horizontal scrollbar if any */
+        }
+
 
 .car-image img {
     border-radius: 5px;
@@ -80,16 +80,16 @@
 } */
 
 .form-container {
-    max-width: 315px;
-    flex: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    background-color: wheat;
-    position: relative;
-    max-height: 500px; /* Set max height */
-    overflow-y: auto; /* Enable vertical scrolling */
-}
+            max-width: 315px;
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            background-color: wheat;
+            position: relative;
+            max-height: 600px; /* Match car-image max-height */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
 
 .pricing-details {
     margin-bottom: -20px;

@@ -1,123 +1,364 @@
-body {
-    font-family: Arial, sans-serif;
+/* General Styles */
+body, html {
     margin: 0;
-    padding: 0;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f9f9f9;
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+    overflow-x: hidden;
 }
 
-.image-showcase {
+::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+
+.page-container {
     display: flex;
-    gap: 5px;
-    
-    background-color: rgb(233, 216, 216);
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    margin: 0;
 }
 
-.main-image img {
-    width: 600px;
-    height: auto;
-    border-radius: 10px;
-    
+.container {
+    display: flex;
+    width: 1100px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px;
+    height: 100%;
 }
 
-.side-images {
+.car-image {
+    width: 520px;
+    flex: 1;
+    position: relative;
+    margin: 10px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.car-image img {
+    border-radius: 5px;
+    width: 100%;
+    display: block;
+}
+
+.image-slider {
+    margin-top: 10px;
+    display: flex;
+}
+
+.image-slider img {
+    width: 185px;
+    height: 123px;
+    margin-right: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.image-slider img:hover {
+    border-style: groove;
+    border-color: red;
+}
+
+.form-container {
+    max-width: 315px;
+    flex: 1;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-   
+    background-color: wheat;
+    max-height: 600px;
+    overflow-y: auto;
+    color: black;
 }
 
-.side-images img {
-    width: 290px;
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover;
-}
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: Arial, sans-serif;
+.pricing-details {
+    margin-bottom: -20px;
 }
 
-
-.car-details {
-background-color:rgb(238, 231, 231);
-border-radius: 8px;
-width: 100%;
-padding: 20px;
-margin-top: 25px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.booking-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 10px;
 }
 
-.car-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 20px;
+.form-group,
+.insurance-options,
+.deposit-option {
+    margin-bottom: 20px;
 }
 
-.car-country {
-font-size: 14px;
-color: #555;
+input,
+select {
+    width: calc(100% - 15px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-sizing: border-box;
 }
 
-.car-rating {
-font-size: 16px;
-color: #FFD700;
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: sans-serif;
+    margin: 5px;
 }
 
-.car-title {
-font-size: 32px;
-font-weight: 700;
-color: #333;
-margin-bottom: 20px;
+.booking-button {
+    background-color: #FFA500;
+    color: white;
+}
+.booking-button:hover {
+    background-color: #FF8C00;
+}
+.booked-button {
+    background-color: #d14c4c;
+    color: white;
+}
+.booked-button:hover {
+    background-color: #ee4040;
+    color: white;
 }
 
-.car-info {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-gap: 20px;
+
+
+.enquiry-button {
+    background-color: #008080;
+    color: white;
 }
 
-.car-info-item {
-
-
-align-items: center;
-display: flex;
-border-radius: 8px;
-padding: 10px;
-text-align: center;
+.enquiry-button:hover {
+    background-color: #006A6A;
 }
 
-.car-info-item img {
-width: 40px;
-height: 40px;
-margin-bottom: 8px;
-background-color: #f4f4f4;
+.price-item {
+    color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f2f7f6;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 15px;
 }
 
-.car-info-item span {
-font-size: 18px;
-color: #555;
-margin-left: 25px;
-
-
+/* Section Styling */
+.section {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
 }
-.container{
-max-width: 950px;
-margin: 0 auto;
-padding: 20px;
 
-
-
-color: black;
-background-color: rgb(236, 218, 218);
+.section h2 {
+    margin-top: 32px;
+    margin-bottom: 40px;
+    color: #333;
+    position: relative;
 }
+
+.section h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 50px;
+    height: 3px;
+    background-color: #FFA500;
+}
+
+.content {
+    color: black;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-gap: 15px;
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.spec-item i {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.spec-item p {
+    margin: 0;
+    color: #333;
+}
+
+/* Feature Section */
+.feature-container {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    width: 95%;
+    max-width: 1000px;
+}
+
+.features h2 {
+    margin: 0 0 10px;
+    color: #333;
+    position: relative;
+}
+
+.features h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 50px;
+    height: 3px;
+    background-color: #FFA500;
+}
+
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+}
+
+.feature-item i {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #008000;
+}
+
+.feature-item p {
+    margin: 0;
+    color: #333;
+}
+/*  enquiry form css */
+.enquiry-form {
+    display: none;
+    position: fixed; /* Stay in place */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the form */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it's on top */
+    width: 400px; /* Adjust width as needed */
+}
+
+.enquiry-form h2 {
+    color: black;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    color: black;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: calc(100% - 12px); /* Account for padding and border */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+textarea {
+  height: 100px; /* Adjust height for message box */
+}
+
+.btn-container {
+    text-align: right; /* Align buttons to the right */
+}
+
+button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.close-btn {
+    background-color: #ccc;
+}
+
+.send-btn {
+    background-color: #04AA6D; /* Example: Green */
+    color: white;
+}
+
+/* Overlay (Optional - for a semi-transparent background) */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 999; /* Below the form but above other content */
+    display: none; /* Hidden by default */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container, .feature-container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .content {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-gap: 10px;
+    }
+
+    .spec-item i {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    .feature-list {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content, .feature-list {
+        grid-template-columns: 1fr;
+    }
+
+    .spec-item {
+        padding-bottom: 15px;
+    }
+
+    .spec-item i {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+}
+
+
