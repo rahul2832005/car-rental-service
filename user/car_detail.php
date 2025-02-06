@@ -277,7 +277,7 @@ if (isset($_POST['Book'])) {
                             </div>
                             <!-- <button class="booking-button" name="Book">Booking</button> -->
                             <?php if ($row['status'] == 0 || $row['status'] == "") { ?>
-                                <button type="submit"  class="booking-button">Rent Now</button>
+                                <button type="submit"  class="booking-button" name="Book">Rent Now</button>
                             <?php  } else { ?>
                                 <button type="submit"  class="booked-button">Booked</button>
                             <?php  } ?>

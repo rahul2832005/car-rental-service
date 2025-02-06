@@ -12,7 +12,7 @@ if(isset($_POST['submit']))
     $modal=$_POST['modal'];
     $rent_price=$_POST['rent_price'];
     $no_plate=$_POST['num_plate'];
-    $company_name=$_POST['company_name'];
+    $brand=$_POST['brand'];
     $seat=$_POST['capacity'];
     $fual=$_POST['fual'];
     $door=$_POST['door'];
@@ -53,7 +53,7 @@ if(isset($_POST['submit']))
             $count++;
         }
 
-        if($company_name==""){
+        if($brand==""){
                 $cname="Enter Car Company Name";
                 $count++;
             
@@ -149,8 +149,8 @@ if(isset($_POST['submit']))
         $imagePaths = implode(",", $allimages);
         $imagePathsWithoutimg = str_replace("img/", "", $imagePaths);
         
-        $insert = "insert into car_list (name,modal,price,no_plate,company_name,image,seat,fual,door,en_power,en_type,break_type,fual_capacity,mileage)
-    values ('$car_name',$modal,$rent_price,'$no_plate','$company_name','$imagePathsWithoutimg',$seat,'$fual',$door,'$power','$engine','$break',$f_tank,$mile)";
+        $insert = "insert into car_list (name,modal,price,no_plate,brand,image,seat,fual,door,en_power,en_type,break_type,fual_capacity,mileage)
+    values ('$car_name',$modal,$rent_price,'$no_plate','$brand','$imagePathsWithoutimg',$seat,'$fual',$door,'$power','$engine','$break',$f_tank,$mile)";
         $run = mysqli_query($conn, $insert);
 
         if ($run) {
@@ -213,6 +213,23 @@ if(isset($_POST['submit']))
                     <input type="text" name="car_name" id="" placeholder="Enter Car Name" value="<?php echo $car_name; ?>">
                     <p style="color: red;"><?php echo $cn; ?></p>
                 </div>
+
+                <div class="select-box">
+                <p style="color: red;"><?php echo $cname; ?></p>
+                <span class="details">Select Car Brand :</span>
+                    <select name="brand" id="fual">
+                    <option value="">Select   Brand</option>
+                        <?php  
+                            $selectbrand="select * from brands";
+                            $exselect=mysqli_query($conn,$selectbrand);
+
+                            while($row=mysqli_fetch_assoc($exselect))
+                            {?>
+                                <option value="<?php echo $row['bname']; ?>"><?php echo $row['bname']; ?></option>
+                           <?php }
+                        ?>
+                    </select>
+                            </div>
                 <div class="input-box">
                     <span class="details">Car Modal</span>
                     <input type="number" name="modal" id="" placeholder="Enter Car Modal" value="<?php echo $modal; ?>">
@@ -228,12 +245,7 @@ if(isset($_POST['submit']))
                     <input type="text" name="num_plate" id="" placeholder="Enter Car No.Plate" value="<?php echo $no_plate ;?>">
                     <p style="color: red;"><?php echo $np; ?></p>
                 </div>
-                <div class="input-box">
-                    <span class="details">Car Company Name</span>
-                    <input type="text" name="company_name" id="" placeholder="Enter Car Company" value="<?php echo $company_name; ?>">
-                    <p style="color: red;"><?php echo $cname; ?></p>
-                
-                </div>
+             
 
                 <div class="input-box">
                     <span class="details">Car Capacity</span>

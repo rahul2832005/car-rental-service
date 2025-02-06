@@ -1,3 +1,6 @@
+<?php  
+    @include "include/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,25 +19,51 @@
                 </div>
             </header>
             <section class="dashboard-cards">
+                <?php  
+                $sql="select * from reguser";
+                $ex=mysqli_query($conn,$sql);
+
+                $no1=mysqli_num_rows($ex);
+                ?>
                 <div class="card" style="background-color: #3B82F6;">
-                    <h2>3</h2>
+                    <h2><?php echo $no1; ?></h2>
                     <p>Reg Users</p>
-                    <a href="#">Full Detail →</a>
+                    <a href="reguser.php">Full Detail →</a>
                 </div>
+                <?php  
+                $sql1="select * from car_list";
+                $ex1=mysqli_query($conn,$sql1);
+
+                $no2=mysqli_num_rows($ex1);
+                ?>
                 <div class="card" style="background-color: #22C55E;">
-                    <h2>8</h2>
+                    <h2><?php echo $no2; ?></h2>
                     <p>Listed Vehicles</p>
-                    <a href="#">Full Detail →</a>
+                    <a href="managecar.php">Full Detail →</a>
                 </div>
+
+                <?php  
+                    $newsql="select  * from booking where status=1";
+                    $exnew=mysqli_query($conn,$newsql);
+
+                    $no4=mysqli_num_rows($exnew);
+                ?>
                 <div class="card" style="background-color: #60A5FA;">
-                    <h2>4</h2>
+                    <h2><?php echo $no4; ?></h2>
                     <p>Total Bookings</p>
-                    <a href="#">Full Detail →</a>
+                    <a href="confirmed-booking.php">Full Detail →</a>
                 </div>
+
+            <?php  
+                $sbrand="select * from brands";
+                $exsbrand=mysqli_query($conn,$sbrand);
+
+                $no5=mysqli_num_rows($exsbrand);
+            ?>
                 <div class="card" style="background-color: #FB923C;">
-                    <h2>6</h2>
+                    <h2><?php echo $no5; ?></h2>
                     <p>Listed Brands</p>
-                    <a href="#">Full Detail →</a>
+                    <a href="managebrand.php">Full Detail →</a>
                 </div>
                 <div class="card" style="background-color: #3B82F6;">
                     <h2>2</h2>
