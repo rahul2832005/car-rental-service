@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+// error_reporting(0);
 @include "include/config.php";
     if(isset($_GET['uid']))
 
@@ -36,7 +36,7 @@ error_reporting(0);
         }
 
         $sql="update car_list set name='$car_name',modal='$modal',price='$rent_price'
-        ,no_plate='$number',company_name='$company_name',seat='$seat',fual='$fual',image='$update_image' where vid='$id'";
+        ,no_plate='$number',company_name='$company_name',seat='$seat',fual='$fual' where vid='$id'";
 
         $result=mysqli_query($conn,$sql);
 
@@ -254,7 +254,7 @@ form .button input:hover{
 
             <div class="input-box">
                     <span class="details">Car Id</span>
-                    <input type="text" name="car_id" id="" placeholder="Enter Car Id" value="<?php echo $user['id']; ?>">
+                    <input type="text" name="car_id" id="" placeholder="Enter Car Id" value="<?php echo $user['vid']; ?>">
                 </div>
                 <div class="input-box">
                     <span class="details">Car Name</span>
