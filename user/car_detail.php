@@ -1,7 +1,7 @@
 <?php
 @include "include/config.php";
 session_start();
-error_reporting(0);
+// error_reporting(0);
 
 $sdate = date('Y-m-d');
 $fdate = $tdate = $pick_up_loc = "";
@@ -55,7 +55,29 @@ if (isset($_POST['Book'])) {
             $sql = "INSERT INTO booking (bookingno, userEmail, vid, FromDate, ToDate, status,pickup,dropof) 
                     VALUES ('$bookingno', '$useremail', '$vid', '$fdate', '$tdate', '$status','$pick_up_loc','$drop_of_loc')";
 
+                   
+
+
             if (mysqli_query($conn, $sql)) {
+                /*   RazorPay Integration  */
+                require('vendor/autoload.php'); // If you're using Composer
+               
+                
+                $keyId = 'rzp_live_vZHJ6c1F6PFLRC'; // Replace with your Razorpay Key ID
+                $keySecret = 'WupX5UDSTE6xHtY2TtDutJLk'; // Replace with your Razorpay Key Secret
+                
+                // Razorpay API object creation
+                $api = new \Razorpay\Api\Api($keyId, $keySecret);                
+                // Order Data (Updated receipt as string)
+                $orderData = [
+                    'receipt' => strval(rand(1000, 9999)), // Convert receipt to string
+                    'amount' => '100', // Amount in paise (500 INR)
+                    'currency' => 'INR',
+                    'payment_capture' => 1, // Automatic capture
+                ];
+                
+                // Razorpay order creation
+                $order = $api->order->create($orderData);
                 echo "<script>alert('Booking successful');</script>";
             } else {
                 echo "<script>alert('Something went wrong');</script>";
@@ -265,7 +287,7 @@ if (isset($_POST['Book'])) {
                             <div class="form-group">
                                 <p style="color: red;"><?php $fd; ?></p>
                                 <label for="pickup-date">Pickup Date</label>
-                                <input type="datetime-local" id="pickup-date" name="fdate" value="<?php echo ($fdate); ?>">
+                                <input type="datetime-local" id="pickup-date" name="fdate"  min="<?php echo date('Y-m-d\TH:i'); ?>"    value="<?php echo ($fdate); ?>">
                                 <span style="color: red;"> <?php echo $errors['fdate']; ?> </span>
 
                             </div>
@@ -279,7 +301,7 @@ if (isset($_POST['Book'])) {
                             <?php if ($row['status'] == 0 || $row['status'] == "") { ?>
                                 <button type="submit"  class="booking-button" name="Book">Rent Now</button>
                             <?php  } else { ?>
-                                <button type="submit"  class="booked-button">Booked</button>
+                                <button type="submit"  class="booked-button" id="pay-button">Booked</button>
                             <?php  } ?>
                     </div>
                     </form>
@@ -423,6 +445,48 @@ if (isset($_POST['Book'])) {
         document.querySelector(".close").addEventListener('click', function() {
             document.querySelector(".pop-up").style.display = "none";
         })
+    </script>
+
+    <!-- JavaScript oor  Razorpay checkout -->
+     
+    <script>
+        document.getElementById("button").addEventListener('click', function() {
+            document.querySelector(".pop-up").style.display = "flex";
+        })
+
+        document.querySelector(".close").addEventListener('click', function() {
+            document.querySelector(".pop-up").style.display = "none";
+        })
+    </script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        document.getElementById('pay-button').onclick = function (e) {
+            var options = {
+                "key": "<?= $keyId; ?>", // Replace with your Razorpay Key ID
+                "amount": "100", // Amount in paise
+                "currency": "INR",
+                "name": "saptapadi",
+                "description": "Payment for order",
+                "image": "logo.jpeg", // Your logo URL
+                "order_id": "<?= $order->id; ?>", // Dynamic Order ID
+                "handler": function (response) {
+                    alert("Payment successful. Razorpay Payment ID: " + response.razorpay_payment_id);
+                    // You can further process the response here
+                },
+                "prefill": {
+                    "name": "hiren",
+                    "email": "hiren@example.com",
+                    "contact": "9999999999"
+                },
+                "theme": {
+                    "color": "#631549"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+            e.preventDefault();
+        }
     </script>
 
 </body>
