@@ -157,7 +157,7 @@ h3 {
         $bno=$_GET['bno'];
         $uid=$_GET['userEmail'];
         $sql = "SELECT reguser.*, 
-        car_list.name, 
+        car_list.cname, 
         booking.FromDate, 
         booking.ToDate, 
         booking.message, 
@@ -216,7 +216,7 @@ h3 {
             <table class="details-table">
                 <tr>
                     <td><strong>Vehicle Name</strong></td>
-                    <td><?php echo $row['name']; ?></td>
+                    <td><?php echo $row['cname']; ?></td>
                 </tr>
                 <tr>
                     <td><strong>Booking Date</strong></td>

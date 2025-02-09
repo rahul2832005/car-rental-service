@@ -13,9 +13,15 @@ $useremail = $_SESSION['alogin'];
 
 /*   RazorPay Integration  */
 require('vendor/autoload.php'); // If you're using Composer
+//testmode key
+$keyId = 'rzp_test_lFfdAvwRtocJ83'; // Replace with your Razorpay Key ID
+$keySecret = 'hzszbJxefW7Otvh7tsaarvf4'; // Replace with your Razorpay Key Secret
 
-$keyId = 'rzp_live_vZHJ6c1F6PFLRC'; // Replace with your Razorpay Key ID
-$keySecret = 'WupX5UDSTE6xHtY2TtDutJLk'; // Replace with your Razorpay Key Secret
+
+
+// live mode key
+// $keyId = 'rzp_live_vZHJ6c1F6PFLRC'; // Replace with your Razorpay Key ID
+// $keySecret = 'WupX5UDSTE6xHtY2TtDutJLk'; // Replace with your Razorpay Key Secret
 
 // Razorpay API object creation
 $api = new \Razorpay\Api\Api($keyId, $keySecret);
@@ -81,42 +87,42 @@ if (isset($_POST['Book'])) {
 
                 $order = $api->order->create($orderData);
 
- echo "<script>alert('Booking successful');</script>";
+                echo "<script>alert('Booking successful');</script>";
 ?>
- <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+                <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-    <script>
- function pay(e) {
-            
-            var options = {
-                "key": "<?= $keyId; ?>", // Replace with your Razorpay Key ID
-                "amount": "100", // Amount in paise
-                "currency": "INR",
-                "name": "Carola",
-                "description": "Payment for Booking Car",
-                "image": "logo.jpeg", // Your logo URL
-                "order_id": "<?= $order->id; ?>", // Dynamic Order ID
-                "handler": function(response) {
-                    alert("Payment successful. Razorpay Payment ID: " + response.razorpay_payment_id);
-                    // You can further process the response here
-                },
-                "prefill": {
-                    "name": "hiren",
-                    "email": "hiren@example.com",
-                    "contact": "9999999999"
-                },
-                "theme": {
-                    "color": "#631549"
-                }
-            };
-            var rzp1 = new Razorpay(options);
-            rzp1.open();
-            e.preventDefault();
-        }
-        pay();
-    </script>
+                <script>
+                    function pay(e) {
+
+                        var options = {
+                            "key": "<?= $keyId; ?>", // Replace with your Razorpay Key ID
+                            "amount": "100", // Amount in paise
+                            "currency": "INR",
+                            "name": "Carola",
+                            "description": "Payment for Booking Car",
+                            "image": "logo.jpeg", // Your logo URL
+                            "order_id": "<?= $order->id; ?>", // Dynamic Order ID
+                            "handler": function(response) {
+                                alert("Payment successful. Razorpay Payment ID: " + response.razorpay_payment_id);
+                                // You can further process the response here
+                            },
+                            "prefill": {
+                                "name": "hiren",
+                                "email": "hiren@example.com",
+                                "contact": "9999999999"
+                            },
+                            "theme": {
+                                "color": "#631549"
+                            }
+                        };
+                        var rzp1 = new Razorpay(options);
+                        rzp1.open();
+                        e.preventDefault();
+                    }
+                    pay();
+                </script>
 <?php
-                
+
 
             } else {
                 echo "<script>alert('Something went wrong');</script>";
@@ -499,7 +505,7 @@ if (isset($_POST['Book'])) {
         })
     </script>
 
-   
+
 
 </body>
 

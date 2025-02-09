@@ -4,7 +4,7 @@ session_start();
 $uid=$_SESSION['alogin'];
 if (isset($_GET['all']) && $_GET['all'] == 'true') {
 $sql = "SELECT reguser.*, 
-car_list.name, 
+car_list.cname, 
 car_list.image,
 booking.FromDate, 
 booking.ToDate, 
@@ -23,7 +23,7 @@ JOIN reguser ON reguser.email = booking.userEmail
 WHERE booking.userEmail = '$uid'  ORDER BY booking.PostingDate DESC";
 }else{
     $sql = "SELECT reguser.*, 
-car_list.name, 
+car_list.cname, 
 car_list.image,
 booking.FromDate, 
 booking.ToDate, 
@@ -140,7 +140,7 @@ $result = mysqli_query($conn, $sql);
                      $image = explode(",", $row['image']); ?>
                 <tr>
                     <td> <img src="../admin/img/<?php echo $image[0]; ?>" alt="Toyota Camry SE 400" class="booking-img"></td>
-                    <td><?php echo $row['name']; ?></td>
+                    <td><?php echo $row['cname']; ?></td>
                     <td><?php echo $row['FromDate']; ?></td>
                     <td><?php echo $row['ToDate']; ?></td>
                     <td><?php echo $row['totalnodays']; ?></td>
