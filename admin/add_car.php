@@ -149,7 +149,7 @@ if(isset($_POST['submit']))
         $imagePaths = implode(",", $allimages);
         $imagePathsWithoutimg = str_replace("img/", "", $imagePaths);
         
-        $insert = "insert into car_list (name,modal,price,no_plate,brand,image,seat,fual,door,en_power,en_type,break_type,fual_capacity,mileage)
+        $insert = "insert into car_list (cname,modal,price,no_plate,brand,image,seat,fual,door,en_power,en_type,break_type,fual_capacity,mileage)
     values ('$car_name',$modal,$rent_price,'$no_plate','$brand','$imagePathsWithoutimg',$seat,'$fual',$door,'$power','$engine','$break',$f_tank,$mile)";
         $run = mysqli_query($conn, $insert);
 

@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/managebrand.css">
  <!-- Font Awesome -->
  <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <link rel="stylesheet" href="css/all.min.css">
+ <link rel="stylesheet" href="css/fontawesome.min.css">
 </head>
 <body>
   
@@ -66,8 +68,8 @@
                                 
                                     
                                     <td>
-                                    <a href="edit-brand.php?id=<?php echo $row["id"] ?>" class="link-dark1"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
-                                      <a href="delete-brand.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
+                                    <a href="edit-brand.php?bid=<?php echo $row["bid"] ?>" class="link-dark1"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+                                      <a href="delete.php?bid=<?php echo $row["bid"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
                     
                                     </td>
                                   </tr>

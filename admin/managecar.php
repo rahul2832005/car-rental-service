@@ -12,7 +12,7 @@ if (isset($_POST['search']))
 // LEFT JOIN booking ON car_list.vid = booking.vid
 // WHERE car_list.name LIKE '%$search%'  
 // OR car_list.fual LIKE '%$search%'";
-$sql = "SELECT * FROM car_list WHERE name LIKE '%$search%'  
+$sql = "SELECT * FROM car_list WHERE cname LIKE '%$search%'  
            OR fual LIKE '%$search%' ";
 
 $result = mysqli_query($conn, $sql);
@@ -99,7 +99,7 @@ $result = mysqli_query($conn, $sql);
                     <th style="width:135px;">Car Name</th>
                     <th>Price</th>
                     <th>No Plate</th>
-                    <th style="width:76px;">Company Name</th>
+                    <th style="width:76px;">Brand</th>
                     <th>Seat</th>
                     <th>Fual</th>
                     <th style="width:92px;">status</th>
@@ -131,10 +131,10 @@ $result = mysqli_query($conn, $sql);
 
             <tr>
                 <td><?php echo $n; ?></td>
-                <td><?php echo $row['name'] ?></td>
+                <td><?php echo $row['cname'] ?></td>
                 <td><?php echo $row['price'] ?></td>
                 <td><?php echo $row['no_plate'] ?></td>
-                <td><?php echo $row['company_name'] ?></td>
+                <td><?php echo $row['brand'] ?></td>
                 <td><?php echo $row['seat'] ?></td>
                 <td><?php echo $row['fual'] ?></td>
                 <?php 
@@ -153,8 +153,8 @@ $result = mysqli_query($conn, $sql);
                 }
 
                 ?>
-                <td><a id="edit" href="update.php?uid=<?php echo $row['vid'] ?>"><i class="fa-solid fa-pen"></i></a>   
-                <a id="delete" href="delete.php?uid=<?php echo $row['vid']  ?>"><i class="fa-solid fa-trash"></i></a></td>
+                <td><a id="edit" href="update.php?vid=<?php echo $row['vid'] ?>"><i class="fa-solid fa-pen"></i></a>   
+                <a id="delete" href="delete.php?vid=<?php echo $row['vid']  ?>"><i class="fa-solid fa-trash"></i></a></td>
 
             </tr>
 

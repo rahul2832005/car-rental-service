@@ -79,6 +79,7 @@ $result = mysqli_query($conn, $sql);
                     <th>User Name</th>
                     <th>Number</th>
                     <th>Email</th>
+                    <th>Action</th>
                     
                 
                 </tr>
@@ -94,6 +95,8 @@ $result = mysqli_query($conn, $sql);
                 <td><?php echo $row['name'] ?></td>
                 <td><?php echo $row['mnumber'] ?></td>
                 <td><?php echo $row['email'] ?></td>
+                <td> <a id="delete" href="delete.php?uid=<?php echo $row['uid']  ?>"><i class="fa-solid fa-trash"></i></a></td></td>
+
                
             </tr>
 

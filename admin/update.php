@@ -1,10 +1,10 @@
 <?php
 // error_reporting(0);
 @include "include/config.php";
-    if(isset($_GET['uid']))
+    if(isset($_GET['vid']))
 
     {
-        $id=$_GET['uid'];
+        $id=$_GET['vid'];
         
 
         $sql="select * from car_list where vid=$id";
@@ -35,8 +35,8 @@
             $update_image=$_POST['old_image'];
         }
 
-        $sql="update car_list set name='$car_name',modal='$modal',price='$rent_price'
-        ,no_plate='$number',company_name='$company_name',seat='$seat',fual='$fual' where vid='$id'";
+        $sql="update car_list set cname='$car_name',modal='$modal',price='$rent_price'
+        ,no_plate='$number',brand='$company_name',seat='$seat',fual='$fual' where vid='$id'";
 
         $result=mysqli_query($conn,$sql);
 
@@ -258,7 +258,7 @@ form .button input:hover{
                 </div>
                 <div class="input-box">
                     <span class="details">Car Name</span>
-                    <input type="text" name="car_name" id="" placeholder="Enter Car Name" value="<?php echo $user['name']; ?>">
+                    <input type="text" name="car_name" id="" placeholder="Enter Car Name" value="<?php echo $user['cname']; ?>">
                 </div>
                 <div class="input-box">
                     <span class="details">Car Modal</span>
@@ -274,7 +274,7 @@ form .button input:hover{
                 </div>
                 <div class="input-box">
                     <span class="details">Car Company Name</span>
-                    <input type="text" name="company_name" id="" placeholder="Enter Car Company" value="<?php echo $user['company_name']; ?>">
+                    <input type="text" name="company_name" id="" placeholder="Enter Car Company" value="<?php echo $user['brand']; ?>">
                 </div>
 
                 <div class="input-box">
