@@ -9,7 +9,7 @@ if (isset($_POST['search']))
     MAX(booking.status) AS status     
 FROM car_list 
 LEFT JOIN booking ON car_list.vid = booking.vid
-WHERE car_list.name LIKE '%$search%'  
+WHERE car_list.cname LIKE '%$search%'  
 OR car_list.fual LIKE '%$search%'
 GROUP BY car_list.vid";
     $ex=mysqli_query($conn,$sql);
@@ -28,7 +28,7 @@ GROUP BY car_list.vid";
             <th>Car Name</th>
             <th>Price</th>
             <th>No Plate</th>
-            <th>Company Name</th>
+            <th>Brand</th>
             <th>Seat</th>
             <th>Fual</th>
             <th>Action</th>
@@ -56,10 +56,10 @@ while ($row = mysqli_fetch_assoc($ex))
 
     <tr>
         <td><?php echo $n; ?></td>
-        <td><?php echo $row['name'] ?></td>
+        <td><?php echo $row['cname'] ?></td>
         <td><?php echo $row['price'] ?></td>
         <td><?php echo $row['no_plate'] ?></td>
-        <td><?php echo $row['company_name'] ?></td>
+        <td><?php echo $row['brand'] ?></td>
         <td><?php echo $row['seat'] ?></td>
         <td><?php echo $row['fual'] ?></td>
         <td><a id="edit" href="update.php?uid=<?php echo $row['vid'] ?>"><i class="fa-solid fa-pen"></i></a>   <a id="delete" href=""><i class="fa-solid fa-trash"></i></a></td>

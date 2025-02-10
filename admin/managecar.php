@@ -86,7 +86,7 @@ $result = mysqli_query($conn, $sql);
 
 <body>
     <div class="container">
-        <h1>Manage Brands</h1>
+        <h1>Manage Cars</h1>
         <div class="search-container">
            
             <input type="text" id="search" placeholder="Search by name..." autocomplete="off">
