@@ -101,6 +101,37 @@
 
         
     }
+
+    if(isset($_GET['did']))
+
+    {
+        $id=$_GET['did'];
+        // echo $id;
+
+        $sql="select * from driver where did=$id";
+
+        $result=mysqli_query($conn,$sql) or die("can not fetch the data.".mysqli_error($conn));
+        $user=mysqli_fetch_array($result); 
+
+        $sql="delete from driver where did=$id";;
+
+        $run=mysqli_query($conn,$sql);
+
+        if($run==true)
+        {
+            
+                echo "<script>alert('delete success')
+                 window.open('managedriver.php', 'second');</script>";
+         
+        }
+        else
+        {
+            echo "<script>alert('not delete ')</script>";
+        }
+
+        
+    }
+    
     
 
 ?>

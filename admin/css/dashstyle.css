@@ -202,6 +202,12 @@ margin-top: -80px;
     /* margin-left: -28px; */
 
 }
+.dropdown-dr li {
+    list-style-type:circle;
+    padding-right: 20px;
+    /* margin-left: -28px; */
+
+}
 
 
 ul li ul.dropdown {
@@ -211,6 +217,9 @@ ul li ul.dropdown-cr {
     display: none;
 }
 ul li ul.dropdown-bk {
+    display: none;
+}
+ul li ul.dropdown-dr {
     display: none;
 }
 
@@ -237,7 +246,13 @@ ul li ul.dropdown-bk {
     transition: transform 0.3s ease;
     margin-left: 78px;
   }
-  .down-icon.rotate,.down-icon2.rotate,.down-icon3.rotate {
+  .down-icon4{
+    display: inline-block;
+
+    transition: transform 0.3s ease;
+    margin-left: 104px;
+  }
+  .down-icon.rotate,.down-icon2.rotate,.down-icon3.rotate,.down-icon4.rotate {
     transform: rotate(90deg);
   }
    

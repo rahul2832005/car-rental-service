@@ -40,6 +40,15 @@
                         <li><a href="managecar.php" target="second">Manage Cars</a></li>
                     </ul>
                 </li>
+
+                <li>
+                    <a href="#" id="dr-drop">Driver <span class="down-icon4">▶</span></a>
+                    <ul class="dropdown" id="dr-dropdown">
+                        <li><a href="add_driver.php" target="second">Add Driver</a></li>
+                        <!-- <li><a href="validationjs.php" target="second">Add Cars</a></li> -->
+                        <li><a href="managedriver.php" target="second">Manage Drivers</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a href="#" id="bk-drop">Bookings <span class="down-icon3">▶</span></a>
                     <ul class="dropdown" id="bk-dropdown">
@@ -78,6 +87,7 @@
         toggleDropdown('br-drop', 'br-dropdown');
         toggleDropdown('cr-drop', 'cr-dropdown');
         toggleDropdown('bk-drop', 'bk-dropdown');
+        toggleDropdown('dr-drop', 'dr-dropdown');
 
 
 
@@ -99,6 +109,12 @@
            document.getElementById("bk-drop").addEventListener("click", function(e) {
             e.preventDefault(); // Prevent the default anchor behavior
             const icon = document.querySelector(".down-icon3");
+            icon.classList.toggle("rotate");
+        });
+
+        document.getElementById("dr-drop").addEventListener("click", function(e) {
+            e.preventDefault(); // Prevent the default anchor behavior
+            const icon = document.querySelector(".down-icon4");
             icon.classList.toggle("rotate");
         });
     </script>
