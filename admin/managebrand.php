@@ -126,7 +126,7 @@
                             <td><?php echo $row["created_at"]; ?></td>
                             <td><?php echo $row["updated_at"]; ?></td>
                             <td>
-                                <a href="edit-brand.php?bid=<?php echo $row["bid"] ?>" class="link-dark1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="updatebrand.php?bid=<?php echo $row["bid"] ?>" class="link-dark1"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <a href="delete.php?bid=<?php echo $row["bid"] ?>" class="link-dark"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
