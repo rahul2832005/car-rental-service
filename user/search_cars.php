@@ -3,7 +3,7 @@ $index = 0;
 //@include "./connection.php";
 @include "include/config.php";
 session_start();
-// error_reporting(0);
+error_reporting(0);
 
 ?>
 <!DOCTYPE html>
@@ -159,23 +159,22 @@ session_start();
     </style>
 </head>
 <?php
-@include "usernav.php";
+@include "navbar.php";
 ?>
 
 <body>
-    <div class="fleet" id="resultBody">
+
+        <div class="fleet" id="fleet-container">
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search..." name="search" onkeyup="searchTable()">
+        </div>
         <div class="header" id="header">
             <span class="badge">CAR FLEET</span>
             <h1>Car Fleet-1</h1>
         </div>
         <?php
-        
-        if (isset($_GET['search']) && !empty($_GET['search']))
-        {
-            $search = $_GET['search'];
-        // $select_car = mysqli_query($conn, "select * from car_list ");
-        $select_car = mysqli_query($conn,"SELECT * from car_list WHERE cname LIKE '%$search%' OR fual LIKE '%$search%'");
-        }
+    $se=$_POST['search'];
+        $select_car = mysqli_query($conn, "select * from car_list");
         if (mysqli_num_rows($select_car) > 0) {
             while ($row = mysqli_fetch_array($select_car)) {
                 $image = explode(",", $row['image']);
@@ -200,7 +199,7 @@ session_start();
 
                         <div>
                             <?php if ($_SESSION["alogin"]) { ?>
-                                <button class="order-button" type="submit" name="rent-now"><a href="car_detail.php?vid=<?php echo $row['vid']; ?>" class="button">Rent xsdfNow</a></button>
+                                <button class="order-button" type="submit" name="rent-now"><a href="car_detail.php?vid=<?php echo $row['vid']; ?>" class="button">Rent Now</a></button>
                             <?php } else { ?>
 
                                 <button class="order-button"><a href="login.php" class="button">Login For Book</a></button>
@@ -208,6 +207,9 @@ session_start();
                         </div>
                     </div>
                 </div>
+                
+                
+                
         <?php
             };
         };
@@ -215,8 +217,11 @@ session_start();
         <?php
         @include "footer.php";
         ?>
+    
     </div>
+    
 
+   
 
 
 </body>

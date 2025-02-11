@@ -24,7 +24,7 @@
         <!-- Menu Section -->
         <div class="sidebar">
             <ul class="menu">
-                <li><a href="main.php" target="second">Dashboard</a></li>
+                <li><a href="dashboard.php">Dashboard</a></li>
                 <li>
                     <a href="#" id="br-drop" >Brands <span class="down-icon">▶</span></a>
                     <ul class="dropdown" id="br-dropdown">

@@ -1,9 +1,5 @@
 <?php
-$index = 0;
-//@include "./connection.php";
-@include "include/config.php";
 session_start();
-error_reporting(0);
 
 ?>
 <!DOCTYPE html>
@@ -22,114 +18,126 @@ error_reporting(0);
         }
 
         body {
-            font-family: 'pop-regular';
+            font-family: 'pop-regular', sans-serif;
             background-color: #f5f5f5;
-            justify-content: center;
-            align-items: center;
-            /* height: 100vh; */
             margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-container {
+            /* margin: 20px auto; */
+            text-align: center;
+            margin-left: -300px;
+
+        }
+
+        .search-container input {
+            width: 200%;
+            max-width: 600px;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            
+
         }
 
         .fleet {
-            margin-top: 5px;
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
             background-color: #b1d7d6;
-            /* justify-content: center; */
         }
 
         .card {
-            background-color: rgb(220, 250, 249);
-            width: 303px;
-            max-width: 1050px;
+            background-color: #fff;
+            width: 300px;
             border-radius: 10px;
-            box-shadow: 0 4px 12px -5px rgba(0.5, 0.5, 0.5, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             padding: 20px;
-            margin: 17px 13px;
-            margin-left: 17px;
+            transition: transform 0.3s;
+            text-align: center;
+            color: #333;
         }
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: -20px;
-            /* margin-bottom: -25px; */
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
         }
 
         .card-title {
-            margin-bottom: 5px;
-            font-size: 29px;
-            color: #333;
+            font-size: 20px;
             font-weight: bold;
-        }
-
-        .card-image img {
-            width: 290px;
-            margin: 20px 0px;
-            border-radius: 5px;
-            margin-top: 0px;
-            height: 280px;
-            align-items: center;
-            margin-left: -13px;
-            margin-top: -12px;
+            color: #333;
+            margin: 10px 0;
         }
 
         .description {
-            font-size: 0.875rem;
+            font-size: 14px;
             color: #666;
-            line-height: 1.5;
-            margin-bottom: 10px;
         }
 
         .card-footer {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            /* margin-top: -14px; */
-            /* flex-wrap: wrap; */
+            align-items: center;
+            margin-top: 10px;
         }
 
         .price {
             font-size: 18px;
-            color: #333;
             font-weight: bold;
-            margin-top: 10px;
+            color: #333;
         }
 
         .order-button {
-            background-color: #fff;
-            color: #000;
-            padding: 4px 15px;
-            font-size: 0.875rem;
-            border: 1px solid black;
+            background-color: rgb(224, 45, 60);
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
             border-radius: 5px;
             cursor: pointer;
-            width: 267px;
-        }
-
-        .capacity {
-            font-size: 18px;
-            margin-top: -7px;
-            color: #333;
-        }
-
-        .fual {
-            font-size: 18px;
-            color: #333;
-        }
-
-        .button {
+            text-align: center;
+            display: block;
+            width: 100%;
             text-decoration: none;
-            color: #000;
-            font-size: 24px;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .order-button:hover {
+            background-color: rgb(245, 236, 240);
         }
 
         #header {
             margin-top: 10px;
             /* background-color: #b1d7d6; */
             width: 100%;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 35px;
+            margin-bottom: 15px;
+            color: black;
         }
 
         .badge {
@@ -145,75 +153,79 @@ error_reporting(0);
             width: 127px;
         }
 
-        .header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .header h1 {
-            font-size: 35px;
-            margin-bottom: 15px;
-            color: black;
+        @media (max-width: 768px) {
+            .fleet {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
+
 <?php
 @include "navbar.php";
 ?>
 
 <body>
-    <div class="fleet">
+
+
+    <div class="fleet" id="fleet-container">
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search cars..." onkeyup="searchCars()">
+        </div>
         <div class="header" id="header">
             <span class="badge">CAR FLEET</span>
             <h1>Car Fleet-1</h1>
         </div>
         <?php
-
-        $select_car = mysqli_query($conn, "select * from car_list ");
+        @include "include/config.php";
+        $select_car = mysqli_query($conn, "SELECT * FROM car_list");
         if (mysqli_num_rows($select_car) > 0) {
             while ($row = mysqli_fetch_array($select_car)) {
                 $image = explode(",", $row['image']);
-                //print_r($image); 
         ?>
-                <div class="card">
-                    <div class="card-image">
-                        <img src="../admin/img/<?php echo $image[0] ?>">
-                    </div>
-                    <div class="card-header">
-                        <h2 class="card-title"><?php echo $row['name']; ?></h2>
-                    </div>
-                    <div class="card-body">
-                        <p class="description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <hr>
-                        <div class="card-footer">
-                            <h3 class="price"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['price']; ?>/-</h3>
-                        </div>
-                        <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: <?php echo $row['seat']; ?></h3>
-                        <h3 class="fual"><i class="fa-solid fa-gas-pump"></i> fual: <?php echo $row['fual']; ?></h3>
-
-                        <div>
-                            <?php if ($_SESSION["alogin"]) { ?>
-                                <button class="order-button" type="submit" name="rent-now"><a href="car_detail.php?vid=<?php echo $row['vid']; ?>" class="button">Rent Now</a></button>
-                            <?php } else { ?>
-
-                                <button class="order-button"><a href="login.php" class="button">Login For Book</a></button>
-                            <?php } ?>
-                        </div>
+                <div class="card" data-name="<?php echo strtolower($row['cname']); ?>">
+                    <img src="../admin/img/<?php echo $image[0] ?>" alt="Car Image">
+                    <h2 class="card-title"> <?php echo $row['cname']; ?> </h2>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h3 class="price"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['price']; ?>/-</h3>
+                    <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: <?php echo $row['seat']; ?></h3>
+                    <h3 class="fual"><i class="fa-solid fa-gas-pump"></i> Fuel: <?php echo $row['fual']; ?></h3>
+                    <div>
+                        <?php if ($_SESSION["alogin"]) { ?>
+                            <a href="car_detail.php?vid=<?php echo $row['vid']; ?>" class="order-button">Rent Now</a>
+                        <?php } else { ?>
+                            <a href="login.php" class="order-button">Login For Book</a>
+                        <?php } ?>
                     </div>
                 </div>
         <?php
-            };
-        };
+            }
+        }
         ?>
-        <?php
-        @include "footer.php";
-        ?>
+
+
     </div>
 
+    <?php
+    @include "footer.php";
+    ?>
 
+    <script>
+        function searchCars() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let cards = document.querySelectorAll(".card");
 
+            cards.forEach(card => {
+                let name = card.getAttribute("data-name");
+                if (name.includes(input)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

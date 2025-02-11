@@ -11,30 +11,6 @@ $vid = $_GET['vid'];
 $uid = $_SESSION['userid'];
 $useremail = $_SESSION['alogin'];
 
-/*   RazorPay Integration  */
-require('vendor/autoload.php'); // If you're using Composer
-//testmode key
-$keyId = 'rzp_test_lFfdAvwRtocJ83'; // Replace with your Razorpay Key ID
-$keySecret = 'hzszbJxefW7Otvh7tsaarvf4'; // Replace with your Razorpay Key Secret
-
-
-
-// live mode key
-// $keyId = 'rzp_live_vZHJ6c1F6PFLRC'; // Replace with your Razorpay Key ID
-// $keySecret = 'WupX5UDSTE6xHtY2TtDutJLk'; // Replace with your Razorpay Key Secret
-
-// Razorpay API object creation
-$api = new \Razorpay\Api\Api($keyId, $keySecret);
-// Order Data (Updated receipt as string)
-$orderData = [
-    'receipt' => strval(rand(1000, 9999)), // Convert receipt to string
-    'amount' => '100', // Amount in paise (500 INR)
-    'currency' => 'INR',
-    'payment_capture' => 1, // Automatic capture
-];
-
-// Razorpay order creation
-
 
 if (isset($_POST['Book'])) {
     $fdate = $_POST['fdate'];
@@ -62,7 +38,7 @@ if (isset($_POST['Book'])) {
     if (empty($drop_of_loc)) {
         $errors['drop_of_loc'] = "Select a drop-off location.";
     }
-
+    $payment=0;
     if (empty($errors)) {
         $avlquery = "SELECT * FROM booking 
                      WHERE vid = $vid
@@ -77,18 +53,37 @@ if (isset($_POST['Book'])) {
             echo "<script>alert('Car already booked for the selected dates');</script>";
             echo "<script>document.location = 'dis_car.php';</script>";
         } else {
-            $sql = "INSERT INTO booking (bookingno, userEmail, vid, FromDate, ToDate, status,pickup,dropoff) 
-                    VALUES ('$bookingno', '$useremail', '$vid', '$fdate', '$tdate', '$status','$pick_up_loc','$drop_of_loc')";
+            if($payment==0) {
+
+                /*   RazorPay Integration  */
+                require('vendor/autoload.php'); // If you're using Composer
+                //testmode key
+                // $keyId = 'rzp_test_lFfdAvwRtocJ83'; // Replace with your Razorpay Key ID
+                // $keySecret = 'hzszbJxefW7Otvh7tsaarvf4'; // Replace with your Razorpay Key Secret
 
 
 
+                // live mode key
+                $keyId = 'rzp_live_vZHJ6c1F6PFLRC'; // Replace with your Razorpay Key ID
+                $keySecret = 'WupX5UDSTE6xHtY2TtDutJLk'; // Replace with your Razorpay Key Secret
 
-            if (mysqli_query($conn, $sql)) {
+                // Razorpay API object creation
+                $api = new \Razorpay\Api\Api($keyId, $keySecret);
+                // Order Data (Updated receipt as string)
+                $orderData = [
+                    'receipt' => strval(rand(1000, 9999)), // Convert receipt to string
+                    'amount' => '100', // Amount in paise (500 INR)
+                    'currency' => 'INR',
+                    'payment_capture' => 1, // Automatic capture
+                ];
+
+                // Razorpay order creation
+
 
                 $order = $api->order->create($orderData);
 
-                echo "<script>alert('Booking successful');</script>";
-?>
+                echo "<script>alert('Payment Done');</script>";
+                $payment=1;?>
                 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
                 <script>
@@ -99,12 +94,14 @@ if (isset($_POST['Book'])) {
                             "amount": "100", // Amount in paise
                             "currency": "INR",
                             "name": "Carola",
+                            "payment_capture":1,
                             "description": "Payment for Booking Car",
                             "image": "logo.jpeg", // Your logo URL
                             "order_id": "<?= $order->id; ?>", // Dynamic Order ID
                             "handler": function(response) {
                                 alert("Payment successful. Razorpay Payment ID: " + response.razorpay_payment_id);
                                 // You can further process the response here
+                         
                             },
                             "prefill": {
                                 "name": "hiren",
@@ -123,7 +120,13 @@ if (isset($_POST['Book'])) {
                 </script>
 <?php
 
+if($orderData['payment_capture']==1)
+{
+    $sql = "INSERT INTO booking (bookingno, userEmail, vid, FromDate, ToDate, status,pickup,dropoff) 
+    VALUES ('$bookingno', '$useremail', '$vid', '$fdate', '$tdate', '$status','$pick_up_loc','$drop_of_loc')";
 
+$exsql=mysqli_query($conn,$sql);
+}
             } else {
                 echo "<script>alert('Something went wrong');</script>";
             }
@@ -301,7 +304,7 @@ if (isset($_POST['Book'])) {
 
                     </div>
                     <div class="booking-form">
-                        <form accept="" method="post">
+                        <form action="" method="post">
                             <h2>Booking Form</h2>
                             <div class="form-group">
                                 <label for="rental-type">Rental Type</label>
@@ -343,6 +346,11 @@ if (isset($_POST['Book'])) {
                                 <input type="datetime-local" id="dropoff-date" name="tdate" value="<?php echo ($tdate); ?>">
                                 <span style="color: red;"> <?php echo $errors['tdate']; ?> </span>
                             </div>
+
+
+                            <pre> <b> Need  A  Driver? </b><input type="radio" id="driver-ad" name="driver-ad" class="de"></pre>
+
+
                             <!-- <button class="booking-button" name="Book">Booking</button> -->
                             <?php if ($row['status'] == 0 || $row['status'] == "") { ?>
                                 <button type="submit" class="booking-button" name="Book">Rent Now</button>

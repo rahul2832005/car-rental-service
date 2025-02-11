@@ -108,7 +108,7 @@ if (isset($_POST['submit'])) {
         } else {
             echo "<script>alert('Something went wrong');</script>";
         }
-        echo "<script>window.open('add_car.php', 'second');</script>";
+        echo "<script>window.open('add_driver.php', 'second');</script>";
     } 
    
     
@@ -246,18 +246,11 @@ if (isset($_POST['submit'])) {
             <div class="car_details">
                 <div class="input-box">
                     <span class="details">Address</span>
-                    <input type="text" name="address" id="" placeholder="Enter Address" value="<?php echo $add; ?>">
+                    <input type="" name="address" id="" placeholder="Enter Address" value="<?php echo $add; ?>">
                     <span  class="er"><?php echo $errors['address']; ?></span><br>
 
                 </div>
-                <div class="input-box">
-                    <span class="details">Street Address</span>
-                    <input type="text" name="address" id="" placeholder="Enter Street Address" >
-                </div>  
-                <div class="input-box">
-                    <span class="details">Street Address Line  2</span>
-                    <input type="text" name="address" id="" placeholder="Enter Street Address" >
-                </div>  
+                
                 <div class="input-box">
                     <span class="details">City</span>
                     <input type="text" name="city" id="" placeholder="Enter city" value="<?php echo $city; ?>">

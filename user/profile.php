@@ -22,10 +22,7 @@ if (!$_SESSION["alogin"])
         <img src="image/profile.jpg" alt="Background" class="background-image">
         <div class="profile-details">
             <img src="image/p2.jpg" alt="Profile Picture" class="profile-picture">
-            <div>
-
-                <img src="image/p2.jpg" alt="Profile Picture" class="profile-picture">
-            </div>
+            
             <div class="profile-info">
                 <h1><?php echo $_SESSION["alogin"];  echo $_SESSION['userid']; ?></h1>
             </div>

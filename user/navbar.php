@@ -145,7 +145,7 @@
 
     <div class="login-btn">
 
-      <i id="search" class="fa-solid fa-magnifying-glass"></i>
+      <!-- <i id="search" class="fa-solid fa-magnifying-glass"></i> -->
       <?php if (!$_SESSION["alogin"]) { ?>
         <a id="btn" href="login.php">Login/Register</a>
       <?php } else { ?>
