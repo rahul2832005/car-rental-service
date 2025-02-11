@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 10, 2025 at 04:34 PM
+-- Generation Time: Feb 11, 2025 at 11:51 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -43,16 +43,14 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `dropoff` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `order_id` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=150 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `booking`
 --
 
 INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`, `pickup`, `dropoff`, `order_id`) VALUES
-(149, 3971, 'mm2028501@gmail.com', 89, '2025-02-21 21:45:00', '2025-02-27 21:45:00', '', 0, '2025-02-10 16:15:44', '2025-02-10 16:15:44', 'Botad', 'Botad', ''),
-(147, 1189, 'mm2028501@gmail.com', 89, '2025-02-14 15:55:00', '2025-02-18 15:55:00', '', 0, '2025-02-09 10:25:15', '2025-02-09 10:25:15', 'Botad', 'Botad', ''),
-(148, 2714, 'mm2028501@gmail.com', 90, '2025-02-13 15:57:00', '2025-02-21 15:57:00', '', 0, '2025-02-09 10:27:43', '2025-02-09 10:27:43', 'Botad', 'Botad', '');
+(151, 9489, 'mm2028501@gmail.com', 86, '2025-02-11 16:55:00', '2025-03-27 16:55:00', '', 0, '2025-02-11 11:25:43', '2025-02-11 11:25:43', 'Botad', 'Botad', '');
 
 -- --------------------------------------------------------
 
@@ -177,6 +175,40 @@ INSERT INTO `demo` (`id`, `image`, `name`, `model`, `price`, `no_plate`, `compan
 (7, 'front-left-side-47 (1).jpg,front-view-118.jpg,rear-view-119.jpg', '', 0, 0, '0', '', 0, ''),
 (8, 'download (4).png,download (5).png,download (6).png', 'Land Rover', 2025, 1520, 'qweqweqwe', 'tata', 5, 'Petrol'),
 (9, 'front-left-side-47 (1).jpg,front-left-side-47 (2).jpg,front-left-side-47.jpg,front-view-118 (1).jpg,front-view-118.jpg', 'ori', 1520, 1000, 'hj74lk55', 'tata', 6, 'Diesel');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `driver`
+--
+
+DROP TABLE IF EXISTS `driver`;
+CREATE TABLE IF NOT EXISTS `driver` (
+  `did` int NOT NULL AUTO_INCREMENT,
+  `dfname` varchar(255) NOT NULL,
+  `dlname` varchar(255) NOT NULL,
+  `fnumber` bigint NOT NULL,
+  `hprice` int NOT NULL,
+  `dprice` int NOT NULL,
+  `type_licence` varchar(255) NOT NULL,
+  `proff` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `pin` bigint NOT NULL,
+  `status` int NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`did`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `driver`
+--
+
+INSERT INTO `driver` (`did`, `dfname`, `dlname`, `fnumber`, `hprice`, `dprice`, `type_licence`, `proff`, `address`, `city`, `state`, `pin`, `status`, `created_at`, `updated_at`) VALUES
+(3, 'Vatukiya', 'Bhupat', 7359509387, 200, 1200, 'passenger', 'profile.jpeg,aDHAR.png,licence.png', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364710, 0, '2025-02-11 07:56:25', NULL),
+(4, 'hardik', 'vatukiya', 9106265263, 100, 1000, 'four_wheeler', 'download (2).jpeg,licence.png,profile.jpeg', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 0, '2025-02-11 07:57:34', NULL);
 
 -- --------------------------------------------------------
 
