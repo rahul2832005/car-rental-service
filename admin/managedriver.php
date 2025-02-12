@@ -15,10 +15,13 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap'); */
+@font-face {
+            font-family: 'pop-regular';
+            src: url('../font/Poppins-Regular.ttf');
+        }
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'pop-regular';
     background: #f8f9fa;
     margin: 0;
     padding: 20px;

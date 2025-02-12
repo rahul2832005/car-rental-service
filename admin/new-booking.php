@@ -15,7 +15,7 @@
         body {
             font-family: 'pop-regular', sans-serif;
             margin: 20px;
-            background-color: #f8f9fa;
+            background-color:rgb(221, 224, 227);
         }
         .container {
             max-width: 1000px;

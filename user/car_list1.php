@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +20,7 @@ session_start();
 
         body {
             font-family: 'pop-regular', sans-serif;
-            background-color: #f5f5f5;
+            background-color: #b1d7d6;
             margin: 0;
             padding: 0;
             display: flex;
@@ -57,7 +58,7 @@ session_start();
 
         .card {
             background-color: #fff;
-            width: 300px;
+            width: 309px;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             overflow: hidden;
@@ -67,15 +68,17 @@ session_start();
             color: #333;
         }
 
-        .card:hover {
+        /* .card:hover {
             transform: scale(1.05);
-        }
+        } */
 
         .card img {
-            width: 100%;
-            height: 200px;
+            width: 110%;
+            height: 315px;
             object-fit: cover;
             border-radius: 10px;
+            margin-top: -13px;
+            margin-left: -13px;
         }
 
         .card-title {
@@ -101,25 +104,27 @@ session_start();
             font-size: 18px;
             font-weight: bold;
             color: #333;
+            margin-top: 10px;
         }
-
+       
         .order-button {
-            background-color: rgb(224, 45, 60);
-            color: #fff;
-            padding: 10px 15px;
-            border: none;
+            background-color:#fff;
+            color: #000;
+            padding: 5px 15px;
+            border: 2px solid black;
             border-radius: 5px;
             cursor: pointer;
             text-align: center;
             display: block;
             width: 100%;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 24px;
             transition: background 0.3s;
         }
 
         .order-button:hover {
-            background-color: rgb(245, 236, 240);
+            background-color: rgb(224, 45, 60);
+            color: #fff;
         }
 
         #header {
@@ -166,7 +171,7 @@ session_start();
 @include "navbar.php";
 ?>
 
-<body>
+<body style="background-color: #b1d7d6;">
 
 
     <div class="fleet" id="fleet-container">

@@ -42,7 +42,7 @@
                 </li>
 
                 <li>
-                    <a href="#" id="dr-drop">Driver <span class="down-icon4">▶</span></a>
+                    <a href="#" id="dr-drop">Driver <span class="down-icon4" style="margin-left:104px;">▶</span></a>
                     <ul class="dropdown" id="dr-dropdown">
                         <li><a href="add_driver.php" target="second">Add Driver</a></li>
                         <!-- <li><a href="validationjs.php" target="second">Add Cars</a></li> -->
