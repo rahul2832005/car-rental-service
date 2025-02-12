@@ -180,7 +180,7 @@ error_reporting(0);
                 $image = explode(",", $row['image']);
                 //print_r($image); 
         ?>
-                <div class="card">
+                <di class="card">
                     <div class="card-image">
                         <img src="../admin/img/<?php echo $image[0] ?>">
                     </div>
@@ -206,7 +206,7 @@ error_reporting(0);
                             <?php } ?>
                         </div>
                     </div>
-                </div>
+                </di>
                 
                 
                 
