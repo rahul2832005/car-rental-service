@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 11, 2025 at 11:51 AM
+-- Generation Time: Feb 12, 2025 at 03:17 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -42,15 +42,17 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `pickup` varchar(255) NOT NULL,
   `dropoff` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `order_id` varchar(255) NOT NULL,
+  `payment` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=158 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`, `pickup`, `dropoff`, `order_id`) VALUES
-(151, 9489, 'mm2028501@gmail.com', 86, '2025-02-11 16:55:00', '2025-03-27 16:55:00', '', 0, '2025-02-11 11:25:43', '2025-02-11 11:25:43', 'Botad', 'Botad', '');
+INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`, `pickup`, `dropoff`, `order_id`, `payment`) VALUES
+(157, 4505, 'mm2028501@gmail.com', 89, '2025-03-04 18:27:00', '2025-03-18 18:27:00', '', 0, '2025-02-11 12:58:02', '2025-02-11 12:58:02', 'Botad', 'Botad', '', 0),
+(156, 4464, 'mm2028501@gmail.com', 87, '2025-02-12 18:12:00', '2025-02-13 18:12:00', '', 0, '2025-02-11 12:56:13', '2025-02-11 12:56:13', 'Botad', 'Botad', '', 0);
 
 -- --------------------------------------------------------
 
@@ -72,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `brands` (
 --
 
 INSERT INTO `brands` (`bid`, `bname`, `created_at`, `updated_at`) VALUES
-(3, 'web', '2025-01-08 16:16:01', '2025-01-08 16:16:01'),
+(3, 'webagg', '2025-01-08 16:16:01', '2025-01-08 16:16:01'),
 (5, 'tata', '2025-02-01 10:58:12', '2025-02-01 10:58:12');
 
 -- --------------------------------------------------------
@@ -135,11 +137,11 @@ CREATE TABLE IF NOT EXISTS `car_list` (
 --
 
 INSERT INTO `car_list` (`vid`, `cname`, `modal`, `price`, `no_plate`, `brand`, `image`, `seat`, `fual`, `door`, `en_power`, `en_type`, `break_type`, `fual_capacity`, `mileage`, `status`) VALUES
-(86, 'Audia', 2021, 12000, 'GJ33AB1212', 'Audi', 'front.jpeg,rear.jpeg,right-cross.jpeg,side.jpeg', 33, 'Diesel', 4, '300 Hp', 'Hybrid', 'disc break', 40, 10, 0),
-(87, 'thar', 2022, 2500, 'gj19hj7863', 'tata', 'thar3.jpg,thar2.jpg,thar2.jpg,thar4.jpg', 5, 'Petrol', 4, '300 Hp', 'Petrol ', 'disc break', 20, 4, 0),
-(88, 'Land Rover', 2025, 100, 'GJ33AB1212', 'Tata', 'mahidra2.jpeg,mahindra1.jpeg,gallery_3.jpg,mahindra3.jpeg', 4, 'CNG', 2, '300 Hp', 'Petrol ', 'disc break', 40, 8, 0),
-(89, 'audi x7', 1234, 10, 'GJ33AB1212', 'Audi', 'front-view-118.jpg,front-left-side-47 (1).jpg,gallery_4.jpg,gallery_9.jpg', 3, 'Diesel', 2, '261 Hp', 'Diesel engine', 'disc break', 40, 12, 0),
-(90, 'Kia  carens', 1234, 1234, '1111', 'creata', 'about.png,ad_car.png,a.jpeg,c.jpeg', 123, 'Diesel', 4, '300 Hp', 'Diesel engine', 'ABS break', 20, 12, 0);
+(86, 'Audia1', 20211, 120001, 'GJ33AB12121', 'tata', 'amritsar.jpg,audi_logo.jpg,download (6).png,amritsar.jpg,audi_logo.jpg', 331, 'Petrol', 2, '300', 'Diesel engine', 'Carbon break', 20, 101, 0),
+(87, 'thar', 2022, 2500, 'gj19hj7863', 'tata', 'audi1.jpg', 5, 'Petrol', 4, '500', 'Diesel engine', 'disc break', 20, 4, 0),
+(88, 'Land Rover', 2025, 100, 'GJ33AB1212', 'webagg', 'audi1.jpg,mahindra1.jpeg,gallery_3.jpg,mahindra3.jpeg', 4, 'CNG', 2, '261', 'Diesel engine', 'disc break', 40, 8, 0),
+(89, 'audi x7', 1234, 10, 'GJ33AB1212', 'webagg', 'front-view-118.jpg,front-left-side-47 (1).jpg,gallery_4.jpg,gallery_9.jpg', 3, 'Diesel', 2, '500', 'Diesel engine', 'disc break', 40, 12, 0),
+(90, 'Kia  carens', 1234, 1234, '1111', 'tata', 'front-left-side-47.jpg,front-view-118 (1).jpg,a.jpeg,c.jpeg', 123, 'Diesel', 4, '500', 'Diesel engine', 'ABS break', 20, 12, 0);
 
 -- --------------------------------------------------------
 
@@ -238,8 +240,7 @@ CREATE TABLE IF NOT EXISTS `reguser` (
 INSERT INTO `reguser` (`uid`, `name`, `mnumber`, `email`, `password`, `token`, `reset_token`, `reset_expiry`, `is_verified`, `created_at`) VALUES
 (32, 'Bhupat', 7359509387, 'bhupatvatukiya1@gmail.com', '789789789', '', 'f12f8f62c66b613417c9ad5f6290f11a21d64798394e01bfb1454762367d05d0984146eb0c3d4d46884a335b3a5666fb10a3', '2025-02-05 12:13:40', NULL, '2025-02-05 03:01:29'),
 (33, 'hardik', 7474747474, 'hr123@gmail.com', '123123123', '', NULL, NULL, NULL, '2025-02-05 03:01:29'),
-(40, 'mahadev', 9898989898, 'mm2028501@gmail.com', '123123123', '', NULL, NULL, 1, '2025-02-05 04:34:42'),
-(48, 'kanudo', 7854785478, 'kkanudo97@gmail.com', '789789789', '', NULL, NULL, 1, '2025-02-06 04:54:42');
+(40, 'mahadev', 9898989898, 'mm2028501@gmail.com', '123123123', '', NULL, NULL, 1, '2025-02-05 04:34:42');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
