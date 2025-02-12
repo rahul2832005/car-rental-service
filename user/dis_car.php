@@ -190,7 +190,7 @@ if (mysqli_num_rows($select_car) > 0) {
            <img src="../admin/img/<?php echo $image[0]; ?>">
             </div>
             <div class="card-header">
-                <h2 class="card-title"><?php echo $row['name']; ?></h2>
+                <h2 class="card-title"><?php echo $row['cname']; ?></h2>
             </div>
             <div class="card-body">
                 <p class="description">

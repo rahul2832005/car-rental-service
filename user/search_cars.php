@@ -23,7 +23,7 @@ error_reporting(0);
 
         body {
             font-family: 'pop-regular';
-            background-color: #f5f5f5;
+            background-color: #b1d7d6;
             justify-content: center;
             align-items: center;
             /* height: 100vh; */

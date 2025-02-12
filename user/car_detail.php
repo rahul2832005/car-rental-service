@@ -179,7 +179,7 @@ $exsql=mysqli_query($conn,$sql);
                         <img src="../admin/img/<?php echo $image[0]; ?>" alt="Car Interior Front" id="thumb1">
                         <img src="../admin/img/<?php echo $image[1]; ?>" alt="Car Interior Back" id="thumb2">
                         <img src="../admin/img/<?php echo $image[2]; ?>" alt="Car Interior Back" id="thumb3">
-                        <img src="../admin/img/<?php echo $image[3]; ?>" alt="Car Interior Back" id="thumb4">
+                        <!-- <img src="../admin/img/<?php /*echo $image[3];*/ ?>" alt="Car Interior Back" id="thumb4"> -->
                     </div>
                     <div class="section">
                         <h2>Extra Service</h2>
@@ -433,8 +433,8 @@ $exsql=mysqli_query($conn,$sql);
         thumb2src = document.getElementById('thumb2').src;
         thumb3 = document.getElementById('thumb3');
         thumb3src = document.getElementById('thumb3').src;
-        thumb4 = document.getElementById('thumb4');
-        thumb4src = document.getElementById('thumb4').src;
+        // thumb4 = document.getElementById('thumb4');
+        // thumb4src = document.getElementById('thumb4').src;
 
         thumb1.addEventListener("click", function() {
             mainImg.src = thumb1src;
@@ -447,9 +447,9 @@ $exsql=mysqli_query($conn,$sql);
         thumb3.addEventListener("click", function() {
             mainImg.src = thumb3src;
         })
-        thumb4.addEventListener("click", function() {
-            mainImg.src = thumb4src;
-        })
+        // thumb4.addEventListener("click", function() {
+        //     mainImg.src = thumb4src;
+        // })
     </script>
 
     <!-- Dynamic Date select  Script -->

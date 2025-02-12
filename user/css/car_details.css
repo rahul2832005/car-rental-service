@@ -42,6 +42,7 @@ body, html {
     border-radius: 5px;
     width: 100%;
     display: block;
+    height: 100%;
 }
 
 .image-slider {
@@ -50,9 +51,9 @@ body, html {
 }
 
 .image-slider img {
-    width: 185px;
-    height: 123px;
-    margin-right: 10px;
+    width: 218px;
+    height: 155px;
+    /* margin-right: 10px; */
     border-radius: 6px;
     cursor: pointer;
     border: 2px solid white;
