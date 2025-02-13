@@ -62,7 +62,7 @@ $result = mysqli_query($conn, $sql);
         }
 
         table {
-            width: 100%;
+            width: 120%;
             border-collapse: collapse;
             background: #fff;
             border-radius: 10px;
@@ -171,7 +171,7 @@ $result = mysqli_query($conn, $sql);
                         <th>Seats</th>
                         <th>Fuel</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        <th style="width: 100px;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -198,7 +198,7 @@ $result = mysqli_query($conn, $sql);
                             </span>
                         </td>
                         <td>
-                            <a class="edit" href="update.php?vid=<?php echo $row['vid']; ?>">
+                            <a class="edit" style="padding:5px 4px;" href="update.php?vid=<?php echo $row['vid']; ?>" >
                                 <i class="fa-solid fa-pen"></i>
                             </a>   
                             <a class="delete" href="delete.php?vid=<?php echo $row['vid']; ?>">

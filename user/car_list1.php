@@ -73,9 +73,9 @@ error_reporting(0);
         } */
 
         .card img {
-            width: 110%;
-            height: 315px;
-            object-fit: cover;
+            width: 295px;
+            height: 285px;
+            /* object-fit: cover; */
             border-radius: 10px;
             margin-top: -13px;
             margin-left: -13px;
