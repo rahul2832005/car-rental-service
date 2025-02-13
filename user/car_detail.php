@@ -11,6 +11,11 @@ $vid = $_GET['vid'];
 $uid = $_SESSION['userid'];
 $useremail = $_SESSION['alogin'];
 
+$price_query = "SELECT price FROM car_list WHERE vid = $vid";
+$price_result = mysqli_query($conn, $price_query);
+if ($rowamount = mysqli_fetch_assoc($price_result)) {
+    $amount = $rowamount['price'];
+}
 
 if (isset($_POST['Book'])) {
     $fdate = $_POST['fdate'];
@@ -38,7 +43,7 @@ if (isset($_POST['Book'])) {
     if (empty($drop_of_loc)) {
         $errors['drop_of_loc'] = "Select a drop-off location.";
     }
-   
+
     if (empty($errors)) {
         $avlquery = "SELECT * FROM booking 
                      WHERE vid = $vid
@@ -53,25 +58,25 @@ if (isset($_POST['Book'])) {
             echo "<script>alert('Car already booked for the selected dates');</script>";
             echo "<script>document.location = 'dis_car.php';</script>";
         } else {
-            
-            
+
+
             require('vendor/autoload.php');
             //testmode key
             $keyId = 'rzp_test_lFfdAvwRtocJ83'; // Replace with your Razorpay Key ID
             $keySecret = 'hzszbJxefW7Otvh7tsaarvf4'; // Replace with your Razorpay Key Secret
-            
+
             // $keyId = 'rzp_live_vZHJ6c1F6PFLRC';
             // $keySecret = 'WupX5UDSTE6xHtY2TtDutJLk';
-            
             $api = new \Razorpay\Api\Api($keyId, $keySecret);
-            
+            $amount_in_paise = $amount * 100; // Convert to paise
+
             $orderData = [
                 'receipt' => strval(rand(1000, 9999)),
-                'amount' => '100',
+                'amount' => $amount_in_paise, // Use the dynamic amount
                 'currency' => 'INR',
                 'payment_capture' => 1,
             ];
-    
+
             $order = $api->order->create($orderData);
 
             $_SESSION['booking_data'] = [
@@ -87,8 +92,8 @@ if (isset($_POST['Book'])) {
                 'amount' => $orderData['amount'],
                 'order_id' => $order->id
             ];
-    
-            ?>
+
+?>
             <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
             <script>
                 function pay(e) {
@@ -105,14 +110,14 @@ if (isset($_POST['Book'])) {
                         },
                         "prefill": {
                             "name": "hiren",
-                            "email": "hiren@example.com",
+                            "email": "<?= $_SESSION['userEmail']; ?>",
                             "contact": "9999999999"
                         },
                         "theme": {
                             "color": "#631549"
                         },
                         "modal": {
-                            "ondismiss": function(){
+                            "ondismiss": function() {
                                 window.location.href = 'payment_fail.php';
                             }
                         }
@@ -125,8 +130,7 @@ if (isset($_POST['Book'])) {
             </script>
 <?php
 
-            } 
-        
+        }
     }
 }
 
@@ -155,12 +159,12 @@ if (isset($_POST['Book'])) {
     </header>
 
     <?php
-    $query = "SELECT * from car_list where vid=$vid";
 
-    // $query = "select * from car_list where vid=$vid";
+$query = "SELECT * from car_list where vid=$vid";
 
-    $exquery = mysqli_query($conn, $query);
+// $query = "select * from car_list where vid=$vid";
 
+$exquery = mysqli_query($conn, $query);
     while ($row = mysqli_fetch_array($exquery)) {
         $image = explode(",", $row['image']);
 
@@ -458,6 +462,8 @@ if (isset($_POST['Book'])) {
             const fromDate = this.value; // Get selected "From Date"
             toDateInput.min = fromDate; // Set "To Date" minimum value
         });
+
+        
     </script>
 
     <!-- enquiry form script -->
