@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 12, 2025 at 03:17 AM
+-- Generation Time: Feb 13, 2025 at 05:53 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -44,15 +44,37 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `order_id` varchar(255) NOT NULL,
   `payment` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=158 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=161 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `booking`
 --
 
 INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`, `pickup`, `dropoff`, `order_id`, `payment`) VALUES
-(157, 4505, 'mm2028501@gmail.com', 89, '2025-03-04 18:27:00', '2025-03-18 18:27:00', '', 0, '2025-02-11 12:58:02', '2025-02-11 12:58:02', 'Botad', 'Botad', '', 0),
-(156, 4464, 'mm2028501@gmail.com', 87, '2025-02-12 18:12:00', '2025-02-13 18:12:00', '', 0, '2025-02-11 12:56:13', '2025-02-11 12:56:13', 'Botad', 'Botad', '', 0);
+(159, 1129, 'mm2028501@gmail.com', 87, '2025-02-14 08:35:00', '2025-02-15 08:35:00', '', 0, '2025-02-13 03:10:18', '2025-02-13 03:10:18', 'Bhavnagar', 'Botad', '', 1),
+(158, 7960, 'mm2028501@gmail.com', 90, '2025-02-12 09:51:00', '2025-02-14 09:51:00', '', 2, '2025-02-12 04:21:29', '2025-02-12 04:21:29', '', '', '', 0),
+(157, 4505, 'mm2028501@gmail.com', 89, '2025-03-04 18:27:00', '2025-03-18 18:27:00', '', 2, '2025-02-11 12:58:02', '2025-02-11 12:58:02', 'Botad', 'Botad', '', 0),
+(156, 4464, 'mm2028501@gmail.com', 87, '2025-02-12 18:12:00', '2025-02-13 18:12:00', '', 2, '2025-02-11 12:56:13', '2025-02-11 12:56:13', 'Botad', 'Botad', '', 0),
+(160, 9879, 'mm2028501@gmail.com', 90, '2025-02-13 09:08:00', '2025-02-14 09:08:00', '', 0, '2025-02-13 03:40:15', '2025-02-13 03:40:15', 'Bhavnagar', 'Botad', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking_details`
+--
+
+DROP TABLE IF EXISTS `booking_details`;
+CREATE TABLE IF NOT EXISTS `booking_details` (
+  `id` int NOT NULL,
+  `bookingno` int NOT NULL,
+  `userEmail` varchar(255) NOT NULL,
+  `vid` int NOT NULL,
+  `FromDate` datetime NOT NULL,
+  `ToDate` datetime NOT NULL,
+  `pickup` varchar(255) NOT NULL,
+  `dropoff` varchar(255) NOT NULL,
+  `amount` decimal(10,2) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -74,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `brands` (
 --
 
 INSERT INTO `brands` (`bid`, `bname`, `created_at`, `updated_at`) VALUES
-(3, 'webagg', '2025-01-08 16:16:01', '2025-01-08 16:16:01'),
+(3, 'webaggx', '2025-01-08 16:16:01', '2025-01-08 16:16:01'),
 (5, 'tata', '2025-02-01 10:58:12', '2025-02-01 10:58:12');
 
 -- --------------------------------------------------------
@@ -137,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `car_list` (
 --
 
 INSERT INTO `car_list` (`vid`, `cname`, `modal`, `price`, `no_plate`, `brand`, `image`, `seat`, `fual`, `door`, `en_power`, `en_type`, `break_type`, `fual_capacity`, `mileage`, `status`) VALUES
-(86, 'Audia1', 20211, 120001, 'GJ33AB12121', 'tata', 'amritsar.jpg,audi_logo.jpg,download (6).png,amritsar.jpg,audi_logo.jpg', 331, 'Petrol', 2, '300', 'Diesel engine', 'Carbon break', 20, 101, 0),
+(86, 'Audia1', 20211, 120001, 'GJ33AB12121', 'tata', 'thar2.jpg,thar3.jpg,thar4.jpg,amritsar.jpg,audi_logo.jpg', 331, 'Petrol', 2, '300', 'Diesel engine', 'Carbon break', 20, 101, 0),
 (87, 'thar', 2022, 2500, 'gj19hj7863', 'tata', 'audi1.jpg', 5, 'Petrol', 4, '500', 'Diesel engine', 'disc break', 20, 4, 0),
 (88, 'Land Rover', 2025, 100, 'GJ33AB1212', 'webagg', 'audi1.jpg,mahindra1.jpeg,gallery_3.jpg,mahindra3.jpeg', 4, 'CNG', 2, '261', 'Diesel engine', 'disc break', 40, 8, 0),
 (89, 'audi x7', 1234, 10, 'GJ33AB1212', 'webagg', 'front-view-118.jpg,front-left-side-47 (1).jpg,gallery_4.jpg,gallery_9.jpg', 3, 'Diesel', 2, '500', 'Diesel engine', 'disc break', 40, 12, 0),
@@ -193,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `driver` (
   `hprice` int NOT NULL,
   `dprice` int NOT NULL,
   `type_licence` varchar(255) NOT NULL,
-  `proff` varchar(255) NOT NULL,
+  `profile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `address` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
   `state` varchar(255) NOT NULL,
@@ -201,16 +223,20 @@ CREATE TABLE IF NOT EXISTS `driver` (
   `status` int NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `licence_pdf` varchar(255) NOT NULL,
+  `adhar_pdf` varchar(255) NOT NULL,
   PRIMARY KEY (`did`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `driver`
 --
 
-INSERT INTO `driver` (`did`, `dfname`, `dlname`, `fnumber`, `hprice`, `dprice`, `type_licence`, `proff`, `address`, `city`, `state`, `pin`, `status`, `created_at`, `updated_at`) VALUES
-(3, 'Vatukiya', 'Bhupat', 7359509387, 200, 1200, 'passenger', 'profile.jpeg,aDHAR.png,licence.png', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364710, 0, '2025-02-11 07:56:25', NULL),
-(4, 'hardik', 'vatukiya', 9106265263, 100, 1000, 'four_wheeler', 'download (2).jpeg,licence.png,profile.jpeg', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 0, '2025-02-11 07:57:34', NULL);
+INSERT INTO `driver` (`did`, `dfname`, `dlname`, `fnumber`, `hprice`, `dprice`, `type_licence`, `profile`, `address`, `city`, `state`, `pin`, `status`, `created_at`, `updated_at`, `licence_pdf`, `adhar_pdf`) VALUES
+(3, 'Vatukiya', 'Bhupat', 7359509387, 200, 1200, 'passenger', 'profile.jpeg,aDHAR.png,licence.png', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364710, 0, '2025-02-11 07:56:25', NULL, '', ''),
+(4, 'hardik', 'vatukiya', 9106265263, 100, 1000, 'four_wheeler', 'download (2).jpeg,licence.png,profile.jpeg', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 0, '2025-02-11 07:57:34', NULL, '', ''),
+(5, 'Vatukiya bhai', 'Bhupat', 7359509387, 1230, 12, 'passenger', 'driver/WhatsApp Image 2025-02-12 at 8.30.26 PM.jpeg', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364710, 0, '2025-02-13 04:35:08', '2025-02-13 05:52:42', 'driver/VatukiyaBhupatResume (3).pdf', 'driver/HirenLakum(CV) (1).pdf'),
+(6, 'Vikrambhai', 'Dhoraliya', 7359509387, 456, 546, 'passenger', '', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 0, '2025-02-13 04:48:46', '2025-02-13 05:44:41', '', '');
 
 -- --------------------------------------------------------
 

@@ -190,18 +190,18 @@ td img {
                 <?php
                 $n = 1;
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $proff = explode(",", $row['proff']);
+                    $profile = explode(",", $row['profile']);
                 ?>
                     <tr>
                         <td><?php echo $n ?></td>
-                        <td><img src="<?php echo $proff[0]; ?>" alt="Driver Profile"></td>
+                        <td><img src="<?php echo $row['profile']; ?>" alt="Driver Profile"></td>
                         <td><?php echo $row['dfname'] ?></td>
                         <td><?php echo $row['fnumber'] ?></td>
                         <td>$<?php echo $row['hprice'] ?></td>
                         <td>$<?php echo $row['dprice'] ?></td>
                         <td><?php echo $row['type_licence'] ?></td>
-                        <td><?php echo $proff[1]; ?></td>
-                        <td><?php echo $proff[2]; ?></td>
+                        <td><?php echo $row['adhar_pdf'] ?></td>
+                        <td><?php echo $row['licence_pdf'] ?></td>
                         <td><?php echo $row['city'] ?></td>
                         <td>
                             <span class="status <?php echo strtolower($row['status']); ?>">
@@ -209,7 +209,7 @@ td img {
                             </span>
                         </td>
                         <td>
-                            <a  class="edit " href="#"><i class="fa-solid fa-pen"></i></a>
+                            <a  class="edit " href="updatedriver.php?did=<?php echo  $row['did'];  ?>"><i class="fa-solid fa-pen"></i></a>
                             <a   class="delete"  href="delete.php?did=<?php echo $row['did']; ?>"><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>

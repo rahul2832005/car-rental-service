@@ -160,11 +160,11 @@ if (isset($_POST['Book'])) {
 
     <?php
 
-$query = "SELECT * from car_list where vid=$vid";
+    $query = "SELECT * from car_list where vid=$vid";
 
-// $query = "select * from car_list where vid=$vid";
+    // $query = "select * from car_list where vid=$vid";
 
-$exquery = mysqli_query($conn, $query);
+    $exquery = mysqli_query($conn, $query);
     while ($row = mysqli_fetch_array($exquery)) {
         $image = explode(",", $row['image']);
 
@@ -348,15 +348,12 @@ $exquery = mysqli_query($conn, $query);
                             </div>
 
 
-                            <pre> <b> Need  A  Driver? </b><input type="radio" id="driver-ad" name="driver-ad" class="de"></pre>
-
+                            <label>Need A Driver?
+                                <input type="radio" name="need_driver" id="need_driver" onclick="toggleDriverForm(true)">
+                            </label>
 
                             <!-- <button class="booking-button" name="Book">Booking</button> -->
-                            <?php if ($row['status'] == 0 || $row['status'] == "") { ?>
-                                <button type="submit" class="booking-button" name="Book">Rent Now</button>
-                            <?php  } else { ?>
-                                <button type="submit" class="booked-button" id="">Booked</button>
-                            <?php  } ?>
+                            <button type="submit" class="booking-button" name="Book">Rent Now</button>
                     </div>
                     </form>
                     <button class="enquiry-button" onclick="openForm()">Enquiry Us</button>
@@ -394,7 +391,66 @@ $exquery = mysqli_query($conn, $query);
     </div>
 
     <div id="overlay"></div>
+<!-- Hide Form by Default -->
+<?php
+$conn=mysqli_connect('localhost','root','','car_rent');
 
+
+$sql = "select * from driver";
+
+$result = mysqli_query($conn, $sql);
+
+
+?>
+<div id="driver_form" style="display: none; margin-top: 10px; border: 1px solid #ccc; padding: 10px;">
+    <h4>Driver Details</h4>
+    <div class="body">
+    <div class="container1">
+        <h2>🚗 Available Drivers</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>👤 Name</th>
+                    <th>🎂 Age</th>
+                    <th>💰 Rate (per day)</th>
+                    <th>📌 Status</th>
+                    <th>🗓️ Book</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+            $n=1;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $proff = explode(",", $row['proff']);
+        ?>
+                <tr>
+                    <td><?php echo  $row['dfname']; ?></td>
+                    <td><?php echo "20";  ?></td>
+                    <td><?php echo $row['dprice']; ?></td>
+                    <?php 
+                        if($row['status']==0)
+                        {
+                            echo "<td><span class='status available'>Available</span></td>";
+                        }
+                        elseif($row['status']==1)
+                      {
+                        echo "<td><span class='status unavailable'>unavailable</span></td>";
+
+                      }
+                    ?>
+                    <td><span class="status"><button type="submit"> BOOK </button></span></td>
+                </tr>
+                
+                <?php
+        $n++;
+        }
+        ?>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
     <div>
 
         <?php include('footer.php'); ?>
@@ -462,8 +518,6 @@ $exquery = mysqli_query($conn, $query);
             const fromDate = this.value; // Get selected "From Date"
             toDateInput.min = fromDate; // Set "To Date" minimum value
         });
-
-        
     </script>
 
     <!-- enquiry form script -->
@@ -516,7 +570,12 @@ $exquery = mysqli_query($conn, $query);
     </script>
 
 
-
+<script>
+    function toggleDriverForm(show) {
+        const form = document.getElementById('driver_form');
+        form.style.display = show ? 'block' : 'none';
+    }
+</script>
 </body>
 
 </html>
