@@ -32,8 +32,8 @@ $result = mysqli_query($conn, $sql);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 1200px;
+            /* width: 100%; */
+            width: 1000px;
             text-align: center;
         }
 
@@ -57,9 +57,9 @@ $result = mysqli_query($conn, $sql);
         }
 
         /* Table Styling */
-        .table-container {
+        /* .table-container {
             overflow-x: auto;
-        }
+        } */
 
         table {
             width: 120%;
