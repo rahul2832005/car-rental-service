@@ -96,7 +96,7 @@ $result = mysqli_query($conn, $sql);
         }
 
         .available {
-            background: green;
+            background: #28a745;
         }
 
         .booked {
@@ -190,9 +190,9 @@ $result = mysqli_query($conn, $sql);
                         <td>
                             <span class="status <?php echo strtolower($row['status']); ?>">
                                 <?php
-                                if ($row['status'] == 0) echo "Available";
-                                elseif ($row['status'] == 1) echo "Booked";
-                                elseif ($row['status'] == 2) echo "Maintenance";
+                                if ($row['status'] == 0) echo "<span class='available'> Available</span>";
+                                elseif ($row['status'] == 1) echo "<span class='booked'>Booked </span>";
+                                elseif ($row['status'] == 2) echo "<span class='maintenance'>Maintenance </span>";
                                 else echo "Not Available";
                                 ?>
                             </span>

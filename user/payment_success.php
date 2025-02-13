@@ -4,6 +4,8 @@ session_start();
 
 
 $bookingdata=$_SESSION['booking_data'];
+$did=$_SESSION['driver_id'];
+
 
 $vid=$bookingdata['vid'];
 $bookingno=$bookingdata['bookingno'];
@@ -21,10 +23,18 @@ $payment=1;
 // echo $useremail;
 // echo $fdate;
 // echo $tdate;
-
-$sql = "INSERT INTO booking (bookingno, userEmail, vid, FromDate, ToDate, status,pickup,dropoff,payment) 
+if($did=="")
+{
+    $sql = "INSERT INTO booking (bookingno, userEmail, vid, FromDate, ToDate, status,pickup,dropoff,payment) 
     VALUES ('$bookingno', '$useremail', '$vid', '$fdate', '$tdate', '$status','$pick_up_loc','$drop_of_loc',$payment)";
 $exsql=mysqli_query($conn,$sql);
+}
+else
+{
+$sql = "INSERT INTO booking (bookingno, userEmail, vid, FromDate, ToDate, status,pickup,dropoff,did,payment) 
+    VALUES ('$bookingno', '$useremail', '$vid', '$fdate', '$tdate', '$status','$pick_up_loc','$drop_of_loc','$did',$payment)";
+$exsql=mysqli_query($conn,$sql);
+}
 
 echo "<script>alert('Booking  Successfully !');
         window,location.href='profile.php';</script>";

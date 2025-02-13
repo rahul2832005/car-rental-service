@@ -90,9 +90,12 @@ if (isset($_POST['Book'])) {
                 'status' => $status,
                 'rent_type' => $rent_type,
                 'amount' => $orderData['amount'],
-                'order_id' => $order->id
+                'order_id' => $order->id,
             ];
-
+            if (isset($_GET['did']) && !empty($_GET['did'])) {  // Corrected to $_GET
+                $_SESSION['driver_id'] = $_GET['did'];
+            }
+          
 ?>
             <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
             <script>
@@ -134,6 +137,17 @@ if (isset($_POST['Book'])) {
     }
 }
 
+// Driver selection logic (moved outside the main if(isset($_POST['Book'])) block)
+if (isset($_GET['did'])) {
+    $selected_driver_id = $_GET['did'];
+    $_SESSION['driver_id'] = $selected_driver_id;
+
+    $update_status_query = "UPDATE driver SET status = 1 WHERE did = $selected_driver_id";
+    mysqli_query($conn, $update_status_query);
+
+    echo "<script>alert('Driver selected and status updated successfully!');</script>";
+    echo "<script>alert('$selected_driver_id');</script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -396,7 +410,7 @@ if (isset($_POST['Book'])) {
 $conn=mysqli_connect('localhost','root','','car_rent');
 
 
-$sql = "select * from driver";
+$sql = "select * from driver where status=0 ";
 
 $result = mysqli_query($conn, $sql);
 
@@ -422,7 +436,7 @@ $result = mysqli_query($conn, $sql);
             <?php
             $n=1;
         while ($row = mysqli_fetch_assoc($result)) {
-            $proff = explode(",", $row['proff']);
+            $profile = explode(",", $row['profile']);
         ?>
                 <tr>
                     <td><?php echo  $row['dfname']; ?></td>
@@ -439,7 +453,9 @@ $result = mysqli_query($conn, $sql);
 
                       }
                     ?>
-                    <td><span class="status"><button type="submit"> BOOK </button></span></td>
+                    <td><button class="status"><a  href="car_detail.php?did=<?php  echo $row['did']; ?> &vid=<?php  echo $vid; ?>">Book
+                            </a></button></td>
+                            
                 </tr>
                 
                 <?php
@@ -547,27 +563,9 @@ $result = mysqli_query($conn, $sql);
     </script>
 
 
-    <script>
-        document.getElementById("button").addEventListener('click', function() {
-            document.querySelector(".pop-up").style.display = "flex";
-        })
+ 
 
-        document.querySelector(".close").addEventListener('click', function() {
-            document.querySelector(".pop-up").style.display = "none";
-        })
-    </script>
-
-    <!-- JavaScript oor  Razorpay checkout -->
-
-    <script>
-        document.getElementById("button").addEventListener('click', function() {
-            document.querySelector(".pop-up").style.display = "flex";
-        })
-
-        document.querySelector(".close").addEventListener('click', function() {
-            document.querySelector(".pop-up").style.display = "none";
-        })
-    </script>
+    
 
 
 <script>

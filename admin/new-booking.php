@@ -121,7 +121,7 @@
                         <td><?php echo $row['PostingDate']; ?></td>
                         <td><?php echo ($row['status'] == 0) ? "Not Confirmed Yet" : "Confirmed"; ?></td>
                         <td class="action">
-                            <a href="Approve.php?bno=<?php echo $row['bookingno']; ?>&userEmail=<?php echo $row['userEmail']; ?>">Approve</a>
+                            <a href="Approve.php?bno=<?php echo $row['bookingno']; ?>&userEmail=<?php echo $row['userEmail']; ?>&did=<?php  echo $row['did']  ; ?>">Approve</a>
                         </td>
                     </tr>
                 <?php

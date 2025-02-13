@@ -427,7 +427,7 @@ button {
    table {
        width: 100%;
        border-collapse: collapse;
-       background: #e91b1b;
+       background: #e29393;
        border-radius: 10px;
        overflow: hidden;
    }
@@ -454,12 +454,15 @@ button {
    .status {
        padding: 5px 12px;
        border-radius: 20px;
-       color: white;
+       color: black;
        font-weight: bold;
+       background-color: #FFA500;
+
    }
    
    .available {
-       background: green;
+       background: #28a745;
+       color: white;
    }
    
    .unavailable {
