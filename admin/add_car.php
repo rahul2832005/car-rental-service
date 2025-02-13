@@ -216,9 +216,9 @@ if(isset($_POST['submit']))
 
                 <div class="select-box">
                 <p style="color: red;"><?php echo $cname; ?></p>
-                <span class="details">Select Car Brand :</span>
-                    <select name="brand" id="fual">
-                    <option value="">Select   Brand</option>
+                <span class="details" style="display:block;font-size:20px;margin-top:-11px;">Select Car Brand :</span>
+                    <select name="brand" id="brand" style="margin-right: 121px;">
+                    <option value="">Select Brand</option>
                         <?php  
                             $selectbrand="select * from brands";
                             $exselect=mysqli_query($conn,$selectbrand);
@@ -256,7 +256,7 @@ if(isset($_POST['submit']))
                 
                 <div class="fual-type">
                 <p style="color: red;"><?php echo $fu; ?></p>
-                <span class="details">Select Fual </span>
+                <span class="details">Select Fual :</span>
                     <select name="fual" id="fual">
                         <option value="type" >Fual Type</option>
                         <option value="Petrol">Petrol</option>

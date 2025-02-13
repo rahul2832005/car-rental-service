@@ -113,6 +113,7 @@ border-color:#d1001f;
     height: 43px;
     border: 1px solid #d1001f;
 }
+
 #mil{
     border: 1px solid red;
 }
@@ -124,6 +125,7 @@ border-color:#d1001f;
 form .button{
     height: 45px;
     width: 45px 0;
+    margin-left: 16px;
 }
 
 form .button{
@@ -135,6 +137,7 @@ form .button{
     color: #fff;
     background:#d23d49;
     border-radius: 5px;
+   
 }
 
 label{
