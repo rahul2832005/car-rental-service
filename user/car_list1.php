@@ -58,7 +58,7 @@ error_reporting(0);
 
         .card {
             background-color: #fff;
-            width: 309px;
+            width: 345px;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             overflow: hidden;
@@ -73,11 +73,11 @@ error_reporting(0);
         } */
 
         .card img {
-            width: 295px;
+            width: 333px;
             height: 285px;
             /* object-fit: cover; */
             border-radius: 10px;
-            margin-top: -13px;
+            margin-top: -15px;
             margin-left: -13px;
         }
 
