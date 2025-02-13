@@ -11,6 +11,11 @@ $vid = $_GET['vid'];
 $uid = $_SESSION['userid'];
 $useremail = $_SESSION['alogin'];
 
+$price_query = "SELECT price FROM car_list WHERE vid = $vid";
+$price_result = mysqli_query($conn, $price_query);
+if ($rowamount = mysqli_fetch_assoc($price_result)) {
+    $amount = $rowamount['price'];
+}
 
 if (isset($_POST['Book'])) {
     $fdate = $_POST['fdate'];
@@ -38,7 +43,7 @@ if (isset($_POST['Book'])) {
     if (empty($drop_of_loc)) {
         $errors['drop_of_loc'] = "Select a drop-off location.";
     }
-    $payment=0;
+
     if (empty($errors)) {
         $avlquery = "SELECT * FROM booking 
                      WHERE vid = $vid
@@ -53,83 +58,78 @@ if (isset($_POST['Book'])) {
             echo "<script>alert('Car already booked for the selected dates');</script>";
             echo "<script>document.location = 'dis_car.php';</script>";
         } else {
-            if($payment==0) {
-
-                /*   RazorPay Integration  */
-                require('vendor/autoload.php'); // If you're using Composer
-                //testmode key
-                // $keyId = 'rzp_test_lFfdAvwRtocJ83'; // Replace with your Razorpay Key ID
-                // $keySecret = 'hzszbJxefW7Otvh7tsaarvf4'; // Replace with your Razorpay Key Secret
 
 
+            require('vendor/autoload.php');
+            //testmode key
+            $keyId = 'rzp_test_lFfdAvwRtocJ83'; // Replace with your Razorpay Key ID
+            $keySecret = 'hzszbJxefW7Otvh7tsaarvf4'; // Replace with your Razorpay Key Secret
 
-                // live mode key
-                $keyId = 'rzp_live_vZHJ6c1F6PFLRC'; // Replace with your Razorpay Key ID
-                $keySecret = 'WupX5UDSTE6xHtY2TtDutJLk'; // Replace with your Razorpay Key Secret
+            // $keyId = 'rzp_live_vZHJ6c1F6PFLRC';
+            // $keySecret = 'WupX5UDSTE6xHtY2TtDutJLk';
+            $api = new \Razorpay\Api\Api($keyId, $keySecret);
+            $amount_in_paise = $amount * 100; // Convert to paise
 
-                // Razorpay API object creation
-                $api = new \Razorpay\Api\Api($keyId, $keySecret);
-                // Order Data (Updated receipt as string)
-                $orderData = [
-                    'receipt' => strval(rand(1000, 9999)), // Convert receipt to string
-                    'amount' => '100', // Amount in paise (500 INR)
-                    'currency' => 'INR',
-                    'payment_capture' => 1, // Automatic capture
-                ];
+            $orderData = [
+                'receipt' => strval(rand(1000, 9999)),
+                'amount' => $amount_in_paise, // Use the dynamic amount
+                'currency' => 'INR',
+                'payment_capture' => 1,
+            ];
 
-                // Razorpay order creation
+            $order = $api->order->create($orderData);
 
+            $_SESSION['booking_data'] = [
+                'bookingno' => $bookingno,
+                'useremail' => $useremail,
+                'vid' => $vid,
+                'fdate' => $fdate,
+                'tdate' => $tdate,
+                'pick_up_loc' => $pick_up_loc,
+                'drop_of_loc' => $drop_of_loc,
+                'status' => $status,
+                'rent_type' => $rent_type,
+                'amount' => $orderData['amount'],
+                'order_id' => $order->id
+            ];
 
-                $order = $api->order->create($orderData);
-
-                echo "<script>alert('Payment Done');</script>";
-                $payment=1;?>
-                <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
-                <script>
-                    function pay(e) {
-
-                        var options = {
-                            "key": "<?= $keyId; ?>", // Replace with your Razorpay Key ID
-                            "amount": "100", // Amount in paise
-                            "currency": "INR",
-                            "name": "Carola",
-                            "payment_capture":1,
-                            "description": "Payment for Booking Car",
-                            "image": "logo.jpeg", // Your logo URL
-                            "order_id": "<?= $order->id; ?>", // Dynamic Order ID
-                            "handler": function(response) {
-                                alert("Payment successful. Razorpay Payment ID: " + response.razorpay_payment_id);
-                                // You can further process the response here
-                         
-                            },
-                            "prefill": {
-                                "name": "hiren",
-                                "email": "hiren@example.com",
-                                "contact": "9999999999"
-                            },
-                            "theme": {
-                                "color": "#631549"
+?>
+            <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+            <script>
+                function pay(e) {
+                    var options = {
+                        "key": "<?= $keyId; ?>",
+                        "amount": "100",
+                        "currency": "INR",
+                        "name": "Carola",
+                        "description": "Payment for Booking Car",
+                        "image": "logo.jpeg",
+                        "order_id": "<?= $order->id; ?>",
+                        "handler": function(response) {
+                            window.location.href = 'payment_success.php?payment_id=' + response.razorpay_payment_id + '&order_id=' + response.razorpay_order_id + '&signature=' + response.razorpay_signature;
+                        },
+                        "prefill": {
+                            "name": "hiren",
+                            "email": "<?= $_SESSION['userEmail']; ?>",
+                            "contact": "9999999999"
+                        },
+                        "theme": {
+                            "color": "#631549"
+                        },
+                        "modal": {
+                            "ondismiss": function() {
+                                window.location.href = 'payment_fail.php';
                             }
-                        };
-                        var rzp1 = new Razorpay(options);
-                        rzp1.open();
-                        e.preventDefault();
-                    }
-                    pay();
-                </script>
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+                    e.preventDefault();
+                }
+                pay();
+            </script>
 <?php
 
-if($orderData['payment_capture']==1)
-{
-    $sql = "INSERT INTO booking (bookingno, userEmail, vid, FromDate, ToDate, status,pickup,dropoff) 
-    VALUES ('$bookingno', '$useremail', '$vid', '$fdate', '$tdate', '$status','$pick_up_loc','$drop_of_loc')";
-
-$exsql=mysqli_query($conn,$sql);
-}
-            } else {
-                echo "<script>alert('Something went wrong');</script>";
-            }
         }
     }
 }
@@ -159,12 +159,12 @@ $exsql=mysqli_query($conn,$sql);
     </header>
 
     <?php
-    $query = "SELECT * from car_list where vid=$vid";
 
-    // $query = "select * from car_list where vid=$vid";
+$query = "SELECT * from car_list where vid=$vid";
 
-    $exquery = mysqli_query($conn, $query);
+// $query = "select * from car_list where vid=$vid";
 
+$exquery = mysqli_query($conn, $query);
     while ($row = mysqli_fetch_array($exquery)) {
         $image = explode(",", $row['image']);
 
@@ -462,6 +462,8 @@ $exsql=mysqli_query($conn,$sql);
             const fromDate = this.value; // Get selected "From Date"
             toDateInput.min = fromDate; // Set "To Date" minimum value
         });
+
+        
     </script>
 
     <!-- enquiry form script -->
