@@ -21,6 +21,8 @@ if(isset($_POST['submit']))
     $break=$_POST['break'];
     $f_tank=$_POST['fual-tank'];
     $mile=$_POST['mile'];
+    $accessories = $_POST['accessories'];
+
     
    
 
@@ -147,10 +149,12 @@ if(isset($_POST['submit']))
       if (count($allimages) > 0) {
         // Join the image paths into a comma-separated string
         $imagePaths = implode(",", $allimages);
+        $accessories_list = mysqli_real_escape_string($conn, implode(', ', $accessories));
+
         $imagePathsWithoutimg = str_replace("img/", "", $imagePaths);
         
-        $insert = "insert into car_list (cname,modal,price,no_plate,brand,image,seat,fual,door,en_power,en_type,break_type,fual_capacity,mileage)
-    values ('$car_name',$modal,$rent_price,'$no_plate','$brand','$imagePathsWithoutimg',$seat,'$fual',$door,'$power','$engine','$break',$f_tank,$mile)";
+        $insert = "insert into car_list (cname,modal,price,no_plate,brand,image,seat,fual,door,en_power,en_type,break_type,fual_capacity,mileage,accessories)
+    values ('$car_name',$modal,$rent_price,'$no_plate','$brand','$imagePathsWithoutimg',$seat,'$fual',$door,'$power','$engine','$break',$f_tank,$mile,'$accessories_list')";
         $run = mysqli_query($conn, $insert);
 
         if ($run) {
@@ -165,7 +169,11 @@ if(isset($_POST['submit']))
     
     
 }
-    }
+
+
+    
+}
+    
 
 ?>
 <!DOCTYPE html>
@@ -368,11 +376,33 @@ if(isset($_POST['submit']))
                     <span class="mi-de">Milage: </span>
                     <input type="text" name="mile" id="mil" placeholder="Enter Car Mielage">
                 </div>
-                
+
+
+
+
+                <div class="container1">
+        <h2>Accessories</h2>
+            <div class="accessories">
+                <label><input type="checkbox" name="accessories[]" value="Air Conditioner"> Air Conditioner</label>
+                <label><input type="checkbox" name="accessories[]" value="Power Steering"> Power Steering</label>
+                <label><input type="checkbox" name="accessories[]" value="CD Player"> CD Player</label>
+                <label><input type="checkbox" name="accessories[]" value="Power Door Locks"> Power Door Locks</label>
+                <label><input type="checkbox" name="accessories[]" value="Driver Airbag"> Driver Airbag</label>
+                <label><input type="checkbox" name="accessories[]" value="Central Locking"> Central Locking</label>
+                <label><input type="checkbox" name="accessories[]" value="AntiLock Braking System"> AntiLock Braking System</label>
+                <label><input type="checkbox" name="accessories[]" value="Brake Assist"> Brake Assist</label>
+                <label><input type="checkbox" name="accessories[]" value="Passenger Airbag"> Passenger Airbag</label>
+                <label><input type="checkbox" name="accessories[]" value="Crash Sensor"> Crash Sensor</label>
+                <label><input type="checkbox" name="accessories[]" value="Power Windows"> Power Windows</label>
+                <label><input type="checkbox" name="accessories[]" value="Leather Seats"> Leather Seats</label>
+            </div>
+            
+    </div> 
             <div class="button">
             <button type="submit" name="submit" class="button">Add Car</button>
                     <!--<input type="button" value="Add Car" name="submit">-->
                 </div>
+
         </form>
     </div>
     

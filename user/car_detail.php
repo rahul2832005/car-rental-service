@@ -254,60 +254,34 @@ if (isset($_GET['did'])) {
                         </div>
                     </div>
                     <div class="feature-container">
-                        <div class="features">
-                            <h2>Car Features</h2>
-                            <div class="feature-list">
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Multi-zone A/C</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Heated front seats</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Android Auto</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Navigation system</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Premium sound system</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Bluetooth</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Keyless Start</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Memory seat</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>6 Cylinders</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Adaptive Cruise Control</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Intermittent wipers</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>4 power windows</p>
-                                </div>
-                            </div>
+    <div class="features">
+        <h2>Car Features</h2>
+        <div class="feature-list">
+            <?php 
+                $features = "SELECT accessories FROM car_list WHERE vid = $vid";
+                $exfeatures = mysqli_query($conn, $features);
+                $rowf = mysqli_fetch_assoc($exfeatures);
+
+                if ($rowf) {
+                    $accessories = explode(',', $rowf['accessories']); // Assuming accessories are comma-separated
+
+                    foreach ($accessories as $accessory) {
+                        $accessory = trim($accessory); // Trim spaces around each item
+                        ?>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p><?php echo htmlspecialchars($accessory); ?></p>
                         </div>
-                    </div>
+                        <?php
+                    }
+                } else {
+                    echo "<p>No accessories available for this car.</p>";
+                }
+            ?>
+        </div>
+    </div>
+</div>
+
                 </div>
 
                 <div class="form-container" id="formContainer">

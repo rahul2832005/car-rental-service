@@ -13,6 +13,8 @@ $exsql = mysqli_query($conn, $sql);
 
 $result = mysqli_fetch_assoc($exsql);
 $storedImages = explode(",", $result['image']); // Split the stored image paths
+$oldAccessories = explode(', ', $result['accessories']); // Split string into array
+
 
 if (isset($_POST['submit'])) {
     $car_name = $_POST['car_name'];
@@ -28,6 +30,10 @@ if (isset($_POST['submit'])) {
     $break = $_POST['break'];
     $f_tank = $_POST['fual-tank'];
     $mile = $_POST['mile'];
+
+      // Process selected accessories
+      $selectedAccessories = isset($_POST['accessories']) ? $_POST['accessories'] : [];
+      $selectedAccessoriesString = implode(", ", $selectedAccessories);
 
 
 
@@ -124,7 +130,7 @@ if (isset($_POST['submit'])) {
             cname='$car_name', modal=$modal, price=$rent_price, no_plate='$no_plate', 
             brand='$brand', image='$updatedImages', seat=$seat, fual='$fual', 
             door=$door, en_power='$power', en_type='$engine', break_type='$break', 
-            fual_capacity='$f_tank', mileage=$mile WHERE vid=$vid";
+            fual_capacity='$f_tank', mileage=$mile,accessories='$selectedAccessoriesString' WHERE vid=$vid";
 
         $run = mysqli_query($conn, $update);
 
@@ -387,7 +393,27 @@ if (isset($_POST['submit'])) {
                 <span class="mi-de">Milage: </span>
                 <input type="text" name="mile" id="mil" placeholder="Enter Car Mielage" value="<?php echo $result['mileage']; ?>">
             </div>
+            <div class="container1">
+        <h2>Accessories</h2>
+        <div class="accessories">
+        <?php
 
+                $accessories = [
+                    "Air Conditioner", "Power Steering", "CD Player", "Power Door Locks",
+                    "Driver Airbag", "Central Locking", "AntiLock Braking System", "Brake Assist",
+                    "Passenger Airbag", "Crash Sensor", "Power Windows", "Leather Seats"
+                ];
+                foreach ($accessories as $accessory) {
+                    echo '<label><input type="checkbox" name="accessories[]" value="' . $accessory . '"';
+                    if (in_array($accessory, $oldAccessories)) {
+                        echo ' checked';
+                    }
+                    echo '>' . $accessory . '</label><br>';
+                }
+                ?>
+            </div>
+            
+    </div>                              
             <div class="button">
                 <button type="submit" name="submit" class="button">Update Car</button>
                 <!--<input type="button" value="Add Car" name="submit">-->
