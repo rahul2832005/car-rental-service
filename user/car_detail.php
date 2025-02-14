@@ -95,7 +95,7 @@ if (isset($_POST['Book'])) {
             if (isset($_GET['did']) && !empty($_GET['did'])) {  // Corrected to $_GET
                 $_SESSION['driver_id'] = $_GET['did'];
             }
-          
+
 ?>
             <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
             <script>
@@ -363,7 +363,7 @@ if (isset($_GET['did'])) {
 
 
                             <label>Need A Driver?
-                                <input type="radio" name="need_driver" id="need_driver" onclick="toggleDriverForm(true)">
+                                <input type="checkbox" name="need_driver" id="need_driver" onclick="toggleDriverForm()">
                             </label>
 
                             <!-- <button class="booking-button" name="Book">Booking</button> -->
@@ -405,68 +405,64 @@ if (isset($_GET['did'])) {
     </div>
 
     <div id="overlay"></div>
-<!-- Hide Form by Default -->
-<?php
-$conn=mysqli_connect('localhost','root','','car_rent');
+    <!-- Hide Form by Default -->
+    <?php
+    $conn = mysqli_connect('localhost', 'root', '', 'car_rent');
 
 
-$sql = "select * from driver where status=0 ";
+    $sql = "select * from driver where status=0 ";
 
-$result = mysqli_query($conn, $sql);
+    $result = mysqli_query($conn, $sql);
 
 
-?>
-<div id="driver_form" style="display: none; margin-top: 10px; border: 1px solid #ccc; padding: 10px;">
-    <h4>Driver Details</h4>
-    <div class="body">
-    <div class="container1">
-        <h2>🚗 Available Drivers</h2>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>👤 Name</th>
-                    <th>🎂 Age</th>
-                    <th>💰 Rate (per day)</th>
-                    <th>📌 Status</th>
-                    <th>🗓️ Book</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php
-            $n=1;
-        while ($row = mysqli_fetch_assoc($result)) {
-            $profile = explode(",", $row['profile']);
-        ?>
-                <tr>
-                    <td><?php echo  $row['dfname']; ?></td>
-                    <td><?php echo "20";  ?></td>
-                    <td><?php echo $row['dprice']; ?></td>
-                    <?php 
-                        if($row['status']==0)
-                        {
-                            echo "<td><span class='status available'>Available</span></td>";
+    ?>
+    <div id="driver_form" style="display: none; margin-top: 10px; border: 1px solid #ccc; padding: 10px;">
+        <h4>Driver Details</h4>
+        <div class="body">
+            <div class="container1">
+                <h2>🚗 Available Drivers</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>👤 Name</th>
+                            <th>🎂 Age</th>
+                            <th>💰 Rate (per day)</th>
+                            <th>📌 Status</th>
+                            <th>🗓️ Book</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $n = 1;
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $profile = explode(",", $row['profile']);
+                        ?>
+                            <tr>
+                                <td><?php echo  $row['dfname']; ?></td>
+                                <td><?php echo "20";  ?></td>
+                                <td><?php echo $row['dprice']; ?></td>
+                                <?php
+                                if ($row['status'] == 0) {
+                                    echo "<td><span class='status available'>Available</span></td>";
+                                } elseif ($row['status'] == 1) {
+                                    echo "<td><span class='status unavailable'>unavailable</span></td>";
+                                }
+                                ?>
+                                <td><button class="status"><a href="car_detail.php?did=<?php echo $row['did']; ?> &vid=<?php echo $vid; ?>">Book
+                                        </a></button></td>
+
+                            </tr>
+
+                        <?php
+                            $n++;
                         }
-                        elseif($row['status']==1)
-                      {
-                        echo "<td><span class='status unavailable'>unavailable</span></td>";
-
-                      }
-                    ?>
-                    <td><button class="status"><a  href="car_detail.php?did=<?php  echo $row['did']; ?> &vid=<?php  echo $vid; ?>">Book
-                            </a></button></td>
-                            
-                </tr>
-                
-                <?php
-        $n++;
-        }
-        ?>
-            </tbody>
-        </table>
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    </div>
-</div>
     <div>
 
         <?php include('footer.php'); ?>
@@ -563,15 +559,21 @@ $result = mysqli_query($conn, $sql);
     </script>
 
 
- 
-
-    
 
 
-<script>
-    function toggleDriverForm(show) {
-        const form = document.getElementById('driver_form');
-        form.style.display = show ? 'block' : 'none';
+
+
+
+    <script>
+    function toggleDriverForm() {
+        const checkbox = document.getElementById('need_driver');
+        const driverForm = document.getElementById('driver_form');
+
+        if (checkbox.checked) {
+            driverForm.style.display = 'block';
+        } else {
+            driverForm.style.display = 'none';
+        }
     }
 </script>
 </body>
