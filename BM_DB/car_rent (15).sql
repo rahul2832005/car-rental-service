@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 14, 2025 at 05:28 AM
+-- Generation Time: Feb 14, 2025 at 07:27 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -107,23 +107,27 @@ DROP TABLE IF EXISTS `car_img`;
 CREATE TABLE IF NOT EXISTS `car_img` (
   `id` int NOT NULL AUTO_INCREMENT,
   `img` varchar(255) NOT NULL,
+  `accessories` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `car_img`
 --
 
-INSERT INTO `car_img` (`id`, `img`) VALUES
-(13, 'side.jpeg  '),
-(11, 'right-cross.jpeg  '),
-(12, 'front.jpeg,right-cross.jpeg  '),
-(10, 'front.jpeg,rear.jpeg,right-cross.jpeg  '),
-(14, 'front.jpeg,rear.jpeg,right-cross.jpeg,side.jpeg  '),
-(15, 'front.jpeg,rear.jpeg,right-cross.jpeg  '),
-(16, 'front.jpeg,rear.jpeg,front.jpeg  '),
-(17, 'front.jpeg  '),
-(18, 'front.jpeg,rear.jpeg,right-cross.jpeg  ');
+INSERT INTO `car_img` (`id`, `img`, `accessories`) VALUES
+(13, 'side.jpeg  ', 'Air Conditioner, Power Steering'),
+(11, 'right-cross.jpeg  ', ''),
+(12, 'front.jpeg,right-cross.jpeg  ', ''),
+(10, 'front.jpeg,rear.jpeg,right-cross.jpeg  ', ''),
+(14, 'front.jpeg,rear.jpeg,right-cross.jpeg,side.jpeg  ', ''),
+(15, 'front.jpeg,rear.jpeg,right-cross.jpeg  ', ''),
+(16, 'front.jpeg,rear.jpeg,front.jpeg  ', ''),
+(17, 'front.jpeg  ', ''),
+(18, 'front.jpeg,rear.jpeg,right-cross.jpeg  ', ''),
+(19, '', 'CD Player, Power Door Locks'),
+(20, '', 'Crash Sensor'),
+(21, '', 'Power Steering');
 
 -- --------------------------------------------------------
 
@@ -149,19 +153,22 @@ CREATE TABLE IF NOT EXISTS `car_list` (
   `fual_capacity` int NOT NULL,
   `mileage` int NOT NULL,
   `status` int NOT NULL,
+  `accessories` varchar(255) NOT NULL,
   PRIMARY KEY (`vid`)
-) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `car_list`
 --
 
-INSERT INTO `car_list` (`vid`, `cname`, `modal`, `price`, `no_plate`, `brand`, `image`, `seat`, `fual`, `door`, `en_power`, `en_type`, `break_type`, `fual_capacity`, `mileage`, `status`) VALUES
-(86, 'Audia1', 20211, 120001, 'GJ33AB12121', 'tata', 'thar2.jpg,thar3.jpg,thar4.jpg,amritsar.jpg,audi_logo.jpg', 331, 'Petrol', 2, '300', 'Diesel engine', 'Carbon break', 20, 101, 0),
-(87, 'thar', 2022, 2500, 'gj19hj7863', 'tata', 'audi1.jpg', 5, 'Petrol', 4, '500', 'Diesel engine', 'disc break', 20, 4, 0),
-(88, 'Land Rover', 2025, 100, 'GJ33AB1212', 'webagg', 'audi1.jpg,mahindra1.jpeg,gallery_3.jpg,mahindra3.jpeg', 4, 'CNG', 2, '261', 'Diesel engine', 'disc break', 40, 8, 0),
-(89, 'audi x7', 1234, 10, 'GJ33AB1212', 'webagg', 'front-view-118.jpg,front-left-side-47 (1).jpg,gallery_4.jpg,gallery_9.jpg', 3, 'Diesel', 2, '500', 'Diesel engine', 'disc break', 40, 12, 0),
-(90, 'Kia  carens', 1234, 1234, '1111', 'tata', 'front-left-side-47.jpg,front-view-118 (1).jpg,a.jpeg,c.jpeg', 123, 'Diesel', 4, '500', 'Diesel engine', 'ABS break', 20, 12, 0);
+INSERT INTO `car_list` (`vid`, `cname`, `modal`, `price`, `no_plate`, `brand`, `image`, `seat`, `fual`, `door`, `en_power`, `en_type`, `break_type`, `fual_capacity`, `mileage`, `status`, `accessories`) VALUES
+(86, 'Audia1', 20211, 120001, 'GJ33AB12121', 'tata', 'thar2.jpg,thar3.jpg,thar4.jpg,amritsar.jpg,audi_logo.jpg', 331, 'Petrol', 2, '300', 'Diesel engine', 'Carbon break', 20, 1010, 0, 'CD Player, Driver Airbag'),
+(87, 'thar', 2022, 2500, 'gj19hj7863', 'tata', 'audi1.jpg', 5, 'Petrol', 4, '500', 'Diesel engine', 'disc break', 20, 4, 0, ''),
+(88, 'Land Rover', 2025, 100, 'GJ33AB1212', 'webagg', 'audi1.jpg,mahindra1.jpeg,gallery_3.jpg,mahindra3.jpeg', 4, 'CNG', 2, '261', 'Diesel engine', 'disc break', 40, 8, 0, ''),
+(89, 'audi x7', 1234, 10, 'GJ33AB1212', 'webagg', 'front-view-118.jpg,front-left-side-47 (1).jpg,gallery_4.jpg,gallery_9.jpg', 3, 'Diesel', 2, '500', 'Diesel engine', 'disc break', 40, 12, 0, ''),
+(90, 'Kia  carens', 1234, 1234, '1111', 'tata', 'front-left-side-47.jpg,front-view-118 (1).jpg,a.jpeg,c.jpeg', 123, 'Diesel', 4, '500', 'Diesel engine', 'ABS break', 20, 12, 0, ''),
+(92, '1dgd', 1213, 12212, '123', 'webaggx', '200-2001519_xuv-700-price-in-india-2019-hd-png.png,gallery_10.jpg,606-6067459_bmw-x7-price-in-india-2020-hd-png.png,about.png', 12, 'Petrol', 5, '261 Hp', 'Diesel engine', 'Carbon break', 40, 10, 0, 'CD Player, Power Door Locks, Driver Airbag, Brake Assist, Passenger Airbag, Crash Sensor, Leather Seats'),
+(93, 'Land Rover123', 789, 789, '789', 'webaggx', 'ad_car.png,gallery_1.jpg,GLC_1.jpg', 789, 'Petrol', 2, '261', 'Diesel engine', 'Carbon break', 20, 7, 0, 'Air Conditioner, Power Steering, CD Player, Power Door Locks, Driver Airbag, Central Locking, AntiLock Braking System, Brake Assist, Passenger Airbag, Crash Sensor, Power Windows');
 
 -- --------------------------------------------------------
 
