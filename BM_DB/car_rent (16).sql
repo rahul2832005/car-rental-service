@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 14, 2025 at 07:27 PM
+-- Generation Time: Feb 15, 2025 at 06:47 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `bookingno` bigint NOT NULL,
   `userEmail` varchar(100) NOT NULL,
   `vid` int NOT NULL,
+  `rent_type` varchar(255) NOT NULL,
   `FromDate` datetime NOT NULL,
   `ToDate` datetime NOT NULL,
   `message` varchar(200) NOT NULL,
@@ -43,17 +44,20 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `dropoff` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `did` int NOT NULL,
   `order_id` varchar(255) NOT NULL,
+  `amount` int NOT NULL,
   `payment` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=168 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=170 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`, `pickup`, `dropoff`, `did`, `order_id`, `payment`) VALUES
-(164, 5338, 'mm2028501@gmail.com', 90, '2025-02-14 23:21:00', '2025-02-27 23:21:00', '', 0, '2025-02-13 17:51:29', '2025-02-13 17:51:29', 'Botad', 'Botad', 3, '', 0),
-(167, 1216, 'mm2028501@gmail.com', 86, '2025-02-15 00:22:00', '2025-02-15 00:22:00', '', 0, '2025-02-13 18:53:07', '2025-02-13 18:53:07', 'Botad', 'Botad', 5, '', 0);
+INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `rent_type`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`, `pickup`, `dropoff`, `did`, `order_id`, `amount`, `payment`) VALUES
+(164, 5338, 'mm2028501@gmail.com', 90, '', '2025-02-14 23:21:00', '2025-02-27 23:21:00', '', 0, '2025-02-13 17:51:29', '2025-02-13 17:51:29', 'Botad', 'Botad', 3, '', 0, 0),
+(168, 5978, 'mm2028501@gmail.com', 94, '', '2025-02-15 11:50:00', '2025-02-20 11:50:00', '', 2, '2025-02-15 06:21:19', '2025-02-15 06:21:19', 'Bhavnagar', 'Bhavnagar', 0, '', 0, 0),
+(167, 1216, 'mm2028501@gmail.com', 86, '', '2025-02-15 00:22:00', '2025-02-15 00:22:00', '', 0, '2025-02-13 18:53:07', '2025-02-13 18:53:07', 'Botad', 'Botad', 5, '', 0, 0),
+(169, 4460, 'mm2028501@gmail.com', 94, 'hour', '2025-02-15 12:08:00', '2025-02-15 16:08:00', '', 0, '2025-02-15 06:40:53', '2025-02-15 06:40:53', 'Botad', 'Botad', 0, '', 4804, 1);
 
 -- --------------------------------------------------------
 
@@ -140,6 +144,7 @@ CREATE TABLE IF NOT EXISTS `car_list` (
   `vid` int NOT NULL AUTO_INCREMENT,
   `cname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `modal` int NOT NULL,
+  `chprice` int NOT NULL,
   `price` int NOT NULL,
   `no_plate` varchar(255) NOT NULL,
   `brand` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -155,20 +160,22 @@ CREATE TABLE IF NOT EXISTS `car_list` (
   `status` int NOT NULL,
   `accessories` varchar(255) NOT NULL,
   PRIMARY KEY (`vid`)
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `car_list`
 --
 
-INSERT INTO `car_list` (`vid`, `cname`, `modal`, `price`, `no_plate`, `brand`, `image`, `seat`, `fual`, `door`, `en_power`, `en_type`, `break_type`, `fual_capacity`, `mileage`, `status`, `accessories`) VALUES
-(86, 'Audia1', 20211, 120001, 'GJ33AB12121', 'tata', 'thar2.jpg,thar3.jpg,thar4.jpg,amritsar.jpg,audi_logo.jpg', 331, 'Petrol', 2, '300', 'Diesel engine', 'Carbon break', 20, 1010, 0, 'CD Player, Driver Airbag'),
-(87, 'thar', 2022, 2500, 'gj19hj7863', 'tata', 'audi1.jpg', 5, 'Petrol', 4, '500', 'Diesel engine', 'disc break', 20, 4, 0, ''),
-(88, 'Land Rover', 2025, 100, 'GJ33AB1212', 'webagg', 'audi1.jpg,mahindra1.jpeg,gallery_3.jpg,mahindra3.jpeg', 4, 'CNG', 2, '261', 'Diesel engine', 'disc break', 40, 8, 0, ''),
-(89, 'audi x7', 1234, 10, 'GJ33AB1212', 'webagg', 'front-view-118.jpg,front-left-side-47 (1).jpg,gallery_4.jpg,gallery_9.jpg', 3, 'Diesel', 2, '500', 'Diesel engine', 'disc break', 40, 12, 0, ''),
-(90, 'Kia  carens', 1234, 1234, '1111', 'tata', 'front-left-side-47.jpg,front-view-118 (1).jpg,a.jpeg,c.jpeg', 123, 'Diesel', 4, '500', 'Diesel engine', 'ABS break', 20, 12, 0, ''),
-(92, '1dgd', 1213, 12212, '123', 'webaggx', '200-2001519_xuv-700-price-in-india-2019-hd-png.png,gallery_10.jpg,606-6067459_bmw-x7-price-in-india-2020-hd-png.png,about.png', 12, 'Petrol', 5, '261 Hp', 'Diesel engine', 'Carbon break', 40, 10, 0, 'CD Player, Power Door Locks, Driver Airbag, Brake Assist, Passenger Airbag, Crash Sensor, Leather Seats'),
-(93, 'Land Rover123', 789, 789, '789', 'webaggx', 'ad_car.png,gallery_1.jpg,GLC_1.jpg', 789, 'Petrol', 2, '261', 'Diesel engine', 'Carbon break', 20, 7, 0, 'Air Conditioner, Power Steering, CD Player, Power Door Locks, Driver Airbag, Central Locking, AntiLock Braking System, Brake Assist, Passenger Airbag, Crash Sensor, Power Windows');
+INSERT INTO `car_list` (`vid`, `cname`, `modal`, `chprice`, `price`, `no_plate`, `brand`, `image`, `seat`, `fual`, `door`, `en_power`, `en_type`, `break_type`, `fual_capacity`, `mileage`, `status`, `accessories`) VALUES
+(86, 'Audia1', 20211, 1200, 120001, 'GJ33AB12121', 'tata', 'thar2.jpg,thar3.jpg,thar4.jpg,amritsar.jpg,audi_logo.jpg', 331, 'Petrol', 2, '300', 'Diesel engine', 'Carbon break', 20, 1010, 0, 'CD Player, Driver Airbag'),
+(87, 'thar', 2022, 0, 2500, 'gj19hj7863', 'tata', 'audi1.jpg', 5, 'Petrol', 4, '500', 'Diesel engine', 'disc break', 20, 4, 0, ''),
+(88, 'Land Rover', 2025, 0, 100, 'GJ33AB1212', 'webagg', 'audi1.jpg,mahindra1.jpeg,gallery_3.jpg,mahindra3.jpeg', 4, 'CNG', 2, '261', 'Diesel engine', 'disc break', 40, 8, 0, ''),
+(89, 'audi x7', 1234, 0, 10, 'GJ33AB1212', 'webagg', 'front-view-118.jpg,front-left-side-47 (1).jpg,gallery_4.jpg,gallery_9.jpg', 3, 'Diesel', 2, '500', 'Diesel engine', 'disc break', 40, 12, 0, ''),
+(90, 'Kia  carens', 1234, 0, 1234, '1111', 'tata', 'front-left-side-47.jpg,front-view-118 (1).jpg,a.jpeg,c.jpeg', 123, 'Diesel', 4, '500', 'Diesel engine', 'ABS break', 20, 12, 0, ''),
+(92, '1dgd', 1213, 0, 12212, '123', 'webaggx', '200-2001519_xuv-700-price-in-india-2019-hd-png.png,gallery_10.jpg,606-6067459_bmw-x7-price-in-india-2020-hd-png.png,about.png', 12, 'Petrol', 5, '261 Hp', 'Diesel engine', 'Carbon break', 40, 10, 0, 'CD Player, Power Door Locks, Driver Airbag, Brake Assist, Passenger Airbag, Crash Sensor, Leather Seats'),
+(93, 'Land Rover123', 789, 0, 789, '789', 'webaggx', 'ad_car.png,gallery_1.jpg,GLC_1.jpg', 789, 'Petrol', 2, '261', 'Diesel engine', 'Carbon break', 20, 7, 0, 'Air Conditioner, Power Steering, CD Player, Power Door Locks, Driver Airbag, Central Locking, AntiLock Braking System, Brake Assist, Passenger Airbag, Crash Sensor, Power Windows'),
+(94, 'Discovery Land Lover', 2021, 1201, 12000, 'gj19hj7863', 'tata', 'front-left-side-47 (2).jpg,front-left-side-47 (1).jpg,front-left-side-47.jpg,side-view-(left)-90.jpg', 2, 'Diesel', 5, '261', 'EV', 'Carbon break', 40, 10, 0, 'Air Conditioner, Power Steering, CD Player, Power Door Locks, Driver Airbag, Central Locking, AntiLock Braking System, Brake Assist, Passenger Airbag, Crash Sensor, Power Windows, Leather Seats'),
+(95, 'Land Rover bm', 2021, 2021, 123, '123', 'tata', 'front-left-side-47 (1).jpg,front-left-side-47 (2).jpg,front-left-side-47.jpg,side-view-(left)-90.jpg', 120, 'Diesel', 4, '300 Hp', 'EV', 'Carbon break', 50, 10, 0, 'Air Conditioner, Central Locking');
 
 -- --------------------------------------------------------
 
