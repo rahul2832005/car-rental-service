@@ -11,10 +11,12 @@ $vid = $_GET['vid'];
 $uid = $_SESSION['userid'];
 $useremail = $_SESSION['alogin'];
 
-$price_query = "SELECT price FROM car_list WHERE vid = $vid";
+$amount=0;
+$price_query = "SELECT price,chprice FROM car_list WHERE vid = $vid";
 $price_result = mysqli_query($conn, $price_query);
 if ($rowamount = mysqli_fetch_assoc($price_result)) {
-    $amount = $rowamount['price'];
+    // $amount = $rowamount['price'];
+    // $amounth = $rowamount['chprice'];
 }
 
 if (isset($_POST['Book'])) {
@@ -24,6 +26,19 @@ if (isset($_POST['Book'])) {
     $drop_of_loc = $_POST['drop_of_loc'];
     $rent_type = $_POST['rent_type'];
 
+
+    $datetime1 = new DateTime($fdate);
+    $datetime2 = new DateTime($tdate);
+    $interval = $datetime1->diff($datetime2);
+
+
+    if ($rent_type === 'Day') {
+        $days = $interval->days + 1;
+        $amount = $days * $rowamount['price'];
+    } elseif ($rent_type === 'hour') {
+        $hours = ($interval->days * 24) + ($interval->h);
+        $amount = $hours * $rowamount['chprice'];
+    }
     $status = 0;
     $bookingno = mt_rand(1000, 9999);
 
@@ -68,6 +83,7 @@ if (isset($_POST['Book'])) {
             // $keyId = 'rzp_live_vZHJ6c1F6PFLRC';
             // $keySecret = 'WupX5UDSTE6xHtY2TtDutJLk';
             $api = new \Razorpay\Api\Api($keyId, $keySecret);
+
             $amount_in_paise = $amount * 100; // Convert to paise
 
             $orderData = [
@@ -89,7 +105,7 @@ if (isset($_POST['Book'])) {
                 'drop_of_loc' => $drop_of_loc,
                 'status' => $status,
                 'rent_type' => $rent_type,
-                'amount' => $orderData['amount'],
+                'amount' => $orderData['amount']/100,
                 'order_id' => $order->id,
             ];
             if (isset($_GET['did']) && !empty($_GET['did'])) {  // Corrected to $_GET
@@ -196,6 +212,16 @@ if (isset($_GET['did'])) {
                         <!-- <img src="../admin/img/<?php /*echo $image[3];*/ ?>" alt="Car Interior Back" id="thumb4"> -->
                     </div>
                     <div class="section">
+                        <h2><?php  echo $row['cname']; ?></h2>
+                        <div class="content">
+                            <p>Per/Hour</p>
+                            <span style="color: red;"> <b>₹<?php echo  $row['chprice']; ?></b></span>
+                            <p>Per/Day</p>
+                            <span style="color: red;"> <b>₹<?php echo  $row['price']; ?></b></span>
+
+                        </div>
+                    </div>
+                    <div class="section">
                         <h2>Extra Service</h2>
                         <div class="content">
                             <p>Late Per Hour - ₹200 Based On Car</p>
@@ -254,33 +280,33 @@ if (isset($_GET['did'])) {
                         </div>
                     </div>
                     <div class="feature-container">
-    <div class="features">
-        <h2>Car Features</h2>
-        <div class="feature-list">
-            <?php 
-                $features = "SELECT accessories FROM car_list WHERE vid = $vid";
-                $exfeatures = mysqli_query($conn, $features);
-                $rowf = mysqli_fetch_assoc($exfeatures);
+                        <div class="features">
+                            <h2>Car Features</h2>
+                            <div class="feature-list">
+                                <?php
+                                $features = "SELECT accessories FROM car_list WHERE vid = $vid";
+                                $exfeatures = mysqli_query($conn, $features);
+                                $rowf = mysqli_fetch_assoc($exfeatures);
 
-                if ($rowf) {
-                    $accessories = explode(',', $rowf['accessories']); // Assuming accessories are comma-separated
+                                if ($rowf) {
+                                    $accessories = explode(',', $rowf['accessories']); // Assuming accessories are comma-separated
 
-                    foreach ($accessories as $accessory) {
-                        $accessory = trim($accessory); // Trim spaces around each item
-                        ?>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <p><?php echo htmlspecialchars($accessory); ?></p>
+                                    foreach ($accessories as $accessory) {
+                                        $accessory = trim($accessory); // Trim spaces around each item
+                                ?>
+                                        <div class="feature-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <p><?php echo htmlspecialchars($accessory); ?></p>
+                                        </div>
+                                <?php
+                                    }
+                                } else {
+                                    echo "<p>No accessories available for this car.</p>";
+                                }
+                                ?>
+                            </div>
                         </div>
-                        <?php
-                    }
-                } else {
-                    echo "<p>No accessories available for this car.</p>";
-                }
-            ?>
-        </div>
-    </div>
-</div>
+                    </div>
 
                 </div>
 
@@ -539,17 +565,17 @@ if (isset($_GET['did'])) {
 
 
     <script>
-    function toggleDriverForm() {
-        const checkbox = document.getElementById('need_driver');
-        const driverForm = document.getElementById('driver_form');
+        function toggleDriverForm() {
+            const checkbox = document.getElementById('need_driver');
+            const driverForm = document.getElementById('driver_form');
 
-        if (checkbox.checked) {
-            driverForm.style.display = 'block';
-        } else {
-            driverForm.style.display = 'none';
+            if (checkbox.checked) {
+                driverForm.style.display = 'block';
+            } else {
+                driverForm.style.display = 'none';
+            }
         }
-    }
-</script>
+    </script>
 </body>
 
 </html>

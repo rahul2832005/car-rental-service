@@ -4,8 +4,8 @@
 $allimages = [];
 $count = 0;
 $imageError1 = $imageError2 = $imageError3 = "";
-$cn = $mod = $rp = $np = $cname = $se = $fu = $ire = $mile = $dr = $et = $pr = $br = $mile = $ft = $ml = "";
-$car_name = $modal = $rent_price = $no_plate = $company_name = $seat = $fual = $power = $engine = $f_tank = $break = $door = "";
+$cn = $mod = $rp = $np = $cname = $se = $fu = $ire = $mile = $dr = $et = $pr = $br = $mile = $ft = $ml = $crp="";
+$car_name = $modal = $rent_price = $no_plate = $company_name = $seat = $fual = $power = $engine = $f_tank = $break = $door = $chprice="";
 
 $vid = $_GET['vid'];
 $sql = "select * from car_list where vid=$vid";
@@ -19,6 +19,7 @@ $oldAccessories = explode(', ', $result['accessories']); // Split string into ar
 if (isset($_POST['submit'])) {
     $car_name = $_POST['car_name'];
     $modal = $_POST['modal'];
+    $chprice=$_POST['chprice'];
     $rent_price = $_POST['rent_price'];
     $no_plate = $_POST['num_plate'];
     $brand = $_POST['brand'];
@@ -46,6 +47,15 @@ if (isset($_POST['submit'])) {
         $count++;
     } elseif (!is_numeric($modal)) {
         $mod = "Enter Only Digit";
+        $count++;
+    }
+
+    if($chprice==""){
+        $crp="Enter Car Rent Price Per/Hour";
+        $count++;
+    }
+    elseif(!is_numeric($chprice)){
+        $crp ="Enter Only Digit";
         $count++;
     }
     if ($rent_price == "") {
@@ -127,7 +137,7 @@ if (isset($_POST['submit'])) {
 
         // Update query
         $update = "UPDATE car_list SET 
-            cname='$car_name', modal=$modal, price=$rent_price, no_plate='$no_plate', 
+            cname='$car_name', modal=$modal, chprice=$chprice ,price=$rent_price, no_plate='$no_plate', 
             brand='$brand', image='$updatedImages', seat=$seat, fual='$fual', 
             door=$door, en_power='$power', en_type='$engine', break_type='$break', 
             fual_capacity='$f_tank', mileage=$mile,accessories='$selectedAccessoriesString' WHERE vid=$vid";
@@ -213,8 +223,15 @@ if (isset($_POST['submit'])) {
                     <input type="number" name="modal" id="" placeholder="Enter Car Modal" value="<?php echo $result['modal']; ?>">
                     <p style="color: red;"><?php echo $mod; ?></p>
                 </div>
+
                 <div class="input-box">
-                    <span class="details">Rent Price</span>
+                    <span class="details">Rent Price Per/Hour</span>
+                    <input type="number" name="chprice" id="" placeholder="Enter Car-Rent Price" value="<?php echo $result['chprice']; ?>">
+                    <p style="color: red;"><?php echo $crp; ?></p>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Rent Price Per/Day</span>
                     <input type="number" name="rent_price" id="" placeholder="Enter Car-Rent Price" value="<?php echo $result['price']; ?>">
                     <p style="color: red;"><?php echo $rp; ?></p>
                 </div>

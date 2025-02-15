@@ -165,7 +165,8 @@ $result = mysqli_query($conn, $sql);
                     <tr>
                         <th>#</th>
                         <th>Car Name</th>
-                        <th>Price</th>
+                        <th>Hour Price</th>
+                        <th>Day Price</th>
                         <th>No Plate</th>
                         <th>Brand</th>
                         <th>Seats</th>
@@ -182,7 +183,8 @@ $result = mysqli_query($conn, $sql);
                     <tr>
                         <td><?php echo $n; ?></td>
                         <td class="car-name"><?php echo $row['cname']; ?></td>
-                        <td>$<?php echo $row['price']; ?></td>
+                        <td>₹<?php echo $row['chprice']; ?></td>
+                        <td>₹<?php echo $row['price']; ?></td>
                         <td><?php echo $row['no_plate']; ?></td>
                         <td><?php echo $row['brand']; ?></td>
                         <td><?php echo $row['seat']; ?></td>
