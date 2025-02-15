@@ -130,7 +130,7 @@ if (isset($_POST['Book'])) {
                             window.location.href = 'payment_success.php?payment_id=' + response.razorpay_payment_id + '&order_id=' + response.razorpay_order_id + '&signature=' + response.razorpay_signature;
                         },
                         "prefill": {
-                            "name": "hiren",
+                            "name": "Bhupat",
                             "email": "<?= $_SESSION['userEmail']; ?>",
                             "contact": "9999999999"
                         },

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 15, 2025 at 06:47 AM
+-- Generation Time: Feb 15, 2025 at 11:26 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -43,21 +43,26 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `pickup` varchar(255) NOT NULL,
   `dropoff` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `did` int NOT NULL,
+  `dname` varchar(255) NOT NULL,
   `order_id` varchar(255) NOT NULL,
   `amount` int NOT NULL,
   `payment` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=170 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=174 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `rent_type`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`, `pickup`, `dropoff`, `did`, `order_id`, `amount`, `payment`) VALUES
-(164, 5338, 'mm2028501@gmail.com', 90, '', '2025-02-14 23:21:00', '2025-02-27 23:21:00', '', 0, '2025-02-13 17:51:29', '2025-02-13 17:51:29', 'Botad', 'Botad', 3, '', 0, 0),
-(168, 5978, 'mm2028501@gmail.com', 94, '', '2025-02-15 11:50:00', '2025-02-20 11:50:00', '', 2, '2025-02-15 06:21:19', '2025-02-15 06:21:19', 'Bhavnagar', 'Bhavnagar', 0, '', 0, 0),
-(167, 1216, 'mm2028501@gmail.com', 86, '', '2025-02-15 00:22:00', '2025-02-15 00:22:00', '', 0, '2025-02-13 18:53:07', '2025-02-13 18:53:07', 'Botad', 'Botad', 5, '', 0, 0),
-(169, 4460, 'mm2028501@gmail.com', 94, 'hour', '2025-02-15 12:08:00', '2025-02-15 16:08:00', '', 0, '2025-02-15 06:40:53', '2025-02-15 06:40:53', 'Botad', 'Botad', 0, '', 4804, 1);
+INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `rent_type`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`, `pickup`, `dropoff`, `did`, `dname`, `order_id`, `amount`, `payment`) VALUES
+(164, 5338, 'mm2028501@gmail.com', 90, '', '2025-02-14 23:21:00', '2025-02-27 23:21:00', '', 2, '2025-02-13 17:51:29', '2025-02-13 17:51:29', 'Botad', 'Botad', 3, '', '', 0, 0),
+(168, 5978, 'mm2028501@gmail.com', 94, '', '2025-02-15 11:50:00', '2025-02-20 11:50:00', '', 2, '2025-02-15 06:21:19', '2025-02-15 06:21:19', 'Bhavnagar', 'Bhavnagar', 0, '', '', 0, 0),
+(167, 1216, 'mm2028501@gmail.com', 86, '', '2025-02-15 00:22:00', '2025-02-15 00:22:00', '', 2, '2025-02-13 18:53:07', '2025-02-13 18:53:07', 'Botad', 'Botad', 5, '', '', 0, 0),
+(169, 4460, 'mm2028501@gmail.com', 94, 'hour', '2025-02-15 12:08:00', '2025-02-15 16:08:00', '', 2, '2025-02-15 06:40:53', '2025-02-15 06:40:53', 'Botad', 'Botad', 0, '', '', 4804, 1),
+(170, 4911, 'mm2028501@gmail.com', 89, 'Day', '2025-02-15 16:02:00', '2025-02-22 16:02:00', '', 2, '2025-02-15 10:33:37', '2025-02-15 10:33:37', 'Botad', 'Botad', 3, 'Vatukiya', '', 80, 1),
+(171, 5900, 'mm2028501@gmail.com', 95, 'Day', '2025-02-15 16:21:00', '2025-02-16 16:22:00', '', 2, '2025-02-15 10:52:42', '2025-02-15 10:52:42', 'Botad', 'Bhavnagar', 4, 'hardik', '', 246, 1),
+(172, 1515, 'mm2028501@gmail.com', 90, 'Day', '2025-02-15 16:38:00', '2025-02-16 16:38:00', '', 2, '2025-02-15 11:09:14', '2025-02-15 11:09:14', 'Bhavnagar', 'Bhavnagar', 3, 'Vatukiya', '', 2468, 1),
+(173, 7463, 'mm2028501@gmail.com', 88, 'Day', '2025-02-15 16:40:00', '2025-02-17 16:40:00', '', 0, '2025-02-15 11:10:45', '2025-02-15 11:10:45', 'Botad', 'Botad', 4, 'hardik', '', 300, 1);
 
 -- --------------------------------------------------------
 
@@ -245,10 +250,10 @@ CREATE TABLE IF NOT EXISTS `driver` (
 --
 
 INSERT INTO `driver` (`did`, `dfname`, `dlname`, `fnumber`, `hprice`, `dprice`, `type_licence`, `profile`, `address`, `city`, `state`, `pin`, `status`, `created_at`, `updated_at`, `licence_pdf`, `adhar_pdf`) VALUES
-(3, 'Vatukiya', 'Bhupat', 7359509387, 200, 1200, 'passenger', 'driver/WhatsApp Image 2025-02-12 at 8.30.26 PM.jpeg', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364710, 1, '2025-02-11 07:56:25', '2025-02-13 18:48:21', '', ''),
-(4, 'hardik', 'vatukiya', 9106265263, 100, 1000, 'four_wheeler', 'download (2).jpeg,licence.png,profile.jpeg', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 1, '2025-02-11 07:57:34', '2025-02-13 18:00:41', '', ''),
-(5, 'Vatukiya bhai', 'Bhupat', 7359509387, 1230, 12, 'passenger', 'driver/WhatsApp Image 2025-02-12 at 8.30.26 PM.jpeg', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364710, 1, '2025-02-13 04:35:08', '2025-02-13 18:52:17', 'driver/VatukiyaBhupatResume (3).pdf', 'driver/HirenLakum(CV) (1).pdf'),
-(6, 'Vikrambhai', 'Dhoraliya', 7359509387, 456, 546, 'passenger', '', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 1, '2025-02-13 04:48:46', '2025-02-13 18:49:34', '', '');
+(3, 'Vatukiya', 'Bhupat', 7359509387, 200, 1200, 'passenger', 'driver/WhatsApp Image 2025-02-12 at 8.30.26 PM.jpeg', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364710, 1, '2025-02-11 07:56:25', '2025-02-15 11:09:14', '', ''),
+(4, 'hardik', 'vatukiya', 9106265263, 100, 1000, 'four_wheeler', 'download (2).jpeg,licence.png,profile.jpeg', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 1, '2025-02-11 07:57:34', '2025-02-15 11:10:45', '', ''),
+(5, 'Vatukiya bhai', 'Bhupat', 7359509387, 1230, 12, 'passenger', 'driver/WhatsApp Image 2025-02-12 at 8.30.26 PM.jpeg', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364710, 0, '2025-02-13 04:35:08', '2025-02-15 10:05:49', 'driver/VatukiyaBhupatResume (3).pdf', 'driver/HirenLakum(CV) (1).pdf'),
+(6, 'Vikrambhai', 'Dhoraliya', 7359509387, 456, 546, 'passenger', '', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 1, '2025-02-13 04:48:46', '2025-02-15 10:05:52', '', '');
 
 -- --------------------------------------------------------
 
