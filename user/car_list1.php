@@ -29,23 +29,22 @@ error_reporting(0);
         }
 
         .search-container {
-            /* margin: 20px auto; */
-            text-align: center;
-            margin-left: -300px;
-
+            text-align: center; /* Center the input within the container */
+            margin: 20px auto; /* Center the container itself */
+            width: 100%; /* Make sure the container takes full width */
+            max-width: 600px; /* Limit the maximum width of the search box */
         }
 
         .search-container input {
-            width: 200%;
-            max-width: 600px;
+            width: 100%; /* Input takes full width of its container */
             padding: 10px;
             font-size: 16px;
             border: 2px solid #ccc;
             border-radius: 5px;
             outline: none;
-            
-
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
         }
+
 
         .fleet {
             display: flex;
@@ -164,6 +163,7 @@ error_reporting(0);
                 align-items: center;
             }
         }
+       
     </style>
 </head>
 
@@ -173,11 +173,11 @@ error_reporting(0);
 
 <body style="background-color: #b1d7d6;">
 
-
+<div class="search-container">
+        <input type="text" id="search" placeholder="Search cars..." onkeyup="searchCars()">
+    </div>
     <div class="fleet" id="fleet-container">
-        <div class="search-container">
-            <input type="text" id="search" placeholder="Search cars..." onkeyup="searchCars()">
-        </div>
+        
         <div class="header" id="header">
             <span class="badge">CAR FLEET</span>
             <h1>Car Fleet-1</h1>
