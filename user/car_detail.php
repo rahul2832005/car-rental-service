@@ -11,7 +11,7 @@ $vid = $_GET['vid'];
 $uid = $_SESSION['userid'];
 $useremail = $_SESSION['alogin'];
 
-$amount=0;
+$amount = 0;
 $price_query = "SELECT price,chprice FROM car_list WHERE vid = $vid";
 $price_result = mysqli_query($conn, $price_query);
 if ($rowamount = mysqli_fetch_assoc($price_result)) {
@@ -25,6 +25,8 @@ if (isset($_POST['Book'])) {
     $pick_up_loc = $_POST['pick_up_loc'];
     $drop_of_loc = $_POST['drop_of_loc'];
     $rent_type = $_POST['rent_type'];
+    $selected_driver=$_POST['selected_driver'];
+    $driver_id=$_POST['selected_driver_id'];
 
 
     $datetime1 = new DateTime($fdate);
@@ -105,12 +107,12 @@ if (isset($_POST['Book'])) {
                 'drop_of_loc' => $drop_of_loc,
                 'status' => $status,
                 'rent_type' => $rent_type,
-                'amount' => $orderData['amount']/100,
+                'did'=>$driver_id,
+                'dname'=>$selected_driver,
+                'amount' => $orderData['amount'] / 100,
                 'order_id' => $order->id,
             ];
-            if (isset($_GET['did']) && !empty($_GET['did'])) {  // Corrected to $_GET
-                $_SESSION['driver_id'] = $_GET['did'];
-            }
+
 
 ?>
             <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
@@ -152,18 +154,20 @@ if (isset($_POST['Book'])) {
         }
     }
 }
+// if (isset($_GET['did']) && !empty($_GET['did'])) {  // Corrected to $_GET
+//     $_SESSION['driver_id'] = $_GET['did'];
+// }
+// // Driver selection logic (moved outside the main if(isset($_POST['Book'])) block)
+// if (isset($_GET['did'])) {
+//     $selected_driver_id = $_GET['did'];
+//     $_SESSION['driver_id'] = $selected_driver_id;
 
-// Driver selection logic (moved outside the main if(isset($_POST['Book'])) block)
-if (isset($_GET['did'])) {
-    $selected_driver_id = $_GET['did'];
-    $_SESSION['driver_id'] = $selected_driver_id;
+//     $update_status_query = "UPDATE driver SET status = 1 WHERE did = $selected_driver_id";
+//     mysqli_query($conn, $update_status_query);
 
-    $update_status_query = "UPDATE driver SET status = 1 WHERE did = $selected_driver_id";
-    mysqli_query($conn, $update_status_query);
-
-    echo "<script>alert('Driver selected and status updated successfully!');</script>";
-    echo "<script>alert('$selected_driver_id');</script>";
-}
+//     echo "<script>alert('Driver selected and status updated successfully!');</script>";
+//     echo "<script>alert('$selected_driver_id');</script>";
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -176,6 +180,42 @@ if (isset($_GET['did'])) {
     <link rel="stylesheet" href="all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/car_details.css">
+
+    <style>
+        #driver_form {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            display: none;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+        }
+
+        .close-driver-form {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <script>
     if (window.history.replaceState) {
@@ -212,7 +252,7 @@ if (isset($_GET['did'])) {
                         <!-- <img src="../admin/img/<?php /*echo $image[3];*/ ?>" alt="Car Interior Back" id="thumb4"> -->
                     </div>
                     <div class="section">
-                        <h2><?php  echo $row['cname']; ?></h2>
+                        <h2><?php echo $row['cname']; ?></h2>
                         <div class="content">
                             <p>Per/Hour</p>
                             <span style="color: red;"> <b>₹<?php echo  $row['chprice']; ?></b></span>
@@ -362,9 +402,19 @@ if (isset($_GET['did'])) {
                             </div>
 
 
-                            <label>Need A Driver?
-                                <input type="checkbox" name="need_driver" id="need_driver" onclick="toggleDriverForm()">
-                            </label>
+                            <!-- Driver selection input  -->
+                            <div class="form-group">
+                                <label>Need A Driver?
+                                    <input type="checkbox" name="need_driver" id="need_driver" onclick="toggleDriverForm()">
+                                </label>
+                                <div class="driver-name" id="driver_name" style="display: none;">
+                                    <label>Driver Name
+                                        <input type="text" id="selected_driver" name="selected_driver" placeholder="Selected Driver" readonly>
+                                    </label>
+                                    <input type="hidden" id="selected_driver_id" name="selected_driver_id" placeholder="id" readonly>
+
+                                </div>
+                            </div>
 
                             <!-- <button class="booking-button" name="Book">Booking</button> -->
                             <button type="submit" class="booking-button" name="Book">Rent Now</button>
@@ -404,7 +454,7 @@ if (isset($_GET['did'])) {
         </div>
     </div>
 
-    <div id="overlay"></div>
+    <!-- <div id="overlay"></div> -->
     <!-- Hide Form by Default -->
     <?php
     $conn = mysqli_connect('localhost', 'root', '', 'car_rent');
@@ -416,7 +466,8 @@ if (isset($_GET['did'])) {
 
 
     ?>
-    <div id="driver_form" style="display: none; margin-top: 10px; border: 1px solid #ccc; padding: 10px;">
+    <div id="overlay" onclick="closeDriverForm()"></div>
+    <div id="driver_form">
         <h4>Driver Details</h4>
         <div class="body">
             <div class="container1">
@@ -425,6 +476,8 @@ if (isset($_GET['did'])) {
                 <table>
                     <thead>
                         <tr>
+                        <th>👤 id</th>
+
                             <th>👤 Name</th>
                             <th>🎂 Age</th>
                             <th>💰 Rate (per day)</th>
@@ -434,34 +487,29 @@ if (isset($_GET['did'])) {
                     </thead>
                     <tbody>
                         <?php
+                        $conn = mysqli_connect('localhost', 'root', '', 'car_rent');
+                        $sql = "select * from driver where status=0 ";
+                        $result = mysqli_query($conn, $sql);
                         $n = 1;
                         while ($row = mysqli_fetch_assoc($result)) {
-                            $profile = explode(",", $row['profile']);
                         ?>
                             <tr>
-                                <td><?php echo  $row['dfname']; ?></td>
-                                <td><?php echo "20";  ?></td>
+                            <td><?php echo $row['did']; ?></td>
+
+                                <td><?php echo $row['dfname']; ?></td>
+                                <td>20</td>
                                 <td><?php echo $row['dprice']; ?></td>
-                                <?php
-                                if ($row['status'] == 0) {
-                                    echo "<td><span class='status available'>Available</span></td>";
-                                } elseif ($row['status'] == 1) {
-                                    echo "<td><span class='status unavailable'>unavailable</span></td>";
-                                }
-                                ?>
-                                <td><button class="status"><a href="car_detail.php?did=<?php echo $row['did']; ?> &vid=<?php echo $vid; ?>">Book
-                                        </a></button></td>
-
+                                <td><?php echo ($row['status'] == 0) ? '<span class="status available">Available</span>' : '<span class="status unavailable">Unavailable</span>'; ?></td>
+                                <td> <button type="button" onclick="selectDriver('<?php echo $row['dfname']; ?>','<?php echo $row['did'];?>')">  Select</button></td>
+                                <!-- <a href="?did=<?php echo $row['did']; ?> &vid=<?php echo $vid; ?>"></a> -->
                             </tr>
-
-                        <?php
-                            $n++;
-                        }
-                        ?>
+                        <?php $n++;
+                        } ?>
                     </tbody>
                 </table>
             </div>
         </div>
+        <button class="close-driver-form" onclick="closeDriverForm()">Close</button>
     </div>
     <div>
 
@@ -563,17 +611,45 @@ if (isset($_GET['did'])) {
 
 
 
-
     <script>
+      
+
         function toggleDriverForm() {
             const checkbox = document.getElementById('need_driver');
-            const driverForm = document.getElementById('driver_form');
+            const driverModal = document.getElementById('driver_form');
+            const driverNameDiv = document.getElementById('driver_name');
+            const overlay = document.getElementById('overlay');
 
             if (checkbox.checked) {
-                driverForm.style.display = 'block';
+                driverModal.style.display = 'block';
+                overlay.style.display = 'block';
+                driverNameDiv.style.display = 'block';
             } else {
-                driverForm.style.display = 'none';
+                driverModal.style.display = 'none';
+                overlay.style.display = 'none';
+                driverNameDiv.style.display = 'none';
             }
+        }
+
+
+        function selectDriver(driverName,driverId) {
+            const driverModal = document.getElementById('driver_form');
+            const overlay = document.getElementById('overlay');
+            const selectedDriverInput = document.getElementById('selected_driver');
+            const selectDriverId= document.getElementById('selected_driver_id');
+
+            selectDriverId.value=driverId;
+            selectedDriverInput.value = driverName;
+            driverModal.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        function closeDriverForm() {
+            const driverModal = document.getElementById('driver_form');
+            const overlay = document.getElementById('overlay');
+
+            driverModal.style.display = 'none';
+            overlay.style.display = 'none';
         }
     </script>
 </body>
