@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 15, 2025 at 11:26 AM
+-- Generation Time: Feb 15, 2025 at 07:00 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -47,22 +47,24 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `order_id` varchar(255) NOT NULL,
   `amount` int NOT NULL,
   `payment` int NOT NULL,
+  `is_notified` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=174 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=175 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `rent_type`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`, `pickup`, `dropoff`, `did`, `dname`, `order_id`, `amount`, `payment`) VALUES
-(164, 5338, 'mm2028501@gmail.com', 90, '', '2025-02-14 23:21:00', '2025-02-27 23:21:00', '', 2, '2025-02-13 17:51:29', '2025-02-13 17:51:29', 'Botad', 'Botad', 3, '', '', 0, 0),
-(168, 5978, 'mm2028501@gmail.com', 94, '', '2025-02-15 11:50:00', '2025-02-20 11:50:00', '', 2, '2025-02-15 06:21:19', '2025-02-15 06:21:19', 'Bhavnagar', 'Bhavnagar', 0, '', '', 0, 0),
-(167, 1216, 'mm2028501@gmail.com', 86, '', '2025-02-15 00:22:00', '2025-02-15 00:22:00', '', 2, '2025-02-13 18:53:07', '2025-02-13 18:53:07', 'Botad', 'Botad', 5, '', '', 0, 0),
-(169, 4460, 'mm2028501@gmail.com', 94, 'hour', '2025-02-15 12:08:00', '2025-02-15 16:08:00', '', 2, '2025-02-15 06:40:53', '2025-02-15 06:40:53', 'Botad', 'Botad', 0, '', '', 4804, 1),
-(170, 4911, 'mm2028501@gmail.com', 89, 'Day', '2025-02-15 16:02:00', '2025-02-22 16:02:00', '', 2, '2025-02-15 10:33:37', '2025-02-15 10:33:37', 'Botad', 'Botad', 3, 'Vatukiya', '', 80, 1),
-(171, 5900, 'mm2028501@gmail.com', 95, 'Day', '2025-02-15 16:21:00', '2025-02-16 16:22:00', '', 2, '2025-02-15 10:52:42', '2025-02-15 10:52:42', 'Botad', 'Bhavnagar', 4, 'hardik', '', 246, 1),
-(172, 1515, 'mm2028501@gmail.com', 90, 'Day', '2025-02-15 16:38:00', '2025-02-16 16:38:00', '', 2, '2025-02-15 11:09:14', '2025-02-15 11:09:14', 'Bhavnagar', 'Bhavnagar', 3, 'Vatukiya', '', 2468, 1),
-(173, 7463, 'mm2028501@gmail.com', 88, 'Day', '2025-02-15 16:40:00', '2025-02-17 16:40:00', '', 0, '2025-02-15 11:10:45', '2025-02-15 11:10:45', 'Botad', 'Botad', 4, 'hardik', '', 300, 1);
+INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `rent_type`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`, `pickup`, `dropoff`, `did`, `dname`, `order_id`, `amount`, `payment`, `is_notified`) VALUES
+(164, 5338, 'mm2028501@gmail.com', 90, '', '2025-02-14 23:21:00', '2025-02-27 23:21:00', '', 2, '2025-02-13 17:51:29', '2025-02-13 17:51:29', 'Botad', 'Botad', 3, '', '', 0, 0, 0),
+(168, 5978, 'mm2028501@gmail.com', 94, '', '2025-02-15 11:50:00', '2025-02-20 11:50:00', '', 2, '2025-02-15 06:21:19', '2025-02-15 06:21:19', 'Bhavnagar', 'Bhavnagar', 0, '', '', 0, 0, 0),
+(167, 1216, 'mm2028501@gmail.com', 86, '', '2025-02-15 00:22:00', '2025-02-15 00:22:00', '', 2, '2025-02-13 18:53:07', '2025-02-13 18:53:07', 'Botad', 'Botad', 5, '', '', 0, 0, 0),
+(169, 4460, 'mm2028501@gmail.com', 94, 'hour', '2025-02-15 12:08:00', '2025-02-15 16:08:00', '', 2, '2025-02-15 06:40:53', '2025-02-15 06:40:53', 'Botad', 'Botad', 0, '', '', 4804, 1, 0),
+(170, 4911, 'mm2028501@gmail.com', 89, 'Day', '2025-02-15 16:02:00', '2025-02-22 16:02:00', '', 2, '2025-02-15 10:33:37', '2025-02-15 10:33:37', 'Botad', 'Botad', 3, 'Vatukiya', '', 80, 1, 0),
+(171, 5900, 'mm2028501@gmail.com', 95, 'Day', '2025-02-15 16:21:00', '2025-02-16 16:22:00', '', 2, '2025-02-15 10:52:42', '2025-02-15 10:52:42', 'Botad', 'Bhavnagar', 4, 'hardik', '', 246, 1, 0),
+(172, 1515, 'mm2028501@gmail.com', 90, 'Day', '2025-02-15 16:38:00', '2025-02-16 16:38:00', '', 2, '2025-02-15 11:09:14', '2025-02-15 11:09:14', 'Bhavnagar', 'Bhavnagar', 3, 'Vatukiya', '', 2468, 1, 0),
+(173, 7463, 'mm2028501@gmail.com', 88, 'Day', '2025-02-15 16:40:00', '2025-02-17 16:40:00', '', 0, '2025-02-15 11:10:45', '2025-02-15 11:10:45', 'Botad', 'Botad', 4, 'hardik', '', 300, 1, 0),
+(174, 9535, 'mm2028501@gmail.com', 87, 'Day', '2025-02-15 23:23:00', '2025-02-16 11:24:00', '', 1, '2025-02-15 17:55:15', '2025-02-15 17:55:15', 'Botad', 'Botad', 0, '', '', 2500, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -173,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `car_list` (
 
 INSERT INTO `car_list` (`vid`, `cname`, `modal`, `chprice`, `price`, `no_plate`, `brand`, `image`, `seat`, `fual`, `door`, `en_power`, `en_type`, `break_type`, `fual_capacity`, `mileage`, `status`, `accessories`) VALUES
 (86, 'Audia1', 20211, 1200, 120001, 'GJ33AB12121', 'tata', 'thar2.jpg,thar3.jpg,thar4.jpg,amritsar.jpg,audi_logo.jpg', 331, 'Petrol', 2, '300', 'Diesel engine', 'Carbon break', 20, 1010, 0, 'CD Player, Driver Airbag'),
-(87, 'thar', 2022, 0, 2500, 'gj19hj7863', 'tata', 'audi1.jpg', 5, 'Petrol', 4, '500', 'Diesel engine', 'disc break', 20, 4, 0, ''),
+(87, 'thar', 2022, 0, 2500, 'gj19hj7863', 'tata', 'audi1.jpg', 5, 'Petrol', 4, '500', 'Diesel engine', 'disc break', 20, 4, 1, ''),
 (88, 'Land Rover', 2025, 0, 100, 'GJ33AB1212', 'webagg', 'audi1.jpg,mahindra1.jpeg,gallery_3.jpg,mahindra3.jpeg', 4, 'CNG', 2, '261', 'Diesel engine', 'disc break', 40, 8, 0, ''),
 (89, 'audi x7', 1234, 0, 10, 'GJ33AB1212', 'webagg', 'front-view-118.jpg,front-left-side-47 (1).jpg,gallery_4.jpg,gallery_9.jpg', 3, 'Diesel', 2, '500', 'Diesel engine', 'disc break', 40, 12, 0, ''),
 (90, 'Kia  carens', 1234, 0, 1234, '1111', 'tata', 'front-left-side-47.jpg,front-view-118 (1).jpg,a.jpeg,c.jpeg', 123, 'Diesel', 4, '500', 'Diesel engine', 'ABS break', 20, 12, 0, ''),
@@ -264,6 +266,7 @@ INSERT INTO `driver` (`did`, `dfname`, `dlname`, `fnumber`, `hprice`, `dprice`, 
 DROP TABLE IF EXISTS `reguser`;
 CREATE TABLE IF NOT EXISTS `reguser` (
   `uid` int NOT NULL AUTO_INCREMENT,
+  `profile_picture` varchar(255) NOT NULL,
   `name` varchar(50) NOT NULL,
   `mnumber` bigint NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -280,10 +283,10 @@ CREATE TABLE IF NOT EXISTS `reguser` (
 -- Dumping data for table `reguser`
 --
 
-INSERT INTO `reguser` (`uid`, `name`, `mnumber`, `email`, `password`, `token`, `reset_token`, `reset_expiry`, `is_verified`, `created_at`) VALUES
-(32, 'Bhupat', 7359509387, 'bhupatvatukiya1@gmail.com', '789789789', '', 'f12f8f62c66b613417c9ad5f6290f11a21d64798394e01bfb1454762367d05d0984146eb0c3d4d46884a335b3a5666fb10a3', '2025-02-05 12:13:40', NULL, '2025-02-05 03:01:29'),
-(33, 'hardik', 7474747474, 'hr123@gmail.com', '123123123', '', NULL, NULL, NULL, '2025-02-05 03:01:29'),
-(40, 'mahadev', 9898989898, 'mm2028501@gmail.com', '123123123', '', NULL, NULL, 1, '2025-02-05 04:34:42');
+INSERT INTO `reguser` (`uid`, `profile_picture`, `name`, `mnumber`, `email`, `password`, `token`, `reset_token`, `reset_expiry`, `is_verified`, `created_at`) VALUES
+(32, '', 'Bhupat', 7359509387, 'bhupatvatukiya1@gmail.com', '789789789', '', 'f12f8f62c66b613417c9ad5f6290f11a21d64798394e01bfb1454762367d05d0984146eb0c3d4d46884a335b3a5666fb10a3', '2025-02-05 12:13:40', NULL, '2025-02-05 03:01:29'),
+(33, '', 'hardik', 7474747474, 'hr123@gmail.com', '123123123', '', NULL, NULL, 1, '2025-02-05 03:01:29'),
+(40, 'upload/front-left-side-47 (2).jpg', 'mahadev', 9898989898, 'mm2028501@gmail.com', '123123123', '', NULL, NULL, 1, '2025-02-05 04:34:42');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
