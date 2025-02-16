@@ -217,7 +217,6 @@ if (isset($_GET['did'])) {
                         <!-- <img src="../admin/img/<?php /*echo $image[3];*/ ?>" alt="Car Interior Back" id="thumb4"> -->
                         <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
                         <button class="next" onclick="moveSlide(1)">&#10095;</button>
-                        
 
                     </div>
                     <div class="section">
@@ -281,153 +280,16 @@ if (isset($_GET['did'])) {
                     <div class="feature-container">
                         <div class="features">
                             <h2>Car Features</h2>
-                            <div class="feature-list">
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Multi-zone A/C</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Heated front seats</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Android Auto</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Navigation system</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Premium sound system</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Bluetooth</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Keyless Start</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Memory seat</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>6 Cylinders</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Adaptive Cruise Control</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>Intermittent wipers</p>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <p>4 power windows</p>
-                                </div>
-                            </div>
+                        
                         </div>
                     </div>
                 </div>
 
-                <div class="form-container" id="formContainer">
-                    <div class="pricing-details">
-
-                        <h2>Pricing Details</h2>
-                        <p class="price-item">Per hour (1 Hour) <span>₹100</span></p>
-
-                    </div>
-                    <div class="booking-form">
-                        <form action="" method="post">
-                            <h2>Booking Form</h2>
-                            <div class="form-group">
-                                <label for="rental-type">Rental Type</label>
-                                <select id="rental-type" name="rent_type">
-                                    <option value="">type</option>
-                                    <option value="hour">Hour</option>
-                                    <option value="Day">Day</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="pickup-location">Pickup Location</label>
-                                <select id="pickup-location" name="pick_up_loc">
-                                    <option value="">Select Location</option>
-                                    <option value="Botad" <?php if ($pick_up_loc == 'Botad') echo 'selected'; ?>>Botad</option>
-                                    <option value="Bhavnagar" <?php if ($pick_up_loc == 'Bhavnagar') echo 'selected'; ?>>Bhavnagar</option>
-                                </select>
-                                <span style="color: red;"> <?php echo $errors['pick_up_loc']; ?> </span>
-                            </div>
-                            <div class="form-group">
-                                <label for="dropoff-location">Dropoff Location</label>
-                                <select id="dropoff-location" name="drop_of_loc">
-                                    <option value="">Select Location</option>
-                                    <option value="Botad" <?php if ($drop_of_loc == 'Botad') echo 'selected'; ?>>Botad</option>
-                                    <option value="Bhavnagar" <?php if ($drop_of_loc == 'Bhavnagar') echo 'selected'; ?>>Bhavnagar</option>
-                                </select>
-                                <span style="color: red;"> <?php echo $errors['drop_of_loc']; ?> </span>
-
-                            </div>
-                            <div class="form-group">
-                                <p style="color: red;"><?php $fd; ?></p>
-                                <label for="pickup-date">Pickup Date</label>
-                                <input type="datetime-local" id="pickup-date" name="fdate" min="<?php echo date('Y-m-d\TH:i'); ?>" value="<?php echo ($fdate); ?>">
-                                <span style="color: red;"> <?php echo $errors['fdate']; ?> </span>
-
-                            </div>
-                            <div class="form-group">
-                                <p style="color: red;"><?php $td; ?></p>
-                                <label for="dropoff-date">Drop-off Date</label>
-                                <input type="datetime-local" id="dropoff-date" name="tdate" value="<?php echo ($tdate); ?>">
-                                <span style="color: red;"> <?php echo $errors['tdate']; ?> </span>
-                            </div>
-
-
-                            <label>Need A Driver?
-                                <input type="checkbox" name="need_driver" id="need_driver" onclick="toggleDriverForm()">
-                            </label>
-
-                            <!-- <button class="booking-button" name="Book">Booking</button> -->
-                            <button type="submit" class="booking-button" name="Book">Rent Now</button>
-                    </div>
-                    </form>
-                    <button class="enquiry-button" onclick="openForm()">Enquiry Us</button>
-
-
-                </div>
             </div>
         </div>
     <?php
     }
     ?>
-
-    <div class="enquiry-form" id="enquiryForm">
-        <h2>Enquiry Form</h2>
-        <div class="form-group">
-            <label for="full-name">Full Name</label>
-            <input type="text" id="full-name" name="full-name" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email ID</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="mobile">Mobile Number</label>
-            <input type="tel" id="mobile" name="mobile" required>
-        </div>
-        <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required></textarea>
-        </div>
-        <div class="btn-container">
-            <button class="close-btn" onclick="closeForm()">Close</button>
-            <button class="send-btn" onclick="sendMessage()">Send message</button>
-        </div>
-    </div>
 
     <div id="overlay"></div>
     <!-- Hide Form by Default -->
@@ -601,25 +463,6 @@ if (isset($_GET['did'])) {
             }
         }
     </script>
-    <script>
-    let images = [
-        document.getElementById('thumb1').src,
-        document.getElementById('thumb2').src,
-        document.getElementById('thumb3').src
-    ];
-    let currentIndex = 0;
-    let mainImg = document.getElementById('mainImg');
-
-    function moveSlide(step) {
-        currentIndex += step;
-        if (currentIndex < 0) {
-            currentIndex = images.length - 1; // Loop to last image
-        } else if (currentIndex >= images.length) {
-            currentIndex = 0; // Loop back to first image
-        }
-        mainImg.src = images[currentIndex];
-    }
-</script>
 </body>
 
 </html>

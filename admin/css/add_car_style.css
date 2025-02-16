@@ -115,21 +115,21 @@ border-color:#d1001f;
 }
 
 #mil{
-    border: 1px solid red;
+    border: 1px solid #d1001f;
 }
 
 .fual-type{
     margin-right: 150px;
 }
 
-form .button{
+/* form .button{
     height: 45px;
-    width: 45px 0;
+    width: 95%;
     margin-left: 16px;
-}
+} */
 
-form .button{
-    width: 100%;
+form .btn{
+    width: 95%;
     outline: none;
     border: none;
     font-size: 30px;
@@ -137,6 +137,8 @@ form .button{
     color: #fff;
     background:#d23d49;
     border-radius: 5px;
+    margin-left: 27px;
+    margin-bottom: 25px;
    
 }
 

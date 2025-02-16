@@ -58,7 +58,7 @@ error_reporting(0);
 
         .card {
             background-color: #fff;
-            width: 345px;
+            width: 309px;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             overflow: hidden;
@@ -73,7 +73,7 @@ error_reporting(0);
         } */
 
         .card img {
-            width: 333px;
+            width: 296px;
             height: 285px;
             /* object-fit: cover; */
             border-radius: 10px;

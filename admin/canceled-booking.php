@@ -12,12 +12,12 @@
             src: url('../font/Poppins-Regular.ttf');
         }
         body {
-            font-family: 'pop-regular';
+            font-family: 'pop-regular', sans-serif;
             margin: 20px;
             background-color: rgb(221, 224, 227);
         }
         .container {
-            max-width: 1000px;
+            width: 1000px;
             margin: auto;
             background: white;
             padding: 20px;
@@ -31,7 +31,7 @@
         .search-container {
             margin-bottom: 15px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
         }
         .search-container input {
             padding: 10px;
@@ -41,10 +41,14 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+        /* .table-wrapper {
+            overflow-x: auto;
+        } */
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            min-width: 600px;
         }
         th, td {
             border: 1px solid #ddd;
@@ -72,11 +76,33 @@
             background: #138496;
         }
         @media (max-width: 768px) {
-            table {
-                font-size: 12px;
+            body {
+                margin: 10px;
+            }
+            .container {
+                padding: 15px;
             }
             .search-container input {
                 width: 100%;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+            .search-container input {
+                font-size: 12px;
+                padding: 8px;
+            }
+            table {
+                font-size: 12px;
+            }
+            .action a {
+                padding: 4px 8px;
+                font-size: 12px;
             }
         }
     </style>
@@ -87,48 +113,50 @@
         <div class="search-container">
             <input type="text" id="search" placeholder="Search..." onkeyup="searchTable()">
         </div>
-        <table id="bookingTable">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Booking NO</th>
-                    <th>User Email</th>
-                    <th>Vehicle ID</th>
-                    <th>From Date</th>
-                    <th>To Date</th>
-                    <th>Status</th>
-                    <th>Posting Date</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                @include "include/config.php";
-                $status = 2;
-                $sql = "SELECT * FROM booking WHERE status=$status";
-                $result = mysqli_query($conn, $sql);
-                $n = 1;
-                while ($row = mysqli_fetch_assoc($result)) {
-                ?>
+        <div class="table-wrapper">
+            <table id="bookingTable">
+                <thead>
                     <tr>
-                        <td><?php echo $n; ?></td>
-                        <td><?php echo $row['bookingno']; ?></td>
-                        <td><?php echo $row['userEmail']; ?></td>
-                        <td><?php echo $row['vid']; ?></td>
-                        <td><?php echo $row['FromDate']; ?></td>
-                        <td><?php echo $row['ToDate']; ?></td>
-                        <td>Cancelled</td>
-                        <td><?php echo $row['PostingDate']; ?></td>
-                        <td class="action">
-                            <a href="Approve.php?bno=<?php echo $row['bookingno']; ?>&userEmail=<?php echo $row['userEmail']; ?>">View</a>
-                        </td>
+                        <th>#</th>
+                        <th>Booking NO</th>
+                        <th>User Email</th>
+                        <th>Vehicle ID</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        <th>Status</th>
+                        <th>Posting Date</th>
+                        <th>Action</th>
                     </tr>
-                <?php
-                $n++;
-                }
-                ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php
+                    @include "include/config.php";
+                    $status = 2;
+                    $sql = "SELECT * FROM booking WHERE status=$status";
+                    $result = mysqli_query($conn, $sql);
+                    $n = 1;
+                    while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                        <tr>
+                            <td><?php echo $n; ?></td>
+                            <td><?php echo $row['bookingno']; ?></td>
+                            <td><?php echo $row['userEmail']; ?></td>
+                            <td><?php echo $row['vid']; ?></td>
+                            <td><?php echo $row['FromDate']; ?></td>
+                            <td><?php echo $row['ToDate']; ?></td>
+                            <td>Cancelled</td>
+                            <td><?php echo $row['PostingDate']; ?></td>
+                            <td class="action">
+                                <a href="Approve.php?bno=<?php echo $row['bookingno']; ?>&userEmail=<?php echo $row['userEmail']; ?>">View</a>
+                            </td>
+                        </tr>
+                    <?php
+                    $n++;
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script>
@@ -144,4 +172,3 @@
     </script>
 </body>
 </html>
-        

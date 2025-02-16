@@ -115,23 +115,33 @@
         <h1>Frequently Asked Questions</h1>
       
                 <div class="faq-item">
-                    <button>hello<span class="plus">+</span></button>
-                    <div class="faq-answer">rahul</div>
+                    <button>Q.Who uses car rentals?<span class="plus">+</span></button>
+                    <div class="faq-answer">People who don't own a car,travelers,or People with damaged vehicles.</div>
                 </div>
 
                 <div class="faq-item">
-                    <button>hello<span class="plus">+</span></button>
-                    <div class="faq-answer">rahul</div>
+                    <button>Q.what does car rental offer?<span class="plus">+</span></button>
+                    <div class="faq-answer">A Flexible and economical alernative to car ownership.</div>
                 </div>
 
                 <div class="faq-item">
-                    <button>hello<span class="plus">+</span></button>
-                    <div class="faq-answer">rahul</div>
+                    <button>Q.can my friends/relative come to pick up the car?<span class="plus">+</span></button>
+                    <div class="faq-answer">No,only the person whose name has been mantioned in the reservation. </div>
                 </div>
 
                 <div class="faq-item">
-                    <button>hello<span class="plus">+</span></button>
-                    <div class="faq-answer">rahul</div>
+                    <button>Q.do I need to register on your site to book car?<span class="plus">+</span></button>
+                    <div class="faq-answer">Yes,you need to register in our site to book any of the car.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button>Q.are car rental available for self-drive?<span class="plus">+</span></button>
+                    <div class="faq-answer">Yes,we can provide car for self-drive and also provide driver if you need them.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button>Q.Does Carola owns vehicles?<span class="plus">+</span></button>
+                    <div class="faq-answer">Carola does not own vehicles,vehicles offered thorugh our rental platform belong to our business partners</div>
                 </div>
                
        

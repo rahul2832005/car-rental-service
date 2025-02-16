@@ -17,7 +17,7 @@
             background-color: rgb(221, 224, 227);
         }
         .container {
-            max-width: 1000px;
+            width: 1000px;
             margin: auto;
             background: white;
             padding: 20px;
@@ -45,6 +45,9 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+        }
+        .table-wrapper {
+            overflow-x: auto;
         }
         th, td {
             border: 1px solid #ddd;

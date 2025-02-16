@@ -13,12 +13,13 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <style>
-        /* Google Font */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
+              @font-face {
+    font-family: 'pop-regular';
+    src: url('../font/Poppins-Regular.ttf');
+}
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #f8f9fa;
+            font-family: 'pop-regular';
+            background:rgb(211, 217, 223);
             margin: 0;
             padding: 20px;
             display: flex;
@@ -35,6 +36,7 @@ $result = mysqli_query($conn, $sql);
             /* width: 100%; */
             width: 1000px;
             text-align: center;
+            margin-left: 40px;
         }
 
         h1 {
@@ -57,12 +59,12 @@ $result = mysqli_query($conn, $sql);
         }
 
         /* Table Styling */
-        /* .table-container {
+         .table-container {
             overflow-x: auto;
-        } */
+        }   
 
         table {
-            width: 120%;
+            width: 110%;
             border-collapse: collapse;
             background: #fff;
             border-radius: 10px;
@@ -70,7 +72,7 @@ $result = mysqli_query($conn, $sql);
             text-align: center;
         }
 
-        th, td {
+         th,td {
             padding: 12px;
             text-align: center;
             border-bottom: 1px solid #ddd;
@@ -91,16 +93,7 @@ $result = mysqli_query($conn, $sql);
         .status {
             padding: 5px 12px;
             border-radius: 20px;
-            color: white;
-            font-weight: bold;
-        }
-
-        .available {
-            background: #28a745;
-        }
-
-        .booked {
-            background: red;
+            color: #000;
         }
 
         .maintenance {
@@ -164,14 +157,14 @@ $result = mysqli_query($conn, $sql);
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Car Name</th>
+                        <th style="width:115px;">Car Name</th>
                         <th>Price</th>
                         <th>No Plate</th>
                         <th>Brand</th>
                         <th>Seats</th>
                         <th>Fuel</th>
                         <th>Status</th>
-                        <th style="width: 100px;">Action</th>
+                        <th style="width: 115px;">Action</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -42,10 +42,14 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+       
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+        }
+        .table-wrapper {
+            overflow-x: auto;
         }
         th, td {
             border: 1px solid #ddd;
