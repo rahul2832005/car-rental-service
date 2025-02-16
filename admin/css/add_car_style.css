@@ -142,7 +142,7 @@ form .btn{
    
 }
 
-label{
+/* label{
     height: 100px;
     width: 150px;
     border-radius: 6px;
@@ -157,7 +157,7 @@ label{
 label:hover{
     border-color: #d1001f;
     border: 1px dashed ;
-}
+} */
 
 form .accessories{
     display: flex;
@@ -223,4 +223,70 @@ form .mil input{
 form{
     width: auto;
     background-color: white;
+}
+
+/* for accessories */
+
+.container1 {
+    max-width: 1000px;
+    margin: 8px auto;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.accessories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+/* .save-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #f44336;
+    color: white;
+} */
+
+@media (max-width: 600px) {
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button {
+        width: 100%;
+    }
 }
