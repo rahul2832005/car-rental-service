@@ -2,7 +2,6 @@
 @include "include/config.php";
 
 
-@include "include/config.php";
 // Pagination Logic
 $limit = 2;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -216,9 +215,7 @@ $total_pages = ceil($total_entries / $limit);
             align-items: center;
             margin-top: 20px;
         }
-        .pagination{
-            /* margin-right: -80px; */
-        }
+      
          .pagination a {
         padding: 8px 12px;
         margin: 0 4px;

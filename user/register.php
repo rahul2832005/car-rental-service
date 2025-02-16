@@ -122,7 +122,7 @@ if(isset($_POST["sign-up"]))
             $mail->Host = 'smtp.gmail.com'; 
             $mail->SMTPAuth = true;
             $mail->Username = 'carolarental3@gmail.com';
-            $mail->Password = 'slwrclbveudzqlag'; // Use an app password
+            $mail->Password = 'bojiwwvipmyipdqc'; // Use an app password
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 

@@ -33,34 +33,9 @@
             background-color: #bb2d3b;
         }
 
-        .d-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
+        .pagination a {
+            cursor: pointer;
         }
-      
-         .pagination a {
-        padding: 8px 12px;
-        margin: 0 4px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        text-decoration: none;
-        color: #333;
-        background-color: white;
-        transition: background-color 0.3s ease;
-    }
-
-    .pagination a.active {
-        background-color: #007bff;
-        color: white;
-        font-weight: bold;
-    }
-
-    .pagination a:hover {
-        background-color: #f0f0f0;
-    }
-
     </style>
 </head>
 

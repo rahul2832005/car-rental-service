@@ -1,5 +1,54 @@
-<?php  
-    session_start();
+<?php
+session_start();
+// error_reporting(0);
+@include "include/config.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php'; // If using Composer
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+
+    
+
+    
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; // SMTP server
+        $mail->SMTPAuth = true;
+        $mail->Username = 'carolarental3@gmail.com'; // Your email
+        $mail->Password = 'bojiwwvipmyipdqc'; // Your email password or App Password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        //Recipients
+        $mail->setFrom($email, $name);
+        $mail->addAddress('carolarental3@gmail.com'); // Your receiving email
+
+        //Content
+        $mail->isHTML(true);
+        $mail->Subject = 'New Contact Form Submission - Car Rental Website';
+        $mail->Body    = "<h4>Name:</h4> $name <br><h4>Email:</h4> $email <br><h4>Message:</h4> <p>$message</p>";
+
+        $mail->send();
+        echo 'Message has been sent successfully!';
+        echo "<Script>alert('sent')</Script>";
+        $sql="insert into contactusquery (username,Email,messages)values('$name','$email','$message')";
+        $exsql=mysqli_query($conn,$sql);
+        header("Location: contact_us.php");
+        exit();
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,14 +180,93 @@
             display: inline-block;
             margin-bottom: 10px;
         }
-        .location{
+
+        .location {
             margin-top: 30px;
             text-align: center;
             margin-bottom: 20px;
         }
-        iframe{
+
+        iframe {
             border-radius: 5px;
         }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            /* background-color: #ffffff; */
+            background-color: rgb(241, 235, 235);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .heading {
+            font-size: 28px;
+            color: #333333;
+            margin-bottom: 10px;
+        }
+
+        .subtext {
+            font-size: 16px;
+            color: #666666;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #333333;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .form-group input[type="email"]{
+                width: 435px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: #1d4ed8;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #1e40af;
+        }
+
+        
     </style>
 </head>
 
@@ -184,11 +312,39 @@
                 <p>+91 7359509387</p>
             </div>
         </div>
-        <div class="location">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14780.908402544715!2d71.75972828726873!3d22.155425800135852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3958d00f6c0348dd%3A0x7bf2837a0dbd4a4d!2sSalangpur%2C%20Gujarat%20382450!5e0!3m2!1sen!2sin!4v1737308652019!5m2!1sen!2sin" width="700" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="container">
+            <div class="form-container">
+                <h1 class="heading">Get in Touch with Us</h1>
+                <p class="subtext">Have questions or need assistance? We are here to help you with all your car rental needs!</p>
+
+                <form action="#" method="POST" class="form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email_show" value="<?php echo $_SESSION['alogin']; ?>" disabled>
+                        <input type="hidden" name="email" value="<?php echo $_SESSION['alogin']; ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+
+
+            </div>
+            <div class="location">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14780.908402544715!2d71.75972828726873!3d22.155425800135852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3958d00f6c0348dd%3A0x7bf2837a0dbd4a4d!2sSalangpur%2C%20Gujarat%20382450!5e0!3m2!1sen!2sin!4v1737308652019!5m2!1sen!2sin" width="700" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
     </div>
-    </div>
-    
+
 
     <?php
     @include "footer.php";
