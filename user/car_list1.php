@@ -1,6 +1,27 @@
 <?php
+@include "include/config.php";
 session_start();
-error_reporting(0);
+// error_reporting(0);
+
+// $select_car = mysqli_query($conn, "SELECT * FROM car_list");
+
+// $status = 0;
+
+// Pagination Logic
+$limit =5;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$start = ($page - 1) * $limit;
+
+// Fetch Cars with Limit and Offset
+$select_car = "SELECT * FROM car_list  LIMIT $start, $limit";
+$result = mysqli_query($conn, $select_car);
+
+// Total Cars for Pagination Count
+$total_result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM car_list");
+$total_row = mysqli_fetch_assoc($total_result);
+$total_entries = $total_row['total'];
+$total_pages = ceil($total_entries / $limit);
+
 
 ?>
 <!DOCTYPE html>
@@ -163,7 +184,37 @@ error_reporting(0);
                 align-items: center;
             }
         }
-       
+       .d-flex {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             margin-top: 20px;
+         }
+
+         .pagination a {
+             padding: 8px 12px;
+             margin: 0 4px;
+             border: 1px solid #ccc;
+             border-radius: 5px;
+             text-decoration: none;
+             color: #333;
+             background-color: white;
+             transition: background-color 0.3s ease;
+         }
+
+         .pagination a.active {
+             background-color: #007bff;
+             color: white;
+             font-weight: bold;
+         }
+
+         .pagination a:hover {
+             background-color: #f0f0f0;
+         }
+         .entries{
+            margin-right: 500px;
+         }
+     
     </style>
 </head>
 
@@ -183,10 +234,8 @@ error_reporting(0);
             <h1>Car Fleet-1</h1>
         </div>
         <?php
-        @include "include/config.php";
-        $select_car = mysqli_query($conn, "SELECT * FROM car_list");
-        if (mysqli_num_rows($select_car) > 0) {
-            while ($row = mysqli_fetch_array($select_car)) {
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_array($result)) {
                 $image = explode(",", $row['image']);
         ?>
                 <div class="card" data-name="<?php echo strtolower($row['cname']); ?>">
@@ -208,9 +257,25 @@ error_reporting(0);
             }
         }
         ?>
+ </div>
+<div class="d-flex">
+             <div class="entries">Showing <?php echo $start + 1; ?> to <?php echo min($start + $limit, $total_entries); ?> of <?php echo $total_entries; ?> entries</div>
+             <div class="pagination">
+                 <?php if ($page > 1): ?>
+                     <a href="?page=<?php echo $page - 1; ?>" class="page-link">Previous</a>
+                 <?php endif; ?>
 
+                 <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                     <a href="?page=<?php echo $i; ?>" class="page-link <?php echo $i == $page ? 'active' : ''; ?>"><?php echo $i; ?></a>
+                 <?php endfor; ?>
 
-    </div>
+                 <?php if ($page < $total_pages): ?>
+                     <a href="?page=<?php echo $page + 1; ?>" class="page-link">Next</a>
+                 <?php endif; ?>
+             </div>
+         </div>
+   
+
 
     <?php
     @include "footer.php";

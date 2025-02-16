@@ -1,9 +1,24 @@
 <?php
 @include "include/config.php";
 
-$sql = "SELECT * FROM driver";
+
+@include "include/config.php";
+// Pagination Logic
+$limit = 2;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$start = ($page - 1) * $limit;
+
+// Fetch Cars with Limit and Offset
+$sql = "SELECT * FROM driver LIMIT $start, $limit";
 $result = mysqli_query($conn, $sql);
+
+// Total Cars for Pagination Count
+$total_result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM driver");
+$total_row = mysqli_fetch_assoc($total_result);
+$total_entries = $total_row['total'];
+$total_pages = ceil($total_entries / $limit);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +43,7 @@ $result = mysqli_query($conn, $sql);
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
             min-height: 100vh; /* Ensure full viewport height */
         }
 
@@ -38,7 +54,7 @@ $result = mysqli_query($conn, $sql);
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             width: 95%; /* Occupy most of the container width */
             max-width: 1200px;
-            overflow-x: auto; /* Enable horizontal scrolling if needed */
+            /* overflow-x: auto; Enable horizontal scrolling if needed */
         }
 
         h1 {
@@ -194,6 +210,37 @@ $result = mysqli_query($conn, $sql);
                 padding: 3px 6px; /* Reduce icon padding */
             }
         }
+        .d-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .pagination{
+            /* margin-right: -80px; */
+        }
+         .pagination a {
+        padding: 8px 12px;
+        margin: 0 4px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #333;
+        background-color: white;
+        transition: background-color 0.3s ease;
+    }
+
+    .pagination a.active {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+    }
+
+    .pagination a:hover {
+        background-color: #f0f0f0;
+    }
+
+
     </style>
 </head>
 <body>
@@ -261,6 +308,22 @@ $result = mysqli_query($conn, $sql);
                 ?>
                 </tbody>
             </table>
+            <div class="d-flex">
+                <div>Showing <?php echo $start + 1; ?> to <?php echo min($start + $limit, $total_entries); ?> of <?php echo $total_entries; ?> entries</div>
+                <div class="pagination">
+                    <?php if ($page > 1): ?>
+                        <a href="?page=<?php echo $page - 1; ?>" class="page-link">Previous</a>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                        <a href="?page=<?php echo $i; ?>" class="page-link <?php echo $i == $page ? 'active' : ''; ?>"><?php echo $i; ?></a>
+                    <?php endfor; ?>
+
+                    <?php if ($page < $total_pages): ?>
+                        <a href="?page=<?php echo $page + 1; ?>" class="page-link">Next</a>
+                    <?php endif; ?>
+                </div>
+            </div>
         </div>
     </div>
     <script>
