@@ -25,8 +25,8 @@ if (isset($_POST['Book'])) {
     $pick_up_loc = $_POST['pick_up_loc'];
     $drop_of_loc = $_POST['drop_of_loc'];
     $rent_type = $_POST['rent_type'];
-    $selected_driver=$_POST['selected_driver'];
-    $driver_id=$_POST['selected_driver_id'];
+    $selected_driver = $_POST['selected_driver'];
+    $driver_id = $_POST['selected_driver_id'];
 
 
     $datetime1 = new DateTime($fdate);
@@ -62,19 +62,44 @@ if (isset($_POST['Book'])) {
     }
 
     if (empty($errors)) {
+
+        // Check Driver Availability only if driver is selected
+        $driverAvailable = true;
+        if (!empty($driver_id)) {
+            $dravlquery = "SELECT * FROM booking 
+                           WHERE did = $driver_id 
+                           AND status != 2 
+                           AND ('$fdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
+                           OR '$tdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
+                           OR (FromDate BETWEEN '$fdate' AND '$tdate') 
+                           OR (ToDate BETWEEN '$fdate' AND '$tdate'))";
+
+            $drexavlquery = mysqli_query($conn, $dravlquery);
+            if (mysqli_num_rows($drexavlquery) > 0) {
+                $driverAvailable = false;
+                echo "<script>alert('Driver already booked for the selected dates');</script>";
+            }
+        }
+
+        // Check Car Availability
+        $carAvailable = true;
         $avlquery = "SELECT * FROM booking 
-                     WHERE vid = $vid
-                     AND status != 2
+                     WHERE vid = $vid 
+                     AND status != 2 
                      AND ('$fdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
-                          OR '$tdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
-                          OR (FromDate BETWEEN '$fdate' AND '$tdate') 
-                          OR (ToDate BETWEEN '$fdate' AND '$tdate'))";
+                     OR '$tdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
+                     OR (FromDate BETWEEN '$fdate' AND '$tdate') 
+                     OR (ToDate BETWEEN '$fdate' AND '$tdate'))";
 
         $exavlquery = mysqli_query($conn, $avlquery);
         if (mysqli_num_rows($exavlquery) > 0) {
+            $carAvailable = false;
             echo "<script>alert('Car already booked for the selected dates');</script>";
             echo "<script>document.location = 'dis_car.php';</script>";
-        } else {
+        }
+
+        // If both available, proceed to payment
+        if ($driverAvailable && $carAvailable) {
 
 
             require('vendor/autoload.php');
@@ -107,8 +132,8 @@ if (isset($_POST['Book'])) {
                 'drop_of_loc' => $drop_of_loc,
                 'status' => $status,
                 'rent_type' => $rent_type,
-                'did'=>$driver_id,
-                'dname'=>$selected_driver,
+                'did' => $driver_id,
+                'dname' => $selected_driver,
                 'amount' => $orderData['amount'] / 100,
                 'order_id' => $order->id,
             ];
@@ -138,8 +163,11 @@ if (isset($_POST['Book'])) {
                             "color": "#631549"
                         },
                         "modal": {
+                            // "ondismiss": function() {
+                            //     window.location.href = 'payment_fail.php';
                             "ondismiss": function() {
-                                window.location.href = 'payment_fail.php';
+                                // Yahan fail hone pe redirect hoga
+                                window.location.href = '<?= $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']; ?>';
                             }
                         }
                     };
@@ -193,6 +221,7 @@ if (isset($_POST['Book'])) {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             z-index: 1001;
             display: none;
+            width: 60%;
         }
 
         #overlay {
@@ -215,6 +244,7 @@ if (isset($_POST['Book'])) {
             border-radius: 4px;
             margin-top: 10px;
         }
+
         .prev,
         .next {
             position: absolute;
@@ -271,7 +301,7 @@ if (isset($_POST['Book'])) {
                         <!-- <img src="../admin/img/<?php /*echo $image[3];*/ ?>" alt="Car Interior Back" id="thumb4"> -->
                         <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
                         <button class="next" onclick="moveSlide(1)">&#10095;</button>
-                        
+
 
                     </div>
                     <div class="section">
@@ -499,31 +529,33 @@ if (isset($_POST['Book'])) {
                 <table>
                     <thead>
                         <tr>
-                        <th>👤 id</th>
+                            <th>🆔 id</th>
 
                             <th>👤 Name</th>
-                            <th>🎂 Age</th>
+                            <th>💰 Rate (per Hour)</th>
                             <th>💰 Rate (per day)</th>
-                            <th>📌 Status</th>
+                            <th>🏙️ City</th>
                             <th>🗓️ Book</th>
+
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $conn = mysqli_connect('localhost', 'root', '', 'car_rent');
-                        $sql = "select * from driver where status=0 ";
+                        $sql = "select * from driver";
                         $result = mysqli_query($conn, $sql);
                         $n = 1;
                         while ($row = mysqli_fetch_assoc($result)) {
                         ?>
                             <tr>
-                            <td><?php echo $row['did']; ?></td>
+                                <td><?php echo $n; ?></td>
 
                                 <td><?php echo $row['dfname']; ?></td>
-                                <td>20</td>
+                                <td><?php echo $row['hprice']; ?></td>
                                 <td><?php echo $row['dprice']; ?></td>
-                                <td><?php echo ($row['status'] == 0) ? '<span class="status available">Available</span>' : '<span class="status unavailable">Unavailable</span>'; ?></td>
-                                <td> <button type="button" onclick="selectDriver('<?php echo $row['dfname']; ?>','<?php echo $row['did'];?>')">  Select</button></td>
+                                <td><?php echo $row['city']; ?></td>
+
+                                <td> <button type="button" onclick="selectDriver('<?php echo $row['dfname']; ?>','<?php echo $row['did']; ?>')"> Select</button> </td>
                                 <!-- <a href="?did=<?php echo $row['did']; ?> &vid=<?php echo $vid; ?>"></a> -->
                             </tr>
                         <?php $n++;
@@ -590,7 +622,7 @@ if (isset($_POST['Book'])) {
         //     mainImg.src = thumb4src;
         // })
     </script>
-    
+
 
 
     <!-- Dynamic Date select  Script -->
@@ -637,8 +669,6 @@ if (isset($_POST['Book'])) {
 
 
     <script>
-      
-
         function toggleDriverForm() {
             const checkbox = document.getElementById('need_driver');
             const driverModal = document.getElementById('driver_form');
@@ -657,13 +687,13 @@ if (isset($_POST['Book'])) {
         }
 
 
-        function selectDriver(driverName,driverId) {
+        function selectDriver(driverName, driverId) {
             const driverModal = document.getElementById('driver_form');
             const overlay = document.getElementById('overlay');
             const selectedDriverInput = document.getElementById('selected_driver');
-            const selectDriverId= document.getElementById('selected_driver_id');
+            const selectDriverId = document.getElementById('selected_driver_id');
 
-            selectDriverId.value=driverId;
+            selectDriverId.value = driverId;
             selectedDriverInput.value = driverName;
             driverModal.style.display = 'none';
             overlay.style.display = 'none';
@@ -679,25 +709,25 @@ if (isset($_POST['Book'])) {
     </script>
 
 
-<script>
-    let images = [
-        document.getElementById('thumb1').src,
-        document.getElementById('thumb2').src,
-        document.getElementById('thumb3').src
-    ];
-    let currentIndex = 0;
-    let mainImg = document.getElementById('mainImg');
+    <script>
+        let images = [
+            document.getElementById('thumb1').src,
+            document.getElementById('thumb2').src,
+            document.getElementById('thumb3').src
+        ];
+        let currentIndex = 0;
+        let mainImg = document.getElementById('mainImg');
 
-    function moveSlide(step) {
-        currentIndex += step;
-        if (currentIndex < 0) {
-            currentIndex = images.length - 1; // Loop to last image
-        } else if (currentIndex >= images.length) {
-            currentIndex = 0; // Loop back to first image
+        function moveSlide(step) {
+            currentIndex += step;
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1; // Loop to last image
+            } else if (currentIndex >= images.length) {
+                currentIndex = 0; // Loop back to first image
+            }
+            mainImg.src = images[currentIndex];
         }
-        mainImg.src = images[currentIndex];
-    }
-</script>
+    </script>
 </body>
 
 </html>

@@ -37,5 +37,5 @@
 
 // echo "<script>alert('Booking  Successfully !');
 //         window.location.href='profile.php';</script>";
-
+return ;
 ?>

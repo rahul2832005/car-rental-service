@@ -240,12 +240,12 @@ if (mysqli_num_rows($exbm) > 0) {
                         <td><?php echo $row['mnumber']; ?></td>
                     </tr>
                     <tr>
-                        <td><strong>City</strong></td>
-                        <td></td>
+                        <td><strong>Address</strong></td>
+                        <td><?php echo $row['address']; ?></td>
                     </tr>
                     <tr>
                         <td><strong>Country</strong></td>
-                        <td></td>
+                        <td><?php echo "India"; ?></td>
                     </tr>
                 </table>
             </div>

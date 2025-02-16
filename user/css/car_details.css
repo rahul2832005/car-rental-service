@@ -468,6 +468,8 @@ button {
    .unavailable {
        background: red;
    }
+
+   /*  for car_details page in slider for car */
    .prev,
    .next {
        position: absolute;
