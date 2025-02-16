@@ -81,7 +81,7 @@ $total_pages = ceil($total_entries / $limit);
         }
 
         table {
-            width: 100%;
+            width: 95%;
             border-collapse: collapse;
             background: #fff;
             border-radius: 10px;
