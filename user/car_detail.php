@@ -677,7 +677,6 @@ if (isset($_POST['Book'])) {
             overlay.style.display = 'none';
         }
     </script>
-<<<<<<< Updated upstream
 
 
 <script>
@@ -699,9 +698,6 @@ if (isset($_POST['Book'])) {
         mainImg.src = images[currentIndex];
     }
 </script>
-=======
-    
->>>>>>> Stashed changes
 </body>
 
 </html>
