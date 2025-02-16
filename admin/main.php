@@ -70,10 +70,17 @@
                     <p>Subscribers</p>
                     <a href="#">Full Detail →</a>
                 </div>
+
+                <?php  
+                $contactquery="select * from contactusquery";
+                $excontactquery=mysqli_query($conn,$contactquery);
+
+                $no6=mysqli_num_rows($excontactquery);
+            ?>
                 <div class="card" style="background-color: #22C55E;">
-                    <h2>6</h2>
+                    <h2><?php echo $no6; ?></h2>
                     <p>Queries</p>
-                    <a href="#">Full Detail →</a>
+                    <a href="manage_contactus_query.php">Full Detail →</a>
                 </div>
                 <!-- <div class="card" style="background-color: #60A5FA;">
                     <h2>1</h2>
