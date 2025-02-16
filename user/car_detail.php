@@ -215,6 +215,25 @@ if (isset($_POST['Book'])) {
             border-radius: 4px;
             margin-top: 10px;
         }
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
     </style>
 </head>
 <script>
@@ -571,6 +590,8 @@ if (isset($_POST['Book'])) {
         //     mainImg.src = thumb4src;
         // })
     </script>
+    
+
 
     <!-- Dynamic Date select  Script -->
     <script>
@@ -656,6 +677,7 @@ if (isset($_POST['Book'])) {
             overlay.style.display = 'none';
         }
     </script>
+<<<<<<< Updated upstream
 
 
 <script>
@@ -677,6 +699,9 @@ if (isset($_POST['Book'])) {
         mainImg.src = images[currentIndex];
     }
 </script>
+=======
+    
+>>>>>>> Stashed changes
 </body>
 
 </html>
