@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 15, 2025 at 07:00 PM
+-- Generation Time: Feb 16, 2025 at 06:32 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -98,13 +98,14 @@ CREATE TABLE IF NOT EXISTS `brands` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`bid`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `brands`
 --
 
 INSERT INTO `brands` (`bid`, `bname`, `created_at`, `updated_at`) VALUES
+(7, 'audia', '2025-02-16 04:40:19', '2025-02-16 04:40:19'),
 (3, 'webaggx', '2025-01-08 16:16:01', '2025-01-08 16:16:01'),
 (5, 'tata', '2025-02-01 10:58:12', '2025-02-01 10:58:12');
 
@@ -174,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `car_list` (
 --
 
 INSERT INTO `car_list` (`vid`, `cname`, `modal`, `chprice`, `price`, `no_plate`, `brand`, `image`, `seat`, `fual`, `door`, `en_power`, `en_type`, `break_type`, `fual_capacity`, `mileage`, `status`, `accessories`) VALUES
-(86, 'Audia1', 20211, 1200, 120001, 'GJ33AB12121', 'tata', 'thar2.jpg,thar3.jpg,thar4.jpg,amritsar.jpg,audi_logo.jpg', 331, 'Petrol', 2, '300', 'Diesel engine', 'Carbon break', 20, 1010, 0, 'CD Player, Driver Airbag'),
+(86, 'Audia1', 20211, 1200, 120001, 'GJ33AB12121', 'tata', 'thar2.jpg,thar3.jpg,thar4.jpg,amritsar.jpg,audi_logo.jpg', 331, 'Petrol', 2, '300', 'Diesel engine', 'Carbon break', 20, 101, 0, 'Power Steering, CD Player, Driver Airbag, AntiLock Braking System, Leather Seats'),
 (87, 'thar', 2022, 0, 2500, 'gj19hj7863', 'tata', 'audi1.jpg', 5, 'Petrol', 4, '500', 'Diesel engine', 'disc break', 20, 4, 1, ''),
 (88, 'Land Rover', 2025, 0, 100, 'GJ33AB1212', 'webagg', 'audi1.jpg,mahindra1.jpeg,gallery_3.jpg,mahindra3.jpeg', 4, 'CNG', 2, '261', 'Diesel engine', 'disc break', 40, 8, 0, ''),
 (89, 'audi x7', 1234, 0, 10, 'GJ33AB1212', 'webagg', 'front-view-118.jpg,front-left-side-47 (1).jpg,gallery_4.jpg,gallery_9.jpg', 3, 'Diesel', 2, '500', 'Diesel engine', 'disc break', 40, 12, 0, ''),
@@ -252,10 +253,10 @@ CREATE TABLE IF NOT EXISTS `driver` (
 --
 
 INSERT INTO `driver` (`did`, `dfname`, `dlname`, `fnumber`, `hprice`, `dprice`, `type_licence`, `profile`, `address`, `city`, `state`, `pin`, `status`, `created_at`, `updated_at`, `licence_pdf`, `adhar_pdf`) VALUES
-(3, 'Vatukiya', 'Bhupat', 7359509387, 200, 1200, 'passenger', 'driver/WhatsApp Image 2025-02-12 at 8.30.26 PM.jpeg', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364710, 1, '2025-02-11 07:56:25', '2025-02-15 11:09:14', '', ''),
-(4, 'hardik', 'vatukiya', 9106265263, 100, 1000, 'four_wheeler', 'download (2).jpeg,licence.png,profile.jpeg', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 1, '2025-02-11 07:57:34', '2025-02-15 11:10:45', '', ''),
+(3, 'Vatukiya', 'Bhupat', 7359509387, 200, 1200, 'passenger', 'driver/front-left-side-47 (2).jpg', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364710, 1, '2025-02-11 07:56:25', '2025-02-16 05:44:13', '', ''),
+(4, 'hardik', 'vatukiya', 9106265263, 100, 1000, 'four_wheeler', 'driver/front-left-side-47.jpg', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 1, '2025-02-11 07:57:34', '2025-02-16 05:45:00', '', ''),
 (5, 'Vatukiya bhai', 'Bhupat', 7359509387, 1230, 12, 'passenger', 'driver/WhatsApp Image 2025-02-12 at 8.30.26 PM.jpeg', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364710, 0, '2025-02-13 04:35:08', '2025-02-15 10:05:49', 'driver/VatukiyaBhupatResume (3).pdf', 'driver/HirenLakum(CV) (1).pdf'),
-(6, 'Vikrambhai', 'Dhoraliya', 7359509387, 456, 546, 'passenger', '', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 1, '2025-02-13 04:48:46', '2025-02-15 10:05:52', '', '');
+(6, 'Vikrambhai', 'Dhoraliya', 7359509387, 456, 546, 'passenger', 'driver/front-left-side-47 (1).jpg', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 1, '2025-02-13 04:48:46', '2025-02-16 05:45:06', '', '');
 
 -- --------------------------------------------------------
 
@@ -271,6 +272,12 @@ CREATE TABLE IF NOT EXISTS `reguser` (
   `mnumber` bigint NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DOB` date NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `address_type` varchar(255) NOT NULL,
+  `pincode` bigint DEFAULT NULL,
+  `address` varchar(255) NOT NULL,
   `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `reset_token` varchar(255) DEFAULT NULL,
   `reset_expiry` datetime DEFAULT NULL,
@@ -283,10 +290,10 @@ CREATE TABLE IF NOT EXISTS `reguser` (
 -- Dumping data for table `reguser`
 --
 
-INSERT INTO `reguser` (`uid`, `profile_picture`, `name`, `mnumber`, `email`, `password`, `token`, `reset_token`, `reset_expiry`, `is_verified`, `created_at`) VALUES
-(32, '', 'Bhupat', 7359509387, 'bhupatvatukiya1@gmail.com', '789789789', '', 'f12f8f62c66b613417c9ad5f6290f11a21d64798394e01bfb1454762367d05d0984146eb0c3d4d46884a335b3a5666fb10a3', '2025-02-05 12:13:40', NULL, '2025-02-05 03:01:29'),
-(33, '', 'hardik', 7474747474, 'hr123@gmail.com', '123123123', '', NULL, NULL, 1, '2025-02-05 03:01:29'),
-(40, 'upload/front-left-side-47 (2).jpg', 'mahadev', 9898989898, 'mm2028501@gmail.com', '123123123', '', NULL, NULL, 1, '2025-02-05 04:34:42');
+INSERT INTO `reguser` (`uid`, `profile_picture`, `name`, `mnumber`, `email`, `password`, `DOB`, `gender`, `state`, `address_type`, `pincode`, `address`, `token`, `reset_token`, `reset_expiry`, `is_verified`, `created_at`) VALUES
+(32, '', 'Bhupat', 7359509387, 'bhupatvatukiya1@gmail.com', '789789789', '0000-00-00', '', '', '', 0, '', '', 'f12f8f62c66b613417c9ad5f6290f11a21d64798394e01bfb1454762367d05d0984146eb0c3d4d46884a335b3a5666fb10a3', '2025-02-05 12:13:40', NULL, '2025-02-05 03:01:29'),
+(33, '', 'hardik', 7474747474, 'hr123@gmail.com', '123123123', '0000-00-00', '', '', '', 0, '', '', NULL, NULL, 1, '2025-02-05 03:01:29'),
+(40, 'upload/front-left-side-47 (2).jpg', 'mahadev', 9898989898, 'mm2028501@gmail.com', '123123123', '2025-02-16', 'male', 'Gujrat', 'office', 364710, 'Hifli Sheri No.4 Botad', '', NULL, NULL, 1, '2025-02-05 04:34:42');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

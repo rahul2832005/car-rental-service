@@ -14,16 +14,16 @@ $result = mysqli_fetch_assoc($exquery);
 $userEmail = $_SESSION['alogin'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $firstName = mysqli_real_escape_string($conn, $_POST['first_name']);
-    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
-    $dob = mysqli_real_escape_string($conn, $_POST['dob']);
-    $gender = mysqli_real_escape_string($conn, $_POST['gender']);
-    $state = mysqli_real_escape_string($conn, $_POST['state']);
-    $addressType = mysqli_real_escape_string($conn, $_POST['address_type']);
-    $pincode = mysqli_real_escape_string($conn, $_POST['pincode']);
-    $address = mysqli_real_escape_string($conn, $_POST['address']);
+    $firstName =$_POST['first_name'];
+    $phone =  $_POST['phone'];
+    $dob =  $_POST['dob'];
+    $gender =  $_POST['gender'];
+    $state = $_POST['state'];
+    $addressType = $_POST['address_type'];
+    $pincode = $_POST['pincode'];
+    $address = $_POST['address'];
 
-    $query = "UPDATE reguser SET name='$firstName', mnumber='$phone', dob='$dob', gender='$gender', state='$state', address_type='$addressType', pincode='$pincode', address='$address' WHERE email='$userEmail'";
+    $query = "UPDATE reguser SET name='$firstName', mnumber='$phone', DOB='$dob', gender='$gender', state='$state', address_type='$addressType', pincode='$pincode', address='$address' WHERE email='$userEmail'";
     if (mysqli_query($conn, $query)) {
         $_SESSION['success_message'] = 'Information updated successfully!';
         header('Location: info.php');
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body style="background-color:#fff;">
     <div class="form-container">
         <h2>Personal Details</h2>
-        <form action="process_form.php" method="post">
+        <form action="" method="post">
             <div class="form-group">
                 <label for="first_name">First Name*</label>
                 <input type="text" id="first_name" name="first_name" value="<?php echo $result['name']; ?>" disabled required>
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div class="form-group">
                 <label for="dob">DOB*</label>
-                <input type="date" id="dob" name="dob" value="<?php echo $result['dob'] ?? ''; ?>" disabled required>
+                <input type="date" id="dob" name="dob" value="<?php echo $result['DOB'] ?? ''; ?>" disabled required>
             </div>
 
             <div class="form-group">
@@ -96,8 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="state">State*</label>
                 <select id="state" name="state" disabled required>
                     <option value="">Select State</option>
-                    <option value="state1" <?php if ($result['state'] === 'state1') echo 'selected'; ?>>State 1</option>
-                    <option value="state2" <?php if ($result['state'] === 'state2') echo 'selected'; ?>>State 2</option>
+                    <option value="Gujrat" <?php if ($result['state'] === 'Gujrat') echo 'selected'; ?>>Gujrat</option>
+                    <option value="Maharashtra" <?php if ($result['state'] === 'Maharashtra') echo 'selected'; ?>>Maharashtra</option>
                 </select>
             </div>
 
@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div class="form-group">
                 <label for="pincode">Pincode*</label>
-                <input type="text" id="pincode" name="pincode" value="<?php echo $result['pincode'] ?? ''; ?>" disabled required>
+                <input type="number" id="pincode" name="pincode" placeholder="Enter PinCode" value="<?php echo $result['pincode'] ?? ''; ?>" disabled required>
             </div>
 
             <div class="form-group">
