@@ -12,7 +12,7 @@ $tomorrow = date('Y-m-d', strtotime('+1 day'));
 
 // $sql = "SELECT vid FROM booking WHERE ToDate = '$tomorrow' AND userEmail = '$user_id'";
 // $sql = "SELECT vid FROM booking where userEmail = '$user_id'";
-$sql = "SELECT * FROM booking where  userEmail = '$user_id'";
+$sql = "SELECT vid FROM booking where ToDate='$tomorrow' and  userEmail = '$user_id'";
 $result = mysqli_query($conn, $sql);
 
 $notifications = [];
