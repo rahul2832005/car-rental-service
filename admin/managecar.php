@@ -87,6 +87,7 @@ $total_pages = ceil($total_entries / $limit);
             border-radius: 10px;
             overflow: hidden;
             text-align: center;
+            margin-left: 50px;
         }
 
         th,

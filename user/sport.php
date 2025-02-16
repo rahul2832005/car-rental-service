@@ -1,18 +1,24 @@
-<?php
-session_start();
-@include "include/config.php";
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
+    <title>Document</title>
     <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
 
         /* Container */
         .container {
@@ -84,16 +90,15 @@ session_start();
 
         }
 
-        .card .img {
+        .card img {
             width: 100%;
-            height: 300px;
+            height: 350px;
             display: block;
-
-
         }
 
         #bg_img {
             width: 100%;
+
             margin-top: 5px;
         }
 
@@ -121,64 +126,26 @@ session_start();
 </head>
 
 <body>
-    <?php
-    @include "navbar.php";
-    ?>
-
-
-
-    <div class="banner-card">
-        <img id="bg_img" src="image/service_area_bg.png" alt="" srcset="">
-        <div class="banner-text">
-            <h1>Gallery</h1>
-        </div>
-    </div>
-    <div class="container">
-        <header>
-            <span class="badge">DETAILS</span>
-            <h1 class="head">Planning A Trip Should Be</h1>
-        </header>
-        <form action="" method="post" enctype="multipart/form-data">
-        <nav class="categories">
-            <button name="all">All</button>
-            <button name="truck">Truck</button>
-            <button name="luxury">Luxury Sedan</button>
-            <button name="sedan">Sedan</button>
-            <button name="sport">Sports Car</button>
-            <button name="hatchback">Hatchback</button>
-        </nav>
-    </form>
     <section>
-    <div class="gallery">
-        <?php
-            if(isset($_POST['truck']))
-            {
-                $sql=mysqli_query($conn,"select * from gallery where category='truck'");
-                if(mysqli_fetch_row($sql)>0)
-                {
-                    while($row=mysqli_fetch_assoc($sql))
-                    {
-                        ?>
-                        <div class='card'>
-                        <img class="img"src="../admin/gallery/<?php  echo  $row['image']; ?>">
+        <div class="gallery">
+            <?php
+            $conn = mysqli_connect("localhost", "root", "", "car_rent");
+            // error_reporting(0);
+            $sql = mysqli_query($conn, "SELECT * from gallery where category='sport_car'");
+            if (mysqli_num_rows($sql) > 0) {
+                while ($row = mysqli_fetch_array($sql)) {
 
-                    </div>
-                        <?php
-                    };
-                };?>
-                <?php
-                
-            }
-            
             ?>
-             </div>
+                    <div class='card'>
+                        <img src="../admin/gallery/<?php echo  $row['image']; ?>">
+                    </div>
+            <?php
+                };
+            };
+            ?>
+        </div>
+    </section>
 
-
-</section>
-
-    <?php
-    @include "footer.php";
-    ?>
 </body>
 
 </html>

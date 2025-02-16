@@ -97,7 +97,7 @@ session_start();
 
         .card img {
             width: 100%;
-            height: auto;
+            height: 350;
             display: block;
 
 
@@ -153,10 +153,10 @@ session_start();
             <nav class="categories">
                 <a href="all.php" target="gallery"><button name="all">All</button></a>
                 <a href="truck.php" target="gallery"><button name="truck">Truck</button></a>
-                <button name="luxury">Luxury Sedan</button>
-                <button name="sedan">Sedan</button>
-                <button name="sport">Sports Car</button>
-                <button name="hatchback">Hatchback</button>
+                <a href="luxury.php" target="gallery"><button name="luxury">Luxury Sedan</button></a>
+                <a href="sedan.php" target="gallery"><button name="sedan">Sedan</button></a>
+                <a href="sport.php" target="gallery"><button name="sport">Sports Car</button></a>
+                <a href="hatchback.php" target="gallery"><button name="hatchback">Hatchback</button></a>
             </nav>
         
 

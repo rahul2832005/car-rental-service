@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-            /* General Reset */
-            * {
+        /* General Reset */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -91,14 +92,13 @@
 
         .card img {
             width: 100%;
-            height: auto;
+            height: 350px;
             display: block;
-
-
         }
 
         #bg_img {
             width: 100%;
+
             margin-top: 5px;
         }
 
@@ -124,35 +124,28 @@
         }
     </style>
 </head>
+
 <body>
-<section>
-                    <div class="gallery">
-                        <div class='card'>
-                        <img src="../admin/gallery/gallery_9.jpg" />
-                        <? /* src='/car%20rental%20service/admin/gallery/gallery_1.jpg'*/?>
-                        </div>
+    <section>
+        <div class="gallery">
+            <?php
+            $conn = mysqli_connect("localhost", "root", "", "car_rent");
+            // error_reporting(0);
+            $sql = mysqli_query($conn, "SELECT * from gallery where  category='truck'");
+            if (mysqli_num_rows($sql) > 0) {
+                while ($row = mysqli_fetch_array($sql)) {
 
-                        <div class='card'>
-                        <img src="../admin/gallery/gallery_9.jpg" />
-                        <!-- <img src='/car%20rental%20service/admin/gallery/gallery_1.jpg'/> -->
-                        </div>
+            ?>
+                    <div class='card'>
+                        <img src="../admin/gallery/<?php echo  $row['image']; ?>">
+                    </div>
+            <?php
+                };
+            };
+            ?>
+        </div>
+    </section>
 
-                        <div class='card'>
-                        <img src="../admin/gallery/gallery_9.jpg" />
-                        <!-- <img src='/car%20rental%20service/admin/gallery/gallery_1.jpg'/> -->
-                        </div>
-
-                        <div class='card'>
-                        <img src="../admin/gallery/gallery_9.jpg" />
-                        <!-- <img src='/car%20rental%20service/admin/gallery/gallery_1.jpg'/> -->
-                        </div>
-
-                        <div class='card'>
-                        <img src="../admin/gallery/gallery_9.jpg" />
-                        <!-- <img src='/car%20rental%20service/admin/gallery/gallery_1.jpg'/> -->
-                        </div>
-                        </div>
-              
-        </section>
 </body>
+
 </html>
