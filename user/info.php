@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 @include "include/config.php";
 session_start();
 if (!isset($_SESSION["alogin"])) {
@@ -22,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pincode = mysqli_real_escape_string($conn, $_POST['pincode']);
     $address = mysqli_real_escape_string($conn, $_POST['address']);
 
-    $query = "UPDATE reguser SET name='$firstName', mnumber='$phone', dob='$dob', gender='$gender', state='$state', address_type='$addressType', pincode='$pincode', address='$address' WHERE email='$userEmail'";
+    $query = "UPDATE reguser SET name='$firstName', mnumber='$phone' WHERE email='$userEmail'";
 
     if (mysqli_query($conn, $query)) {
         $_SESSION['success_message'] = 'Information updated successfully!';
