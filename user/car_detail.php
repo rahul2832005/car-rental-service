@@ -656,6 +656,27 @@ if (isset($_POST['Book'])) {
             overlay.style.display = 'none';
         }
     </script>
+
+
+<script>
+    let images = [
+        document.getElementById('thumb1').src,
+        document.getElementById('thumb2').src,
+        document.getElementById('thumb3').src
+    ];
+    let currentIndex = 0;
+    let mainImg = document.getElementById('mainImg');
+
+    function moveSlide(step) {
+        currentIndex += step;
+        if (currentIndex < 0) {
+            currentIndex = images.length - 1; // Loop to last image
+        } else if (currentIndex >= images.length) {
+            currentIndex = 0; // Loop back to first image
+        }
+        mainImg.src = images[currentIndex];
+    }
+</script>
 </body>
 
 </html>
