@@ -233,7 +233,7 @@ if (isset($_POST['submit'])) {
 
 
             <div class="button">
-                <button type="submit" name="submit" class="button">Add Driver</button>
+                <button type="submit" name="submit" class="btn">Add Driver</button>
                 <!--<input type="button" value="Add Car" name="submit">-->
             </div>
         </form>
