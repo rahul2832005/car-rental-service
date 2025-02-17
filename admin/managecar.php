@@ -1,11 +1,24 @@
 <?php
 @include "include/config.php";
+// Pagination Logic
+$limit = 5;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$start = ($page - 1) * $limit;
 
-$sql = "SELECT * FROM car_list";
+// Fetch Cars with Limit and Offset
+$sql = "SELECT * FROM car_list LIMIT $start, $limit";
 $result = mysqli_query($conn, $sql);
+
+// Total Cars for Pagination Count
+$total_result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM car_list");
+$total_row = mysqli_fetch_assoc($total_result);
+$total_entries = $total_row['total'];
+$total_pages = ceil($total_entries / $limit);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,19 +26,21 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <style>
-              @font-face {
-    font-family: 'pop-regular';
-    src: url('../font/Poppins-Regular.ttf');
-}
+        @font-face {
+            font-family: 'pop-regular';
+            src: url('../font/Poppins-Regular.ttf');
+        }
+
         body {
             font-family: 'pop-regular';
-            background:rgb(211, 217, 223);
+            background: rgb(211, 217, 223);
             margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
         }
 
         .container {
@@ -59,12 +74,14 @@ $result = mysqli_query($conn, $sql);
         }
 
         /* Table Styling */
-         .table-container {
-            overflow-x: auto;
-        }   
+        .table-container {
+            /* overflow-x: auto; */
+            /* overflow-y: auto; */
+
+        }
 
         table {
-            width: 90%;
+            width: 95%;
             border-collapse: collapse;
             background: #fff;
             border-radius: 10px;
@@ -73,7 +90,8 @@ $result = mysqli_query($conn, $sql);
             margin-left: 50px;
         }
 
-         th,td {
+        th,
+        td {
             padding: 12px;
             text-align: center;
             border-bottom: 1px solid #ddd;
@@ -106,7 +124,8 @@ $result = mysqli_query($conn, $sql);
         }
 
         /* Action Icons */
-        .edit, .delete {
+        .edit,
+        .delete {
             margin: 0 5px;
             font-size: 16px;
             transition: 0.3s;
@@ -133,9 +152,41 @@ $result = mysqli_query($conn, $sql);
             background: #c82333;
         }
 
+        .d-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+       
+
+        .pagination a {
+            padding: 8px 12px;
+            margin: 0 4px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            background-color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination a.active {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        .pagination a:hover {
+            background-color: #f0f0f0;
+        }
+
         /* Responsive Design */
         @media screen and (max-width: 768px) {
-            th, td {
+
+            th,
+            td {
                 padding: 8px;
                 font-size: 14px;
             }
@@ -144,9 +195,9 @@ $result = mysqli_query($conn, $sql);
                 width: 100%;
             }
         }
-
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>🚗 Manage Cars</h1>
@@ -170,44 +221,61 @@ $result = mysqli_query($conn, $sql);
                     </tr>
                 </thead>
                 <tbody>
-                <?php
-                $n = 1;
-                while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-                    <tr>
-                        <td><?php echo $n; ?></td>
-                        <td class="car-name"><?php echo $row['cname']; ?></td>
-                        <td>₹<?php echo $row['chprice']; ?></td>
-                        <td>₹<?php echo $row['price']; ?></td>
-                        <td><?php echo $row['no_plate']; ?></td>
-                        <td><?php echo $row['brand']; ?></td>
-                        <td><?php echo $row['seat']; ?></td>
-                        <td><?php echo $row['fual']; ?></td>
-                        <td>
-                            <span class="status <?php echo strtolower($row['status']); ?>">
-                                <?php
-                                if ($row['status'] == 0) echo "<span class='available'> Available</span>";
-                                elseif ($row['status'] == 1) echo "<span class='booked'>Booked </span>";
-                                elseif ($row['status'] == 2) echo "<span class='maintenance'>Maintenance </span>";
-                                else echo "Not Available";
-                                ?>
-                            </span>
-                        </td>
-                        <td>
-                            <a class="edit" style="padding:5px 4px;" href="update.php?vid=<?php echo $row['vid']; ?>" >
-                                <i class="fa-solid fa-pen"></i>
-                            </a>   
-                            <a class="delete" href="delete.php?vid=<?php echo $row['vid']; ?>">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                <?php
-                $n++;
-                }
-                ?>
+                    <?php
+                    $n = 1;
+                    while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                        <tr>
+                            <td><?php echo $n; ?></td>
+                            <td class="car-name"><?php echo $row['cname']; ?></td>
+                            <td>₹<?php echo $row['chprice']; ?></td>
+                            <td>₹<?php echo $row['price']; ?></td>
+                            <td><?php echo $row['no_plate']; ?></td>
+                            <td><?php echo $row['brand']; ?></td>
+                            <td><?php echo $row['seat']; ?></td>
+                            <td><?php echo $row['fual']; ?></td>
+                            <td>
+                                <span class="status <?php echo strtolower($row['status']); ?>">
+                                    <?php
+                                    if ($row['status'] == 0) echo "<span class='available'> Available</span>";
+                                    elseif ($row['status'] == 1) echo "<span class='booked'>Booked </span>";
+                                    elseif ($row['status'] == 2) echo "<span class='maintenance'>Maintenance </span>";
+                                    else echo "Not Available";
+                                    ?>
+                                </span>
+                            </td>
+                            <td>
+                                <a class="edit" style="padding:5px 4px;" href="update.php?vid=<?php echo $row['vid']; ?>">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                                <a class="delete" href="delete.php?vid=<?php echo $row['vid']; ?>">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php
+                        $n++;
+                    }
+                    ?>
                 </tbody>
             </table>
+            <div class="d-flex">
+                <div>Showing <?php echo $start + 1; ?> to <?php echo min($start + $limit, $total_entries); ?> of <?php echo $total_entries; ?> entries</div>
+                <div class="pagination">
+                    <?php if ($page > 1): ?>
+                        <a href="?page=<?php echo $page - 1; ?>" class="page-link">Previous</a>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                        <a href="?page=<?php echo $i; ?>" class="page-link <?php echo $i == $page ? 'active' : ''; ?>"><?php echo $i; ?></a>
+                    <?php endfor; ?>
+
+                    <?php if ($page < $total_pages): ?>
+                        <a href="?page=<?php echo $page + 1; ?>" class="page-link">Next</a>
+                    <?php endif; ?>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -217,7 +285,7 @@ $result = mysqli_query($conn, $sql);
             let table = document.getElementById("carTable");
             let rows = table.getElementsByTagName("tr");
 
-            for (let i = 1; i < rows.length; i++) { 
+            for (let i = 1; i < rows.length; i++) {
                 let carNameCell = rows[i].getElementsByClassName("car-name")[0];
                 if (carNameCell) {
                     let carName = carNameCell.textContent.toLowerCase();
@@ -228,8 +296,10 @@ $result = mysqli_query($conn, $sql);
                     }
                 }
             }
+
         }
     </script>
 
 </body>
+
 </html>
