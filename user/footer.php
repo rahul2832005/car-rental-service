@@ -170,7 +170,7 @@
             <div class="footer-section community">
                 <h3 class="h3">Community</h3>
                 <ul style=" list-style: none;">
-                    <li style=" margin-bottom: 10px;"><a href="#">Area Details</a></li>
+                    <!-- <li style=" margin-bottom: 10px;"><a href="#">Area Details</a></li> -->
                     <li style=" margin-bottom: 10px;"><a href="faq.php">Faq</a></li>
                     <li style=" margin-bottom: 10px;"><a href="servece_area.php">Service Areas</a></li>
                     <li style=" margin-bottom: 10px;"><a href="gallery.php">Gallery</a></li>

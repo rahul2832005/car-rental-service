@@ -64,12 +64,13 @@ $result = mysqli_query($conn, $sql);
         }   
 
         table {
-            width: 110%;
+            width: 90%;
             border-collapse: collapse;
             background: #fff;
             border-radius: 10px;
             overflow: hidden;
             text-align: center;
+            margin-left: 50px;
         }
 
          th,td {
