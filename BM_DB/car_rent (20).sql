@@ -332,7 +332,6 @@ INSERT INTO `gallery` (`img_id`, `image`, `category`) VALUES
 -- Table structure for table `reguser`
 --
 
-
 DROP TABLE IF EXISTS `reguser`;
 CREATE TABLE IF NOT EXISTS `reguser` (
   `uid` int NOT NULL AUTO_INCREMENT,
@@ -354,17 +353,17 @@ CREATE TABLE IF NOT EXISTS `reguser` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 --
 -- Dumping data for table `reguser`
 --
 
-INSERT INTO `reguser` (`uid`, `profile_picture`, `name`, `mnumber`, `email`, `password`, `token`, `reset_token`, `reset_expiry`, `is_verified`, `created_at`) VALUES
-(32, '', 'Bhupat', 7359509387, 'bhupatvatukiya1@gmail.com', '789789789', '', 'f12f8f62c66b613417c9ad5f6290f11a21d64798394e01bfb1454762367d05d0984146eb0c3d4d46884a335b3a5666fb10a3', '2025-02-05 12:13:40', NULL, '2025-02-05 03:01:29'),
-(33, '', 'hardik', 7474747474, 'hr123@gmail.com', '123123123', '', NULL, NULL, 1, '2025-02-05 03:01:29'),
-(40, 'upload/gallery_17.jpg', 'mahadev', 9898989898, 'mm2028501@gmail.com', '123123123', '', NULL, NULL, 1, '2025-02-05 04:34:42'),
-(49, '', 'mahadev', 7824099520, 'bcacourcebca@gmail.com', '123123123', '9ed5987a4b65b439d721cd6d21653014ea3653482a98a5aa50b4e6d549d8b8f6e5eae20425c201ab2a74cd3388b3af92efc9', NULL, NULL, NULL, '2025-02-16 17:17:19'),
-(50, 'upload/gallery_1.jpg', 'mahadev', 7824099520, 'bvfacts68@gmail.com', '147147147', '', NULL, '2025-02-16 22:52:25', 1, '2025-02-16 17:19:01');
+INSERT INTO `reguser` (`uid`, `profile_picture`, `name`, `mnumber`, `email`, `password`, `DOB`, `gender`, `state`, `address_type`, `pincode`, `address`, `token`, `reset_token`, `reset_expiry`, `is_verified`, `created_at`) VALUES
+(32, '', 'Bhupat', 7359509387, 'bhupatvatukiya1@gmail.com', '789789789', '0000-00-00', '', '', '', 0, '', '', 'f12f8f62c66b613417c9ad5f6290f11a21d64798394e01bfb1454762367d05d0984146eb0c3d4d46884a335b3a5666fb10a3', '2025-02-05 12:13:40', NULL, '2025-02-05 03:01:29'),
+(33, '', 'hardik', 7474747474, 'hr123@gmail.com', '123123123', '0000-00-00', '', '', '', 0, '', '', NULL, NULL, 1, '2025-02-05 03:01:29'),
+(40, 'upload/front-left-side-47 (2).jpg', 'mahadev', 9898989898, 'mm2028501@gmail.com', '123123123', '2025-02-16', 'male', 'Gujrat', 'office', 364710, 'Hifli Sheri No.4 Botad', '', NULL, NULL, 1, '2025-02-05 04:34:42');
 COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
