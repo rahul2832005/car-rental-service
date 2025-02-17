@@ -248,7 +248,7 @@ if (isset($_POST['Book'])) {
         .prev,
         .next {
             position: absolute;
-            top: 50%;
+            top: 45%;
             transform: translateY(-50%);
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
@@ -258,11 +258,11 @@ if (isset($_POST['Book'])) {
         }
 
         .prev {
-            left: 10px;
+            left: 1px;
         }
 
         .next {
-            right: 10px;
+            right: 7px;
         }
     </style>
 </head>
@@ -307,10 +307,10 @@ if (isset($_POST['Book'])) {
                     <div class="section">
                         <h2><?php echo $row['cname']; ?></h2>
                         <div class="content">
-                            <p>Per/Hour</p>
-                            <span style="color: red;"> <b>₹<?php echo  $row['chprice']; ?></b></span>
-                            <p>Per/Day</p>
-                            <span style="color: red;"> <b>₹<?php echo  $row['price']; ?></b></span>
+                            <p>Per/Hour
+                            <span style="color: red;"> <b>₹<?php echo  $row['chprice']; ?></b></span></p>
+                            <p>Per/Day
+                            <span style="color: red;"> <b>₹<?php echo  $row['price']; ?></b></span></p>
 
                         </div>
                     </div>
