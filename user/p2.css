@@ -1,6 +1,9 @@
 /* General Reset */
 
-
+@font-face {
+    font-family: 'pop-regular';
+    src: url('../font/Poppins-Regular.ttf');
+}
 h1, h2, p, input, select, button {
     margin: 0;
     padding: 0;
@@ -9,7 +12,7 @@ h1, h2, p, input, select, button {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'pop-regular';
     background-color: whitesmoke;
     color: #555050;
 }
@@ -70,7 +73,7 @@ body {
     position: relative;
     margin-bottom: 5px;
     margin-left: -35%;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'pop-regular';
     font-size:15px;
 }
 

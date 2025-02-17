@@ -332,6 +332,7 @@ INSERT INTO `gallery` (`img_id`, `image`, `category`) VALUES
 -- Table structure for table `reguser`
 --
 
+
 DROP TABLE IF EXISTS `reguser`;
 CREATE TABLE IF NOT EXISTS `reguser` (
   `uid` int NOT NULL AUTO_INCREMENT,
@@ -340,14 +341,19 @@ CREATE TABLE IF NOT EXISTS `reguser` (
   `mnumber` bigint NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DOB` date NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `address_type` varchar(255) NOT NULL,
+  `pincode` bigint DEFAULT NULL,
+  `address` varchar(255) NOT NULL,
   `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `reset_token` varchar(255) DEFAULT NULL,
   `reset_expiry` datetime DEFAULT NULL,
   `is_verified` tinyint(1) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 --
 -- Dumping data for table `reguser`
 --

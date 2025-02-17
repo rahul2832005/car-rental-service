@@ -53,8 +53,12 @@ $result = mysqli_query($conn, $sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recent Bookings</title>
     <style>
+          @font-face {
+            font-family: 'pop-regular';
+            src: url('../font/Poppins-Regular.ttf');
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'pop-regular';
             margin: 20px;
         }
         .booking-container {
