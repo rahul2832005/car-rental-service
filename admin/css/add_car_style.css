@@ -262,7 +262,7 @@ h2 {
     gap: 15px;
 }
 
-button {
+.btn {
     padding: 10px 20px;
     font-size: 14px;
     cursor: pointer;

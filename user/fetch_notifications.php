@@ -8,7 +8,7 @@ if (!isset($_SESSION['alogin'])) {
 }
 
 $user_id = $_SESSION['alogin']; // Assuming you store userEmail in session after login
-$current_date = date('Y-m-d', strtotime('+0 day')); // Get the current date (only date part)
+$current_date = date('Y-m-d', strtotime('+3 day')); // Get the current date (only date part)
 
 // Query to check if any bookings have ToDate with today's date (ignoring time part)
 $sql = "SELECT vid FROM booking WHERE DATE(ToDate) = '$current_date' AND userEmail = '$user_id' AND status=1";

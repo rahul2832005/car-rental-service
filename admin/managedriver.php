@@ -3,7 +3,7 @@
 
 
 // Pagination Logic
-$limit = 2;
+$limit = 5;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($page - 1) * $limit;
 
@@ -42,7 +42,7 @@ $total_pages = ceil($total_entries / $limit);
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            /* overflow: hidden; */
             min-height: 100vh; /* Ensure full viewport height */
         }
 

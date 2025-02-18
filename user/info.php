@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+ error_reporting(0);
 @include "include/config.php";
 session_start();
 if (!isset($_SESSION["alogin"])) {
