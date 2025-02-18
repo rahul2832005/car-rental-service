@@ -185,20 +185,16 @@ $total_pages = ceil($total_entries / $limit);
             }
         }
        .d-flex {
-             /* display: flex; */
+             display: flex;
              justify-content: space-between;
              align-items: center;
              margin-top: 20px;
-         }
-         .pagination{
-            margin-bottom: 20px;
-            margin-left: 40px;
          }
 
          .pagination a {
              padding: 8px 12px;
              margin: 0 4px;
-             border: 2px solid #ccc;
+             border: 1px solid #ccc;
              border-radius: 5px;
              text-decoration: none;
              color: #333;
@@ -207,19 +203,16 @@ $total_pages = ceil($total_entries / $limit);
          }
 
          .pagination a.active {
-             background-color: #fff;
-             color: #000;
+             background-color: #007bff;
+             color: white;
              font-weight: bold;
          }
 
          .pagination a:hover {
-             background-color: red;
-             color: #fff;
+             background-color: #f0f0f0;
          }
          .entries{
-            font-size: 20px;
-            margin-bottom: 10px;
-            color:#000;
+            margin-right: 500px;
          }
      
     </style>
@@ -266,7 +259,7 @@ $total_pages = ceil($total_entries / $limit);
         ?>
  </div>
 <div class="d-flex">
-             
+             <div class="entries">Showing <?php echo $start + 1; ?> to <?php echo min($start + $limit, $total_entries); ?> of <?php echo $total_entries; ?> entries</div>
              <div class="pagination">
                  <?php if ($page > 1): ?>
                      <a href="?page=<?php echo $page - 1; ?>" class="page-link">Previous</a>
@@ -280,7 +273,6 @@ $total_pages = ceil($total_entries / $limit);
                      <a href="?page=<?php echo $page + 1; ?>" class="page-link">Next</a>
                  <?php endif; ?>
              </div>
-             <div class="entries">Showing <?php echo $start + 1; ?> to <?php echo min($start + $limit, $total_entries); ?> of <?php echo $total_entries; ?> entries</div>
          </div>
    
 

@@ -74,11 +74,11 @@ $total_pages = ceil($total_entries / $limit);
         }
 
         /* Table Styling */
-        /* .table-container {
-             overflow-x: auto; 
-             overflow-y: auto; 
+        .table-container {
+            /* overflow-x: auto; */
+            /* overflow-y: auto; */
 
-        } */
+        }
 
         table {
             width: 95%;
