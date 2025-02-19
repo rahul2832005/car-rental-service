@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <style>
+        @font-face {
+    font-family: 'pop-regular';
+    src: url('../font/Poppins-Regular.ttf');
+}
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'pop-regular';
         }
 
         body {
@@ -17,7 +22,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(to right,rgb(233, 71, 71), #ff6666);
+            background: linear-gradient(to right, rgb(233, 71, 71), #ff6666);
         }
 
         .container {
@@ -36,17 +41,21 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            margin-top: -10px;
         }
 
         .left img {
-            max-width: 400px;
-            height: 450px;
+            width: 450px;
+            height: 430px;
+            object-fit: fill;
             border-radius: 10px;
         }
 
+
         .right {
             flex: 1;
-            padding: 50px;
+            padding: 25px;
+            line-height: 50px;
         }
 
         .right h2 {
@@ -74,8 +83,9 @@
 
         .btn {
             width: 100%;
-            padding: 10px;
-            background: #ff0000;
+            padding: 5px;
+            background:rgb(235, 66, 66);
+            font-size: 25px;
             color: white;
             border: none;
             border-radius: 5px;
@@ -89,6 +99,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="left">
@@ -107,7 +118,7 @@
                     <label><input type="checkbox"> Remember me</label>
                     <a href="#">Forgot Password?</a>
                 </div>
-                <button class="btn">Sign in</button>
+                <button class="btn">Login</button>
                 <div class="signup-link">
                     Don't have an account? <a href="#">Sign Up</a>
                 </div>
@@ -115,4 +126,5 @@
         </div>
     </div>
 </body>
+
 </html>

@@ -169,11 +169,15 @@ if(isset($_POST["sign-up"]))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>register</title>
     <style>
+         @font-face {
+    font-family: 'pop-regular';
+    src: url('../font/Poppins-Regular.ttf');
+}
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'poppins', 'sans-serif';
+            font-family: 'pop-regular';
             font-size: 20px;
         }
 
@@ -182,20 +186,22 @@ if(isset($_POST["sign-up"]))
             /*justify-content: center;*/
             align-items: center;
             min-height: 100vh;
-            background: url("image/register1_bg.jpg") no-repeat;
+            /* background: url("image/register1_bg.jpg") no-repeat; */
+            background: url("image/i5.jpg") no-repeat;
             background-size: cover;
 
         }
 
         .container {
             /* background:green;*/
-            margin-left: 50px;
+            /* height:700px; */
+            margin-left: 90px;
             width: 355px;
             border: 2px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             color: #fff;
             border-radius: 10px;
-            padding: 30px 40px;
+            padding: 20px 36px;
             backdrop-filter: blur(6px);
         }
 
@@ -279,15 +285,15 @@ if(isset($_POST["sign-up"]))
         }
 
         .content {
-            margin-left: 50px;
+            margin-left: 200px;
             color: #fff;
             height: 100%;
             width: 50%;
             display: flex;
             /*justify-content: center;*/
             flex-direction: column;
-            font-size: 45px;
-            font-family: ARIAL;
+            font-size: 50px;
+            /* font-family: ; */
             font-weight: bold;
         }
 
@@ -300,8 +306,9 @@ if(isset($_POST["sign-up"]))
 <body>
     </div>
     <div class="content">
-        THE PLACE WHERE ADVENTURES
-        BEGINS!
+       WE TRY BEST TO<BR> 
+       MAKE YOUR 
+       DRIVE MEMORABLE!
     </div>
     <div class="container">
         <form action="#" method="post">
