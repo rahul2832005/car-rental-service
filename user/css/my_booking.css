@@ -1,0 +1,118 @@
+@font-face {
+    font-family: 'pop-regular';
+    src: url('../font/Poppins-Regular.ttf');
+}
+
+body {
+    font-family: 'pop-regular', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.booking-container {
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+}
+
+.booking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.booking-header a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.booking-header a:hover {
+    color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 12px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.booking-img {
+    width: 80px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.status {
+    display: inline-block;
+    padding: 24px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.status.in-progress {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.status.success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.status.rejected {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.status.maintenance {
+    background-color: #6c757d;
+    color: #fff;
+}
+.clickable-row {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.clickable-row:hover {
+    background-color: #f5f5f5;
+}
+
+@media (max-width: 768px) {
+    .booking-container {
+        padding: 15px;
+    }
+
+    .booking-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    table,
+    th,
+    td {
+        font-size: 14px;
+    }
+}

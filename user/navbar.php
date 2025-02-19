@@ -99,6 +99,30 @@
       border-radius: 5px;
       margin-top: 10px;
     }
+
+    .notification-icon-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .notification-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      font-size: 12px;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: none;
+      /* Hidden by default */
+    }
+
     @media screen and (max-width: 768px) {
       .nav-links {
         display: none;
@@ -128,7 +152,7 @@
 </head>
 
 <body>
-  <header class="navbar">
+<header class="navbar">
     <div class="logo">
       <span class="logo-text">Car<span style="color: red;">ola</span></span>
     </div>
@@ -144,7 +168,10 @@
       <?php if (!isset($_SESSION["alogin"])) { ?>
         <a href="login.php">Login/Register</a>
       <?php } else { ?>
-        <a href="#" id="notification-icon"><i class="fa fa-bell"></i></a>
+        <div class="notification-icon-wrapper">
+          <a href="#" id="notification-icon"><i class="fa fa-bell"></i></a>
+          <span class="notification-badge" id="notification-badge">0</span>
+        </div>
         <a href="profile.php"><i class="fa fa-user-circle"></i></a>
         <a href="logout.php">Logout</a>
       <?php } ?>
@@ -163,6 +190,7 @@
   <script>
     const notificationIcon = document.getElementById('notification-icon');
     const notificationPopup = document.getElementById('notificationPopup');
+    const notificationBadge = document.getElementById('notification-badge');
 
     notificationIcon.addEventListener('click', function (e) {
       e.preventDefault();
@@ -181,63 +209,54 @@
     function hidePopup() {
       notificationPopup.style.display = 'none';
     }
+
     function loadNotifications() {
-  const notificationList = document.getElementById('notificationList');
-  notificationList.innerHTML = '<li>Loading notifications...</li>';
+      const notificationList = document.getElementById('notificationList');
+      notificationList.innerHTML = '<li>Loading notifications...</li>';
 
-  fetch('fetch_notifications.php')
-    .then(response => response.json())
-    .then(data => {
-      notificationList.innerHTML = '';
+      fetch('fetch_notifications.php')
+        .then(response => response.json())
+        .then(data => {
+          notificationList.innerHTML = '';
+          if (data.error) {
+            notificationList.innerHTML = `<li>${data.error}</li>`;
+            updateBadge(0);
+            return;
+          }
 
-      if (data.error) {
-        notificationList.innerHTML = `<li>${data.error}</li>`;
-        return;
-      }
-
-      if (data.length > 0) {
-        data.forEach(notification => {
-          const li = document.createElement('li');
-          li.textContent = notification;
-          notificationList.appendChild(li);
+          if (data.length > 0) {
+            data.forEach(notification => {
+              const li = document.createElement('li');
+              li.textContent = notification;
+              notificationList.appendChild(li);
+            });
+            updateBadge(data.length);
+          } else {
+            notificationList.innerHTML = '<li>No new notifications.</li>';
+            updateBadge(0);
+          }
+        })
+        .catch(error => {
+          notificationList.innerHTML = '<li>Error loading notifications.</li>';
+          updateBadge(0);
         });
+    }
+
+    function updateBadge(count) {
+      if (count > 1) {
+        notificationBadge.textContent = count;
+        notificationBadge.style.display = 'flex';
       } else {
-        notificationList.innerHTML = '<li>No new notifications.</li>';
+        notificationBadge.style.display = 'none';
       }
-    })
-    .catch(error => {
-      notificationList.innerHTML = '<li>Error loading notifications.</li>';
-    });
-}
+    }
 
-// function loadNotifications() {
-//     const notificationList = document.getElementById('notificationList');
-    
-//     fetch('fetch_notifications.php')
-//         .then(response => response.json())
-//         .then(data => {
-//             if (data.error) {
-//                 console.error(data.error);
-//                 return;
-//             }
+    // Auto-refresh notifications every 6 seconds
+    setInterval(loadNotifications, 6000);
 
-//             // Add new random notification
-//             data.forEach(notification => {
-//                 const li = document.createElement('li');
-//                 li.textContent = notification;
-//                 notificationList.appendChild(li);
-//             });
-//         })
-//         .catch(error => {
-//             console.error('Error loading random notification:', error);
-//         });
-// }
-
-// Call this every minute (60000 milliseconds)
-setInterval(loadNotifications, 6000);
-
+    // Initial load
+    loadNotifications();
   </script>
 </body>
 
 </html>
-

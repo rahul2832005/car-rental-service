@@ -1,20 +1,21 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php'; // If installed via Composer
-//  error_reporting(0);
+ error_reporting(0);
 @include "include/config.php";
 // for approve 
 $did = $_GET['did'];
-$email=$_GET['userEmail'];
+$email = $_GET['userEmail'];
 
 if (isset($_REQUEST['aid'])) {
     $aid = intval($_GET['aid']);
     $vid = $_GET['vid'];
-    $email=$_GET['userEmail'];
+    $email = $_GET['userEmail'];
 
-   
+
 
 
     $status = 1;
@@ -41,22 +42,18 @@ if (isset($_REQUEST['aid'])) {
         $mail->Subject = 'Password Reset Request';
         $mail->Body    = "
         Welcome To Carola. <br>
-Your Booking done        <br>
-        <br>
-       
-booked        <br>
-      
-        <h2>Thank You</h2>
-        ";
-
+Your Booking done!<br>    
+        <h2>Thank You</h2>";
         $mail->send();
-        echo "<script>alert('Password reset email sent!');window.location.href='../login.php';</script>";
-    } catch (Exception $e) {
-        echo "Mailer Error: {$mail->ErrorInfo}";
-    }
+        echo "<script>alert('Booking Done email sent!');</script>";
+    
 
     echo "<script>alert('Approve success')
 window.open('confirmed-booking.php', 'second');</script>";
+    }
+catch (Exception $e) {
+    echo "Mailer Error: {$mail->ErrorInfo}";
+}
 }
 
 
@@ -75,10 +72,34 @@ if (isset($_REQUEST['eaid'])) {
     // $update1="update booking set FromDate='$sdate',ToDate='$next_date' where vid=$eaid";
     // $q1=mysqli_query($conn,$update1);
 
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; // Change to your SMTP provider
+        $mail->SMTPAuth = true;
+        $mail->Username = 'carolarental3@gmail.com';
+        $mail->Password = 'bojiwwvipmyipdqc';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
 
+        $mail->setFrom('carolarental3@gmail.com', 'CarOla');
+        $mail->addAddress($email);
+
+        $mail->isHTML(true);
+        $mail->Subject = 'Password Reset Request';
+        $mail->Body    = "
+        Welcome To Carola. <br>
+Sorry! To Say That  Your  Booking Is  Cancelled !<br>
+Try Again !!    
+        <h2>Thank You</h2>";
+        $mail->send();
+        echo "<script>alert('Booking Cancel email sent!');</script>";
 
     echo "<script>alert('Booking Cancelled')
 window.open('canceled-booking.php', 'second');</script>";
+} catch (Exception $e) {
+    echo "Mailer Error: {$mail->ErrorInfo}";
+}
 }
 
 ?>
@@ -200,7 +221,7 @@ window.open('canceled-booking.php', 'second');</script>";
 <body>
     <div class="container">
         <?php
-        
+
         $bno = $_GET['bno'];
         $uid = $_GET['userEmail'];
         //         $sql = "SELECT reguser.*, 
@@ -222,10 +243,10 @@ window.open('canceled-booking.php', 'second');</script>";
         //  WHERE booking.bookingno = $bno AND booking.userEmail='$uid'
         //  ORDER BY booking.PostingDate" ;
         $bm = "SELECT did FROM booking WHERE bookingno=$bno AND (userEmail='$uid' OR did='$did')";
-$exbm = mysqli_query($conn, $bm);
+        $exbm = mysqli_query($conn, $bm);
 
-if (mysqli_num_rows($exbm) > 0) {
-    $sql = "SELECT reguser.*, 
+        if (mysqli_num_rows($exbm) > 0) {
+            $sql = "SELECT reguser.*, 
                car_list.cname, 
                booking.FromDate, 
                booking.ToDate, 
@@ -251,16 +272,16 @@ if (mysqli_num_rows($exbm) > 0) {
         LEFT JOIN driver ON driver.did = booking.did
         WHERE booking.bookingno = $bno
         ORDER BY booking.PostingDate";
-    $result = mysqli_query($conn, $sql);
-} else {
-    echo "<script>alert('No Record Found');</script>";
-    exit;
-}
+            $result = mysqli_query($conn, $sql);
+        } else {
+            echo "<script>alert('No Record Found');</script>";
+            exit;
+        }
 
         $na = mysqli_num_rows($result);
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
-            <h2 class="title">#<?php echo $row['bookingno']; echo $email;?> Booking Details</h2>
+            <h2 class="title">#<?php echo $row['bookingno'];?> Booking Details</h2>
 
             <div class="section">
                 <h3>User Details</h3>
@@ -344,44 +365,44 @@ if (mysqli_num_rows($exbm) > 0) {
                 </table>
             </div>
 
-            <?php if($row['did'])   
-            {   ?>
-            <div class="section">
-                <h3>Driver Details</h3>
-                <table class="details-table">
-                    <tr>
-                        <td><strong>Driver Name</strong></td>
-                        <td><?php echo $row['dfname']; ?></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Booking Date</strong></td>
-                        <td><?php echo $row['PostingDate']; ?></td>
-                    </tr>
+            <?php if ($row['did']) {   ?>
+                <div class="section">
+                    <h3>Driver Details</h3>
+                    <table class="details-table">
+                        <tr>
+                            <td><strong>Driver Name</strong></td>
+                            <td><?php echo $row['dfname']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Booking Date</strong></td>
+                            <td><?php echo $row['PostingDate']; ?></td>
+                        </tr>
 
-                    <tr>
-                        <td><strong>Total Days</strong></td>
-                        <td><?php echo $row['totalnodays']; ?></td>
-                    </tr>
+                        <tr>
+                            <td><strong>Total Days</strong></td>
+                            <td><?php echo $row['totalnodays']; ?></td>
+                        </tr>
 
-                    <tr>
-                        <td><strong>Rent Per Day</strong></td>
-                        <td><?php echo $row['dprice']; ?></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Grand Total</strong></td>
-                        <td><?php echo $row['grand_totald']; ?></td>
-                    </tr>
-
+                        <tr>
+                            <td><strong>Rent Per Day</strong></td>
+                            <td><?php echo $row['dprice']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Grand Total</strong></td>
+                            <td><?php echo $row['grand_totald']; ?></td>
+                        </tr>
 
 
-                </table>
-            </div>
 
-            <?php } if ($row['status'] == 0) { ?>
+                    </table>
+                </div>
+
+            <?php }
+            if ($row['status'] == 0) { ?>
                 <div class="buttons">
 
                     <a href="Approve.php?aid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?> && userEmail=<?php echo $row['userEmail']; ?>"> <button class="confirm-button" name="approve" onclick="return confirm('Do you really want to Approve this Booking')">Confirm Booking</button></a>
-                    <a href="Approve.php?eaid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?>"> <button class="cancel-button" name="cancel" onclick="return confirm('Do you really want to Cancel this Booking')">Cancel Booking</button></a>
+                    <a href="Approve.php?eaid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?>  && userEmail=<?php echo $row['userEmail']; ?>"> <button class="cancel-button" name="cancel" onclick="return confirm('Do you really want to Cancel this Booking')">Cancel Booking</button></a>
 
                 </div>
         <?php  }
