@@ -1,12 +1,21 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php'; // If installed via Composer
 //  error_reporting(0);
 @include "include/config.php";
 // for approve 
 $did = $_GET['did'];
+$email=$_GET['userEmail'];
 
 if (isset($_REQUEST['aid'])) {
     $aid = intval($_GET['aid']);
     $vid = $_GET['vid'];
+    $email=$_GET['userEmail'];
+
+   
+
 
     $status = 1;
     $update = "update booking set status=$status where bookingno=$aid";
@@ -14,6 +23,38 @@ if (isset($_REQUEST['aid'])) {
 
     $update1 = "update car_list set status=$status where vid=$vid";
     $q1 = mysqli_query($conn, $update1);
+
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; // Change to your SMTP provider
+        $mail->SMTPAuth = true;
+        $mail->Username = 'carolarental3@gmail.com';
+        $mail->Password = 'bojiwwvipmyipdqc';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+
+        $mail->setFrom('carolarental3@gmail.com', 'CarOla');
+        $mail->addAddress($email);
+
+        $mail->isHTML(true);
+        $mail->Subject = 'Password Reset Request';
+        $mail->Body    = "
+        Welcome To Carola. <br>
+Your Booking done        <br>
+        <br>
+       
+booked        <br>
+      
+        <h2>Thank You</h2>
+        ";
+
+        $mail->send();
+        echo "<script>alert('Password reset email sent!');window.location.href='../login.php';</script>";
+    } catch (Exception $e) {
+        echo "Mailer Error: {$mail->ErrorInfo}";
+    }
+
     echo "<script>alert('Approve success')
 window.open('confirmed-booking.php', 'second');</script>";
 }
@@ -194,6 +235,7 @@ if (mysqli_num_rows($exbm) > 0) {
                booking.PostingDate, 
                booking.id, 
                booking.bookingno, 
+               booking.userEmail,
                DATEDIFF(booking.ToDate, booking.FromDate) as totalnodays, 
                car_list.price, 
                (DATEDIFF(booking.ToDate, booking.FromDate) * car_list.price) AS grand_total,
@@ -218,7 +260,7 @@ if (mysqli_num_rows($exbm) > 0) {
         $na = mysqli_num_rows($result);
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
-            <h2 class="title">#<?php echo $row['bookingno']; ?> Booking Details</h2>
+            <h2 class="title">#<?php echo $row['bookingno']; echo $email;?> Booking Details</h2>
 
             <div class="section">
                 <h3>User Details</h3>
@@ -338,7 +380,7 @@ if (mysqli_num_rows($exbm) > 0) {
             <?php } if ($row['status'] == 0) { ?>
                 <div class="buttons">
 
-                    <a href="Approve.php?aid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?>"> <button class="confirm-button" name="approve" onclick="return confirm('Do you really want to Approve this Booking')">Confirm Booking</button></a>
+                    <a href="Approve.php?aid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?> && userEmail=<?php echo $row['userEmail']; ?>"> <button class="confirm-button" name="approve" onclick="return confirm('Do you really want to Approve this Booking')">Confirm Booking</button></a>
                     <a href="Approve.php?eaid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?>"> <button class="cancel-button" name="cancel" onclick="return confirm('Do you really want to Cancel this Booking')">Cancel Booking</button></a>
 
                 </div>
