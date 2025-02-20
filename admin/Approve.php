@@ -86,7 +86,7 @@ if (isset($_REQUEST['eaid'])) {
         $mail->addAddress($email);
 
         $mail->isHTML(true);
-        $mail->Subject = 'Password Reset Request';
+        $mail->Subject = 'Cancelled Your Booking';
         $mail->Body    = "
         Welcome To Carola. <br>
 Sorry! To Say That  Your  Booking Is  Cancelled !<br>

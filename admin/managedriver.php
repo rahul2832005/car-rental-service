@@ -237,12 +237,26 @@ $total_pages = ceil($total_entries / $limit);
         background-color: #f0f0f0;
     }
 
+    .btn-custom {
+        position: absolute;
+        bottom: 130px;
+            background-color: #dc3545;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
 
+        .btn-custom:hover {
+            background-color: #bb2d3b;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🚗 Manage Drivers</h1>
+        <a href="add_driver.php" class="btn-custom">+ Add Brand</a>
+
         <div class="search-container">
             <input type="text" placeholder="🔍 Search Drivers..." id="searchInput">
         </div>

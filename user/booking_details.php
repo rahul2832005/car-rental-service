@@ -165,8 +165,9 @@ $row = mysqli_fetch_assoc($result);
             <div class="info-box"><p><strong>Driver Number</strong> <?php echo $row['PostingDate']; ?></p></div>
         </div>
         <a href="my_booking.php" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Bookings</a>
+        <?php  if($row['status']!=2) { ?>
         <a href="../admin/Approve.php?eaid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?>  && userEmail=<?php echo $row['userEmail']; ?>"class="cancel-btn" onclick="return confirm('Do you really want to cancel your booking?');" > Cancel Booking</a>
-
+            <?php  }?>
     </div>
 </body>
 </html>

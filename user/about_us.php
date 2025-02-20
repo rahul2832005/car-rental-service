@@ -1,5 +1,5 @@
-<?php  
-  session_start();
+<?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/all.min.css">
   <link rel="stylesheet" href="css/fontawesome.min.css">
-  
+
   <title>About Us</title>
   <style>
     /* styles.css */
@@ -21,7 +21,7 @@
     }
 
     .header {
-      background-color: #f8f8f8;
+      /* background-color: #f8f8f8; */
       text-align: center;
       padding: 20px;
       font-size: 2rem;
@@ -30,7 +30,7 @@
 
     .hero {
       text-align: center;
-      margin: 50px 0;
+      margin: 35px 0;
     }
 
     .hero-image {
@@ -45,19 +45,8 @@
       /* padding: 20px; */
     }
 
-    .brand-tag {
-      display: inline-block;
-      background-color: #ffe4e4;
-      color: #f24b4b;
-      font-size: 18px;
-      font-weight: bold;
-      padding: 4px 10px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
-
     .h1 {
-      font-size: 40px;
+      font-size: 35px;
       font-weight: bold;
       margin: 10px 0 20px;
       color: #000;
@@ -81,6 +70,7 @@
       margin-right: 15px;
       margin-top: 6px;
       font-size: 25px;
+      padding: 10px;
     }
 
     .icons img {
@@ -146,6 +136,7 @@
       justify-content: center;
       gap: 3rem;
       flex-wrap: wrap;
+      
     }
 
     /* Individual step */
@@ -211,26 +202,30 @@
       padding: 10px;
       font-size: 45px;
       left: 29%;
-
+    }
+    .car 
+    {
+      display: flex;
     }
   </style>
 </head>
 
 <body>
   <?php
-@include "navbar.php";
-?>
+  @include "navbar.php";
+  ?>
   <div class="banner-card">
     <img id="bg_img" src="image/our_team_bg1.png" alt="" srcset="">
     <div class="banner-text">
       <h1>About Us</h1>
     </div>
   </div>
+  <div class="car">
     <section class="hero">
       <img src="image/about.png" alt="Red Car" class="hero-image">
     </section>
     <div class="container">
-      <div class="brand-tag">BRANDS</div>
+     
       <h1 class="h1">Planning A Trip Should Be Very <br>Exciting Adventure</h1>
       <div class="section">
         <div class="icons">
@@ -253,43 +248,43 @@
         </div>
       </div>
     </div>
-
-    <div class="how-it-works">
-      <div class="header">
-        <span class="tag">POPULAR CARS</span>
-        <h1>How It Works</h1>
+  </div>
+  <div class="how-it-works">
+    <div class="header">
+      <span class="tag">POPULAR CARS</span>
+      <h1>How It Works</h1>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="icon" style="background-color:#F5A77E;">
+          <span class="number" style="background-color:#F5A77E;">1</span>
+          <img src="image/profile.svg" alt="User Icon">
+        </div>
+        <p class="name">Sign up Account</p>
       </div>
-      <div class="steps">
-        <div class="step">
-          <div class="icon" style="background-color:#F5A77E;">
-            <span class="number" style="background-color:#F5A77E;">1</span>
-            <img src="image/profile.svg" alt="User Icon">
-          </div>
-          <p class="name">Sign up Account</p>
+      <div class="step">
+        <div class="icon" style="background-color:#8462EF;">
+          <span class="number" style="background-color:#8462EF;">2</span>
+          <img src="image/search.svg" alt="Search Icon">
         </div>
-        <div class="step">
-          <div class="icon" style="background-color:#8462EF;">
-            <span class="number" style="background-color:#8462EF;">2</span>
-            <img src="image/search.svg" alt="Search Icon">
-          </div>
-          <p class="name">Search your Vehicle</p>
+        <p class="name">Search your Vehicle</p>
+      </div>
+      <div class="step">
+        <div class="icon" style="background-color: #84DDB1;">
+          <span class="number" style="background-color: #84DDB1;">3</span>
+          <img src="image/coin.svg" alt="Payment Icon">
         </div>
-        <div class="step">
-          <div class="icon" style="background-color: #84DDB1;">
-            <span class="number" style="background-color: #84DDB1;">3</span>
-            <img src="image/coin.svg" alt="Payment Icon">
-          </div>
-          <p class="name">Pay the Car Rent</p>
+        <p class="name">Pay the Car Rent</p>
+      </div>
+      <div class="step">
+        <div class="icon" style="background-color:#F8CB76;">
+          <span class="number" style="background-color:#F8CB76;">4</span>
+          <img src="image/car.svg" alt="Car Icon">
         </div>
-        <div class="step">
-          <div class="icon" style="background-color:#F8CB76;">
-            <span class="number" style="background-color:#F8CB76;">4</span>
-            <img src="image/car.svg" alt="Car Icon">
-          </div>
-          <p class="name">Take Car to Road</p>
-        </div>
+        <p class="name">Take Car to Road</p>
       </div>
     </div>
+  </div>
 </body>
 <?php
 @include "footer.php";

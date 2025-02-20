@@ -202,12 +202,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .form-container {
             /* background-color: #ffffff; */
             background-color: rgb(241, 235, 235);
-            padding: 30px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
+            max-width: 400px;
             width: 100%;
             text-align: center;
+            margin-right: 10px;
+            height: 553px;
         }
 
         .heading {
@@ -248,6 +250,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         .form-group textarea {
             resize: vertical;
+            height: 80px;
         }
 
         .submit-btn {
@@ -340,7 +343,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             </div>
             <div class="location">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14780.908402544715!2d71.75972828726873!3d22.155425800135852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3958d00f6c0348dd%3A0x7bf2837a0dbd4a4d!2sSalangpur%2C%20Gujarat%20382450!5e0!3m2!1sen!2sin!4v1737308652019!5m2!1sen!2sin" width="700" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14780.908402544715!2d71.75972828726873!3d22.155425800135852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3958d00f6c0348dd%3A0x7bf2837a0dbd4a4d!2sSalangpur%2C%20Gujarat%20382450!5e0!3m2!1sen!2sin!4v1737308652019!5m2!1sen!2sin" width="550" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>

@@ -49,7 +49,7 @@ $total_pages = ceil($total_entries / $limit);
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             /* width: 100%; */
-            width: 1000px;
+           
             text-align: center;
             margin-left: 40px;
         }
@@ -75,8 +75,8 @@ $total_pages = ceil($total_entries / $limit);
 
         /* Table Styling */
         .table-container {
-            /* overflow-x: auto; */
-            /* overflow-y: auto; */
+              overflow-x: auto; 
+              overflow-y: auto;  
 
         }
 
