@@ -40,7 +40,7 @@ $total_pages = ceil($total_entries / $limit);
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden;
+            /* overflow: hidden; */
         }
 
         .container {

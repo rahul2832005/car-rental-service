@@ -47,6 +47,7 @@
                         <li><a href="add_driver.php" target="second">Add Driver</a></li>
                         <!-- <li><a href="validationjs.php" target="second">Add Cars</a></li> -->
                         <li><a href="managedriver.php" target="second">Manage Drivers</a></li>
+                        <!-- <li><a href="managedriverbackup.php" target="second">Manage Drivers</a></li> -->
                     </ul>
                 </li>
                 <li>
@@ -55,6 +56,7 @@
                         <li><a href="new-booking.php" target="second">New Bookings</a></li>
                         <li><a href="confirmed-booking.php" target="second">Confirm Bookings</a></li>
                         <li><a href="canceled-booking.php" target="second">Cancelled Bookings</a></li>
+                        <li><a href="return-booking.php" target="second">Return Bookings</a></li>
                     </ul>
                 </li>
                 <li><a href="brandsub.php" target="second">Manage Testimonials</a></li>

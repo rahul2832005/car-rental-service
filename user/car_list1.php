@@ -1,7 +1,7 @@
 <?php
 @include "include/config.php";
 session_start();
-// error_reporting(0);
+error_reporting(0);
 
 // $select_car = mysqli_query($conn, "SELECT * FROM car_list");
 
