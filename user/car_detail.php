@@ -12,13 +12,17 @@ $uid = $_SESSION['userid'];
 $useremail = $_SESSION['alogin'];
 
 $amount = 0;
-$price_query = "SELECT price,chprice FROM car_list WHERE vid = $vid";
-$price_result = mysqli_query($conn, $price_query);
-if ($rowamount = mysqli_fetch_assoc($price_result)) {
-    // $amount = $rowamount['price'];
-    // $amounth = $rowamount['chprice'];
-}
 
+// Fetch car price details
+$price_query = "SELECT price, chprice FROM car_list WHERE vid = $vid";
+$price_result = mysqli_query($conn, $price_query);
+$rowamount = mysqli_fetch_assoc($price_result);
+
+// For driver rates, assuming you get driver details when selected.
+$driver_price = 0;
+$driver_chprice = 0;
+
+// Handle Booking Form Submission
 if (isset($_POST['Book'])) {
     $fdate = $_POST['fdate'];
     $tdate = $_POST['tdate'];
@@ -28,23 +32,38 @@ if (isset($_POST['Book'])) {
     $selected_driver = $_POST['selected_driver'];
     $driver_id = $_POST['selected_driver_id'];
 
-
     $datetime1 = new DateTime($fdate);
     $datetime2 = new DateTime($tdate);
     $interval = $datetime1->diff($datetime2);
 
+    // Check if driver is selected, fetch driver pricing details
+    if (!empty($driver_id)) {
+        $driver_query = "SELECT dprice , hprice FROM driver WHERE did = $driver_id";
+        $driver_result = mysqli_query($conn, $driver_query);
+        $driver_row = mysqli_fetch_assoc($driver_result);
+        $driver_price = $driver_row['dprice'];
+        $driver_chprice = $driver_row['hprice'];
+    }
 
+    // Calculate amount based on rent type
     if ($rent_type === 'Day') {
         $days = $interval->days + 1;
         $amount = $days * $rowamount['price'];
+        if (!empty($driver_id)) {
+            $amount += $days * $driver_price;
+        }
     } elseif ($rent_type === 'hour') {
         $hours = ($interval->days * 24) + ($interval->h);
         $amount = $hours * $rowamount['chprice'];
+        if (!empty($driver_id)) {
+            $amount += $hours * $driver_chprice;
+        }
     }
+
     $status = 0;
     $bookingno = mt_rand(1000, 9999);
 
-
+    // Validation checks
     if (empty($fdate)) {
         $errors['fdate'] = "Select a pickup date.";
     }
@@ -62,17 +81,12 @@ if (isset($_POST['Book'])) {
     }
 
     if (empty($errors)) {
-
-        // Check Driver Availability only if driver is selected
+        // Check Driver Availability
         $driverAvailable = true;
         if (!empty($driver_id)) {
-            $dravlquery = "SELECT * FROM booking 
-                           WHERE did = $driver_id 
-                           AND status != 2 
-                           AND ('$fdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
-                           OR '$tdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
-                           OR (FromDate BETWEEN '$fdate' AND '$tdate') 
-                           OR (ToDate BETWEEN '$fdate' AND '$tdate'))";
+            $dravlquery = "SELECT * FROM booking WHERE did = $driver_id AND status != 2 AND status !=3 
+                AND ('$fdate' BETWEEN DATE(FromDate) AND DATE(ToDate) OR '$tdate' BETWEEN DATE(FromDate) AND DATE(ToDate)
+                OR (FromDate BETWEEN '$fdate' AND '$tdate') OR (ToDate BETWEEN '$fdate' AND '$tdate'))";
 
             $drexavlquery = mysqli_query($conn, $dravlquery);
             if (mysqli_num_rows($drexavlquery) > 0) {
@@ -83,13 +97,9 @@ if (isset($_POST['Book'])) {
 
         // Check Car Availability
         $carAvailable = true;
-        $avlquery = "SELECT * FROM booking 
-                     WHERE vid = $vid 
-                     AND status != 2 
-                     AND ('$fdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
-                     OR '$tdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
-                     OR (FromDate BETWEEN '$fdate' AND '$tdate') 
-                     OR (ToDate BETWEEN '$fdate' AND '$tdate'))";
+        $avlquery = "SELECT * FROM booking WHERE vid = $vid AND status != 2 AND status !=3  
+            AND ('$fdate' BETWEEN DATE(FromDate) AND DATE(ToDate) OR '$tdate' BETWEEN DATE(FromDate) AND DATE(ToDate)
+            OR (FromDate BETWEEN '$fdate' AND '$tdate') OR (ToDate BETWEEN '$fdate' AND '$tdate'))";
 
         $exavlquery = mysqli_query($conn, $avlquery);
         if (mysqli_num_rows($exavlquery) > 0) {
@@ -98,24 +108,21 @@ if (isset($_POST['Book'])) {
             echo "<script>document.location = 'dis_car.php';</script>";
         }
 
-        // If both available, proceed to payment
+        // Proceed to Payment if available
         if ($driverAvailable && $carAvailable) {
-
-
             require('vendor/autoload.php');
-            //testmode key
-            $keyId = 'rzp_test_lFfdAvwRtocJ83'; // Replace with your Razorpay Key ID
-            $keySecret = 'hzszbJxefW7Otvh7tsaarvf4'; // Replace with your Razorpay Key Secret
 
-            // $keyId = 'rzp_live_vZHJ6c1F6PFLRC';
-            // $keySecret = 'WupX5UDSTE6xHtY2TtDutJLk';
+            // Razorpay API Keys (test mode)
+            $keyId = 'rzp_test_lFfdAvwRtocJ83';
+            $keySecret = 'hzszbJxefW7Otvh7tsaarvf4';
+
             $api = new \Razorpay\Api\Api($keyId, $keySecret);
 
-            $amount_in_paise = $amount * 100; // Convert to paise
+            $amount_in_paise = $amount * 100; // Razorpay accepts amount in paise
 
             $orderData = [
                 'receipt' => strval(rand(1000, 9999)),
-                'amount' => $amount_in_paise, // Use the dynamic amount
+                'amount' => $amount_in_paise,
                 'currency' => 'INR',
                 'payment_capture' => 1,
             ];
@@ -137,19 +144,16 @@ if (isset($_POST['Book'])) {
                 'amount' => $orderData['amount'] / 100,
                 'order_id' => $order->id,
             ];
-
-
 ?>
             <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
             <script>
                 function pay(e) {
                     var options = {
                         "key": "<?= $keyId; ?>",
-                        "amount": "100",
+                        "amount": "<?= $amount_in_paise; ?>",
                         "currency": "INR",
                         "name": "Carola",
                         "description": "Payment for Booking Car",
-                        "image": "logo.jpeg",
                         "order_id": "<?= $order->id; ?>",
                         "handler": function(response) {
                             window.location.href = 'payment_success.php?payment_id=' + response.razorpay_payment_id + '&order_id=' + response.razorpay_order_id + '&signature=' + response.razorpay_signature;
@@ -161,14 +165,6 @@ if (isset($_POST['Book'])) {
                         },
                         "theme": {
                             "color": "#631549"
-                        },
-                        "modal": {
-                            // "ondismiss": function() {
-                            //     window.location.href = 'payment_fail.php';
-                            "ondismiss": function() {
-                                // Yahan fail hone pe redirect hoga
-                                window.location.href = '<?= $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']; ?>';
-                            }
                         }
                     };
                     var rzp1 = new Razorpay(options);
@@ -178,25 +174,11 @@ if (isset($_POST['Book'])) {
                 pay();
             </script>
 <?php
-
         }
     }
 }
-// if (isset($_GET['did']) && !empty($_GET['did'])) {  // Corrected to $_GET
-//     $_SESSION['driver_id'] = $_GET['did'];
-// }
-// // Driver selection logic (moved outside the main if(isset($_POST['Book'])) block)
-// if (isset($_GET['did'])) {
-//     $selected_driver_id = $_GET['did'];
-//     $_SESSION['driver_id'] = $selected_driver_id;
-
-//     $update_status_query = "UPDATE driver SET status = 1 WHERE did = $selected_driver_id";
-//     mysqli_query($conn, $update_status_query);
-
-//     echo "<script>alert('Driver selected and status updated successfully!');</script>";
-//     echo "<script>alert('$selected_driver_id');</script>";
-// }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,14 +1,14 @@
 <?php
 @include "include/config.php";
 session_start();
-// error_reporting(0);
+error_reporting(0);
 
 // $select_car = mysqli_query($conn, "SELECT * FROM car_list");
 
 // $status = 0;
 
 // Pagination Logic
-$limit =5;
+$limit = 5;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($page - 1) * $limit;
 
@@ -50,20 +50,26 @@ $total_pages = ceil($total_entries / $limit);
         }
 
         .search-container {
-            text-align: center; /* Center the input within the container */
-            margin: 20px auto; /* Center the container itself */
-            width: 100%; /* Make sure the container takes full width */
-            max-width: 600px; /* Limit the maximum width of the search box */
+            text-align: center;
+            /* Center the input within the container */
+            margin: 20px auto;
+            /* Center the container itself */
+            width: 100%;
+            /* Make sure the container takes full width */
+            max-width: 600px;
+            /* Limit the maximum width of the search box */
         }
 
         .search-container input {
-            width: 100%; /* Input takes full width of its container */
+            width: 100%;
+            /* Input takes full width of its container */
             padding: 10px;
             font-size: 16px;
             border: 2px solid #ccc;
             border-radius: 5px;
             outline: none;
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            box-sizing: border-box;
+            /* Include padding and border in the element's total width and height */
         }
 
 
@@ -102,7 +108,7 @@ $total_pages = ceil($total_entries / $limit);
         }
 
         .card-title {
-            font-size: 20px;
+            font-size: 30px;
             font-weight: bold;
             color: #333;
             margin: 10px 0;
@@ -126,9 +132,9 @@ $total_pages = ceil($total_entries / $limit);
             color: #333;
             margin-top: 10px;
         }
-       
+
         .order-button {
-            background-color:#fff;
+            background-color: #fff;
             color: #000;
             padding: 5px 15px;
             border: 2px solid black;
@@ -184,37 +190,51 @@ $total_pages = ceil($total_entries / $limit);
                 align-items: center;
             }
         }
-       .d-flex {
+
+        /* .d-flex {
              display: flex;
              justify-content: space-between;
              align-items: center;
              margin-top: 20px;
-         }
+         } */
+        .d-flex {
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
 
-         .pagination a {
-             padding: 8px 12px;
-             margin: 0 4px;
-             border: 1px solid #ccc;
-             border-radius: 5px;
-             text-decoration: none;
-             color: #333;
-             background-color: white;
-             transition: background-color 0.3s ease;
-         }
+        .entries {
+            color: #000;
+            margin-right: 0;
+            margin-bottom: 20px;
+            margin-top:-15px ;
+        }
 
-         .pagination a.active {
-             background-color: #007bff;
-             color: white;
-             font-weight: bold;
-         }
+        .pagination a {
+            padding: 8px 12px;
+            margin: 0 4px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            background-color: white;
+            transition: background-color 0.3s ease;
+            
+        }
 
-         .pagination a:hover {
-             background-color: #f0f0f0;
-         }
-         .entries{
-            margin-right: 500px;
-         }
-     
+        .pagination a.active {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        .pagination a:hover {
+            background-color: #f0f0f0;
+        }
+
+        
     </style>
 </head>
 
@@ -224,11 +244,11 @@ $total_pages = ceil($total_entries / $limit);
 
 <body style="background-color: #b1d7d6;">
 
-<div class="search-container">
+    <div class="search-container">
         <input type="text" id="search" placeholder="Search cars..." onkeyup="searchCars()">
     </div>
     <div class="fleet" id="fleet-container">
-        
+
         <div class="header" id="header">
             <span class="badge">CAR FLEET</span>
             <h1>Car Fleet-1</h1>
@@ -257,24 +277,24 @@ $total_pages = ceil($total_entries / $limit);
             }
         }
         ?>
- </div>
-<div class="d-flex">
-             <div class="entries">Showing <?php echo $start + 1; ?> to <?php echo min($start + $limit, $total_entries); ?> of <?php echo $total_entries; ?> entries</div>
-             <div class="pagination">
-                 <?php if ($page > 1): ?>
-                     <a href="?page=<?php echo $page - 1; ?>" class="page-link">Previous</a>
-                 <?php endif; ?>
+    </div>
+    <div class="d-flex">
+        <div class="entries">Showing <?php echo $start + 1; ?> to <?php echo min($start + $limit, $total_entries); ?> of <?php echo $total_entries; ?> entries</div>
+        <div class="pagination" style="margin-bottom: 10px;">
+            <?php if ($page > 1): ?>
+                <a href="?page=<?php echo $page - 1; ?>" class="page-link">Previous</a>
+            <?php endif; ?>
 
-                 <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                     <a href="?page=<?php echo $i; ?>" class="page-link <?php echo $i == $page ? 'active' : ''; ?>"><?php echo $i; ?></a>
-                 <?php endfor; ?>
+            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                <a href="?page=<?php echo $i; ?>" class="page-link <?php echo $i == $page ? 'active' : ''; ?>"><?php echo $i; ?></a>
+            <?php endfor; ?>
 
-                 <?php if ($page < $total_pages): ?>
-                     <a href="?page=<?php echo $page + 1; ?>" class="page-link">Next</a>
-                 <?php endif; ?>
-             </div>
-         </div>
-   
+            <?php if ($page < $total_pages): ?>
+                <a href="?page=<?php echo $page + 1; ?>" class="page-link">Next</a>
+            <?php endif; ?>
+        </div>
+    </div>
+
 
 
     <?php

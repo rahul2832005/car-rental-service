@@ -102,6 +102,51 @@ window.open('canceled-booking.php', 'second');</script>";
 }
 }
 
+// for Return Car booking
+if (isset($_REQUEST['returnid'])) {
+    $returnid = $_GET['returnid'];
+    $vid = $_GET['vid'];
+
+    $status = 3;
+    $update = "update booking set status=$status where bookingno=$returnid";
+    $q = mysqli_query($conn, $update);
+
+
+    $sdate = date('Y-m-d');
+    $next_date = date('Y-m-d', strtotime('+1 day'));
+    // $update1="update booking set FromDate='$sdate',ToDate='$next_date' where vid=$eaid";
+    // $q1=mysqli_query($conn,$update1);
+
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; // Change to your SMTP provider
+        $mail->SMTPAuth = true;
+        $mail->Username = 'carolarental3@gmail.com';
+        $mail->Password = 'bojiwwvipmyipdqc';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+
+        $mail->setFrom('carolarental3@gmail.com', 'CarOla');
+        $mail->addAddress($email);
+
+        $mail->isHTML(true);
+        $mail->Subject = 'Car  Returned';
+        $mail->Body    = "
+        Welcome To Carola. <br>
+Your Car Booking Is Returned Done!<br>
+Try Again !!    
+        <h2>Thank You</h2>";
+        $mail->send();
+        echo "<script>alert('Return Car email sent!');</script>";
+
+    echo "<script>alert('Returned Booking')
+window.open('return-booking.php', 'second');</script>";
+} catch (Exception $e) {
+    echo "Mailer Error: {$mail->ErrorInfo}";
+}
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -352,8 +397,8 @@ window.open('canceled-booking.php', 'second');</script>";
                             echo "<td>Booked</td>";
                         } elseif ($row['status'] == 2) {
                             echo "<td>Cancelled</td>";
-                        } else {
-                            echo "<td>Not Available</td>";
+                        } elseif ($row['status']==3) {
+                            echo "<td>Returned</td>";
                         }
 
                         ?>
@@ -403,6 +448,13 @@ window.open('canceled-booking.php', 'second');</script>";
 
                     <a href="Approve.php?aid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?> && userEmail=<?php echo $row['userEmail']; ?>"> <button class="confirm-button" name="approve" onclick="return confirm('Do you really want to Approve this Booking')">Confirm Booking</button></a>
                     <a href="Approve.php?eaid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?>  && userEmail=<?php echo $row['userEmail']; ?>"> <button class="cancel-button" name="cancel" onclick="return confirm('Do you really want to Cancel this Booking')">Cancel Booking</button></a>
+
+                </div>
+        <?php  }
+            if ($row['status'] == 1) { ?>
+                <div class="buttons">
+
+                    <a href="Approve.php?returnid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?> && userEmail=<?php echo $row['userEmail']; ?>"> <button class="confirm-button" name="approve" onclick="return confirm('Do you really want to Return Booked Car ')">Return Car</button></a>
 
                 </div>
         <?php  }

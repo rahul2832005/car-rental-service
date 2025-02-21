@@ -89,7 +89,7 @@ $result = mysqli_query($conn, $sql);
                         <td><?php echo $row['totalnodays']; ?></td>
                         <td><?php echo $row['grand_total']; ?></td>
                         <td class="status">
-                            <?php echo ($row['status'] == 0) ? 'In Progress' : (($row['status'] == 1) ? 'Success' : (($row['status'] == 2) ? 'Rejected' : 'In Maintenance')); ?>
+                            <?php echo ($row['status'] == 0) ? 'In Progress' : (($row['status'] == 1) ? 'Success' : (($row['status'] == 2) ? 'Rejected' : 'Returned')); ?>
                         </td>
                     </tr>
                 <?php } ?>

@@ -14,7 +14,7 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <style>
         /* Google Font */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap'); */
         @font-face {
             font-family: 'pop-regular';
             src: url('../font/Poppins-Regular.ttf');
@@ -27,7 +27,7 @@ $result = mysqli_query($conn, $sql);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 90vh;
         }
 
         .container {
@@ -38,6 +38,7 @@ $result = mysqli_query($conn, $sql);
             width: 90%;
             max-width: 900px;
             text-align: center;
+            margin-top: -50px;
         }
 
         h1 {
