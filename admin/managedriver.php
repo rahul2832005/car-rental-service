@@ -40,7 +40,7 @@ $total_pages = ceil($total_entries / $limit);
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 1280px;
+            width: 1400px;
             margin: 0 auto;
         }
 
@@ -89,7 +89,8 @@ $total_pages = ceil($total_entries / $limit);
             border-radius: 4px;
         }
 
-        .edit { background-color: #28a745; }
+        .edit { background-color: #28a745;
+            margin-right: 5px; }
         .delete { background-color: #dc3545; }
 
         .pagination {
@@ -105,113 +106,18 @@ $total_pages = ceil($total_entries / $limit);
             color: black;
         }
 
-<<<<<<< HEAD
-        .delete:hover {
-            background: #c82333;
-        }
-
-        /* Responsive Design */
-        @media screen and (max-width: 768px) {
-            .container {
-                padding: 10px; /* Reduce padding on smaller screens */
-            }
-
-            h1 {
-                font-size: 1.5em; /* Reduce heading size */
-            }
-
-            .search-container input {
-                width: 100%; /* Make search bar full width */
-            }
-
-            table {
-                font-size: 0.8em; /* Reduce font size in table */
-            }
-
-            th, td {
-                padding: 8px; /* Reduce cell padding */
-                display: block; /* Stack table cells vertically */
-                width: 100%; /* Make cells full width */
-                box-sizing: border-box; /* Include padding in cell width */
-                text-align: left; /* Align text to the left */
-            }
-
-            thead {
-                display: none; /* Hide table header */
-            }
-
-            td:before {
-                content: attr(data-label) ": "; /* Add data-label as prefix */
-                font-weight: bold;
-                display: block;
-                margin-bottom: 5px;
-            }
-
-            td img {
-                width: 40px;
-                height: 40px;
-            }
-
-             .edit, .delete {
-                font-size: 14px; /* Reduce icon size */
-                padding: 3px 6px; /* Reduce icon padding */
-            }
-        }
-        .d-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-        }
-      
-         .pagination a {
-        padding: 8px 12px;
-        margin: 0 4px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        text-decoration: none;
-        color: #333;
-        background-color: white;
-        transition: background-color 0.3s ease;
-    }
-
-    .pagination a.active {
-        background-color: #007bff;
-        color: white;
-        font-weight: bold;
-    }
-
-    .pagination a:hover {
-        background-color: #f0f0f0;
-    }
-
-    .btn-custom {
-        position: absolute;
-        bottom: 130px;
-            background-color: #dc3545;
-            color: white;
-            padding: 8px 12px;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-=======
         .pagination a.active { background-color: #007bff; color: white; }
->>>>>>> 50566d5823cae875229d52f9d4aae6ddf879dc1e
 
         .btn-custom:hover {
             background-color: #bb2d3b;
         }
     </style>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
 </head>
 <body>
     <div class="container">
-<<<<<<< HEAD
-        <h1>🚗 Manage Drivers</h1>
-        <a href="add_driver.php" class="btn-custom">+ Add Brand</a>
-
-=======
         <h1>Manage Drivers</h1>
->>>>>>> 50566d5823cae875229d52f9d4aae6ddf879dc1e
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search Drivers...">
         </div>
@@ -229,7 +135,7 @@ $total_pages = ceil($total_entries / $limit);
                     <th>Licence</th>
                     <th>City</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    <th style="padding: 0px 20px;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -249,8 +155,9 @@ $total_pages = ceil($total_entries / $limit);
                         <td><?php echo $row['city']; ?></td>
                         <td><?php echo $row['status'] == 0 ? 'Available' : 'Not Available'; ?></td>
                         <td>
-                            <a href="updatedriver.php?did=<?php echo $row['did']; ?>" class="edit">Edit</a>
-                            <a href="delete.php?did=<?php echo $row['did']; ?>" class="delete">Delete</a>
+                            <a href="updatedriver.php?did=<?php echo $row['did']; ?>" class="edit">                                    <i class="fa-solid fa-pen"></i>
+                            </a>
+                            <a href="delete.php?did=<?php echo $row['did']; ?>" class="delete"><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                 <?php } ?>

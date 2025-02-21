@@ -162,16 +162,17 @@
             <!-- Company Info -->
             <div class="footer-section company-info">
                 <h2 class="h2"><span>Car</span><span style="color: red;font-size: 35px; ;">ola</span></h2>
-                <p>57,opp Hotel Lotus <br>Botad, Gujarat</p>
+                <p>57,opp. Hotel Lotus <br>Botad, Gujarat</p>
                 <p><a href="#">www.carola.com</a></p>
                 <p>+91-9824930580</p>
+                <p>+91-7359509387</p>
             </div>
             <!-- Community -->
             <div class="footer-section community">
                 <h3 class="h3">Community</h3>
                 <ul style=" list-style: none;">
                     <!-- <li style=" margin-bottom: 10px;"><a href="#">Area Details</a></li> -->
-                    <li style=" margin-bottom: 10px;"><a href="faq.php">Faq</a></li>
+                    <li style=" margin-bottom: 10px;"><a href="faq.php">FAQ</a></li>
                     <li style=" margin-bottom: 10px;"><a href="servece_area.php">Service Areas</a></li>
                     <li style=" margin-bottom: 10px;"><a href="gallery.php">Gallery</a></li>
                     <li style=" margin-bottom: 10px;"><a href="Testimonials.php">Testimonials</a></li>

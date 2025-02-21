@@ -146,7 +146,7 @@ session_start();
     </div>
     <div class="container">
         <header>
-            <span class="badge">DETAILS</span>
+            <span class="badge">GALLERY</span>
             <h1 class="head">Planning A Trip Should Be</h1>
         </header>
  

@@ -42,7 +42,7 @@ if (isset($_REQUEST['aid'])) {
         $mail->Subject = 'Password Reset Request';
         $mail->Body    = "
         Welcome To Carola. <br>
-Your Booking done!<br>    
+Your Booking is done!<br>    
         <h2>Thank You</h2>";
         $mail->send();
         echo "<script>alert('Booking Done email sent!');</script>";
@@ -93,7 +93,7 @@ Sorry! To Say That  Your  Booking Is  Cancelled !<br>
 Try Again !!    
         <h2>Thank You</h2>";
         $mail->send();
-        echo "<script>alert('Booking Cancel email sent!');</script>";
+        echo "<script>alert('Booking Cancelled email sent!');</script>";
 
     echo "<script>alert('Booking Cancelled')
 window.open('canceled-booking.php', 'second');</script>";

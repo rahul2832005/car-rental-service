@@ -455,7 +455,7 @@ if (isset($_POST['Book'])) {
                             <button type="submit" class="booking-button" name="Book">Rent Now</button>
                     </div>
                     </form>
-                    <button class="enquiry-button" onclick="openForm()">Enquiry Us</button>
+                    <button class="enquiry-button" style=" margin-right: 6px; margin-left: 5px;" onclick="openForm()">Enquiry Us</button>
 
 
                 </div>

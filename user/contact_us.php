@@ -284,8 +284,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
     <div class="header">
-        <span class="badge">CAR TYPES</span>
-        <h1 id="caption">Explore Car Types</h1>
+        <span class="badge">CONTACT US</span>
+ <!-- <h1 id="caption">Explore C</h1> -->
     </div>
     <div class="contact-container">
         <div class="contact-grid">

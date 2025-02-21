@@ -64,6 +64,7 @@ $row = mysqli_fetch_assoc($result);
             border-radius: 12px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
             padding: 25px;
+            overflow: hidden;
         }
         h2 {
             text-align: center;
