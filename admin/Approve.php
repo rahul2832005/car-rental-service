@@ -305,7 +305,8 @@ window.open('return-booking.php', 'second');</script>";
                DATEDIFF(booking.ToDate, booking.FromDate) as totalnodays, 
                car_list.price, 
                (DATEDIFF(booking.ToDate, booking.FromDate) * car_list.price) AS grand_total,
-               (DATEDIFF(booking.ToDate, booking.FromDate) * driver.dprice) AS grand_totald,
+               (DATEDIFF(booking.ToDate, booking.FromDate) * driver.dprice)
+               +(DATEDIFF(booking.ToDate, booking.FromDate) * car_list.price) AS grand_totald,
                driver.dfname, 
                driver.did, 
                driver.dprice, 

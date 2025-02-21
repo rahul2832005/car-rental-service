@@ -389,7 +389,8 @@ if (isset($_POST['Book'])) {
                     <div class="pricing-details">
 
                         <h2>Pricing Details</h2>
-                        <p class="price-item">Per hour (1 Hour) <span>₹100</span></p>
+                        <p class="price-item">Per hour (1 Hour) <span><?php  echo $row['chprice'];?></span></p>
+                        <p class="price-item">Per Day (1 Day) <span><?php echo $row['price']; ?></span></p>
 
                     </div>
                     <div class="booking-form">
@@ -399,8 +400,8 @@ if (isset($_POST['Book'])) {
                                 <label for="rental-type">Rental Type</label>
                                 <select id="rental-type" name="rent_type">
                                     <option value="">type</option>
-                                    <option value="hour">Hour</option>
-                                    <option value="Day">Day</option>
+                                    <option value="hour" <?php if ($rent_type == 'hour') echo 'selected'; ?>>Hour</option>
+                                    <option value="Day" <?php if ($rent_type == 'Day') echo 'selected'; ?>>Day</option>
                                 </select>
                             </div>
                             <div class="form-group">

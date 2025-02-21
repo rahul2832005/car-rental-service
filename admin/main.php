@@ -1,4 +1,5 @@
 <?php  
+session_start();
     @include "include/config.php";
 ?>
 <!DOCTYPE html>
@@ -15,7 +16,8 @@
             <header class="header">
                 <h1>Dashboard</h1>
                 <div class="account">
-                    <span>Account</span>
+                    
+                <span><a href="logout.php"> Account</a></span>
                 </div>
             </header>
             <section class="dashboard-cards">

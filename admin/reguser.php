@@ -80,6 +80,14 @@ $result = mysqli_query($conn, $sql);
             text-align: center;
             border-bottom: 1px solid #ddd;
         }
+        
+       /* Profile Image */
+       td img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
 
         th {
             background: #007BFF;
@@ -137,6 +145,7 @@ $result = mysqli_query($conn, $sql);
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Profile</th>
                         <th>User Name</th>
                         <th>Number</th>
                         <th>Email</th>
@@ -150,12 +159,13 @@ $result = mysqli_query($conn, $sql);
                 ?>
                     <tr>
                         <td><?php echo $n; ?></td>
+                        <td><img src="../user/<?php echo  $row['profile_picture']; ?>" alt="User"></td>
                         <td class="user-name"><?php echo $row['name']; ?></td>
                         <td><?php echo $row['mnumber']; ?></td>
                         <td><?php echo $row['email']; ?></td>
                         <td>
                             <a class="delete" href="delete.php?uid=<?php echo $row['uid']; ?>">
-                                <i class="fa-solid fa-trash"></i> Delete
+                                <i class="fa-solid fa-trash"></i>
                             </a>
                         </td>
                     </tr>
