@@ -27,7 +27,7 @@ $result = mysqli_query($conn, $sql);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 90vh;
         }
 
         .container {
@@ -38,6 +38,7 @@ $result = mysqli_query($conn, $sql);
             width: 90%;
             max-width: 900px;
             text-align: center;
+            margin-top: -50px;
         }
 
         h1 {

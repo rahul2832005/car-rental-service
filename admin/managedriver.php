@@ -30,7 +30,7 @@ $total_pages = ceil($total_entries / $limit);
 
         body {
             font-family: 'pop-regular';
-            background: #f8f9fa;
+            background: rgb(211, 217, 223);
             margin: 0;
             padding: 10px;
         }

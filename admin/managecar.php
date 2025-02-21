@@ -51,7 +51,7 @@ $total_pages = ceil($total_entries / $limit);
             /* width: 100%; */
             width: 1000px;
             text-align: center;
-            margin-left: 40px;
+            margin-left: 170px;
         }
 
         h1 {
@@ -69,25 +69,26 @@ $total_pages = ceil($total_entries / $limit);
             padding: 8px;
             font-size: 14px;
             width: 250px;
+            height: 30px;
             border-radius: 5px;
             border: 1px solid #ddd;
         }
 
         /* Table Styling */
-        .table-container {
-            /* overflow-x: auto; */
-            /* overflow-y: auto; */
+        /* .table-container {
+             overflow-x: auto; 
+             overflow-y: auto; 
 
-        }
+        }*/ 
 
         table {
-            width: 95%;
+            width: 100%;
             border-collapse: collapse;
             background: #fff;
             border-radius: 10px;
             overflow: hidden;
             text-align: center;
-            margin-left: 50px;
+            margin-left: 10px;
         }
 
         th,
@@ -157,6 +158,7 @@ $total_pages = ceil($total_entries / $limit);
             justify-content: space-between;
             align-items: center;
             margin-top: 20px;
+            margin-left: 35px;
         }
 
        
@@ -217,7 +219,7 @@ $total_pages = ceil($total_entries / $limit);
                         <th>Seats</th>
                         <th>Fuel</th>
                         <th>Status</th>
-                        <th style="width: 115px;">Action</th>
+                        <th style="padding: 0px 22px;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
