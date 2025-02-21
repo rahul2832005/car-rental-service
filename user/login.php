@@ -54,6 +54,9 @@
            
             $username=$user["email"];
             $_SESSION["alogin"]=$username;
+
+            $uname=$user["name"];
+            $_SESSION["uname"]=$uname;
             
    
             $id = $user["uid"];

@@ -39,7 +39,7 @@ if (isset($_REQUEST['aid'])) {
         $mail->addAddress($email);
 
         $mail->isHTML(true);
-        $mail->Subject = 'Password Reset Request';
+        $mail->Subject = 'Booking confirm!';
         $mail->Body    = "
         Welcome To Carola. <br>
 Your Booking is done!<br>    
@@ -134,7 +134,7 @@ if (isset($_REQUEST['returnid'])) {
         $mail->Subject = 'Car  Returned';
         $mail->Body    = "
         Welcome To Carola. <br>
-Your Car Booking Is Returned Done!<br>
+Your Car Is Returned Successfully!<br>
 Try Again !!    
         <h2>Thank You</h2>";
         $mail->send();

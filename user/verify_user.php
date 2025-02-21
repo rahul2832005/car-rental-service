@@ -15,7 +15,7 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
         $exstmt1 = mysqli_query($conn, $stmt1);
 
         if ($exstmt1) {
-            echo "<script>alert('✅ Your email has been verified successfully!');window.location.href='register.php'</script>";
+            echo "<script>alert('✅ Your email has been verified successfully!');window.location.href='login.php'</script>";
         } else {
             echo "<script>alert('❌ Verification failed!');</script>";
         }

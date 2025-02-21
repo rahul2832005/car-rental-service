@@ -8,6 +8,7 @@ if (!isset($_SESSION["alogin"])) {
 }
 
 $userEmail = $_SESSION["alogin"];
+$uname=$_SESSION["uname"];
 $userId = $_SESSION["userid"];
 
 // Handle profile picture upload
@@ -84,7 +85,7 @@ $profilePicture = !empty($userData['profile_picture']) ? $userData['profile_pict
             font-size: 16px;
         }
     </style>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
 </head>
 
 <body>
@@ -106,7 +107,7 @@ $profilePicture = !empty($userData['profile_picture']) ? $userData['profile_pict
             </form>
 
             <div class="profile-info">
-                <h1><?php echo $userEmail; ?></h1>
+                <h1><?php echo $uname; ?></h1>
             </div>
         </div>
     </div>
