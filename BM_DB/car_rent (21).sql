@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 16, 2025 at 06:42 PM
+-- Generation Time: Feb 22, 2025 at 03:57 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `car_rent`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `aid` int NOT NULL AUTO_INCREMENT,
+  `aname` varchar(255) NOT NULL,
+  `apic` varchar(255) NOT NULL,
+  `aemail` varchar(255) NOT NULL,
+  `apassword` varchar(255) NOT NULL,
+  PRIMARY KEY (`aid`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`aid`, `aname`, `apic`, `aemail`, `apassword`) VALUES
+(1, 'Bhupat', '', 'carolaadmin1@gmail.com', 'admin@123');
 
 -- --------------------------------------------------------
 
@@ -49,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `payment` int NOT NULL,
   `is_notified` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=179 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=185 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `booking`
@@ -62,8 +85,14 @@ INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `rent_type`, `From
 (170, 4911, 'mm2028501@gmail.com', 89, 'Day', '2025-02-15 16:02:00', '2025-02-22 16:02:00', '', 2, '2025-02-15 10:33:37', '2025-02-15 10:33:37', 'Botad', 'Botad', 3, 'Vatukiya', '', 80, 1, 0),
 (171, 5900, 'mm2028501@gmail.com', 95, 'Day', '2025-02-15 16:21:00', '2025-02-16 16:22:00', '', 2, '2025-02-15 10:52:42', '2025-02-15 10:52:42', 'Botad', 'Bhavnagar', 4, 'hardik', '', 246, 1, 0),
 (172, 1515, 'mm2028501@gmail.com', 90, 'Day', '2025-02-15 16:38:00', '2025-02-16 16:38:00', '', 2, '2025-02-15 11:09:14', '2025-02-15 11:09:14', 'Bhavnagar', 'Bhavnagar', 3, 'Vatukiya', '', 2468, 1, 0),
-(178, 3522, 'mm2028501@gmail.com', 88, 'Day', '2025-02-18 16:39:00', '2025-02-20 16:39:00', '', 1, '2025-02-17 00:39:42', '2025-02-17 00:39:42', 'Botad', 'Botad', 0, '', '', 300, 1, 0),
-(174, 9535, 'mm2028501@gmail.com', 87, 'Day', '2025-02-15 23:23:00', '2025-02-16 11:24:00', '', 1, '2025-02-15 17:55:15', '2025-02-15 17:55:15', 'Botad', 'Botad', 0, '', '', 2500, 1, 0);
+(178, 3522, 'mm2028501@gmail.com', 88, 'Day', '2025-02-18 16:39:00', '2025-02-20 16:39:00', '', 2, '2025-02-17 00:39:42', '2025-02-17 00:39:42', 'Botad', 'Botad', 0, '', '', 300, 1, 0),
+(174, 9535, 'mm2028501@gmail.com', 87, 'Day', '2025-02-15 23:23:00', '2025-02-16 11:24:00', '', 3, '2025-02-15 17:55:15', '2025-02-15 17:55:15', 'Botad', 'Botad', 0, '', '', 2500, 1, 0),
+(179, 4121, 'mm2028501@gmail.com', 93, 'Day', '2025-04-03 15:42:00', '2025-04-04 14:30:00', '', 2, '2025-02-19 18:01:57', '2025-02-19 18:01:57', 'Botad', 'Botad', 0, '', '', 789, 1, 0),
+(180, 6058, 'mm2028501@gmail.com', 90, 'Day', '2025-02-19 23:32:00', '2025-02-20 15:32:00', '', 3, '2025-02-19 18:03:08', '2025-02-19 18:03:08', 'Botad', 'Botad', 0, '', '', 1234, 1, 0),
+(181, 3992, 'mm2028501@gmail.com', 93, 'Day', '2025-02-19 23:36:00', '2025-02-20 23:37:00', '', 1, '2025-02-19 18:07:29', '2025-02-19 18:07:29', 'Botad', 'Bhavnagar', 0, '', '', 1578, 1, 0),
+(182, 8595, 'mm2028501@gmail.com', 87, 'hour', '2025-02-20 22:44:00', '2025-02-20 23:53:00', '', 3, '2025-02-20 17:17:20', '2025-02-20 17:17:20', 'Botad', 'Botad', 3, 'Vatukiya', '', 300, 1, 0),
+(183, 1440, 'mm2028501@gmail.com', 86, 'Day', '2025-02-22 23:58:00', '2025-02-23 23:58:00', '', 0, '2025-02-21 18:30:28', '2025-02-21 18:30:28', 'Bhavnagar', 'Botad', 0, '', '', 240, 1, 0),
+(184, 6354, 'mm2028501@gmail.com', 88, 'Day', '2025-02-22 00:01:00', '2025-02-23 00:01:00', '', 0, '2025-02-21 18:31:38', '2025-02-21 18:31:38', 'Bhavnagar', 'Bhavnagar', 5, 'Vatukiya bhai', '', 224, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -173,14 +202,14 @@ CREATE TABLE IF NOT EXISTS `car_list` (
 --
 
 INSERT INTO `car_list` (`vid`, `cname`, `modal`, `chprice`, `price`, `no_plate`, `brand`, `image`, `seat`, `fual`, `door`, `en_power`, `en_type`, `break_type`, `fual_capacity`, `mileage`, `status`, `accessories`) VALUES
-(86, 'Audia1', 20211, 1200, 120001, 'GJ33AB12121', 'tata', 'thar2.jpg,thar3.jpg,thar4.jpg,amritsar.jpg,audi_logo.jpg', 331, 'Petrol', 2, '300', 'Diesel engine', 'Carbon break', 20, 1010, 0, 'CD Player, Driver Airbag'),
-(87, 'thar', 2022, 0, 2500, 'gj19hj7863', 'tata', 'audi1.jpg', 5, 'Petrol', 4, '500', 'Diesel engine', 'disc break', 20, 4, 1, ''),
-(88, 'Land Rover', 2025, 0, 100, 'GJ33AB1212', 'webagg', 'audi1.jpg,mahindra1.jpeg,gallery_3.jpg,mahindra3.jpeg', 4, 'CNG', 2, '261', 'Diesel engine', 'disc break', 40, 8, 1, ''),
-(89, 'audi x7', 1234, 0, 10, 'GJ33AB1212', 'webagg', 'front-view-118.jpg,front-left-side-47 (1).jpg,gallery_4.jpg,gallery_9.jpg', 3, 'Diesel', 2, '500', 'Diesel engine', 'disc break', 40, 12, 0, ''),
-(90, 'Kia  carens', 1234, 0, 1234, '1111', 'tata', 'front-left-side-47.jpg,front-view-118 (1).jpg,a.jpeg,c.jpeg', 123, 'Diesel', 4, '500', 'Diesel engine', 'ABS break', 20, 12, 0, ''),
-(92, '1dgd', 1213, 0, 12212, '123', 'webaggx', '200-2001519_xuv-700-price-in-india-2019-hd-png.png,gallery_10.jpg,606-6067459_bmw-x7-price-in-india-2020-hd-png.png,about.png', 12, 'Petrol', 5, '261 Hp', 'Diesel engine', 'Carbon break', 40, 10, 0, 'CD Player, Power Door Locks, Driver Airbag, Brake Assist, Passenger Airbag, Crash Sensor, Leather Seats'),
-(93, 'Land Rover123', 789, 0, 789, '789', 'webaggx', 'ad_car.png,gallery_1.jpg,GLC_1.jpg', 789, 'Petrol', 2, '261', 'Diesel engine', 'Carbon break', 20, 7, 0, 'Air Conditioner, Power Steering, CD Player, Power Door Locks, Driver Airbag, Central Locking, AntiLock Braking System, Brake Assist, Passenger Airbag, Crash Sensor, Power Windows'),
-(94, 'Discovery Land Lover', 2021, 1201, 12000, 'gj19hj7863', 'tata', 'front-left-side-47 (2).jpg,front-left-side-47 (1).jpg,front-left-side-47.jpg,side-view-(left)-90.jpg', 2, 'Diesel', 5, '261', 'EV', 'Carbon break', 40, 10, 0, 'Air Conditioner, Power Steering, CD Player, Power Door Locks, Driver Airbag, Central Locking, AntiLock Braking System, Brake Assist, Passenger Airbag, Crash Sensor, Power Windows, Leather Seats'),
+(86, 'Audia1', 20211, 1200, 120, 'GJ33AB12121', 'tata', 'thar2.jpg,thar3.jpg,thar4.jpg,amritsar.jpg,audi_logo.jpg', 331, 'Petrol', 2, '300', 'Diesel engine', 'Carbon break', 20, 1010, 0, 'CD Player, Driver Airbag'),
+(87, 'thar', 2022, 100, 2500, 'gj19hj7863', 'tata', 'gallery_1.jpg,gallery_4.jpg,gallery_5.jpg', 5, 'Petrol', 4, '500', 'Diesel engine', 'disc break', 20, 4, 1, 'Power Steering, Central Locking, AntiLock Braking System, Crash Sensor, Power Windows'),
+(88, 'Land Rover', 2025, 100, 100, 'GJ33AB1212', 'webaggx', 'gallery_11.jpg,mahindra1.jpeg,gallery_3.jpg,mahindra3.jpeg', 4, 'CNG', 2, '261', 'Diesel engine', 'disc break', 40, 8, 1, 'Power Steering, CD Player, AntiLock Braking System, Brake Assist, Power Windows, Leather Seats'),
+(89, 'audi x7', 1234, 100, 10, 'GJ33AB1212', 'tata', 'gallery_5.jpg,front-left-side-47 (1).jpg,gallery_4.jpg,gallery_9.jpg', 3, 'Diesel', 2, '500', 'Diesel engine', 'disc break', 40, 12, 0, 'Power Steering, CD Player, Power Door Locks, Central Locking, Brake Assist, Power Windows'),
+(90, 'Kia  carens', 1234, 100, 1234, '1111', 'tata', 'front-left-side-47.jpg,front-view-118 (1).jpg,a.jpeg,c.jpeg', 123, 'Diesel', 4, '500', 'Diesel engine', 'ABS break', 20, 12, 1, 'Air Conditioner, Power Steering, Central Locking, AntiLock Braking System, Brake Assist, Leather Seats'),
+(92, '1dgd', 1213, 100, 1221, '123', 'webaggx', '200-2001519_xuv-700-price-in-india-2019-hd-png.png,gallery_10.jpg,606-6067459_bmw-x7-price-in-india-2020-hd-png.png,about.png', 12, 'Petrol', 5, '400 ', 'Diesel engine', 'Carbon break', 40, 10, 0, 'CD Player, Power Door Locks, Driver Airbag, Brake Assist, Passenger Airbag, Crash Sensor, Leather Seats'),
+(93, 'Land Rover123', 789, 200, 789, '789', 'webaggx', 'ad_car.png,gallery_1.jpg,GLC_1.jpg', 789, 'Petrol', 2, '261', 'Diesel engine', 'Carbon break', 20, 7, 1, 'Air Conditioner, Power Steering, CD Player, Power Door Locks, Driver Airbag, Central Locking, AntiLock Braking System, Brake Assist, Passenger Airbag, Crash Sensor, Power Windows'),
+(94, 'Discovery Land Lover', 2021, 1201, 1000, 'gj19hj7863', 'tata', 'front-left-side-47 (2).jpg,front-left-side-47 (1).jpg,front-left-side-47.jpg,side-view-(left)-90.jpg', 2, 'Diesel', 5, '261', 'EV', 'Carbon break', 40, 10, 0, 'Air Conditioner, Power Steering, CD Player, Power Door Locks, Driver Airbag, Central Locking, AntiLock Braking System, Brake Assist, Passenger Airbag, Crash Sensor, Power Windows, Leather Seats'),
 (95, 'Land Rover bm', 2021, 2021, 123, '123', 'tata', 'front-left-side-47 (1).jpg,front-left-side-47 (2).jpg,front-left-side-47.jpg,side-view-(left)-90.jpg', 120, 'Diesel', 4, '300 Hp', 'EV', 'Carbon break', 50, 10, 0, 'Air Conditioner, Central Locking');
 
 -- --------------------------------------------------------
@@ -284,10 +313,9 @@ CREATE TABLE IF NOT EXISTS `driver` (
 --
 
 INSERT INTO `driver` (`did`, `dfname`, `dlname`, `fnumber`, `hprice`, `dprice`, `type_licence`, `profile`, `address`, `city`, `state`, `pin`, `status`, `created_at`, `updated_at`, `licence_pdf`, `adhar_pdf`) VALUES
-(3, 'Vatukiya', 'Bhupat', 7359509387, 200, 1200, 'passenger', 'driver/WhatsApp Image 2025-02-12 at 8.30.26 PM.jpeg', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364710, 1, '2025-02-11 07:56:25', '2025-02-15 11:09:14', '', ''),
-(4, 'hardik', 'vatukiya', 9106265263, 100, 1000, 'four_wheeler', 'download (2).jpeg,licence.png,profile.jpeg', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 1, '2025-02-11 07:57:34', '2025-02-15 11:10:45', '', ''),
-(5, 'Vatukiya bhai', 'Bhupat', 7359509387, 1230, 12, 'passenger', 'driver/WhatsApp Image 2025-02-12 at 8.30.26 PM.jpeg', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364710, 1, '2025-02-13 04:35:08', '2025-02-16 18:30:25', 'driver/VatukiyaBhupatResume (3).pdf', 'driver/HirenLakum(CV) (1).pdf'),
-(6, 'Vikrambhai', 'Dhoraliya', 7359509387, 456, 546, 'passenger', '', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 1, '2025-02-13 04:48:46', '2025-02-15 10:05:52', '', '');
+(3, 'Vatukiya', 'Bhupat', 7359509387, 200, 1200, 'passenger', 'driver/WhatsApp Image 2025-02-12 at 8.30.26 PM.jpeg', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364711, 1, '2025-02-11 07:56:25', '2025-02-20 17:53:37', '', ''),
+(4, 'hardik', 'vatukiya', 9106265263, 100, 1000, 'four_wheeler', 'driver/gallery_5.jpg', 'GEDI,GEDI', 'SURENDRANAGAR', 'GUJARAT', 363421, 1, '2025-02-11 07:57:34', '2025-02-21 17:30:24', '', ''),
+(5, 'Vatukiya bhai', 'Bhupat', 7359509387, 1230, 12, 'passenger', 'driver/WhatsApp Image 2025-02-12 at 8.30.26 PM.jpeg', 'Hifli Sheri No.4 Botad', 'Botad', 'Gujarat', 364710, 1, '2025-02-13 04:35:08', '2025-02-16 18:30:25', 'driver/VatukiyaBhupatResume (3).pdf', 'driver/HirenLakum(CV) (1).pdf');
 
 -- --------------------------------------------------------
 
@@ -361,9 +389,8 @@ CREATE TABLE IF NOT EXISTS `reguser` (
 INSERT INTO `reguser` (`uid`, `profile_picture`, `name`, `mnumber`, `email`, `password`, `DOB`, `gender`, `state`, `address_type`, `pincode`, `address`, `token`, `reset_token`, `reset_expiry`, `is_verified`, `created_at`) VALUES
 (32, '', 'Bhupat', 7359509387, 'bhupatvatukiya1@gmail.com', '789789789', '0000-00-00', '', '', '', 0, '', '', 'f12f8f62c66b613417c9ad5f6290f11a21d64798394e01bfb1454762367d05d0984146eb0c3d4d46884a335b3a5666fb10a3', '2025-02-05 12:13:40', NULL, '2025-02-05 03:01:29'),
 (33, '', 'hardik', 7474747474, 'hr123@gmail.com', '123123123', '0000-00-00', '', '', '', 0, '', '', NULL, NULL, 1, '2025-02-05 03:01:29'),
-(40, 'upload/front-left-side-47 (2).jpg', 'mahadev', 9898989898, 'mm2028501@gmail.com', '123123123', '2025-02-16', 'male', 'Gujrat', 'office', 364710, 'Hifli Sheri No.4 Botad', '', NULL, NULL, 1, '2025-02-05 04:34:42');
+(40, 'upload/gallery_1.jpg', 'mahadev', 9898989898, 'mm2028501@gmail.com', '123123123', '2025-02-16', 'male', 'Gujrat', 'office', 364710, 'Hifli Sheri No.4 Botad', '', NULL, NULL, 1, '2025-02-05 04:34:42');
 COMMIT;
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
