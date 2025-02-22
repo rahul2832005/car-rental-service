@@ -10,7 +10,6 @@ if(isset($_POST['submit']))
     $aemail=$_POST['username'];
     $apassword=$_POST['password'];
 
-
     if($aemail=="")
     {
         $em="Enter Email ID !";
@@ -35,29 +34,24 @@ if(isset($_POST['submit']))
     {
         if(strlen($apassword)<8)
         {
-            $pass="Enter At leasr 8 character !";
+            $pass="Enter At least 8 characters !";
             $count++;
         }
     }
 
-  
-
     if($count==0)
-        {
-            
-            $query="select * from admin where aemail='$aemail' && apassword='$apassword'";
-            $exquery=mysqli_query($conn,$query);
-        
-            $row=mysqli_num_rows($exquery);
-            $user=mysqli_fetch_assoc($exquery);
-           
-           
-            $username=$user["aemail"];
-            $_SESSION["adlogin"]=$username;
-           
-            header("location:dashboard.php");     
-             
-        }
+    {
+        $query="select * from admin where aemail='$aemail' && apassword='$apassword'";
+        $exquery=mysqli_query($conn,$query);
+    
+        $row=mysqli_num_rows($exquery);
+        $user=mysqli_fetch_assoc($exquery);
+    
+        $username=$user["aemail"];
+        $_SESSION["adlogin"]=$username;
+    
+        header("location:dashboard.php");     
+    }
 }
 ?>
 
@@ -69,7 +63,6 @@ if(isset($_POST['submit']))
     <title>Admin Login - Car Rental</title>
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
     <style>
         * {
             margin: 0;
@@ -115,6 +108,15 @@ if(isset($_POST['submit']))
             transform: translateY(-50%);
             color: #d32f2f;
         }
+        .toggle-password {
+            position: absolute;
+            /* padding-left: 250PX; */
+           margin-left: 250PX; 
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #d32f2f;
+        }
         .login-btn {
             width: 100%;
             padding: 10px;
@@ -145,6 +147,22 @@ if(isset($_POST['submit']))
             margin-bottom: 10px;
         }
     </style>
+    <script>
+        function togglePassword(event) {
+            event.stopPropagation();
+            var passwordInput = document.getElementById('password');
+            var toggleIcon = document.getElementById('toggle-icon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="login-container">
@@ -156,12 +174,16 @@ if(isset($_POST['submit']))
                 <input type="text" name="username" placeholder="Username" >
                 <p style="color: red;"><?php echo $em;  ?></p>
             </div>
+    
             <div class="input-group">
-                <i class="fa fa-lock"></i>
-                <input type="password" name="password" placeholder="Password" >
-                <p style="color: red;"><?php echo $pass;  ?></p>
-
+            <i class="fa fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" name="password" value="<?php echo $password; ?>" />
+                <span onclick="togglePassword(event)">
+                    <i class="fa fa-eye toggle-password" id="toggle-icon"></i>
+                </span>
+                <p style="color: red;"><?php echo $pass; ?></p>
             </div>
+
             <button type="submit" class="login-btn" name="submit">Login</button>
             <a href="#" class="forgot-password">Forgot Password?</a>
         </form>

@@ -1,85 +1,66 @@
 <?php
 //login page
 @include "include/config.php";
-    $email=$password=$pass=$em="";
-    session_start();
+$email = $password = $pass = $em = "";
+session_start();
 
-    if(isset($_POST["login"]))
-    {
-        $count=0;
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-      
-        
-        if($email=="")
-        {
-            $em="Enter Email ID !";
+if (isset($_POST["login"])) {
+    $count = 0;
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+
+    if ($email == "") {
+        $em = "Enter Email ID !";
+        $count++;
+    } else {
+        $ex1 = '/^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-z]/';
+        if (!preg_match($ex1, $email)) {
+            $em = "Enter Valid Email Address !";
             $count++;
         }
-        else
-        {
-            $ex1='/^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-z]/';
-            if(!preg_match($ex1,$email))
-            {
-                $em="Enter Valid Email Address !";
-                $count++;
-            }
-        }
-        if($password=="")
-        {
-            $pass="Enter The Password";
-            $count++;
-        }
-        else
-        {
-            if(strlen($password)<8)
-            {
-                $pass="Enter At leasr 8 character !";
-                $count++;
-            }
-        }
-      
-        $query="select * from reguser where email='$email' && password='$password' && is_verified=1";
-        $exquery=mysqli_query($conn,$query);
-
-        $row=mysqli_num_rows($exquery);
-
-        if($row==1)
-        {
-            
-            $show="select * from reguser where email='$email'";
-            $data=mysqli_query($conn,$show);
-            $user=mysqli_fetch_assoc($data);
-           
-           
-            $username=$user["email"];
-            $_SESSION["alogin"]=$username;
-
-            $uname=$user["name"];
-            $_SESSION["uname"]=$uname;
-            
-   
-            $id = $user["uid"];
-            $_SESSION["userid"]=$id;
-
-            
-
-           
-           
-            header("location:dis_car.php");
-           
-             
-        }
-        elseif($row!=1 && $count==0)
-        {
-            echo "<script>alert('⚠️ User Not Found Or Not Verified!');</script>";
-        }
-       
-       
-       
-
-        
     }
+    if ($password == "") {
+        $pass = "Enter The Password";
+        $count++;
+    } else {
+        if (strlen($password) < 8) {
+            $pass = "Enter At leasr 8 character !";
+            $count++;
+        }
+    }
+
+    $query = "select * from reguser where email='$email' && password='$password' && is_verified=1";
+    $exquery = mysqli_query($conn, $query);
+
+    $row = mysqli_num_rows($exquery);
+
+    if ($row == 1) {
+
+        $show = "select * from reguser where email='$email'";
+        $data = mysqli_query($conn, $show);
+        $user = mysqli_fetch_assoc($data);
+
+
+        $username = $user["email"];
+        $_SESSION["alogin"] = $username;
+
+        $uname = $user["name"];
+        $_SESSION["uname"] = $uname;
+
+
+        $id = $user["uid"];
+        $_SESSION["userid"] = $id;
+
+
+
+
+
+        header("location:dis_car.php");
+    } elseif ($row != 1 && $count == 0) {
+        echo "<script>alert('⚠️ User Not Found Or Not Verified!');</script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,7 +89,7 @@
             background-size: cover;
 
         }
-       
+
         .container {
             /* background:green;*/
             margin-left: 50px;
@@ -119,7 +100,7 @@
             border-radius: 10px;
             padding: 30px 40px;
             backdrop-filter: blur(6px);
-          
+
         }
 
         .container h1 {
@@ -195,7 +176,7 @@
         .register-link p a {
             color: #fff;
             text-decoration: none;
-           
+
         }
 
         .register-link p a:hover {
@@ -231,7 +212,7 @@
             background-color: #fff;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             transition: all 0.4s ease;
-           
+
         }
 
         .social-links a:hover {
@@ -243,52 +224,78 @@
             border: 3px solid white;
             margin-bottom: 10px;
         }
-         /* FOR BUTTON  */
-         @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
-* {
-  box-sizing: border-box;
-}
+        /* FOR BUTTON  */
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+        * {
+            box-sizing: border-box;
+        }
 
 
 
-button {
-  background-color: purple;
-  color: #fff;
-  border: 1px purple solid;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  padding: 20px 30px;
-  overflow: hidden;
-  margin: 10px 0;
-  position: relative;
-  cursor: pointer;
-}
+        button {
+            background-color: purple;
+            color: #fff;
+            border: 1px purple solid;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 20px 30px;
+            overflow: hidden;
+            margin: 10px 0;
+            position: relative;
+            cursor: pointer;
+        }
 
-button:focus {
-  outline: none;
-}
+        button:focus {
+            outline: none;
+        }
 
-button .circle {
-  position: absolute;
-  background-color: red;
-  width: 140px;
-  height: 100px;
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  animation: ripple 0.5s ease-out;
-}
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color:rgb(88, 82, 82);
+        }
 
-@keyframes ripple {
-  to {
-    transform: translate(-50%, -50%) scale(3);
-    opacity: 0;
-  }
-}
+        button .circle {
+            position: absolute;
+            background-color: red;
+            width: 140px;
+            height: 100px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            animation: ripple 0.5s ease-out;
+        }
 
+        @keyframes ripple {
+            to {
+                transform: translate(-50%, -50%) scale(3);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
+<script>
+    function togglePassword(event) {
+    event.stopPropagation();
+    var passwordInput = document.getElementById('password');
+    var toggleIcon = document.getElementById('toggle-icon');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    }
+}
+
+</script>
 
 <body>
     <div class="container">
@@ -296,17 +303,20 @@ button .circle {
             <h1>Login</h1>
 
             <div class="input-box">
-                <input type="text" placeholder="Email" name="email" value="<?php echo $email; ?>"/>
+                <input type="text" placeholder="Email" name="email" value="<?php echo $email; ?>" />
                 <p style="color: red;"><?php echo $em; ?></p>
-                
+
 
             </div>
 
             <div class="input-box">
-                <input type="password" placeholder="Password" name="password" value="<?php echo $password; ?>"/>
+                <input type="password" id="password" placeholder="Password" name="password" value="<?php echo $password; ?>" />
+                <span onclick="togglePassword(event)">
+                    <i class="fa fa-eye toggle-password" id="toggle-icon"></i>
+                </span>
                 <p style="color: red;"><?php echo $pass; ?></p>
-              
             </div>
+
 
             <div class="remember-forgot">
                 <label><input type="checkbox" required /> Remember me</label>
@@ -336,25 +346,5 @@ button .circle {
         </div>
     </div>
 </body>
-<script type="text/javascript">
-    const buttons = document.querySelectorAll(".ripple");
 
-buttons.forEach((button) => {
-  button.addEventListener("click", function (e) {
-    const x = e.clientX;
-    const y = e.clientY;
-    const buttonTop = e.target.offsetTop;
-    const buttonLeft = e.target.offsetLeft;
-    const xInside = x - buttonLeft;
-    const yInside = y - buttonTop;
-    const circle = document.createElement("span");
-    circle.classList.add("circle");
-    circle.style.top = yInside + "px";
-    circle.style.left = xInside + "px";
-    this.appendChild(circle);
-    setTimeout(() => circle.remove(), 500);
-  });
-});
-
-</script>
 </html>
