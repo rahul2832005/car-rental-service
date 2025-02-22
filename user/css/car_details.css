@@ -59,10 +59,10 @@ body, html {
     border: 2px solid white;
 }
 
-.image-slider img:hover {
+/* .image-slider img:hover {
     border-style: groove;
     border-color: red;
-}
+} */
 
 .form-container {
     max-width: 315px;

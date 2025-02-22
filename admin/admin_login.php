@@ -87,7 +87,7 @@ if(isset($_POST['submit']))
         }
         .login-container h2 {
             margin-bottom: 20px;
-            color: #d32f2f;
+            color: #000;
         }
         .input-group {
             position: relative;
@@ -124,9 +124,10 @@ if(isset($_POST['submit']))
             background: #d32f2f;
             color: white;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 25px;
             cursor: pointer;
             transition: 0.3s;
+
         }
         .login-btn:hover {
             background: #b71c1c;
@@ -134,9 +135,9 @@ if(isset($_POST['submit']))
         .forgot-password {
             display: block;
             margin-top: 10px;
-            color: #d32f2f;
+            color: #000;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 15px;
         }
         .forgot-password:hover {
             text-decoration: underline;
