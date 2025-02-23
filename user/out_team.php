@@ -126,7 +126,7 @@ session_start();
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="image/bhupat1.jpeg" alt="Bhupat Vatukiya">
+                    <img src="image/bm1.jpg" alt="Bhupat Vatukiya">
                     <h3 class="name">Bhupat Vatukiya</h3>
                     <p>Project Manager</p>
                     <div class="social-icons">
