@@ -63,8 +63,8 @@ session_start();
 
         .team-member img {
             border-radius: 50%;
-            width: 125px;
-            height: 150px;
+            width: 145px;
+            height: 175px;
             margin-bottom: 15px;
         }
 
@@ -110,71 +110,71 @@ session_start();
             <h1>Our Team</h1>
         </div>
         <section class="team-section">
-            <h1 class="team-title">The Amazing Team Behind Our Company</h1>
+            <h1 class="team-title">The Amazing Team Behind Our Development</h1>
             <div class="team-grid">
                 <div class="team-member">
-                    <img src="image/member1.png" alt="Alex Leeman">
-                    <h3 class="name">Alex Leeman</h3>
-                    <p>Director</p>
+                    <img src="image/rahul2.jpg" alt="Rahul Bavaliya">
+                    <h3 class="name">Rahul Bavaliya</h3>
+                    <p>UI/UX Designer</p>
                     <div class="social-icons">
-                        <a id="icon" href="#"><i class="fab fa-facebook"></i></a>
-                        <a id="icon" href="#"><i class="fab fa-linkedin"></i></a>
-                        <a id="icon" href="#"><i class="fab fa-twitter"></i></a>
+                        <a id="icon" href="https://www.facebook.com/share/1Bm1XPsV1s/"><i class="fab fa-facebook"></i></a>
+                        <a id="icon" href="https://www.linkedin.com/in/rahul-bavaliya-aa8624346?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
+                        <a id="icon" href="https://www.instagram.com/rahulbavaliya153?igsh=MTRpc3lsc2J6cHA2cg=="><i class="fa-brands fa-instagram"></i></a>
                     </div>
                     <div class="red">
 
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="image/member2.png" alt="Diago Johnson">
-                    <h3 class="name">Diago Johnson</h3>
-                    <p>Sales Manager</p>
+                    <img src="image/bhupat1.jpeg" alt="Bhupat Vatukiya">
+                    <h3 class="name">Bhupat Vatukiya</h3>
+                    <p>Project Manager</p>
                     <div class="social-icons">
-                        <a id="icon" href="#"><i class="fab fa-facebook"></i></a>
-                        <a id="icon" href="#"><i class="fab fa-linkedin"></i></a>
-                        <a id="icon" href="#"><i class="fab fa-twitter"></i></a>
+                        <a id="icon" href="https://www.facebook.com/share/1DZhVVJhkB/"><i class="fab fa-facebook"></i></a>
+                        <a id="icon" href="https://www.linkedin.com/in/bhupat-vatukiya-806979266?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
+                        <a id="icon" href="https://www.instagram.com/bhupatvatukiya?igsh=YjF1cmdmMHl1anp0"><i class="fa-brands fa-instagram"></i></a>
                     </div>
                 </div>
 
                 <div class="team-member">
-                    <img src="image/member3.png" alt="Alex Leeman">
-                    <h3 class="name">Alex Leeman</h3>
-                    <p>Director</p>
+                    <img src="image/hardik.jpg" alt="Hardik Vatukiya">
+                    <h3 class="name">Hardik Vatukiya</h3>
+                    <p>Senior Developer</p>
                     <div class="social-icons">
-                        <a id="icon" href="#"><i class="fab fa-facebook"></i></a>
-                        <a id="icon" href="#"><i class="fab fa-linkedin"></i></a>
-                        <a id="icon" href="#"><i class="fab fa-twitter"></i></a>
+                        <a id="icon" href="https://www.facebook.com/share/1FT3rsm65L/"><i class="fab fa-facebook"></i></a>
+                        <a id="icon" href="https://www.linkedin.com/in/hardik-vatukiya-30b53423a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
+                        <a id="icon" href="https://www.instagram.com/hardik_vatukiya_07?igsh=NngwaG44Z3NsNnFu"><i class="fa-brands fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="image/member4.png" alt="Diago Johnson">
-                    <h3 class="name">Diago Johnson</h3>
-                    <p>Sales Manager</p>
+                    <img src="image/harsh.png" alt="Harsh Kavaiya">
+                    <h3 class="name">Harsh Kavaiya</h3>
+                    <p>Senior Designer</p>
                     <div class="social-icons">
-                        <a id="icon" href="#"><i class="fab fa-facebook"></i></a>
-                        <a id="icon" href="#"><i class="fab fa-linkedin"></i></a>
-                        <a id="icon" href="#"><i class="fab fa-twitter"></i></a>
+                        <a id="icon" href="https://www.facebook.com/share/1ZMntQAc4a/"><i class="fab fa-facebook"></i></a>
+                        <a id="icon" href="https://www.linkedin.com/in/harsh-kavaiya?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
+                        <a id="icon" href="https://www.instagram.com/harsh_kavaiya_8989?igsh=ODM5dWl6czc0eXh3"><i class="fa-brands fa-instagram"></i></a>
                     </div>
                 </div>
 
                 <div class="team-member">
-                    <img src="image/member5.png" alt="Alex Leeman">
-                    <h3 class="name">Alex Leeman</h3>
-                    <p>Director</p>
+                    <img src="image/mohit1.jpg" alt="Mohit Chavda">
+                    <h3 class="name">Mohit Chavda</h3>
+                    <p>QA Tester</p>
                     <div class="social-icons">
-                        <a id="icon" href="#"><i class="fab fa-facebook"></i></a>
-                        <a id="icon" href="#"><i class="fab fa-linkedin"></i></a>
-                        <a id="icon" href="#"><i class="fab fa-twitter"></i></a>
+                        <a id="icon" href="https://www.facebook.com/share/15ZPsTyzWc/"><i class="fab fa-facebook"></i></a>
+                        <a id="icon" href="https://www.linkedin.com/in/mohit-chavda-6b56b72b9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
+                        <a id="icon" href="https://www.instagram.com/mohit_chavda902?igsh=MWhsNTA2bmFsNWluMw=="><i class="fa-brands fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="image/member6.png" alt="Diago Johnson">
-                    <h3 class="name">Diago Johnson</h3>
-                    <p>Sales Manager</p>
+                    <img src="image/hiren.png" alt="Hiren Lakum">
+                    <h3 class="name">Hiren Lakum</h3>
+                    <p>Security Specialist</p>
                     <div class="social-icons">
-                        <a id="icon" href="#"><i class="fab fa-facebook"></i></a>
-                        <a id="icon" href="#"><i class="fab fa-linkedin"></i></a>
-                        <a id="icon" href="#"><i class="fab fa-twitter"></i></a>
+                        <a id="icon" href="https://www.facebook.com/share/1BuaJexczb/"><i class="fab fa-facebook"></i></a>
+                        <a id="icon" href="https://www.linkedin.com/in/hiren-lakum-607a4830b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
+                        <a id="icon" href="https://www.instagram.com/hiren_lakum9?igsh=N2RqZGxmczkxeDBs"><i class="fa-brands fa-instagram"></i></a>
                     </div>
                 </div>
                 <!-- Add more team members as needed -->

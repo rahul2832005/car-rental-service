@@ -149,7 +149,7 @@ $total_pages = ceil($total_entries / $limit);
         }
 
         .order-button:hover {
-            background-color: rgb(224, 45, 60);
+            background-color: #cc2f39;
             color: #fff;
         }
 
@@ -262,7 +262,8 @@ $total_pages = ceil($total_entries / $limit);
                     <img src="../admin/img/<?php echo $image[0] ?>" alt="Car Image">
                     <h2 class="card-title"> <?php echo $row['cname']; ?> </h2>
                     <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <h3 class="price"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['price']; ?>/-</h3>
+                    <h3 class="price">Per Day- <i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['price']; ?>/-</h3>
+                    <h3 class="price">Per Hour- <i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['chprice']; ?>/-</h3>
                     <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: <?php echo $row['seat']; ?></h3>
                     <h3 class="fual"><i class="fa-solid fa-gas-pump"></i> Fuel: <?php echo $row['fual']; ?></h3>
                     <div>

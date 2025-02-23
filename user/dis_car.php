@@ -87,7 +87,7 @@ error_reporting(0);
         }
 
         .card-footer {
-            display: flex;
+            /* display: flex; */
             align-items: center;
             justify-content: space-between;
             /* margin-top: -14px; */
@@ -197,10 +197,11 @@ if (mysqli_num_rows($select_car) > 0) {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 <hr>
                 <div class="card-footer">
-                    <h3 class="price"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['price']; ?>/-</h3>
+                    <h3 class="price"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['price']; ?>/-(per day)</h3>
+                    <h3 class="price" style="margin-top: -10px;"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $row['chprice']; ?>/-(per hour)</h3>
                 </div>
                 <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: <?php echo $row['seat']; ?></h3>
-                <h3 class="fual"><i class="fa-solid fa-gas-pump"></i>fual: <?php echo $row['fual']; ?></h3>
+                <h3 class="fual"><i class="fa-solid fa-gas-pump"></i> fual: <?php echo $row['fual']; ?></h3>
                 <div>
                             <?php if ($_SESSION["alogin"]) { ?>
                                 <button class="order-button" type="submit" name="rent-now"><a href="car_detail.php?vid=<?php echo $row['vid']; ?>" class="button">Rent Now</a></button>

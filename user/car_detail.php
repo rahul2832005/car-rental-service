@@ -203,7 +203,7 @@ if (isset($_POST['Book'])) {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             z-index: 1001;
             display: none;
-            width: 60%;
+            width: 67%;
         }
 
         #overlay {
@@ -218,13 +218,19 @@ if (isset($_POST['Book'])) {
         }
 
         .close-driver-form {
-            background-color: red;
-            color: white;
-            border: none;
-            padding: 8px 16px;
+            background-color: #fff;
+            color: #e63946;
+            border: 1px solid #cc2f39;
+            padding: 5px 15px;
             cursor: pointer;
             border-radius: 4px;
             margin-top: 10px;
+            font-size: 20px;
+        }
+
+        .close-driver-form:hover{
+            color: #fff;
+            background-color: #cc2f39;
         }
 
         .prev,
@@ -288,10 +294,10 @@ if (isset($_POST['Book'])) {
                     </div>
                     <div class="section">
                         <h2><?php echo $row['cname']; ?></h2>
-                        <div class="content">
+                        <div class="content1">
                             <p>Per/Hour</p>
-                            <span style="color: red;"> <b>₹<?php echo  $row['chprice']; ?></b></span>
-                            <p>Per/Day</p>
+                            <span style="color: red; margin-left:-6px;"> <b>₹<?php echo  $row['chprice']; ?></b></span>
+                            <p style="margin-left: 35px;">Per/Day</p>
                             <span style="color: red;"> <b>₹<?php echo  $row['price']; ?></b></span>
 
                         </div>
@@ -395,7 +401,7 @@ if (isset($_POST['Book'])) {
                     </div>
                     <div class="booking-form">
                         <form action="" method="post">
-                            <h2>Booking Form</h2>
+                            <h2 style="margin-top: 14px;">Booking Form</h2>
                             <div class="form-group">
                                 <label for="rental-type">Rental Type</label>
                                 <select id="rental-type" name="rent_type">
@@ -511,14 +517,24 @@ if (isset($_POST['Book'])) {
 
                 <table>
                     <thead>
-                        <tr>
+                        <!-- <tr>
                             <th>🆔 id</th>
 
                             <th>👤 Name</th>
-                            <th>💰 Rate (per Hour)</th>
-                            <th>💰 Rate (per day)</th>
+                            <th>💰 Rate/(Hour)</th>
+                            <th>💰 Rate/(day)</th>
                             <th>🏙️ City</th>
                             <th>🗓️ Book</th>
+
+                        </tr> -->
+                        <tr>
+                            <th>id</th>
+
+                            <th>Name</th>
+                            <th>Rate/(Hour)</th>
+                            <th>Rate/(day)</th>
+                            <th>City</th>
+                            <th>Book</th>
 
                         </tr>
                     </thead>
