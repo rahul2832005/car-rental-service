@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php'; // If installed via Composer
-error_reporting(0);
+ error_reporting(0);
 @include "include/config.php";
 // for approve 
 $did = $_GET['did'];

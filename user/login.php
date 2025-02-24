@@ -73,11 +73,15 @@ if (isset($_POST["login"])) {
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <style>
+          @font-face {
+            font-family: 'pop-regular';
+            src: url('../font/Poppins-Regular.ttf');
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'poppins', 'sans-serif';
+            font-family:'pop-regular';
             font-size: 20px;
         }
 
@@ -193,7 +197,7 @@ if (isset($_POST["login"])) {
             justify-content: center;
             flex-direction: column;
             font-size: 45px;
-            font-family: ARIAL;
+            font-family: 'pop-regular';
             font-weight: bold;
         }
 
@@ -287,12 +291,12 @@ if (isset($_POST["login"])) {
     var toggleIcon = document.getElementById('toggle-icon');
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
-        toggleIcon.classList.remove('fa-eye');
-        toggleIcon.classList.add('fa-eye-slash');
-    } else {
-        passwordInput.type = 'password';
         toggleIcon.classList.remove('fa-eye-slash');
         toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
     }
 }
 
@@ -313,7 +317,7 @@ if (isset($_POST["login"])) {
             <div class="input-box">
                 <input type="password" id="password" placeholder="Password" name="password" value="<?php echo $password; ?>" />
                 <span onclick="togglePassword(event)">
-                    <i class="fa fa-eye toggle-password" id="toggle-icon"></i>
+                    <i class="fa fa-eye-slash                toggle-password" id="toggle-icon"></i>
                 </span>
                 <p style="color: red;"><?php echo $pass; ?></p>
             </div>

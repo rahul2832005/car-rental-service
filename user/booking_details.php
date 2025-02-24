@@ -163,7 +163,7 @@ $row = mysqli_fetch_assoc($result);
             <div class="info-box"><p><strong>Message:</strong> <?php echo $row['message']; ?></p></div>
             <div class="info-box"><p><strong>Booking Number:</strong> <?php echo $row['bookingno']; ?></p></div>
             <div class="info-box"><p><strong>Posting Date:</strong> <?php echo $row['PostingDate']; ?></p></div>
-            <div class="info-box"><p><strong>Driver Number</strong> <?php echo $row['PostingDate']; ?></p></div>
+            <!-- <div class="info-box"><p><strong>Driver Number</strong> <?php echo $row['PostingDate']; ?></p></div> -->
         </div>
         <a href="my_booking.php" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Bookings</a>
         <?php  if($row['status']!=2) { ?>

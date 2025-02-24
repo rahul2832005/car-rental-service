@@ -103,7 +103,7 @@ $profilePicture = !empty($userData['profile_picture']) ? $userData['profile_pict
                         <i class="fas fa-camera"></i>
                     </div>
                 </div>
-                <input type="file" name="profile_picture" id="profile_picture" accept="image/*" style="display:none;" onchange="this.form.submit()">
+                <input type="file" name="profile_picture" id="profile_picture" accept=".jpeg,.jpg,.png" style="display:none;" onchange="this.form.submit()">
             </form>
 
             <div class="profile-info">

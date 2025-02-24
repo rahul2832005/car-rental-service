@@ -17,7 +17,7 @@ session_start();
                 <h1>Dashboard</h1>
                 <div class="account">
                     
-                <span><a href="logout.php" style="text-decoration: none;" > Account</a></span>
+                <span><a href="logout.php" style="text-decoration: none;" > Logout</a></span>
 
                 </div>
             </header>
