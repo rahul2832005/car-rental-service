@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php'; // If installed via Composer
- error_reporting(0);
+error_reporting(0);
 @include "include/config.php";
 // for approve 
 $did = $_GET['did'];
@@ -46,14 +46,13 @@ Your Booking is done!<br>
         <h2>Thank You</h2>";
         $mail->send();
         echo "<script>alert('Booking Done email sent!');</script>";
-    
 
-    echo "<script>alert('Approve success')
+
+        echo "<script>alert('Approve success')
 window.open('confirmed-booking.php', 'second');</script>";
+    } catch (Exception $e) {
+        echo "Mailer Error: {$mail->ErrorInfo}";
     }
-catch (Exception $e) {
-    echo "Mailer Error: {$mail->ErrorInfo}";
-}
 }
 
 
@@ -95,11 +94,11 @@ Try Again !!
         $mail->send();
         echo "<script>alert('Booking Cancelled email sent!');</script>";
 
-    echo "<script>alert('Booking Cancelled')
+        echo "<script>alert('Booking Cancelled')
 window.open('canceled-booking.php', 'second');</script>";
-} catch (Exception $e) {
-    echo "Mailer Error: {$mail->ErrorInfo}";
-}
+    } catch (Exception $e) {
+        echo "Mailer Error: {$mail->ErrorInfo}";
+    }
 }
 
 // for Return Car booking
@@ -140,11 +139,11 @@ Try Again !!
         $mail->send();
         echo "<script>alert('Return Car email sent!');</script>";
 
-    echo "<script>alert('Returned Booking')
+        echo "<script>alert('Returned Booking')
 window.open('return-booking.php', 'second');</script>";
-} catch (Exception $e) {
-    echo "Mailer Error: {$mail->ErrorInfo}";
-}
+    } catch (Exception $e) {
+        echo "Mailer Error: {$mail->ErrorInfo}";
+    }
 }
 
 ?>
@@ -295,7 +294,8 @@ window.open('return-booking.php', 'second');</script>";
                car_list.cname, 
                booking.FromDate, 
                booking.ToDate, 
-               booking.message, 
+               booking.message,
+               booking.rent_type, 
                booking.vid, 
                booking.status, 
                booking.PostingDate, 
@@ -304,7 +304,10 @@ window.open('return-booking.php', 'second');</script>";
                booking.userEmail,
                DATEDIFF(booking.ToDate, booking.FromDate) as totalnodays, 
                car_list.price, 
+               car_list.chprice, 
+               
                (DATEDIFF(booking.ToDate, booking.FromDate) * car_list.price) AS grand_total,
+                (TIMESTAMPDIFF(HOUR, booking.FromDate, booking.ToDate) * car_list.chprice) AS grand_totalh,
                (DATEDIFF(booking.ToDate, booking.FromDate) * driver.dprice)
                +(DATEDIFF(booking.ToDate, booking.FromDate) * car_list.price) AS grand_totald,
                driver.dfname, 
@@ -327,7 +330,7 @@ window.open('return-booking.php', 'second');</script>";
         $na = mysqli_num_rows($result);
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
-            <h2 class="title">#<?php echo $row['bookingno'];?> Booking Details</h2>
+            <h2 class="title">#<?php echo $row['bookingno']; ?> Booking Details</h2>
 
             <div class="section">
                 <h3>User Details</h3>
@@ -388,7 +391,14 @@ window.open('return-booking.php', 'second');</script>";
                     </tr>
                     <tr>
                         <td><strong>Grand Total</strong></td>
-                        <td><?php echo $row['grand_total']; ?></td>
+                        <td><?php if($row['rent_type']=='hour')
+                        {
+                            echo $row['grand_totalh'];
+                        }
+                        else
+                        {
+                            echo $row['grand_total'];
+                        } ?></td>
                     </tr>
                     <tr>
                         <td><strong>Booking Status</strong></td>
@@ -398,7 +408,7 @@ window.open('return-booking.php', 'second');</script>";
                             echo "<td>Booked</td>";
                         } elseif ($row['status'] == 2) {
                             echo "<td>Cancelled</td>";
-                        } elseif ($row['status']==3) {
+                        } elseif ($row['status'] == 3) {
                             echo "<td>Returned</td>";
                         }
 
@@ -451,7 +461,7 @@ window.open('return-booking.php', 'second');</script>";
                     <a href="Approve.php?eaid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?>  && userEmail=<?php echo $row['userEmail']; ?>"> <button class="cancel-button" name="cancel" onclick="return confirm('Do you really want to Cancel this Booking')">Cancel Booking</button></a>
 
                 </div>
-        <?php  }
+            <?php  }
             if ($row['status'] == 1) { ?>
                 <div class="buttons">
 

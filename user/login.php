@@ -1,5 +1,4 @@
 <?php
-//login page
 @include "include/config.php";
 $email = $password = $pass = $em = "";
 session_start();
@@ -8,7 +7,6 @@ if (isset($_POST["login"])) {
     $count = 0;
     $email = $_POST['email'];
     $password = $_POST['password'];
-
 
     if ($email == "") {
         $em = "Enter Email ID !";
@@ -20,48 +18,51 @@ if (isset($_POST["login"])) {
             $count++;
         }
     }
+
     if ($password == "") {
         $pass = "Enter The Password";
         $count++;
     } else {
         if (strlen($password) < 8) {
-            $pass = "Enter At leasr 8 character !";
+            $pass = "Enter At least 8 characters!";
             $count++;
         }
     }
 
-    $query = "select * from reguser where email='$email' && password='$password' && is_verified=1";
+    if($count==0)
+    {
+
+    // first check user exist
+    $query = "SELECT * FROM reguser WHERE email='$email'";
     $exquery = mysqli_query($conn, $query);
+    $user = mysqli_fetch_assoc($exquery);
 
-    $row = mysqli_num_rows($exquery);
+    if ($user) {
+        // user exist but not verified
+        if ($user['is_verified'] != 1) {
+            echo "<script>alert('⚠️ Your account is not verified!');</script>";
+        }
+        //  password wrong 
+        elseif ($user['password'] != $password) {
+            echo "<script>alert('⚠️ User Not Found!');</script>";
+        }
+        // all right 
+        else {
+            $_SESSION["alogin"] = $user["email"];
+            $_SESSION["uname"] = $user["name"];
+            $_SESSION["userid"] = $user["uid"];
 
-    if ($row == 1) {
-
-        $show = "select * from reguser where email='$email'";
-        $data = mysqli_query($conn, $show);
-        $user = mysqli_fetch_assoc($data);
-
-
-        $username = $user["email"];
-        $_SESSION["alogin"] = $username;
-
-        $uname = $user["name"];
-        $_SESSION["uname"] = $uname;
-
-
-        $id = $user["uid"];
-        $_SESSION["userid"] = $id;
-
-
-
-
-
-        header("location:dis_car.php");
-    } elseif ($row != 1 && $count == 0) {
-        echo "<script>alert('⚠️ User Not Found Or Not Verified!');</script>";
+            header("location: dis_car.php");
+            exit();
+        }
+    } else {
+        // user not exist
+        echo "<script>alert('⚠️ User Not Found!');</script>";
     }
 }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
