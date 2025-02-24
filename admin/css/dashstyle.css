@@ -116,8 +116,8 @@ body {
 }
 
 .header .account {
-    background-color: #2D3748;
-    color: #FFF;
+    background-color: #FFF;
+    color: #000;
     padding: 10px 15px;
     border-radius: 20px;
     font-size: 14px;
