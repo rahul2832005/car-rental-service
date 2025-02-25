@@ -120,7 +120,7 @@
             <button type="submit">Send OTP</button>
         </form>
 
-        <p class="login-link">Remembered your password? <a href="login.php">Login</a></p>
+        <p class="login-link">Remembered your password? <a href="../login.php">Login</a></p>
     </div>
 </body>
 </html>

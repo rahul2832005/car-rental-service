@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_SESSION["otp"]) && time() < $_SESSION["otp_expire"]) {
         if ($user_otp == $_SESSION["otp"]) {
             $_SESSION["verified"] = true;
+           
             header("Location: reset_password.php");
             exit();
         } else {
@@ -141,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Verify OTP</button>
         </form>
 
-        <p class="resend-link">Didn't receive OTP? <a href="send_otp.php?email=<?php  echo $_SESSION["email"] ?>">Resend OTP</a></p>
+        <p class="resend-link">Didn't receive OTP? <a href="resend_otp.php">Resend OTP</a></p>
     </div>
 </body>
 </html>

@@ -73,7 +73,7 @@ if($count==0)
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
         }
 
         .container {
@@ -122,7 +122,7 @@ if($count==0)
 
         button {
             width: 100%;
-            background: #ff758c;
+            background: #4facfe;
             color: white;
             border: none;
             padding: 10px;
@@ -134,7 +134,7 @@ if($count==0)
         }
 
         button:hover {
-            background: #ff5e7d;
+            background: #00c6fb;
         }
 
         .login-link {
@@ -144,7 +144,7 @@ if($count==0)
         }
 
         .login-link a {
-            color: #ff758c;
+            color: #4facfe;
             text-decoration: none;
             font-weight: bold;
         }
