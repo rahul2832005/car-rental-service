@@ -156,7 +156,7 @@
                 Fulfill your automotive fantasies without breaking the bank. Check our affordable car
                 rentals for an opulent yet economical ride.
             </p>
-            <a href="#" id="cta-button">Get in Touch</a>
+            <a href="contact_us.php" id="cta-button">Get in Touch</a>
             </div>
         </div>
         <div data-aos="fade-left" data-aos-duration="2500">

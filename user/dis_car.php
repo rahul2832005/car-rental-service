@@ -185,6 +185,7 @@ if (mysqli_num_rows($select_car) > 0) {
         $image=explode(",",$row['image']);
         //print_r($image); 
 ?>
+<a href="car_detail.php?vid=<?php echo $row['vid']; ?>" >
         <div class="card">
             <div class="card-image">
            <img src="../admin/img/<?php echo $image[0]; ?>">
@@ -204,7 +205,7 @@ if (mysqli_num_rows($select_car) > 0) {
                 <h3 class="fual"><i class="fa-solid fa-gas-pump"></i> fual: <?php echo $row['fual']; ?></h3>
                 <div>
                             <?php if ($_SESSION["alogin"]) { ?>
-                                <button class="order-button" type="submit" name="rent-now"><a href="car_detail.php?vid=<?php echo $row['vid']; ?>" class="button">Rent Now</a></button>
+                                <button class="order-button button" type="submit" name="rent-now">Rent Now</button></a>
                             <?php } else { ?>
 
                                 <button class="order-button"><a href="login.php" class="button">Login For Book</a></button>
