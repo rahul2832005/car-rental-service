@@ -30,7 +30,7 @@
             transition: all ease-in-out 0.5s;
         }
         .img_container #img:hover{
-            width: 45%;
+            width: 50%;
 
         }
     </style>
@@ -38,7 +38,7 @@
 
 <body>
     <div class="img_container">
-        <img id="img" src="image/slider5.jpg" alt="" srcset="">
+        <img id="img" src="image/slider1.jpg" alt="" srcset="">
         <img id="img" src="image/slider2.jpg" alt="" srcset="">
         <img id="img" src="image/slider3.jpg" alt="" srcset="">
         <img id="img" src="image/slider4.jpg" alt="" srcset="">

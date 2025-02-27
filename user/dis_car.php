@@ -43,13 +43,13 @@ error_reporting(0);
 
         .card {
             background-color: white;
-            width: 305px;
+            width: 315px;
             max-width: 1050px;
             border-radius: 10px;
             box-shadow: 0 4px 12px -5px rgba(0, 0, 0, 0.4);
             overflow: hidden;
             padding: 20px;
-            margin: 17px 15px;
+            margin: 17px 10px;
 
            
         }
@@ -69,7 +69,7 @@ error_reporting(0);
         }
 
         .card-image img {
-            width: 290px;
+            width: 300px;
             margin: 20px 0px;
             border-radius: 5px;
             margin-top: 0px;
