@@ -1,77 +1,100 @@
 <?php
-@include "include/config.php";
-session_start();
-// error_reporting(0);
-/*   RazorPay Integration  */
-$vid = $_GET['vid'];
-$uid = $_SESSION['userid'];
-$useremail = $_SESSION['alogin'];
-
-
-$sdate = date('Y-m-d');
-$fdate = $tdate = $pick_up_loc = "";
-$errors = [];
-
-
-if (isset($_POST['Book'])) {
-    $fdate = $_POST['fdate'];
-    $tdate = $_POST['tdate'];
-    $pick_up_loc = $_POST['pick_up_loc'];
-    $drop_of_loc = $_POST['drop_of_loc'];
-    $rent_type = $_POST['rent_type'];
-
-    $status = 0;
-    $bookingno = mt_rand(1000, 9999);
-
-
-    if (empty($fdate)) {
-        $errors['fdate'] = "Select a pickup date.";
-    }
-    if (empty($tdate)) {
-        $errors['tdate'] = "Select a drop-off date.";
-    }
-    if (!empty($fdate) && !empty($tdate) && $fdate > $tdate) {
-        $errors['date'] = "Pickup date cannot be after drop-off date.";
-    }
-    if (empty($pick_up_loc)) {
-        $errors['pick_up_loc'] = "Select a pickup location.";
-    }
-    if (empty($drop_of_loc)) {
-        $errors['drop_of_loc'] = "Select a drop-off location.";
-    }
-
-    if (empty($errors)) {
-        $avlquery = "SELECT * FROM booking 
-                     WHERE vid = $vid
-                     AND status != 2
-                     AND ('$fdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
-                          OR '$tdate' BETWEEN DATE(FromDate) AND DATE(ToDate) 
-                          OR (FromDate BETWEEN '$fdate' AND '$tdate') 
-                          OR (ToDate BETWEEN '$fdate' AND '$tdate'))";
-
-        $exavlquery = mysqli_query($conn, $avlquery);
-        if (mysqli_num_rows($exavlquery) > 0) {
-            echo "<script>alert('Car already booked for the selected dates');</script>";
-            echo "<script>document.location = 'dis_car.php';</script>";
-        } else {
-            
-               
-
-                $sql = "INSERT INTO booking (bookingno, userEmail, vid, FromDate, ToDate, status,pickup,dropof) 
-                VALUES ('$bookingno', '$useremail', '$vid', '$fdate', '$tdate', '$status','$pick_up_loc','$drop_of_loc')";
-
-
-
-
-                if (mysqli_query($conn, $sql)) {
-
-
-                    echo "<script>alert('Booking successful');</script>";
-                } else {
-                    echo "<script>alert('Something went wrong');</script>";
-                }
-            
+       session_start();
+       @include "include/config.php";
+       
+       
+       $bookingdata=$_SESSION['booking_data'];
+       $did=$_SESSION['driver_id'];
+       
+       
+       $vid=$bookingdata['vid'];
+       $bookingno=$bookingdata['bookingno'];
+       $useremail=$bookingdata['useremail'];
+       $fdate=$bookingdata['fdate'];
+       $tdate=$bookingdata['tdate'];
+       $pick_up_loc=$bookingdata['pick_up_loc'];
+       $drop_of_loc=$bookingdata['drop_of_loc'];
+       $status=$bookingdata['status'];
+       $order_id=$bookingdata['order_id'];
+       $amount=$bookingdata['amount'];
+       $rent_type=$bookingdata['rent_type'];
+       $dname=$bookingdata['dname'];
+       $did=$bookingdata['did'];
+       $payment=1;
+        ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Checkout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-    }
-}
-?>
+        .container {
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        .summary {
+            padding: 15px;
+            border-radius: 8px;
+            background: #f9f9f9;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .summary p {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        .total {
+            font-size: 22px;
+            font-weight: bold;
+            color: #d9534f;
+            margin-top: 15px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Car Rental Summary</h2>
+       
+        <div class="summary">
+            <p><strong>Car:</strong> <?php echo $vid; ?></p>
+            <p><strong>From Date:</strong> <?php echo date('d-m-Y', $fdate); ?></p>
+            <p><strong>To Date:</strong> <?php echo date('d-m-Y', $tdate); ?></p>
+            
+            <p class="total">Total Cost: $<?php echo number_format($amount, 2); ?></p>
+        </div>
+        <button onclick="window.print()">Print Invoice</button>
+       
+    </div>
+</body>
+</html>
