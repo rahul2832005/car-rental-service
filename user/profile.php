@@ -125,10 +125,10 @@ $profilePicture = !empty($userData['profile_picture']) ? $userData['profile_pict
                 <h3>MY BOOKING</h3>
             </div>
         </a>
-        <a href="#">
+        <a href="my_doc.php"  target="main">
             <div class="service-card">
-                <div class="icon"><img src="image/picon.png"></div>
-                <h3>PAYMENTS</h3>
+                <div class="icon"><img src="image/documentation.png"></div>
+                <h3>MY DOCUMENTS</h3>
             </div>
         </a>
         <a href="#">

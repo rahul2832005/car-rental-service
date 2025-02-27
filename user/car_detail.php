@@ -110,24 +110,11 @@ if (isset($_POST['Book'])) {
 
         // Proceed to Payment if available
         if ($driverAvailable && $carAvailable) {
-            require('vendor/autoload.php');
-
-            // Razorpay API Keys (test mode)
-            $keyId = 'rzp_test_lFfdAvwRtocJ83';
-            $keySecret = 'hzszbJxefW7Otvh7tsaarvf4';
-
-            $api = new \Razorpay\Api\Api($keyId, $keySecret);
+            
 
             $amount_in_paise = $amount * 100; // Razorpay accepts amount in paise
 
-            $orderData = [
-                'receipt' => strval(rand(1000, 9999)),
-                'amount' => $amount_in_paise,
-                'currency' => 'INR',
-                'payment_capture' => 1,
-            ];
-
-            $order = $api->order->create($orderData);
+           
 
             $_SESSION['booking_data'] = [
                 'bookingno' => $bookingno,
@@ -141,38 +128,26 @@ if (isset($_POST['Book'])) {
                 'rent_type' => $rent_type,
                 'did' => $driver_id,
                 'dname' => $selected_driver,
-                'amount' => $orderData['amount'] / 100,
-                'order_id' => $order->id,
+                'amount' =>  $amount_in_paise/100,
+           
             ];
+            $user_verified=false;
+            $userverify="select * from reguser where  uid=$uid";
+            $exuserverify=mysqli_query($conn,$userverify);
+            $userresult=mysqli_fetch_assoc($exuserverify);
+
+            if(!($userresult['aadhar_number']) && !($userresult['aadhar_file']) && !($userresult['license_number']) && !($userresult['license_file']))
+            {
+                header("Location:document_verify_error.php");
+            }
+            else
+            {
+                header("Location: booking_confirmation.php");
+            }
+            exit();
+            
 ?>
-            <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-            <script>
-                function pay(e) {
-                    var options = {
-                        "key": "<?= $keyId; ?>",
-                        "amount": "<?= $amount_in_paise; ?>",
-                        "currency": "INR",
-                        "name": "Carola",
-                        "description": "Payment for Booking Car",
-                        "order_id": "<?= $order->id; ?>",
-                        "handler": function(response) {
-                            window.location.href = 'payment_success.php?payment_id=' + response.razorpay_payment_id + '&order_id=' + response.razorpay_order_id + '&signature=' + response.razorpay_signature;
-                        },
-                        "prefill": {
-                            "name": "Bhupat",
-                            "email": "<?= $_SESSION['userEmail']; ?>",
-                            "contact": "9999999999"
-                        },
-                        "theme": {
-                            "color": "#631579"
-                        }
-                    };
-                    var rzp1 = new Razorpay(options);
-                    rzp1.open();
-                    e.preventDefault();
-                }
-                pay();
-            </script>
+           
 <?php
         }
     }

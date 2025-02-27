@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 25, 2025 at 05:53 PM
+-- Generation Time: Feb 27, 2025 at 06:57 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -72,17 +72,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `payment` int NOT NULL,
   `is_notified` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=192 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `booking`
---
-
-INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `rent_type`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`, `pickup`, `dropoff`, `did`, `dname`, `order_id`, `amount`, `payment`, `is_notified`) VALUES
-(191, 4781, 'kkanudo97@gmail.com', 87, 'Day', '2025-02-27 22:38:00', '2025-03-04 22:38:00', '', 0, '2025-02-24 17:09:06', '2025-02-24 17:09:06', 'Bhavnagar', 'Bhavnagar', 5, 'Vatukiya bhai', '', 12560, 1, 0),
-(190, 3021, 'kkanudo97@gmail.com', 87, 'hour', '2025-02-24 22:36:00', '2025-02-24 23:43:00', '', 0, '2025-02-24 17:08:01', '2025-02-24 17:08:01', 'Botad', 'Botad', 5, 'Vatukiya bhai', '', 1330, 1, 0),
-(189, 9254, 'kkanudo97@gmail.com', 86, 'Day', '2025-02-25 22:32:00', '2025-02-28 22:32:00', '', 0, '2025-02-24 17:03:27', '2025-02-24 17:03:27', 'Bhavnagar', 'Bhavnagar', 0, '', '', 360, 1, 0),
-(188, 4821, 'kkanudo97@gmail.com', 86, 'hour', '2025-02-24 22:30:00', '2025-02-24 23:59:00', '', 0, '2025-02-24 17:02:23', '2025-02-24 17:02:23', 'Botad', 'Botad', 0, '', '', 1200, 1, 0);
+) ENGINE=MyISAM AUTO_INCREMENT=196 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -361,6 +351,10 @@ CREATE TABLE IF NOT EXISTS `reguser` (
   `address_type` varchar(255) NOT NULL,
   `pincode` bigint DEFAULT NULL,
   `address` varchar(255) NOT NULL,
+  `aadhar_number` int NOT NULL,
+  `aadhar_file` varchar(100) NOT NULL,
+  `license_number` varchar(100) NOT NULL,
+  `license_file` varchar(100) NOT NULL,
   `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `reset_otp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `reset_expiry` datetime DEFAULT NULL,
@@ -373,10 +367,10 @@ CREATE TABLE IF NOT EXISTS `reguser` (
 -- Dumping data for table `reguser`
 --
 
-INSERT INTO `reguser` (`uid`, `profile_picture`, `name`, `mnumber`, `email`, `password`, `DOB`, `gender`, `state`, `address_type`, `pincode`, `address`, `token`, `reset_otp`, `reset_expiry`, `is_verified`, `created_at`) VALUES
-(33, '', 'hardik', 7474747474, 'hr123@gmail.com', '123123123', '0000-00-00', '', '', '', 0, '', '', NULL, NULL, 1, '2025-02-05 03:01:29'),
-(40, 'upload/gallery_1.jpg', 'mahadev', 9898989898, 'mm2028501@gmail.com', '11111111', '2025-02-16', 'male', 'Gujrat', 'office', 364710, 'Hifli Sheri No.4 Botad', '', '157079', NULL, 1, '2025-02-05 04:34:42'),
-(49, '', 'kanudo', 7854785478, 'kkanudo97@gmail.com', '123123123', '0000-00-00', '', '', '', NULL, '', '', NULL, NULL, 1, '2025-02-24 03:42:39');
+INSERT INTO `reguser` (`uid`, `profile_picture`, `name`, `mnumber`, `email`, `password`, `DOB`, `gender`, `state`, `address_type`, `pincode`, `address`, `aadhar_number`, `aadhar_file`, `license_number`, `license_file`, `token`, `reset_otp`, `reset_expiry`, `is_verified`, `created_at`) VALUES
+(33, '', 'hardik', 7474747474, 'hr123@gmail.com', '123123123', '0000-00-00', '', '', '', 0, '', 0, '', '', '', '', NULL, NULL, 1, '2025-02-05 03:01:29'),
+(40, 'upload/gallery_1.jpg', 'mahadev', 9898989898, 'mm2028501@gmail.com', '11111111', '2025-02-16', 'male', 'Gujrat', 'office', 364710, 'Hifli Sheri No.4 Botad', 2147483647, 'uploads/1740682352_aadhar_Use_Case_Diagram_with_Boundaries.png', 'GJ132100923', 'uploads/1740682352_license_oracle-II (assignment -3) theory.pdf', '', '157079', NULL, 1, '2025-02-05 04:34:42'),
+(49, '', 'kanudo', 7854785478, 'kkanudo97@gmail.com', '123123123', '0000-00-00', '', '', '', NULL, '', 2147483647, 'uploads/1740680973_aadhar_Screen 1.png', 'GJ132100923', 'uploads/1740680973_license_class (1).pdf', '', NULL, NULL, 1, '2025-02-24 03:42:39');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

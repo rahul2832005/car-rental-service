@@ -46,6 +46,6 @@ $exsql=mysqli_query($conn,$sql);
 }
 
 echo "<script>alert('Booking  Successfully !');
-        window,location.href='profile.php';</script>";
+window,location.href='profile.php';</script>";
 
 ?>
