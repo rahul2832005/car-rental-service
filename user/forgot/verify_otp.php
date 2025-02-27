@@ -1,53 +1,22 @@
 <?php
 session_start();
-error_reporting(0);
-
-$conn=mysqli_connect("localhost","root","","car_rent");
-if(!$conn)
-{
-    echo "not";
-}
-$op=$er="";
-$count=0;
-// if (!isset($_SESSION["verified"])) {
-//     echo "Unauthorized access!";
-//     exit();
-// }
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user_otp = $_POST["otp"];
 
-    $newp = $conp = "";
-    $newp = $_POST['password'];
-    $conp = $_POST['con_password'];
- // Validate input fields
- if (empty($newp)) {
-    $op = "Enter new Password";
-    $count++;
-}
+    if (isset($_SESSION["otp"]) && time() < $_SESSION["otp_expire"]) {
+        if ($user_otp == $_SESSION["otp"]) {
+            $_SESSION["verified"] = true;
+           
+            header("Location: reset_password.php");
+            exit();
+        } else {
+            echo "<script> alert('Invalid OTP!');</script>";
+        }
+    } else {
+       
+        echo "<script> alert('OTP expired! Please request a new one.');</script>";
 
-if (empty($conp)) {
-    $er = "Enter confirm password ";
-    $count++;
-} elseif ($newp !== $conp) {
-    $er = "Password does not match!";
-    $count++;
-}
-
-    
-    $email = $_SESSION["email"];
-if($count==0)
-{
-    mysqli_query($conn, "UPDATE reguser SET password='$newp',reset_otp='' WHERE email='$email'");
-    echo "<script>alert('Password Reset SuccessFylly .');</script>";
-    echo "<script>window.location.href='../login.php'</script>";
-   
-}  
-// header("location:../login.php"); 
-    // Clear session
-    session_unset();
-    session_destroy();
-
-   
+    }
 }
 ?>
 
@@ -56,7 +25,7 @@ if($count==0)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset Password</title>
+    <title>OTP Verification</title>
     <style>
         /* Google Font */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
@@ -116,8 +85,8 @@ if($count==0)
         }
 
         input:focus {
-            border-color: #ff9a9e;
-            box-shadow: 0px 0px 5px rgba(255, 154, 158, 0.5);
+            border-color: #4facfe;
+            box-shadow: 0px 0px 5px rgba(79, 172, 254, 0.5);
         }
 
         button {
@@ -137,19 +106,19 @@ if($count==0)
             background: #00c6fb;
         }
 
-        .login-link {
+        .resend-link {
             font-size: 14px;
             margin-top: 10px;
             color: #333;
         }
 
-        .login-link a {
+        .resend-link a {
             color: #4facfe;
             text-decoration: none;
             font-weight: bold;
         }
 
-        .login-link a:hover {
+        .resend-link a:hover {
             text-decoration: underline;
         }
 
@@ -164,22 +133,17 @@ if($count==0)
 </head>
 <body>
     <div class="container">
-        <h2>Reset Password</h2>
-        <p>Enter your new password</p>
+        <h2>OTP Verification</h2>
+        <p>Enter the OTP sent to your email or phone</p>
         
         <form action="" method="POST">
-            <label for="password">New Password</label>
-            <input type="password" name="password" id="password" value="<?php echo $newp; ?>">
-            <p style="color: red;"><?php echo $op; ?></p>
-
-            <label for="password">New Password</label>
-            <input type="password" name="con_password" id="password" value="<?php echo $conp; ?>">
-            <p style="color: red;"><?php echo $er; ?></p>
-
-            <button type="submit">Reset Password</button>
+            <label for="otp">Enter OTP</label>
+            <input type="number" name="otp" required>
+            <button type="submit">Verify OTP</button>
         </form>
 
-        <p class="login-link">Back to <a href="../login.php">Login</a></p>
+        <p class="resend-link">Didn't receive OTP? <a href="resend_otp.php">Resend OTP</a></p>
     </div>
 </body>
 </html>
+

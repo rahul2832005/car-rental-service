@@ -154,7 +154,7 @@
 <body>
 <header class="navbar">
     <div class="logo">
-      <span class="logo-text">Car<span style="color: red;">ola</span></span>
+      <a href="dis_car.php"> <span class="logo-text">Car<span style="color: red;">ola</span></span></a>
     </div>
     <nav class="nav-links">
       <a href="dis_car.php" class="active">Home</a>

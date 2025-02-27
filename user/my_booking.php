@@ -22,7 +22,9 @@ FROM booking
 JOIN car_list ON car_list.vid = booking.vid 
 JOIN reguser ON reguser.email = booking.userEmail 
 WHERE booking.userEmail = '$uid'  ORDER BY booking.PostingDate DESC";
-} else {
+} 
+else 
+{
     $sql = "SELECT reguser.*, 
 car_list.cname, 
 car_list.image,

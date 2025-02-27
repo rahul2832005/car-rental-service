@@ -161,7 +161,7 @@
         <div class="footer-container">
             <!-- Company Info -->
             <div class="footer-section company-info">
-                <h2 class="h2"><span>Car</span><span style="color: red;font-size: 35px; ;">ola</span></h2>
+               <a href="dis_car.php"> <h2 class="h2"><span>Car</span><span style="color: red;font-size: 35px; ;">ola</span></h2></a>
                 <p>57,opp. Hotel Lotus <br>Botad, Gujarat</p>
                 <p><a href="#">www.carola.com</a></p>
                 <p>+91-9824930580</p>

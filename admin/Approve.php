@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php'; // If installed via Composer
- error_reporting(0);
+error_reporting(0);
 @include "include/config.php";
 // for approve 
 $did = $_GET['did'];
@@ -46,14 +46,13 @@ Your Booking is done!<br>
         <h2>Thank You</h2>";
         $mail->send();
         echo "<script>alert('Booking Done email sent!');</script>";
-    
 
-    echo "<script>alert('Approve success')
+
+        echo "<script>alert('Approve success')
 window.open('confirmed-booking.php', 'second');</script>";
+    } catch (Exception $e) {
+        echo "Mailer Error: {$mail->ErrorInfo}";
     }
-catch (Exception $e) {
-    echo "Mailer Error: {$mail->ErrorInfo}";
-}
 }
 
 
@@ -95,11 +94,11 @@ Try Again !!
         $mail->send();
         echo "<script>alert('Booking Cancelled email sent!');</script>";
 
-    echo "<script>alert('Booking Cancelled')
+        echo "<script>alert('Booking Cancelled')
 window.open('canceled-booking.php', 'second');</script>";
-} catch (Exception $e) {
-    echo "Mailer Error: {$mail->ErrorInfo}";
-}
+    } catch (Exception $e) {
+        echo "Mailer Error: {$mail->ErrorInfo}";
+    }
 }
 
 // for Return Car booking
@@ -140,11 +139,11 @@ Try Again !!
         $mail->send();
         echo "<script>alert('Return Car email sent!');</script>";
 
-    echo "<script>alert('Returned Booking')
+        echo "<script>alert('Returned Booking')
 window.open('return-booking.php', 'second');</script>";
-} catch (Exception $e) {
-    echo "Mailer Error: {$mail->ErrorInfo}";
-}
+    } catch (Exception $e) {
+        echo "Mailer Error: {$mail->ErrorInfo}";
+    }
 }
 
 ?>
@@ -295,7 +294,8 @@ window.open('return-booking.php', 'second');</script>";
                car_list.cname, 
                booking.FromDate, 
                booking.ToDate, 
-               booking.message, 
+               booking.message,
+               booking.rent_type, 
                booking.vid, 
                booking.status, 
                booking.PostingDate, 
@@ -303,10 +303,21 @@ window.open('return-booking.php', 'second');</script>";
                booking.bookingno, 
                booking.userEmail,
                DATEDIFF(booking.ToDate, booking.FromDate) as totalnodays, 
+               TIMESTAMPDIFF(HOUR, booking.FromDate, booking.ToDate) AS total_hours,
                car_list.price, 
+               car_list.chprice, 
+               
                (DATEDIFF(booking.ToDate, booking.FromDate) * car_list.price) AS grand_total,
+                (TIMESTAMPDIFF(HOUR, booking.FromDate, booking.ToDate) * car_list.chprice) AS grand_totalh,
+
+                (DATEDIFF(booking.ToDate, booking.FromDate) * driver.dprice) AS grand_total_day_d,
+                (TIMESTAMPDIFF(HOUR, booking.FromDate, booking.ToDate) * driver.hprice) AS grand_total_hour_d,
+
                (DATEDIFF(booking.ToDate, booking.FromDate) * driver.dprice)
                +(DATEDIFF(booking.ToDate, booking.FromDate) * car_list.price) AS grand_totald,
+
+               (TIMESTAMPDIFF(HOUR, booking.FromDate, booking.ToDate) * driver.hprice)
+               +(TIMESTAMPDIFF(HOUR, booking.FromDate, booking.ToDate) * car_list.chprice) AS grand_total_h,
                driver.dfname, 
                driver.did, 
                driver.dprice, 
@@ -327,7 +338,7 @@ window.open('return-booking.php', 'second');</script>";
         $na = mysqli_num_rows($result);
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
-            <h2 class="title">#<?php echo $row['bookingno'];?> Booking Details</h2>
+            <h2 class="title">#<?php echo $row['bookingno']; ?> Booking Details</h2>
 
             <div class="section">
                 <h3>User Details</h3>
@@ -371,6 +382,10 @@ window.open('return-booking.php', 'second');</script>";
                         <td><?php echo $row['PostingDate']; ?></td>
                     </tr>
                     <tr>
+                        <td><strong>Rent Type</strong></td>
+                        <td><?php echo $row['rent_type']; ?></td>
+                    </tr>
+                    <tr>
                         <td><strong>From Date</strong></td>
                         <td><?php echo $row['FromDate']; ?></td>
                     </tr>
@@ -378,36 +393,82 @@ window.open('return-booking.php', 'second');</script>";
                         <td><strong>To Date</strong></td>
                         <td><?php echo $row['ToDate']; ?></td>
                     </tr>
-                    <tr>
-                        <td><strong>Total Days</strong></td>
-                        <td><?php echo $row['totalnodays']; ?></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Rent Per Day</strong></td>
-                        <td><?php echo $row['price']; ?></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Grand Total</strong></td>
-                        <td><?php echo $row['grand_total']; ?></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Booking Status</strong></td>
-                        <?php if ($row['status'] == 0) {
-                            echo "<td>Not Confirmed Yet</td>";
-                        } elseif ($row['status'] == 1) {
-                            echo "<td>Booked</td>";
-                        } elseif ($row['status'] == 2) {
-                            echo "<td>Cancelled</td>";
-                        } elseif ($row['status']==3) {
-                            echo "<td>Returned</td>";
-                        }
+                    <?php if ($row['rent_type'] == 'Day') { ?>
+                        <tr>
+                            <td><strong>Total Days</strong></td>
+                            <td><?php echo $row['totalnodays']; ?></td>
+                        </tr>
 
-                        ?>
-                    </tr>
-                    <tr>
-                        <td><strong>Last Return Date</strong></td>
-                        <td></td>
-                    </tr>
+                        <tr>
+                            <td><strong>Rent Per Day</strong></td>
+                            <td><?php echo $row['price']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Car Grand Total</strong></td>
+                            <td><?php echo $row['grand_total']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Booking Status</strong></td>
+                            <?php if ($row['status'] == 0) {
+                                echo "<td>Not Confirmed Yet</td>";
+                            } elseif ($row['status'] == 1) {
+                                echo "<td>Booked</td>";
+                            } elseif ($row['status'] == 2) {
+                                echo "<td>Cancelled</td>";
+                            } elseif ($row['status'] == 3) {
+                                echo "<td>Returned</td>";
+                            }
+
+                            ?>
+                        </tr>
+                        <tr>
+                            <td><strong>Last Return Date</strong></td>
+                            <td></td>
+                        </tr>
+                        <?php if($row['did']=="") {?>
+                        <tr>
+                            <td><strong> Grand Total</strong></td>
+                            <td><?php echo $row['grand_total']; ?></td>
+                        </tr>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <tr>
+                            <td><strong>Total Hours</strong></td>
+                            <td><?php echo $row['total_hours']; ?></td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Rent Per Hour</strong></td>
+                            <td><?php echo $row['chprice']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Car Grand Total</strong></td>
+                            <td><?php echo $row['grand_totalh']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Booking Status</strong></td>
+                            <?php if ($row['status'] == 0) {
+                                echo "<td>Not Confirmed Yet</td>";
+                            } elseif ($row['status'] == 1) {
+                                echo "<td>Booked</td>";
+                            } elseif ($row['status'] == 2) {
+                                echo "<td>Cancelled</td>";
+                            } elseif ($row['status'] == 3) {
+                                echo "<td>Returned</td>";
+                            }
+
+                            ?>
+                        </tr>
+                        <tr>
+                            <td><strong>Last Return Date</strong></td>
+                            <td></td>
+                        </tr>
+                        <?php if($row['did']=="") {?>
+                        <tr>
+                            <td><strong> Grand Total</strong></td>
+                            <td><?php echo $row['grand_totalh']; ?></td>
+                        </tr>
+                    <?php  }} ?>
                 </table>
             </div>
 
@@ -423,20 +484,48 @@ window.open('return-booking.php', 'second');</script>";
                             <td><strong>Booking Date</strong></td>
                             <td><?php echo $row['PostingDate']; ?></td>
                         </tr>
+                        <tr>
+                        <td><strong>Rent Type</strong></td>
+                        <td><?php echo $row['rent_type']; ?></td>
+                    </tr>
+                        <?php if ($row['rent_type'] == 'Day') { ?>
+                            <tr>
+                                <td><strong>Total Days</strong></td>
+                                <td><?php echo $row['totalnodays']; ?></td>
+                            </tr>
 
-                        <tr>
-                            <td><strong>Total Days</strong></td>
-                            <td><?php echo $row['totalnodays']; ?></td>
-                        </tr>
-
-                        <tr>
-                            <td><strong>Rent Per Day</strong></td>
-                            <td><?php echo $row['dprice']; ?></td>
-                        </tr>
-                        <tr>
+                            <tr>
+                                <td><strong>Rent Per Day</strong></td>
+                                <td><?php echo $row['dprice']; ?></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Driver Grand Total</strong></td>
+                                <td><?php echo $row['grand_total_day_d']; ?></td>
+                            </tr>
+                            <tr>
                             <td><strong>Grand Total</strong></td>
                             <td><?php echo $row['grand_totald']; ?></td>
                         </tr>
+                        <?php  } else { ?>
+                            <tr>
+                                <td><strong>Total Hours</strong></td>
+                                <td><?php echo $row['total_hours']; ?></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Rent Per Hour</strong></td>
+                                <td><?php echo $row['hprice']; ?></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Driver Grand Total</strong></td>
+                                <td><?php echo $row['grand_total_hour_d']; ?></td>
+                            </tr>
+                            <tr>
+                            <td><strong>Grand Total</strong></td>
+                            <td><?php echo $row['grand_total_h']; ?></td>
+                        </tr>
+                        <?php  } ?>
+                      
 
 
 
@@ -451,7 +540,7 @@ window.open('return-booking.php', 'second');</script>";
                     <a href="Approve.php?eaid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?>  && userEmail=<?php echo $row['userEmail']; ?>"> <button class="cancel-button" name="cancel" onclick="return confirm('Do you really want to Cancel this Booking')">Cancel Booking</button></a>
 
                 </div>
-        <?php  }
+            <?php  }
             if ($row['status'] == 1) { ?>
                 <div class="buttons">
 

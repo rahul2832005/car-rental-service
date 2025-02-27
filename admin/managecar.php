@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 @include "include/config.php";
 // Pagination Logic
 $limit = 5;

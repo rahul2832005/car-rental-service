@@ -47,7 +47,7 @@ if (isset($_POST['Book'])) {
 
     // Calculate amount based on rent type
     if ($rent_type === 'Day') {
-        $days = $interval->days + 1;
+        $days = $interval->days ;
         $amount = $days * $rowamount['price'];
         if (!empty($driver_id)) {
             $amount += $days * $driver_price;
@@ -164,7 +164,7 @@ if (isset($_POST['Book'])) {
                             "contact": "9999999999"
                         },
                         "theme": {
-                            "color": "#631549"
+                            "color": "#631579"
                         }
                     };
                     var rzp1 = new Razorpay(options);
