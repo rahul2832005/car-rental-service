@@ -323,8 +323,18 @@ $row = mysqli_fetch_assoc($result);
         </div>
     <?php } ?>
     <a href="my_booking.php" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Bookings</a>
-    <?php if ($row['status'] != 2) { ?>
+    <?php if ($row['status'] != 2 && $row['status'] !=3) { ?>
         <a href="../admin/Approve.php?eaid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?>  && userEmail=<?php echo $row['userEmail']; ?>" class="cancel-btn" onclick="return confirm('Do you really want to cancel your booking?');"> Cancel Booking</a>
+    <?php  } ?>
+    <?php 
+    $user_id = $_SESSION['userid'];
+    $car_id=$row['vid'];
+    $sql = "SELECT * FROM feedback WHERE uid = $user_id AND vid = $car_id";
+    $exsql=mysqli_query($conn,$sql);
+    
+    $result=mysqli_num_rows($exsql);
+    if ($row['status'] == 3 && $result==0) { ?>
+        <a href="feedback.php?vid=<?php echo $row['vid']; ?>" class="cancel-btn"> Feedback For Booking</a>
     <?php  } ?>
     </div>
 </body>

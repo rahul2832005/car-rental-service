@@ -131,7 +131,7 @@ $profilePicture = !empty($userData['profile_picture']) ? $userData['profile_pict
                 <h3>MY DOCUMENTS</h3>
             </div>
         </a>
-        <a href="#">
+        <a href="my_feedback.php" target="main">
             <div class="service-card">
                 <div class="icon"><img src="image/feed.png"></div>
                 <h3>MY FEEDBACKS</h3>

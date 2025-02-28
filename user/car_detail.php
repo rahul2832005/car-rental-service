@@ -47,7 +47,7 @@ if (isset($_POST['Book'])) {
 
     // Calculate amount based on rent type
     if ($rent_type === 'Day') {
-        $days = $interval->days ;
+        $days = $interval->days;
         $amount = $days * $rowamount['price'];
         if (!empty($driver_id)) {
             $amount += $days * $driver_price;
@@ -110,11 +110,11 @@ if (isset($_POST['Book'])) {
 
         // Proceed to Payment if available
         if ($driverAvailable && $carAvailable) {
-            
+
 
             $amount_in_paise = $amount * 100; // Razorpay accepts amount in paise
 
-           
+
 
             $_SESSION['booking_data'] = [
                 'bookingno' => $bookingno,
@@ -128,26 +128,23 @@ if (isset($_POST['Book'])) {
                 'rent_type' => $rent_type,
                 'did' => $driver_id,
                 'dname' => $selected_driver,
-                'amount' =>  $amount_in_paise/100,
-           
-            ];
-            $user_verified=false;
-            $userverify="select * from reguser where  uid=$uid";
-            $exuserverify=mysqli_query($conn,$userverify);
-            $userresult=mysqli_fetch_assoc($exuserverify);
+                'amount' =>  $amount_in_paise / 100,
 
-            if(!($userresult['aadhar_number']) && !($userresult['aadhar_file']) && !($userresult['license_number']) && !($userresult['license_file']))
-            {
+            ];
+            $user_verified = false;
+            $userverify = "select * from reguser where  uid=$uid";
+            $exuserverify = mysqli_query($conn, $userverify);
+            $userresult = mysqli_fetch_assoc($exuserverify);
+
+            if (!($userresult['aadhar_number']) && !($userresult['aadhar_file']) && !($userresult['license_number']) && !($userresult['license_file'])) {
                 header("Location:document_verify_error.php");
-            }
-            else
-            {
+            } else {
                 header("Location: booking_confirmation.php");
             }
             exit();
-            
+
 ?>
-           
+
 <?php
         }
     }
@@ -203,7 +200,7 @@ if (isset($_POST['Book'])) {
             font-size: 20px;
         }
 
-        .close-driver-form:hover{
+        .close-driver-form:hover {
             color: #fff;
             background-color: #cc2f39;
         }
@@ -227,6 +224,104 @@ if (isset($_POST['Book'])) {
         .next {
             right: 10px;
         }
+        .card {
+            background-color: #fff;
+            width: 309px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px;
+            transition: transform 0.3s;
+            text-align: center;
+            color: #333;
+        }
+
+        /* .card:hover {
+            transform: scale(1.05);
+        } */
+
+        .card img {
+            width: 296px;
+            height: 285px;
+            /* object-fit: cover; */
+            border-radius: 10px;
+            margin-top: -15px;
+            margin-left: -13px;
+        }
+
+        .card-title {
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .order-button {
+            background-color: #fff;
+            color: #000;
+            padding: 5px 15px;
+            border: 2px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            font-size: 24px;
+            transition: background 0.3s;
+        }
+
+        .order-button:hover {
+            background-color: #cc2f39;
+            color: #fff;
+        }
+
+        #header {
+            margin-top: 10px;
+            /* background-color: #b1d7d6; */
+            width: 100%;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 35px;
+            margin-bottom: 15px;
+            color: black;
+        }
+        .fleet {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: #b1d7d6;
+        }
+        
+        
     </style>
 </head>
 <script>
@@ -370,7 +465,7 @@ if (isset($_POST['Book'])) {
                     <div class="pricing-details">
 
                         <h2>Pricing Details</h2>
-                        <p class="price-item">Per hour (1 Hour) <span>₹<?php  echo $row['chprice'];?>/-</span></p>
+                        <p class="price-item">Per hour (1 Hour) <span>₹<?php echo $row['chprice']; ?>/-</span></p>
                         <p class="price-item">Per Day (1 Day) <span>₹<?php echo $row['price']; ?>/-</span></p>
 
                     </div>
@@ -445,7 +540,39 @@ if (isset($_POST['Book'])) {
         </div>
     <?php
     }
+    $car_id = $_GET['vid'];
+    $car_sql = "SELECT * FROM car_list WHERE vid = $car_id";
+    $car_result = mysqli_query($conn, $car_sql);
+    $car_data = mysqli_fetch_assoc($car_result);
+
+    $brand = $car_data['brand'];
+    // $category = $car_data['modal'];
+
+    $sql = "SELECT * FROM car_list WHERE brand = '$brand' AND vid != $car_id LIMIT 4";
+    $recommend_result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($recommend_result) > 0) {
+        while ($rowroc = mysqli_fetch_array($recommend_result)) {
+            $image1 = explode(",", $rowroc['image']);
     ?>
+<div class="fleet" id="fleet-container">
+    <div class="card" data-name="<?php echo strtolower($rowroc['cname']); ?>">
+        <img src="../admin/img/<?php echo $image1[0] ?>" alt="Car Image">
+        <h2 class="card-title"> <?php echo $rowroc['cname']; ?> </h2>
+        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h3 class="price">Per Day- <i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $rowroc['price']; ?>/-</h3>
+        <h3 class="price">Per Hour- <i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $rowroc['chprice']; ?>/-</h3>
+        <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: <?php echo $rowroc['seat']; ?></h3>
+        <h3 class="fual"><i class="fa-solid fa-gas-pump"></i> Fuel: <?php echo $rowroc['fual']; ?></h3>
+        <div>
+            <?php if ($_SESSION["alogin"]) { ?>
+                <a href="car_detail.php?vid=<?php echo $rowroc['vid']; ?>" class="order-button">Rent Now</a>
+            <?php } else { ?>
+                <a href="login.php" class="order-button">Login For Book</a>
+            <?php } ?>
+        </div>
+    </div>
+    </div>
+<?php } } ?>
 
     <div class="enquiry-form" id="enquiryForm">
         <h2>Enquiry Form</h2>
@@ -492,16 +619,7 @@ if (isset($_POST['Book'])) {
 
                 <table>
                     <thead>
-                        <!-- <tr>
-                            <th>🆔 id</th>
-
-                            <th>👤 Name</th>
-                            <th>💰 Rate/(Hour)</th>
-                            <th>💰 Rate/(day)</th>
-                            <th>🏙️ City</th>
-                            <th>🗓️ Book</th>
-
-                        </tr> -->
+                        
                         <tr>
                             <th>id</th>
 
@@ -540,6 +658,8 @@ if (isset($_POST['Book'])) {
         </div>
         <button class="close-driver-form" onclick="closeDriverForm()">Close</button>
     </div>
+
+
     <div>
 
         <?php include('footer.php'); ?>
