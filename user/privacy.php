@@ -80,7 +80,7 @@
     <div class="banner-card">
         <img id="bg_img" src="image/our_team_bg1.png" alt="" srcset="">
         <div class="banner-text">
-            <h1>About Us</h1>
+            <h1>PRIVACY</h1>
         </div>
     </div>
     <div class="container">

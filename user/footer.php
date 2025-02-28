@@ -57,6 +57,7 @@
         }
         .h2{
             font-size: 35px;
+            color: #fff;
         }
 
         .h2,
@@ -88,7 +89,7 @@
             text-decoration: none;
         }
 
-        a:hover {
+        .a:hover {
             transition: all 0.5s;
             color: #e63946;
         }
@@ -172,21 +173,21 @@
                 <h3 class="h3">Community</h3>
                 <ul style=" list-style: none;">
                     <!-- <li style=" margin-bottom: 10px;"><a href="#">Area Details</a></li> -->
-                    <li style=" margin-bottom: 10px;"><a href="faq.php">FAQ</a></li>
-                    <li style=" margin-bottom: 10px;"><a href="servece_area.php">Service Areas</a></li>
-                    <li style=" margin-bottom: 10px;"><a href="gallery.php">Gallery</a></li>
-                    <li style=" margin-bottom: 10px;"><a href="Testimonials.php">Testimonials</a></li>
+                    <li style=" margin-bottom: 10px;"><a class="a" href="faq.php">FAQ</a></li>
+                    <li style=" margin-bottom: 10px;"><a class="a" href="servece_area.php">Service Areas</a></li>
+                    <li style=" margin-bottom: 10px;"><a class="a" href="gallery.php">Gallery</a></li>
+                    <li style=" margin-bottom: 10px;"><a class="a" href="Testimonials.php">Testimonials</a></li>
                 </ul>
             </div>
             <!-- Resources -->
             <div class="footer-section resources">
                 <h3 class="h3">Resources</h3>
                 <ul style=" list-style: none;">
-                    <li style=" margin-bottom: 10px;"><a href="about_us.php">About Us</a></li>
-                    <li style=" margin-bottom: 10px;"><a href="out_team.php">Our Team</a></li>
-                    <li style=" margin-bottom: 10px;"><a href="t&c.php">T&C</a></li>
-                    <li style=" margin-bottom: 10px;"><a href="privacy.php">Privacy Policy</a></li>
-                    <li style=" margin-bottom: 10px;"><a href="contact_us.php">Contact</a></li>
+                    <li style=" margin-bottom: 10px;"><a class="a" href="about_us.php">About Us</a></li>
+                    <li style=" margin-bottom: 10px;"><a class="a" href="out_team.php">Our Team</a></li>
+                    <li style=" margin-bottom: 10px;"><a class="a" href="t&c.php">T&C</a></li>
+                    <li style=" margin-bottom: 10px;"><a class="a" href="privacy.php">Privacy Policy</a></li>
+                    <li style=" margin-bottom: 10px;"><a class="a" href="contact_us.php">Contact</a></li>
                     
                 </ul>
             </div>

@@ -148,20 +148,92 @@
         display: none;
       }
     }
+    /* Dropdown Container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+/* Dropdown Links */
+.dropdown-content a {
+  color: black;
+  padding: 5px 7px;
+  text-decoration: none;
+  display: block;
+  font-size: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show Dropdown on Hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* Down Arrow */
+#down {
+  /* border: solid black;
+  border-width: 0 4px 4px 4px; */
+  display: inline-block;
+  padding: 4px;
+  margin-left:-2px;
+  transform: rotate(0deg);
+  transition: transform 0.4s ease;
+}
+
+/* Rotate Arrow on Hover */
+.dropdown:hover #down {
+  transform: rotate(-180deg);
+}
+
+
   </style>
 </head>
 
 <body>
-<header class="navbar">
+  <header class="navbar">
     <div class="logo">
       <a href="dis_car.php"> <span class="logo-text">Car<span style="color: red;">ola</span></span></a>
     </div>
     <nav class="nav-links">
       <a href="dis_car.php" class="active">Home</a>
       <a href="car_list1.php">Car Fleet</a>
-      <a href="#">Pages</a>
+      <div class="dropdown">
+        <a href="#" class="dropbtn">Pages <i id="down" class="fa-solid fa-angle-down"></i></a>
+        <div class="dropdown-content">
+          <a href="about_us.php">About Us</a>
+          <a href="our_team.php">Our Team</a>
+          <a href="testimonials.php">Testimonials</a>
+          <a href="privacy.php">Privacy Policy</a>
+          <a href="t&c.php">T&C</a>
+          <a href="gallery.php">Gallery</a>
+          <a href="servece_area.php">Service area</a>
+          <a href="faq.php">FAQ</a>
+        </div>
+      </div>
       <a href="#">News</a>
-      <a href="#">Contact</a>
+      <a href="contact_us.php">Contact</a>
     </nav>
 
     <div class="login-btn">
@@ -192,7 +264,7 @@
     const notificationPopup = document.getElementById('notificationPopup');
     const notificationBadge = document.getElementById('notification-badge');
 
-    notificationIcon.addEventListener('click', function (e) {
+    notificationIcon.addEventListener('click', function(e) {
       e.preventDefault();
       togglePopup();
     });

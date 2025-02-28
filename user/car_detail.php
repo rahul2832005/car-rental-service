@@ -269,13 +269,13 @@ if (isset($_POST['Book'])) {
                     </div>
                     <div class="section">
                         <h2><?php echo $row['cname']; ?></h2>
-                        <div class="content1">
+                        <!-- <div class="content1">
                             <p>Per/Hour</p>
                             <span style="color: red; margin-left:-6px;"> <b>₹<?php echo  $row['chprice']; ?></b></span>
                             <p style="margin-left: 35px;">Per/Day</p>
                             <span style="color: red;"> <b>₹<?php echo  $row['price']; ?></b></span>
 
-                        </div>
+                        </div> -->
                     </div>
                     <div class="section">
                         <h2>Extra Service</h2>
@@ -370,8 +370,8 @@ if (isset($_POST['Book'])) {
                     <div class="pricing-details">
 
                         <h2>Pricing Details</h2>
-                        <p class="price-item">Per hour (1 Hour) <span><?php  echo $row['chprice'];?></span></p>
-                        <p class="price-item">Per Day (1 Day) <span><?php echo $row['price']; ?></span></p>
+                        <p class="price-item">Per hour (1 Hour) <span>₹<?php  echo $row['chprice'];?>/-</span></p>
+                        <p class="price-item">Per Day (1 Day) <span>₹<?php echo $row['price']; ?>/-</span></p>
 
                     </div>
                     <div class="booking-form">

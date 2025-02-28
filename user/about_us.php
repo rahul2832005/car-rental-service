@@ -36,10 +36,11 @@ session_start();
     .hero-image {
       cursor: pointer;
       max-width: 100%;
-      height: auto;
+      height: 470px;
     }
 
     .container {
+     
       max-width: 800px;
       margin: 20px 10px;
       /* padding: 20px; */
@@ -226,7 +227,7 @@ session_start();
     </section>
     <div class="container">
      
-      <h1 class="h1">Planning A Trip Should Be Very <br>Exciting Adventure</h1>
+      <h1 class="h1" style="margin-top: 50px;">Planning A Trip Should Be Very <br>Exciting Adventure</h1>
       <div class="section">
         <div class="icons">
           <i class="fa-solid fa-earth-americas"></i>

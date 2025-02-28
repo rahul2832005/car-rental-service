@@ -76,6 +76,7 @@ $row = mysqli_fetch_assoc($result);
             padding: 0;
             background-color: #f9f9f9;
             color: #333;
+            overflow: hidden;
         }
 
         .booking-details-container {
@@ -85,13 +86,15 @@ $row = mysqli_fetch_assoc($result);
             border-radius: 12px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
             padding: 25px;
-            overflow: hidden;
+            margin-top: 7px;
+           
         }
 
         h2 {
             text-align: center;
             color: #2c3e50;
             margin-bottom: 20px;
+            font-size: 35px;
         }
 
         .booking-info img {
@@ -101,6 +104,11 @@ $row = mysqli_fetch_assoc($result);
             border-radius: 10px;
             margin-bottom: 20px;
         }
+        .detail{
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 22px;
+        }
 
         .info-box {
             background-color: #f4f4f9;
@@ -108,12 +116,15 @@ $row = mysqli_fetch_assoc($result);
             border-radius: 8px;
             margin-bottom: 12px;
             border-left: 5px solid #4CAF50;
+            width: 270px;
+            margin-right: 28px;
+            
         }
 
         .info-box p {
             margin: 0;
             font-size: 16px;
-            color: #555;
+            color: #000;
         }
 
         .info-box strong {
@@ -139,7 +150,7 @@ $row = mysqli_fetch_assoc($result);
         a.cancel-btn {
             display: inline-block;
             margin-top: 15px;
-            background-color: rgb(224, 39, 39);
+            background-color: #e63946;
             color: white;
             padding: 12px 25px;
             text-decoration: none;
@@ -149,7 +160,7 @@ $row = mysqli_fetch_assoc($result);
         }
 
         a.cancel-btn:hover {
-            background-color: rgb(228, 14, 78);
+            background-color:#cc2f39;
         }
 
         .status-in-progress {
@@ -187,132 +198,131 @@ $row = mysqli_fetch_assoc($result);
         <div class="booking-info">
             <img src="../admin/img/<?php echo explode(',', $row['image'])[0]; ?>" alt="Car Image" class="booking-img">
             <h2>Car Info <span style="color: red;">*</span></h2>
-            <div class="info-box">
-                <p><strong>Car Name:</strong> <?php echo $row['cname']; ?></p>
-            </div>
-            <div class="info-box">
-                <p><strong>From Date:</strong> <?php echo $row['FromDate']; ?></p>
-            </div>
-            <div class="info-box">
-                <p><strong>To Date:</strong> <?php echo $row['ToDate']; ?></p>
-            </div>
-            <div class="info-box">
-                <p><strong>Rent Type</strong>
-                    <?php echo $row['rent_type']; ?></p>
-            </div>
-            <?php if ($row['rent_type'] == 'Day') { ?>
+            <div class="detail">
                 <div class="info-box">
-                    <p><strong>Total Days:</strong>
-                        <?php echo $row['totalnodays']; ?></p>
+                    <p><strong>Car Name:</strong> <?php echo $row['cname']; ?></p>
                 </div>
-
                 <div class="info-box">
-                    <p><strong>Price per Day:</strong> &#8377;
-                        <?php echo $row['price']; ?></p>
+                    <p><strong>From Date:</strong> <?php echo $row['FromDate']; ?></p>
                 </div>
-
                 <div class="info-box">
-                    <p><strong>Car Grand Total:</strong> &#8377;
-                        <?php echo $row['grand_total']; ?></p>
+                    <p><strong>To Date:</strong> <?php echo $row['ToDate']; ?></p>
                 </div>
-               
-            <?php } else {  ?>
                 <div class="info-box">
-                    <p><strong>Total Hours:</strong>
-                        <?php echo $row['total_hours']; ?></p>
+                    <p><strong>Rent Type:</strong>
+                        <?php echo $row['rent_type']; ?></p>
                 </div>
-
-                <div class="info-box">
-                    <p><strong>Price per Hour:</strong> &#8377;
-                        <?php echo $row['chprice']; ?></p>
-                </div>
-
-                <div class="info-box">
-                    <p><strong> Car Grand Total:</strong> &#8377;
-                        <?php echo $row['grand_totalh']; ?></p>
-                </div>
-                
-                        
-            <?php  } ?>
-
-            <div class="info-box">
-                <p><strong>Status:</strong> <span class="<?php
-                                                            echo ($row['status'] == 0) ? 'status-in-progress' : (($row['status'] == 1) ? 'status-success' : (($row['status'] == 2) ? 'status-rejected' : 'status-maintenance'));
-                                                            ?>">
-                        <?php
-                        echo ($row['status'] == 0) ? 'In Progress' : (($row['status'] == 1) ? 'Success' : (($row['status'] == 2) ? 'Rejected' : 'In Maintenance'));
-                        ?></span></p>
-            </div>
-            <div class="info-box">
-                <p><strong>Booking Number:</strong> <?php echo $row['bookingno']; ?></p>
-            </div>
-
-            <div class="info-box">
-                <p><strong>Posting Date:</strong> <?php echo $row['PostingDate']; ?></p>
-            </div>
-            <?php if($row['did']=="") {?>
+                <?php if ($row['rent_type'] == 'Day') { ?>
                     <div class="info-box">
-                    <p><strong> Grand Total:</strong> &#8377;
-                        <?php if($row['rent_type']=='Day')
-                        {
-                            echo $row['grand_total'];
-                        }
-                        elseif($row['rent_type']=='hour')
-                        {
-                            echo $row['grand_totalh'];
-                        } ?></p>
+                        <p><strong>Total Days:</strong>
+                            <?php echo $row['totalnodays']; ?></p>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>Price per Day:</strong> &#8377;
+                            <?php echo $row['price']; ?></p>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>Car Grand Total:</strong> &#8377;
+                            <?php echo $row['grand_total']; ?></p>
+                    </div>
+
+                <?php } else {  ?>
+                    <div class="info-box">
+                        <p><strong>Total Hours:</strong>
+                            <?php echo $row['total_hours']; ?></p>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>Price per Hour:</strong> &#8377;
+                            <?php echo $row['chprice']; ?></p>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong> Car Grand Total:</strong> &#8377;
+                            <?php echo $row['grand_totalh']; ?></p>
+                    </div>
+
+
+                <?php  } ?>
+
+                <div class="info-box">
+                    <p><strong>Status:</strong> <span class="<?php
+                                                                echo ($row['status'] == 0) ? 'status-in-progress' : (($row['status'] == 1) ? 'status-success' : (($row['status'] == 2) ? 'status-rejected' : 'status-maintenance'));
+                                                                ?>">
+                            <?php
+                            echo ($row['status'] == 0) ? 'In Progress' : (($row['status'] == 1) ? 'Success' : (($row['status'] == 2) ? 'Rejected' : 'In Maintenance'));
+                            ?></span></p>
                 </div>
-                        <?php } ?>
-        </div>
-    <?php if ($row['did']) { ?>
-        <h2>Driver Info <span style="color: red;">*</span></h2>
-        <div class="booking-info">
-            <div class="info-box">
-                <p><strong>Driver Name</strong> &#8377;
-                    <?php echo $row['dfname']; ?></p>
+                <div class="info-box">
+                    <p><strong>Booking Number:</strong> <?php echo $row['bookingno']; ?></p>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>Posting Date:</strong> <?php echo $row['PostingDate']; ?></p>
+                </div>
+                <?php if ($row['did'] == "") { ?>
+                    <div class="info-box">
+                        <p><strong> Grand Total:</strong> &#8377;
+                            <?php if ($row['rent_type'] == 'Day') {
+                                echo $row['grand_total'];
+                            } elseif ($row['rent_type'] == 'hour') {
+                                echo $row['grand_totalh'];
+                            } ?></p>
+                    </div>
+                <?php } ?>
             </div>
-            <?php if ($row['rent_type'] == 'Day') { ?>
-                <div class="info-box">
-                    <p><strong>Total Days:</strong>
-                        <?php echo $row['totalnodays']; ?></p>
+            <?php if ($row['did']) { ?>
+                <h2>Driver Info <span style="color: red;">*</span></h2>
+                <div class="booking-info">
+                    <div class="info-box">
+                        <p><strong>Driver Name</strong> &#8377;
+                            <?php echo $row['dfname']; ?></p>
+                    </div>
+                    <?php if ($row['rent_type'] == 'Day') { ?>
+                        <div class="info-box">
+                            <p><strong>Total Days:</strong>
+                                <?php echo $row['totalnodays']; ?></p>
+                        </div>
+
+                        <div class="info-box">
+                            <p><strong>Price per Day:</strong> &#8377;
+                                <?php echo $row['dprice']; ?></p>
+                        </div>
+
+                        <div class="info-box">
+                            <p><strong>Driver Grand Total:</strong> &#8377;
+                                <?php echo $row['grand_total_day_d']; ?></p>
+                        </div>
+                    <?php } else {  ?>
+                        <div class="info-box">
+                            <p><strong>Total Hours:</strong>
+                                <?php echo $row['total_hours']; ?></p>
+                        </div>
+
+                        <div class="info-box">
+                            <p><strong>Price per Hour:</strong> &#8377;
+                                <?php echo $row['hprice']; ?></p>
+                        </div>
+
+                        <div class="info-box">
+                            <p><strong>Driver Grand Total:</strong> &#8377;
+                                <?php echo $row['grand_total_hour_d']; ?></p>
+                        </div>
+                    <?php } ?>
+                    <div class="info-box">
+                        <p><strong> Grand Total:</strong> &#8377;
+                            <?php echo $row['grand_total_h']; ?></p>
+                    </div>
                 </div>
 
-                <div class="info-box">
-                    <p><strong>Price per Day:</strong> &#8377;
-                        <?php echo $row['dprice']; ?></p>
-                </div>
-
-                <div class="info-box">
-                    <p><strong>Driver Grand Total:</strong> &#8377;
-                        <?php echo $row['grand_total_day_d']; ?></p>
-                </div>
-            <?php } else {  ?>
-                <div class="info-box">
-                    <p><strong>Total Hours:</strong>
-                        <?php echo $row['total_hours']; ?></p>
-                </div>
-
-                <div class="info-box">
-                    <p><strong>Price per Hour:</strong> &#8377;
-                        <?php echo $row['hprice']; ?></p>
-                </div>
-
-                <div class="info-box">
-                    <p><strong>Driver Grand Total:</strong> &#8377;
-                        <?php echo $row['grand_total_hour_d']; ?></p>
-                </div>
-            <?php } ?>
-            <div class="info-box">
-                    <p><strong> Grand Total:</strong> &#8377;
-                        <?php echo $row['grand_total_h']; ?></p>
-                </div>
-            
         </div>
-<?php } ?>
-        <a href="my_booking.php" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Bookings</a>
-        <?php if ($row['status'] != 2) { ?>
-            <a href="../admin/Approve.php?eaid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?>  && userEmail=<?php echo $row['userEmail']; ?>" class="cancel-btn" onclick="return confirm('Do you really want to cancel your booking?');"> Cancel Booking</a>
-        <?php  } ?>
+    <?php } ?>
+    <a href="my_booking.php" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Bookings</a>
+    <?php if ($row['status'] != 2) { ?>
+        <a href="../admin/Approve.php?eaid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?>  && userEmail=<?php echo $row['userEmail']; ?>" class="cancel-btn" onclick="return confirm('Do you really want to cancel your booking?');"> Cancel Booking</a>
+    <?php  } ?>
     </div>
 </body>
 
