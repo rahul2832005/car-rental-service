@@ -76,7 +76,6 @@ $row = mysqli_fetch_assoc($result);
             padding: 0;
             background-color: #f9f9f9;
             color: #333;
-            overflow: hidden;
         }
 
         .booking-details-container {
@@ -87,6 +86,8 @@ $row = mysqli_fetch_assoc($result);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
             padding: 25px;
             margin-top: 7px;
+            overflow: hidden;
+
            
         }
 
@@ -275,8 +276,10 @@ $row = mysqli_fetch_assoc($result);
             </div>
             <?php if ($row['did']) { ?>
                 <h2>Driver Info <span style="color: red;">*</span></h2>
+                
                 <div class="booking-info">
-                    <div class="info-box">
+                <div class="detail">
+                <div class="info-box">
                         <p><strong>Driver Name</strong> &#8377;
                             <?php echo $row['dfname']; ?></p>
                     </div>
@@ -316,7 +319,7 @@ $row = mysqli_fetch_assoc($result);
                             <?php echo $row['grand_total_h']; ?></p>
                     </div>
                 </div>
-
+                    </div>
         </div>
     <?php } ?>
     <a href="my_booking.php" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Bookings</a>

@@ -60,7 +60,12 @@
         <div class="error-code">403</div>
         <div class="error-message">Your Documents Are Not Verified!</div>
         <p>Please upload valid documents or contact support.</p>
-        <a href="index.php" class="back-button">Go Back</a>
+        <a href="#" class="back-button" onclick="goBack()">Go Back</a>
     </div>
+    <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
 </body>
 </html>
