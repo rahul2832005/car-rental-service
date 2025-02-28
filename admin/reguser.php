@@ -76,7 +76,8 @@ $result = mysqli_query($conn, $sql);
         }
 
         th, td {
-            padding: 12px;
+            padding: 10px 9px;
+            
             text-align: center;
             border-bottom: 1px solid #ddd;
         }
@@ -110,13 +111,29 @@ $result = mysqli_query($conn, $sql);
         .delete {
             background: #dc3545;
             color: white;
+            /* padding: 8px; */
             padding: 6px 10px;
             border-radius: 5px;
             text-decoration: none;
             font-size: 16px;
             transition: 0.3s;
         }
-
+        .view {
+            background:rgb(53, 78, 220);
+            color: white;
+            /* padding: 8px; */
+            padding: 6px 8px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+            margin: 10px 10px;
+           
+        }
+        
+        .view:hover {
+            background:rgb(50, 37, 170);
+        }
         .delete:hover {
             background: #c82333;
         }
@@ -164,6 +181,10 @@ $result = mysqli_query($conn, $sql);
                         <td><?php echo $row['mnumber']; ?></td>
                         <td><?php echo $row['email']; ?></td>
                         <td>
+                            <a class="view" href="viewuser.php?uid=<?php echo $row['uid']; ?>">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                       
                             <a class="delete" href="delete.php?uid=<?php echo $row['uid']; ?>">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
