@@ -46,7 +46,7 @@ $total_pages = ceil($total_entries / $limit);
 
         .container {
             background: #fff;
-            padding: 20px;
+            padding: 12px;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             /* width: 100%; */
@@ -127,7 +127,8 @@ $total_pages = ceil($total_entries / $limit);
 
         /* Action Icons */
         .edit,
-        .delete {
+        .delete ,
+        .view{
             margin: 0 5px;
             font-size: 16px;
             transition: 0.3s;
@@ -145,7 +146,14 @@ $total_pages = ceil($total_entries / $limit);
             background: #dc3545;
             color: white;
         }
+        .view {
+            background:rgb(45, 96, 207);
+            color: white;
+        }
 
+        .view:hover {
+            background:rgb(67, 97, 161);
+        }
         .edit:hover {
             background: #218838;
         }
@@ -184,7 +192,14 @@ $total_pages = ceil($total_entries / $limit);
         .pagination a:hover {
             background-color: #f0f0f0;
         }
-
+        
+       /* Profile Image */
+       td img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
         /* Responsive Design */
         @media screen and (max-width: 768px) {
 
@@ -212,6 +227,7 @@ $total_pages = ceil($total_entries / $limit);
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>img</th>
                         <th>Car Name</th>
                         <th>Hour Price</th>
                         <th>Day Price</th>
@@ -220,16 +236,18 @@ $total_pages = ceil($total_entries / $limit);
                         <th>Seats</th>
                         <th>Fuel</th>
                         <th>Status</th>
-                        <th style="padding: 0px 22px;">Action</th>
+                        <th style="padding: 0px 50px;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $n = 1;
                     while ($row = mysqli_fetch_assoc($result)) {
+                       $image= explode(',',$row['image'])
                     ?>
                         <tr>
                             <td><?php echo $n; ?></td>
+                            <td><img src="img/<?php echo $image[0]; ?>" alt="car"></td>
                             <td class="car-name"><?php echo $row['cname']; ?></td>
                             <td>₹<?php echo $row['chprice']; ?></td>
                             <td>₹<?php echo $row['price']; ?></td>
@@ -248,6 +266,9 @@ $total_pages = ceil($total_entries / $limit);
                                 </span>
                             </td>
                             <td>
+                            <a class="view" style="padding:5px 4px;" href="viewcar.php?vid=<?php echo $row['vid']; ?>">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
                                 <a class="edit" style="padding:5px 4px;" href="update.php?vid=<?php echo $row['vid']; ?>">
                                     <i class="fa-solid fa-pen"></i>
                                 </a>

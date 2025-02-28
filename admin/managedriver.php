@@ -19,10 +19,10 @@ $total_pages = ceil($total_entries / $limit);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1024, initial-scale=1.0">
     <title>Manage Drivers</title>
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/fontawesome.min.css">
+ 
     <link rel="stylesheet" href="styles.css">
     <style>
+       
           @font-face {
             font-family: 'pop-regular';
             src: url('../font/Poppins-Regular.ttf');
@@ -72,6 +72,7 @@ $total_pages = ceil($total_entries / $limit);
         th {
             background-color: #007bff;
             color: white;
+            /* padding: 0px 45px; */
         }
 
        /* Profile Image */
@@ -82,7 +83,7 @@ $total_pages = ceil($total_entries / $limit);
             object-fit: cover;
         }
 
-        .edit, .delete {
+        .edit, .delete ,.view {
             text-decoration: none;
             padding: 4px 8px;
             color: white;
@@ -92,6 +93,7 @@ $total_pages = ceil($total_entries / $limit);
         .edit { background-color: #28a745;
             margin-right: 5px; }
         .delete { background-color: #dc3545; }
+        .view { background-color:rgb(45, 96, 207); }
 
         .pagination {
             margin-top: 15px;
@@ -135,7 +137,7 @@ $total_pages = ceil($total_entries / $limit);
                     <th>Licence</th>
                     <th>City</th>
                     <th>Status</th>
-                    <th style="padding: 0px 20px;">Action</th>
+                    <th style="padding: 0px 50px;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -155,7 +157,8 @@ $total_pages = ceil($total_entries / $limit);
                         <td><?php echo $row['city']; ?></td>
                         <td><?php echo $row['status'] == 0 ? 'Available' : 'Not Available'; ?></td>
                         <td>
-                            <a href="updatedriver.php?did=<?php echo $row['did']; ?>" class="edit">                                    <i class="fa-solid fa-pen"></i>
+                            <a href="viewdriver.php?did=<?php echo $row['did']; ?>" class="view"><i class="fa-solid fa-eye"></i></a>
+                            <a href="updatedriver.php?did=<?php echo $row['did']; ?>" class="edit"><i class="fa-solid fa-pen"></i>
                             </a>
                             <a href="delete.php?did=<?php echo $row['did']; ?>" class="delete"><i class="fa-solid fa-trash"></i></a>
                         </td>

@@ -3,19 +3,18 @@
 include "include/config.php";
 
 // Fetch user details
-$uid = $_GET['uid']; // Get user ID from URL
-$sql = "SELECT * FROM reguser WHERE uid = '$uid'";
+$did = $_GET['did']; // Get driver ID from URL
+$sql = "SELECT * FROM driver WHERE did = '$did'";
 $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title>Driver Profile</title>
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -141,77 +140,70 @@ $user = mysqli_fetch_assoc($result);
         }
     </style>
 </head>
-
 <body>
     <div class="container">
-        <h2>User Profile</h2>
+        <h2>Driver Profile</h2>
         <div class="profile-section">
-            <img src="<?php echo $user['profile_picture']; ?>" alt="Profile Picture" class="profile-img">
+            <img src="<?php echo $user['profile']; ?>" alt="Profile Picture" class="profile-img">
             <div class="doc-links">
-                <a href="../user/<?php echo $user['aadhar_file']; ?>" target="_blank">View Aadhar File</a>
-                <a href="../user/<?php echo $user['license_file']; ?>" target="_blank">View License File</a>
+                <a href="<?php echo $user['adhar_pdf']; ?>" target="_blank">View Aadhar File</a>
+                <a href="<?php echo $user['licence_pdf']; ?>" target="_blank">View License File</a>
             </div>
         </div>
         <div class="user-profile">
             <div class="detail">
-                <div class="profile-info">
-                    <label>Name:</label>
-                    <input type="text" value="<?php echo $user['name']; ?>" readonly>
-                </div>
-                <div class="profile-info">
-                    <label>Mobile:</label>
-                    <input type="text" value="<?php echo $user['mnumber']; ?>" readonly>
-                </div>
-                <div class="profile-info">
-                    <label>Email:</label>
-                    <input type="email" value="<?php echo $user['email']; ?>" readonly>
-                </div>
-                <div class="profile-info">
-                    <label>DOB:</label>
-                    <input type="text" value="<?php echo $user['DOB']; ?>" readonly>
-                </div>
-                <div class="profile-info">
-                    <label>Gender:</label>
-                    <input type="text" value="<?php echo $user['gender']; ?>" readonly>
-                </div>
-                <div class="profile-info">
-                    <label>State:</label>
-                    <input type="text" value="<?php echo $user['state']; ?>" readonly>
-                </div>
-                <div class="profile-info">
-                    <label>Address:</label>
-                    <input type="text" value="<?php echo $user['address']; ?>" readonly>
-                </div>
-                <div class="profile-info">
-                    <label>Pincode:</label>
-                    <input type="text" value="<?php echo $user['pincode']; ?>" readonly>
-                </div>
-                <div class="profile-info">
-                    <label>Aadhar Number:</label>
-                    <input type="text" value="<?php echo $user['aadhar_number']; ?>" readonly>
-                </div>
-                <div class="profile-info">
-                    <label>License Number:</label>
-                    <input type="text" value="<?php echo $user['license_number']; ?>" readonly>
-                </div>
-                <div class="profile-info">
-                    <label>Is Verified:</label>
-                    <input type="text" value="<?php echo ($user['is_verified'] ? 'Yes' : 'No'); ?>" readonly>
-                </div>
-                <div class="profile-info">
-                    <label>Created At:</label>
-                    <input type="text" value="<?php echo $user['created_at']; ?>" readonly>
-                </div>
+            <div class="profile-info">
+                <label>Name:</label>
+                <input type="text" value="<?php echo $user['dfname'] . ' ' . $user['dlname']; ?>" readonly>
+            </div>
+            <div class="profile-info">
+                <label>Mobile:</label>
+                <input type="text" value="<?php echo $user['fnumber']; ?>" readonly>
+            </div>
+            <div class="profile-info">
+                <label>Type of License:</label>
+                <input type="text" value="<?php echo $user['type_licence']; ?>" readonly>
+            </div>
+            <div class="profile-info">
+                <label>State:</label>
+                <input type="text" value="<?php echo $user['state']; ?>" readonly>
+            </div>
+            <div class="profile-info">
+                <label>City:</label>
+                <input type="text" value="<?php echo $user['city']; ?>" readonly>
+            </div>
+            <div class="profile-info">
+                <label>Address:</label>
+                <input type="text" value="<?php echo $user['address']; ?>" readonly>
+            </div>
+            <div class="profile-info">
+                <label>Pincode:</label>
+                <input type="text" value="<?php echo $user['pin']; ?>" readonly>
+            </div>
+            <div class="profile-info">
+                <label>Status:</label>
+                <input type="text" value="<?php echo ($user['status'] ? 'Active' : 'Inactive'); ?>" readonly>
+            </div>
+            <div class="profile-info">
+                <label>Rate Per Hour :</label>
+                <input type="text" value="<?php echo $user['hprice']; ?>" readonly>
+            </div>
+            <div class="profile-info">
+                <label>Rate  Per Day :</label>
+                <input type="text" value="<?php echo $user['dprice']; ?>" readonly>
+            </div>
+            <div class="profile-info">
+                <label>Created At:</label>
+                <input type="text" value="<?php echo $user['created_at']; ?>" readonly>
             </div>
         </div>
-        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left" ></i> Back</button>
+        </div>
+        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back</button>
     </div>
-<script>
-    function goBack()
-    {
-        window.history.back();
-    }
-</script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
-
 </html>
