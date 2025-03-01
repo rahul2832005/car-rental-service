@@ -224,6 +224,7 @@ if (isset($_POST['Book'])) {
         .next {
             right: 10px;
         }
+
         .card {
             background-color: #fff;
             width: 309px;
@@ -312,16 +313,120 @@ if (isset($_POST['Book'])) {
             margin-bottom: 15px;
             color: black;
         }
+
+        /* for reecommandation */
         .fleet {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
             padding: 20px;
-            background-color: #b1d7d6;
+            background-color: rgb(237, 245, 244);
         }
-        
-        
+
+        .detail {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: rgb(237, 245, 244);
+        }
+
+        .fleet .card {
+            width: 300px;
+            /* Adjust width as needed */
+            flex: 0 0 auto;
+            /* Prevent cards from growing or shrinking */
+        }
+
+        .fleet .card img {
+            width: 100%;
+            /* Make images responsive within their cards */
+            height: auto;
+            object-fit: cover;
+            /* Maintain aspect ratio and cover container */
+        }
+
+
+        /* for feedback */
+        .feedback-container {
+            /* max-width: 1000px; */
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .avatar {
+            width: 70px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .name-and-stars {
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .name {
+            color: black;
+            margin: 0;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .role {
+            margin: 0;
+            color: #777;
+            font-size: 18px;
+            line-height: 29px;
+        }
+
+        .testimonial-card {
+            width: 40%;
+            background: #fff;
+            margin: 20px 20px;
+            padding: 20px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            /* max-width: 900px; Increased width */
+            text-align: left;
+        }
+
+        .testimonial-header {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            word-wrap: break-word;
+            /* Ensures long words break */
+            overflow-wrap: break-word;
+            /* Alternative for word breaking */
+            white-space: normal;
+            /* Ensures text wraps */
+
+        }
+
+        .stars {
+            color: #f5c518;
+            font-size: 27px;
+        }
+
+        .date {
+
+            color: black;
+            font-weight: bold;
+
+        }
     </style>
 </head>
 <script>
@@ -540,40 +645,78 @@ if (isset($_POST['Book'])) {
         </div>
     <?php
     }
-    $car_id = $_GET['vid'];
-    $car_sql = "SELECT * FROM car_list WHERE vid = $car_id";
-    $car_result = mysqli_query($conn, $car_sql);
-    $car_data = mysqli_fetch_assoc($car_result);
-
-    $brand = $car_data['brand'];
-    // $category = $car_data['modal'];
-
-    $sql = "SELECT * FROM car_list WHERE brand = '$brand' AND vid != $car_id LIMIT 4";
-    $recommend_result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($recommend_result) > 0) {
-        while ($rowroc = mysqli_fetch_array($recommend_result)) {
-            $image1 = explode(",", $rowroc['image']);
     ?>
-<div class="fleet" id="fleet-container">
-    <div class="card" data-name="<?php echo strtolower($rowroc['cname']); ?>">
-        <img src="../admin/img/<?php echo $image1[0] ?>" alt="Car Image">
-        <h2 class="card-title"> <?php echo $rowroc['cname']; ?> </h2>
-        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <h3 class="price">Per Day- <i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $rowroc['price']; ?>/-</h3>
-        <h3 class="price">Per Hour- <i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $rowroc['chprice']; ?>/-</h3>
-        <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: <?php echo $rowroc['seat']; ?></h3>
-        <h3 class="fual"><i class="fa-solid fa-gas-pump"></i> Fuel: <?php echo $rowroc['fual']; ?></h3>
-        <div>
-            <?php if ($_SESSION["alogin"]) { ?>
-                <a href="car_detail.php?vid=<?php echo $rowroc['vid']; ?>" class="order-button">Rent Now</a>
-            <?php } else { ?>
-                <a href="login.php" class="order-button">Login For Book</a>
-            <?php } ?>
+    <!-- code for  car  recommandation -->
+    <div class="fleet" id="fleet-container">
+        <?php
+        $car_id = $_GET['vid'];
+        $car_sql = "SELECT * FROM car_list WHERE vid = $car_id";
+        $car_result = mysqli_query($conn, $car_sql);
+        $car_data = mysqli_fetch_assoc($car_result);
+
+        $brand = $car_data['brand'];
+        // $category = $car_data['modal'];
+
+        $sql = "SELECT * FROM car_list WHERE brand = '$brand' AND vid != $car_id LIMIT 4";
+        $recommend_result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($recommend_result) > 0) {
+            while ($rowroc = mysqli_fetch_array($recommend_result)) {
+                $image1 = explode(",", $rowroc['image']);
+        ?>
+                <div class="card" data-name="<?php echo strtolower($rowroc['cname']); ?>">
+                    <img src="../admin/img/<?php echo $image1[0] ?>" alt="Car Image">
+                    <h2 class="card-title"> <?php echo $rowroc['cname']; ?> </h2>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h3 class="price">Per Day- <i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $rowroc['price']; ?>/-</h3>
+                    <h3 class="price">Per Hour- <i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $rowroc['chprice']; ?>/-</h3>
+                    <h3 class="capacity"><i class="fa-solid fa-car"></i> Capacity: <?php echo $rowroc['seat']; ?></h3>
+                    <h3 class="fual"><i class="fa-solid fa-gas-pump"></i> Fuel: <?php echo $rowroc['fual']; ?></h3>
+                    <div>
+                        <?php if ($_SESSION["alogin"]) { ?>
+                            <a href="car_detail.php?vid=<?php echo $rowroc['vid']; ?>" class="order-button">Rent Now</a>
+                        <?php } else { ?>
+                            <a href="login.php" class="order-button">Login For Book</a>
+                        <?php } ?>
+                    </div>
+                </div>
+        <?php }
+        } ?>
+    </div>
+
+    <!-- code for feedback show -->
+    <div class="feedback-container">
+        <div class="detail">
+            <?php
+            $sqlfeed = "SELECT f.rating, f.comment, f.created_at, c.cname, u.name, u.profile_picture 
+                        FROM feedback f 
+                        JOIN car_list c ON f.vid = c.vid 
+                        JOIN reguser u ON f.uid = u.uid 
+                        WHERE f.vid = '$vid'
+                        ORDER BY f.created_at DESC";
+
+            $resultfeed = mysqli_query($conn, $sqlfeed);
+            if (mysqli_num_rows($resultfeed) > 0) {
+                while ($rowfeed = mysqli_fetch_assoc($resultfeed)) {
+            ?>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="<?php echo $rowfeed['profile_picture']; ?>" alt="<?php echo $rowfeed['name']; ?>" class="avatar">
+                            <div>
+                                <h3 class="name"><?php echo $rowfeed['name']; ?></h3>
+                                <span class="stars"><?php echo str_repeat("⭐", $rowfeed['rating']); ?></span>
+                                <p class="role">For <?php echo $rowfeed['cname']; ?></p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">“<?php echo $rowfeed['comment']; ?>”</p>
+                        <p class="date">Submitted on: <?php echo date("d M Y", strtotime($rowfeed['created_at'])); ?></p>
+                    </div>
+            <?php
+                }
+            }
+            ?>
         </div>
     </div>
-    </div>
-<?php } } ?>
-
+    <!-- code for enquiry form -->
     <div class="enquiry-form" id="enquiryForm">
         <h2>Enquiry Form</h2>
         <div class="form-group">
@@ -619,7 +762,7 @@ if (isset($_POST['Book'])) {
 
                 <table>
                     <thead>
-                        
+
                         <tr>
                             <th>id</th>
 
