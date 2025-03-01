@@ -63,6 +63,7 @@ if (!$_SESSION['adlogin']) {
                         <li><a href="confirmed-booking.php" target="second">Confirm Bookings</a></li>
                         <li><a href="canceled-booking.php" target="second">Cancelled Bookings</a></li>
                         <li><a href="return-booking.php" target="second">Returned Bookings</a></li>
+                        <li><a href="admin_modify_requests.php" target="second">Change Date  Request</a></li>
                     </ul>
                 </li>
                 <li><a href="manage_feedback.php" target="second">Manage FeedBack</a></li>

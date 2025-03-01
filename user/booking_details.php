@@ -163,6 +163,21 @@ $row = mysqli_fetch_assoc($result);
         a.cancel-btn:hover {
             background-color:#cc2f39;
         }
+        a.change-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background-color:rgb(104, 212, 231);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        a.change-btn:hover {
+            background-color:rgb(93, 153, 163);
+        }
 
         .status-in-progress {
             color: #e67e22;
@@ -325,6 +340,7 @@ $row = mysqli_fetch_assoc($result);
     <a href="my_booking.php" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Bookings</a>
     <?php if ($row['status'] != 2 && $row['status'] !=3) { ?>
         <a href="../admin/Approve.php?eaid=<?php echo $row['bookingno'] ?> && vid=<?php echo $row['vid']; ?>  && userEmail=<?php echo $row['userEmail']; ?>" class="cancel-btn" onclick="return confirm('Do you really want to cancel your booking?');"> Cancel Booking</a>
+        <a href="modify_booking.php?id=<?php echo $row['id']; ?>" class="change-btn" onclick="return confirm('Do you really change booking?');"> change Booking</a>
     <?php  } ?>
     <?php 
     $user_id = $_SESSION['userid'];
