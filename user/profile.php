@@ -8,32 +8,9 @@ if (!isset($_SESSION["alogin"])) {
 }
 
 $userEmail = $_SESSION["alogin"];
-$uname=$_SESSION["uname"];
+$uname = $_SESSION["uname"];
 $userId = $_SESSION["userid"];
 
-// Handle profile picture upload
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile_picture'])) {
-    $uploadDir = 'upload/';
-    $uploadFile = $uploadDir . basename($_FILES['profile_picture']['name']);
-    $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
-
-    $check = getimagesize($_FILES['profile_picture']['tmp_name']);
-    if ($check === false) {
-        echo "File is not an image.";
-    } elseif ($_FILES['profile_picture']['size'] > 2000000) {
-        echo "Sorry, your file is too large.";
-    } elseif (!in_array($imageFileType, ['jpg', 'jpeg', 'png'])) {
-        echo "Sorry, only JPG, JPEG, and PNG files are allowed.";
-    } else {
-        if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $uploadFile)) {
-            $profilePicPath = $uploadFile;
-            $updateQuery = "UPDATE reguser SET profile_picture='$profilePicPath' WHERE uid='$userId'";
-            mysqli_query($conn, $updateQuery);
-        } else {
-            echo "Error uploading file.";
-        }
-    }
-}
 
 $query = "SELECT profile_picture FROM reguser WHERE uid='$userId'";
 $result = mysqli_query($conn, $query);
@@ -49,39 +26,46 @@ $profilePicture = !empty($userData['profile_picture']) ? $userData['profile_pict
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="profile.css">
+    <!-- Include Cropper.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+
     <style>
+      
+
         .profile-picture-wrapper {
             position: relative;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            overflow: hidden;
+            top: -60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 20px;
             cursor: pointer;
         }
 
         .profile-picture {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            margin-bottom: 10px;
         }
 
         .camera-icon-container {
             position: absolute;
-            bottom: 5px;
-            right: 10px;
+            bottom: 20px;
+            right: 440px;
             background-color: white;
             border-radius: 50%;
             width: 30px;
             height: 30px;
-            display: flex;
             justify-content: center;
             align-items: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .camera-icon-container i {
-            color: black;
+                color: black;
             font-size: 16px;
         }
     </style>
@@ -95,21 +79,30 @@ $profilePicture = !empty($userData['profile_picture']) ? $userData['profile_pict
     <div class="profile-header">
         <img src="<?php echo $profilePicture; ?>" alt="Background" class="background-image">
 
-        <div class="profile-details">
-            <form action="profile.php" method="POST" enctype="multipart/form-data">
+        <div><!-- Profile Picture Form -->
+            <form id="profile-upload-form" enctype="multipart/form-data">
                 <div class="profile-picture-wrapper" onclick="document.getElementById('profile_picture').click()">
-                    <img src="<?php echo $profilePicture; ?>" alt="Profile Picture" class="profile-picture">
+                    <img id="profile-preview" src="<?php echo $profilePicture; ?>" alt="Profile Picture" class="profile-picture">
                     <div class="camera-icon-container">
                         <i class="fas fa-camera"></i>
                     </div>
                 </div>
-                <input type="file" name="profile_picture" id="profile_picture" accept=".jpeg,.jpg,.png" style="display:none;" onchange="this.form.submit()">
+                <input type="file" name="profile_picture" id="profile_picture" accept=".jpeg,.jpg,.png" style="display:none;">
             </form>
+
+            <!-- Modal for Image Cropping -->
+            <div id="crop-modal" style="display:none; position: fixed; top: 20%; left: 50%; transform: translate(-50%, -20%); background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.5);">
+                <div>
+                    <img id="crop-image" style="max-width:50%;">
+                </div>
+                <button id="crop-button">Crop & Upload</button>
+            </div>
+
 
             <div class="profile-info">
                 <h1><?php echo $uname; ?></h1>
             </div>
-        </div>
+    </div>
     </div>
 
     <div class="services-section">
@@ -125,7 +118,7 @@ $profilePicture = !empty($userData['profile_picture']) ? $userData['profile_pict
                 <h3>MY BOOKING</h3>
             </div>
         </a>
-        <a href="my_doc.php"  target="main">
+        <a href="my_doc.php" target="main">
             <div class="service-card">
                 <div class="icon"><img src="image/documentation.png"></div>
                 <h3>MY DOCUMENTS</h3>
@@ -148,7 +141,60 @@ $profilePicture = !empty($userData['profile_picture']) ? $userData['profile_pict
     <iframe src="info.php" name="main" id="main"></iframe>
 
     <?php include('footer.php'); ?>
+    <!-- Include Cropper.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let cropper;
+            let cropImage = document.getElementById("crop-image");
 
+            document.getElementById("profile_picture").addEventListener("change", function(event) {
+                let file = event.target.files[0];
+                if (file) {
+                    let reader = new FileReader();
+                    reader.onload = function(e) {
+                        cropImage.src = e.target.result;
+                        document.getElementById("crop-modal").style.display = "block";
+
+                        if (cropper) {
+                            cropper.destroy(); // Destroy existing cropper instance
+                        }
+
+                        cropper = new Cropper(cropImage, {
+                            aspectRatio: 1, // Maintain 1:1 aspect ratio
+                            viewMode: 1,
+                        });
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            document.getElementById("crop-button").addEventListener("click", function() {
+                if (cropper) {
+                    let canvas = cropper.getCroppedCanvas({
+                        width: 150,
+                        height: 150,
+                    });
+
+                    canvas.toBlob(function(blob) {
+                        let formData = new FormData();
+                        formData.append("cropped_image", blob, "profile.jpg");
+
+                        fetch("upload_profile.php", {
+                                method: "POST",
+                                body: formData,
+                            })
+                            .then(response => response.text())
+                            .then(data => {
+                                console.log(data);
+                                location.reload(); // Reload profile page to reflect changes
+                            })
+                            .catch(error => console.error("Error uploading file:", error));
+                    }, "image/jpeg");
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

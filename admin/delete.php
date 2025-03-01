@@ -132,6 +132,36 @@ error_reporting(0);
 
         
     }
+
+    if(isset($_GET['fid']))
+
+    {
+        $id=$_GET['fid'];
+        // echo $id;
+
+        $sql="select * from feedback where fid=$id";
+
+        $result=mysqli_query($conn,$sql) or die("can not fetch the data.".mysqli_error($conn));
+        $user=mysqli_fetch_array($result); 
+
+        $sql="delete from feedback where fid=$id";;
+
+        $run=mysqli_query($conn,$sql);
+
+        if($run==true)
+        {
+            
+                echo "<script>alert('delete success')
+                 window.open('manage_feedback.php', 'second');</script>";
+         
+        }
+        else
+        {
+            echo "<script>alert('not delete ')</script>";
+        }
+
+        
+    }
     
     
 

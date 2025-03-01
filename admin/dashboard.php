@@ -65,7 +65,7 @@ if (!$_SESSION['adlogin']) {
                         <li><a href="return-booking.php" target="second">Returned Bookings</a></li>
                     </ul>
                 </li>
-                <li><a href="brandsub.php" target="second">Manage Testimonials</a></li>
+                <li><a href="manage_feedback.php" target="second">Manage FeedBack</a></li>
                 <li><a href="#" target="second">Manage Contact Us</a></li>
                 <li><a href="reguser.php" target="second">Reg Users</a></li>
                 <li><a href="#" target="second">Manage Pages</a></li>

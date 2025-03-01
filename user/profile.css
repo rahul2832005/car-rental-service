@@ -20,25 +20,11 @@
             object-fit: cover;
         }
 
-        .profile-details {
-            position: relative;
-            top: -60px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .profile-picture {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 5px solid white;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
+       
 
         .profile-info h1 {
+            position: relative;
+            top: -73px;
             font-size: 1.5rem;
             margin: 10px 0;
             color: #333;
@@ -49,7 +35,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
-            margin: 15px auto;
+            margin: -11px 10px;
             max-width: 1200px;
             padding: 0 20px;
         }
