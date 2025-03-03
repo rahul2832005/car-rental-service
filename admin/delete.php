@@ -163,6 +163,38 @@ error_reporting(0);
         
     }
     
+    // contacct us query delete
+
+    if(isset($_GET['contactid']))
+
+    {
+        $id=$_GET['contactid'];
+        // echo $id;
+
+        $sql="select * from contactusquery where contactid=$id";
+
+        $result=mysqli_query($conn,$sql) or die("can not fetch the data.".mysqli_error($conn));
+        $user=mysqli_fetch_array($result); 
+
+        $sql="delete from contactusquery where contactid=$id";;
+
+        $run=mysqli_query($conn,$sql);
+
+        if($run==true)
+        {
+            
+                echo "<script>alert('delete success')
+                 window.open('manage_contactus_query.php', 'second');</script>";
+         
+        }
+        else
+        {
+            echo "<script>alert('not delete ')</script>";
+        }
+
+        
+    }
+    
     
 
 ?>

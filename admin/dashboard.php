@@ -67,7 +67,7 @@ if (!$_SESSION['adlogin']) {
                     </ul>
                 </li>
                 <li><a href="manage_feedback.php" target="second">Manage FeedBack</a></li>
-                <li><a href="#" target="second">Manage Contact Us</a></li>
+                <li><a href="manage_contactus_query.php" target="second">Manage Contact Us</a></li>
                 <li><a href="reguser.php" target="second">Reg Users</a></li>
                 <li><a href="#" target="second">Manage Pages</a></li>
                 <li><a href="#" target="second">Update Contact Info</a></li>

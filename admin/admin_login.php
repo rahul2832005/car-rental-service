@@ -48,7 +48,10 @@ if(isset($_POST['submit']))
         $user=mysqli_fetch_assoc($exquery);
     
         $username=$user["aemail"];
+        $adminid=$user['aid'];
+
         $_SESSION["adlogin"]=$username;
+        $_SESSION["adid"]=$adminid;
     
         header("location:dashboard.php");     
     }

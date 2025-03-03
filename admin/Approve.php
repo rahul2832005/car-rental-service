@@ -101,25 +101,96 @@ window.open('canceled-booking.php', 'second');</script>";
     }
 }
 
-// for Return Car booking
+// // for Return Car booking
+// if (isset($_REQUEST['returnid'])) {
+//     $returnid = $_GET['returnid'];
+//     $vid = $_GET['vid'];
+
+//     $status = 3;
+//     $update = "update booking set status=$status where bookingno=$returnid";
+//     $q = mysqli_query($conn, $update);
+
+
+//     $sdate = date('Y-m-d');
+//     $next_date = date('Y-m-d', strtotime('+1 day'));
+//     // $update1="update booking set FromDate='$sdate',ToDate='$next_date' where vid=$eaid";
+//     // $q1=mysqli_query($conn,$update1);
+
+//     $mail = new PHPMailer(true);
+//     try {
+//         $mail->isSMTP();
+//         $mail->Host = 'smtp.gmail.com'; // Change to your SMTP provider
+//         $mail->SMTPAuth = true;
+//         $mail->Username = 'carolarental3@gmail.com';
+//         $mail->Password = 'bojiwwvipmyipdqc';
+//         $mail->SMTPSecure = 'tls';
+//         $mail->Port = 587;
+
+//         $mail->setFrom('carolarental3@gmail.com', 'CarOla');
+//         $mail->addAddress($email);
+
+//         $mail->isHTML(true);
+//         $mail->Subject = 'Car  Returned';
+//         $mail->Body    = "
+//         Welcome To Carola. <br>
+// Your Car Is Returned Successfully!<br>
+// Try Again !!    
+//         <h2>Thank You</h2>";
+//         $mail->send();
+//         echo "<script>alert('Return Car email sent!');</script>";
+
+//         echo "<script>alert('Returned Booking')
+// window.open('return-booking.php', 'second');</script>";
+//     } catch (Exception $e) {
+//         echo "Mailer Error: {$mail->ErrorInfo}";
+//     }
+// }
+
+// For Return Car booking
 if (isset($_REQUEST['returnid'])) {
     $returnid = $_GET['returnid'];
     $vid = $_GET['vid'];
 
-    $status = 3;
-    $update = "update booking set status=$status where bookingno=$returnid";
-    $q = mysqli_query($conn, $update);
+    // Fetch booking details
+    // $query = "SELECT ToDate, total_amount, per_day_price FROM booking WHERE bookingno=$returnid";
+    $query = "SELECT b.ToDate, b.amount, c.price 
+    FROM booking b 
+    JOIN car_list c ON b.vid = c.vid 
+    WHERE b.bookingno = $returnid";
+    $result = mysqli_query($conn, $query);
+    $booking = mysqli_fetch_assoc($result);
 
+    $returnDate = date('Y-m-d'); // Current date (return date)
+    $toDate = $booking['ToDate']; // Original ToDate
+    $totalAmount = $booking['amount']; // Previous total amount
+    $perDayPrice = $booking['price']; // Per day price of the car
+    // $perDayPrice = 500; // Per day price of the car
 
-    $sdate = date('Y-m-d');
-    $next_date = date('Y-m-d', strtotime('+1 day'));
-    // $update1="update booking set FromDate='$sdate',ToDate='$next_date' where vid=$eaid";
-    // $q1=mysqli_query($conn,$update1);
+    if (strtotime($returnDate) > strtotime($toDate)) {
+        // Car is returned late
+        $extraDays = (strtotime($returnDate) - strtotime($toDate)) / (60 * 60 * 24);
+        $extraCharge = $extraDays * $perDayPrice;
+        $newTotal = $totalAmount + $extraCharge;
 
+        echo "<script>
+        if (confirm('Car is returned $extraDays days late. Extra charge: ₹$extraCharge. Update booking?')) {
+         }
+    </script>";
+
+        // Update the booking with new total and status
+        $update = "UPDATE booking SET status=3, ReturnDate='$returnDate', amount=$newTotal WHERE bookingno=$returnid";
+        mysqli_query($conn, $update);
+    } else {
+        // Car returned on time
+        $update = "UPDATE booking SET status=3, ReturnDate='$returnDate' WHERE bookingno=$returnid";
+        mysqli_query($conn, $update);
+    }
+
+    // Send confirmation email
     $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; // Change to your SMTP provider
+        $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'carolarental3@gmail.com';
         $mail->Password = 'bojiwwvipmyipdqc';
@@ -130,21 +201,21 @@ if (isset($_REQUEST['returnid'])) {
         $mail->addAddress($email);
 
         $mail->isHTML(true);
-        $mail->Subject = 'Car  Returned';
-        $mail->Body    = "
+        $mail->Subject = 'Car Returned';
+        $mail->Body = "
         Welcome To Carola. <br>
-Your Car Is Returned Successfully!<br>
-Try Again !!    
+        Your Car Is Returned Successfully!<br>
+        " . ($extraDays > 0 ? "You have been charged for $extraDays extra day(s). Total Bill: ₹$newTotal" : "Try Again !!") . "
         <h2>Thank You</h2>";
+
         $mail->send();
         echo "<script>alert('Return Car email sent!');</script>";
-
-        echo "<script>alert('Returned Booking')
-window.open('return-booking.php', 'second');</script>";
+        echo "<script>alert('Returned Booking'); window.open('return-booking.php', 'second');</script>";
     } catch (Exception $e) {
         echo "Mailer Error: {$mail->ErrorInfo}";
     }
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -422,14 +493,14 @@ window.open('return-booking.php', 'second');</script>";
                             ?>
                         </tr>
                         <tr>
-                            <td><strong>Last Return Date</strong></td>
-                            <td></td>
+                            <td><strong>Today Return Date</strong></td>
+                            <td><?php echo date('Y-m-d') ?></td>
                         </tr>
-                        <?php if($row['did']=="") {?>
-                        <tr>
-                            <td><strong> Grand Total</strong></td>
-                            <td><?php echo $row['grand_total']; ?></td>
-                        </tr>
+                        <?php if ($row['did'] == "") { ?>
+                            <tr>
+                                <td><strong> Grand Total</strong></td>
+                                <td><?php echo $row['grand_total']; ?></td>
+                            </tr>
                         <?php } ?>
                     <?php } else { ?>
                         <tr>
@@ -463,12 +534,13 @@ window.open('return-booking.php', 'second');</script>";
                             <td><strong>Last Return Date</strong></td>
                             <td></td>
                         </tr>
-                        <?php if($row['did']=="") {?>
-                        <tr>
-                            <td><strong> Grand Total</strong></td>
-                            <td><?php echo $row['grand_totalh']; ?></td>
-                        </tr>
-                    <?php  }} ?>
+                        <?php if ($row['did'] == "") { ?>
+                            <tr>
+                                <td><strong> Grand Total</strong></td>
+                                <td><?php echo $row['grand_totalh']; ?></td>
+                            </tr>
+                    <?php  }
+                    } ?>
                 </table>
             </div>
 
@@ -485,9 +557,9 @@ window.open('return-booking.php', 'second');</script>";
                             <td><?php echo $row['PostingDate']; ?></td>
                         </tr>
                         <tr>
-                        <td><strong>Rent Type</strong></td>
-                        <td><?php echo $row['rent_type']; ?></td>
-                    </tr>
+                            <td><strong>Rent Type</strong></td>
+                            <td><?php echo $row['rent_type']; ?></td>
+                        </tr>
                         <?php if ($row['rent_type'] == 'Day') { ?>
                             <tr>
                                 <td><strong>Total Days</strong></td>
@@ -503,9 +575,9 @@ window.open('return-booking.php', 'second');</script>";
                                 <td><?php echo $row['grand_total_day_d']; ?></td>
                             </tr>
                             <tr>
-                            <td><strong>Grand Total</strong></td>
-                            <td><?php echo $row['grand_totald']; ?></td>
-                        </tr>
+                                <td><strong>Grand Total</strong></td>
+                                <td><?php echo $row['grand_totald']; ?></td>
+                            </tr>
                         <?php  } else { ?>
                             <tr>
                                 <td><strong>Total Hours</strong></td>
@@ -521,11 +593,11 @@ window.open('return-booking.php', 'second');</script>";
                                 <td><?php echo $row['grand_total_hour_d']; ?></td>
                             </tr>
                             <tr>
-                            <td><strong>Grand Total</strong></td>
-                            <td><?php echo $row['grand_total_h']; ?></td>
-                        </tr>
+                                <td><strong>Grand Total</strong></td>
+                                <td><?php echo $row['grand_total_h']; ?></td>
+                            </tr>
                         <?php  } ?>
-                      
+
 
 
 

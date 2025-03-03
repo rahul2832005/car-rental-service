@@ -79,7 +79,13 @@ if (isset($_POST['Book'])) {
     if (empty($drop_of_loc)) {
         $errors['drop_of_loc'] = "Select a drop-off location.";
     }
-
+     // New validation for rent type
+     if ($rent_type === 'hour' && $interval->days > 0) {
+        $errors['rent_type'] = "For hourly rental, the duration must be within 24 hours.";
+    }
+    if ($rent_type === 'Day' && $interval->h > 0) {
+        $errors['rent_type'] = "For daily rental, the duration must be greater than 24 hours.";
+    }
     if (empty($errors)) {
         // Check Driver Availability
         $driverAvailable = true;
@@ -584,6 +590,8 @@ if (isset($_POST['Book'])) {
                                     <option value="hour" <?php if ($rent_type == 'hour') echo 'selected'; ?>>Hour</option>
                                     <option value="Day" <?php if ($rent_type == 'Day') echo 'selected'; ?>>Day</option>
                                 </select>
+                                <span style="color: red;"> <?php echo $errors['rent_type']; ?> </span>
+
                             </div>
                             <div class="form-group">
                                 <label for="pickup-location">Pickup Location</label>
@@ -607,14 +615,16 @@ if (isset($_POST['Book'])) {
                             <div class="form-group">
                                 <p style="color: red;"><?php $fd; ?></p>
                                 <label for="pickup-date">Pickup Date</label>
-                                <input type="datetime-local" id="pickup-date" name="fdate" min="<?php echo date('Y-m-d\TH:i'); ?>" value="<?php echo ($fdate); ?>">
+                                <!-- <input type="datetime-local" id="pickup-date" name="fdate" min="<?php echo date('Y-m-d\TH:i'); ?>" value="<?php echo ($fdate); ?>"> -->
+                                <input type="datetime-local" id="pickup-date" name="fdate">
                                 <span style="color: red;"> <?php echo $errors['fdate']; ?> </span>
 
                             </div>
                             <div class="form-group">
                                 <p style="color: red;"><?php $td; ?></p>
                                 <label for="dropoff-date">Drop-off Date</label>
-                                <input type="datetime-local" id="dropoff-date" name="tdate" value="<?php echo ($tdate); ?>">
+                                <!-- <input type="datetime-local" id="dropoff-date" name="tdate" value="<?php echo ($tdate); ?>"> -->
+                                <input type="datetime-local" id="dropoff-date" name="tdate">
                                 <span style="color: red;"> <?php echo $errors['tdate']; ?> </span>
                             </div>
 

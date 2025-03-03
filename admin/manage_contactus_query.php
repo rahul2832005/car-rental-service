@@ -21,6 +21,8 @@ $total_pages = ceil($total_entries / $limit);
 <head>
     <meta charset="UTF-8">
     <title>Manage Contact Us Queries</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
     <style>
         body { 
             font-family: Arial, sans-serif; 
@@ -109,6 +111,33 @@ $total_pages = ceil($total_entries / $limit);
             border-radius: 5px;
             border: 1px solid #ddd;
         }
+        .delete,
+        .view {
+            margin: 0 5px;
+            font-size: 16px;
+            transition: 0.3s;
+            padding: 5px 8px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        .delete:hover {
+            background: #c82333;
+        }
+
+        .view {
+            background: rgb(45, 96, 207);
+            color: white;
+        }
+
+        .view:hover {
+            background: rgb(67, 97, 161);
+        }
     </style>
 </head>
 <body>
@@ -125,7 +154,7 @@ $total_pages = ceil($total_entries / $limit);
                     <th>Email</th>
                     <th>Message</th>
                     <th>Posting Date</th>
-                    <th>Action</th>
+                    <th style="padding: 0 33px;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -136,7 +165,15 @@ $total_pages = ceil($total_entries / $limit);
                         <td><?php echo $row['Email']; ?></td>
                         <td><?php echo $row['messages']; ?></td>
                         <td><?php echo $row['PostingDate']; ?></td>
-                        <td><a href="#" class="action-link">Read</a></td>
+                        <td>
+                            <a class="view" style="padding:5px 4px;" href="viewquery.php?contactid=<?php echo $row['contactid']; ?>">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                            <a class="delete" href="delete.php?contactid=<?php echo $row['contactid']; ?>" onclick="return confirm('Do You Delete Query!');">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>

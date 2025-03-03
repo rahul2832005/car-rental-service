@@ -313,6 +313,10 @@ $row = mysqli_fetch_assoc($result);
                             <p><strong>Driver Grand Total:</strong> &#8377;
                                 <?php echo $row['grand_total_day_d']; ?></p>
                         </div>
+                        <div class="info-box">
+                        <p><strong> Grand Total:</strong> &#8377;
+                            <?php echo $row['grand_totald']; ?></p>
+                    </div>
                     <?php } else {  ?>
                         <div class="info-box">
                             <p><strong>Total Hours:</strong>
@@ -328,11 +332,12 @@ $row = mysqli_fetch_assoc($result);
                             <p><strong>Driver Grand Total:</strong> &#8377;
                                 <?php echo $row['grand_total_hour_d']; ?></p>
                         </div>
-                    <?php } ?>
-                    <div class="info-box">
+                        <div class="info-box">
                         <p><strong> Grand Total:</strong> &#8377;
                             <?php echo $row['grand_total_h']; ?></p>
                     </div>
+                    <?php } ?>
+                  
                 </div>
                     </div>
         </div>

@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 @include "include/config.php";
 
@@ -26,7 +27,7 @@ $profilePicture = !empty($userData['profile_picture']) ? $userData['profile_pict
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="profile.css">
-    <!-- Include Cropper.js CSS -->
+    <!-- Include Cropper.js CSS for crop image -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
 
     <style>
@@ -77,7 +78,8 @@ $profilePicture = !empty($userData['profile_picture']) ? $userData['profile_pict
         <?php include('navbar.php'); ?>
     </div>
     <div class="profile-header">
-        <img src="<?php echo $profilePicture; ?>" alt="Background" class="background-image">
+        <!-- <img src="<?php echo $profilePicture; ?>" alt="Background" class="background-image"> -->
+        <img src="image/carolalogo.jpeg" alt="Background" class="background-image">
 
         <div><!-- Profile Picture Form -->
             <form id="profile-upload-form" enctype="multipart/form-data">

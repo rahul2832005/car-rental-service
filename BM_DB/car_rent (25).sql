@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 27, 2025 at 06:57 PM
+-- Generation Time: Mar 02, 2025 at 05:54 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`aid`, `aname`, `apic`, `aemail`, `apassword`) VALUES
-(1, 'Bhupat', '', 'carolaadmin1@gmail.com', 'admin@123');
+(1, 'Bhupat', '', 'carolaadmin1@gmail.com', '123123123');
 
 -- --------------------------------------------------------
 
@@ -70,9 +70,30 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `order_id` varchar(255) NOT NULL,
   `amount` int NOT NULL,
   `payment` int NOT NULL,
+  `ReturnDate` timestamp NOT NULL,
   `is_notified` int NOT NULL,
+  `new_start_date` date DEFAULT NULL,
+  `new_end_date` date DEFAULT NULL,
+  `modification_status` enum('pending','approved','rejected') DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=196 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=207 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`id`, `bookingno`, `userEmail`, `vid`, `rent_type`, `FromDate`, `ToDate`, `message`, `status`, `PostingDate`, `LastUpdationDate`, `pickup`, `dropoff`, `did`, `dname`, `order_id`, `amount`, `payment`, `ReturnDate`, `is_notified`, `new_start_date`, `new_end_date`, `modification_status`) VALUES
+(199, 7987, 'kkanudo97@gmail.com', 87, 'Day', '2025-03-01 10:06:00', '2025-03-02 10:06:00', '', 3, '2025-03-01 04:42:17', '2025-03-01 04:42:17', 'Bhavnagar', 'Botad', 3, 'Vatukiya', '', 3700, 1, '0000-00-00 00:00:00', 0, NULL, NULL, NULL),
+(197, 3632, 'hr123@gmail.com', 87, 'Day', '2025-02-28 21:45:00', '2025-03-01 21:45:00', '', 3, '2025-02-28 16:16:02', '2025-02-28 16:16:02', 'Botad', 'Botad', 3, 'Vatukiya', '', 3700, 1, '0000-00-00 00:00:00', 0, NULL, NULL, NULL),
+(198, 2438, 'kkanudo97@gmail.com', 86, 'Day', '2025-03-01 10:03:00', '2025-03-02 10:03:00', '', 3, '2025-03-01 04:35:50', '2025-03-01 04:35:50', 'Botad', 'Botad', 5, 'Vatukiya bhai', '', 132, 1, '0000-00-00 00:00:00', 0, NULL, NULL, NULL),
+(196, 5411, 'hr123@gmail.com', 86, 'Day', '2025-03-07 21:40:00', '2025-03-09 21:41:00', '', 3, '2025-02-28 16:14:26', '2025-02-28 16:14:26', 'Botad', 'Botad', 0, '', '', 240, 1, '0000-00-00 00:00:00', 0, NULL, NULL, NULL),
+(200, 4086, 'kkanudo97@gmail.com', 90, 'hour', '2025-03-13 00:00:00', '2025-03-14 00:00:00', '', 3, '2025-03-01 09:48:38', '2025-03-01 09:48:38', 'Botad', 'Botad', 0, '', '', 2400, 1, '2025-03-01 18:30:00', 0, '2025-03-13', '2025-03-14', 'approved'),
+(201, 2851, 'hr123@gmail.com', 90, 'Day', '2025-03-20 15:40:00', '2025-03-22 15:41:00', '', 1, '2025-03-01 10:13:15', '2025-03-01 10:13:15', 'Bhavnagar', 'Bhavnagar', 0, '', '', 2468, 1, '0000-00-00 00:00:00', 0, NULL, NULL, NULL),
+(202, 7330, 'kkanudo97@gmail.com', 92, 'Day', '2025-03-09 00:00:00', '2025-03-10 00:00:00', '', 3, '2025-03-01 16:58:40', '2025-03-01 16:58:40', 'Bhavnagar', 'Bhavnagar', 5, 'Vatukiya bhai', '', 3699, 1, '0000-00-00 00:00:00', 0, '2025-03-09', '2025-03-10', 'approved'),
+(203, 2766, 'kkanudo97@gmail.com', 88, 'Day', '2025-03-30 23:13:00', '2025-04-05 23:13:00', '', 0, '2025-03-01 17:46:15', '2025-03-01 17:46:15', 'Bhavnagar', 'Bhavnagar', 3, 'Vatukiya', '', 7800, 1, '0000-00-00 00:00:00', 0, NULL, NULL, NULL),
+(204, 8158, 'kkanudo97@gmail.com', 89, 'Day', '2025-02-26 10:50:00', '2025-02-28 10:50:00', '', 3, '2025-03-02 05:22:05', '2025-03-02 05:22:05', 'Bhavnagar', 'Botad', 0, '', '', 794, 1, '2025-03-01 18:30:00', 0, NULL, NULL, NULL),
+(205, 9294, 'kkanudo97@gmail.com', 88, 'Day', '2025-02-24 11:04:00', '2025-03-27 11:04:00', '', 2, '2025-03-02 05:37:23', '2025-03-02 05:37:23', 'Bhavnagar', 'Bhavnagar', 0, '', '', 3100, 1, '0000-00-00 00:00:00', 0, NULL, NULL, NULL),
+(206, 4418, 'kkanudo97@gmail.com', 88, 'Day', '2025-02-25 11:08:00', '2025-02-27 11:08:00', '', 3, '2025-03-02 05:39:12', '2025-03-02 05:39:12', 'Botad', 'Botad', 0, '', '', 1468, 1, '2025-03-01 18:30:00', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -182,12 +203,12 @@ CREATE TABLE IF NOT EXISTS `car_list` (
 --
 
 INSERT INTO `car_list` (`vid`, `cname`, `modal`, `chprice`, `price`, `no_plate`, `brand`, `image`, `seat`, `fual`, `door`, `en_power`, `en_type`, `break_type`, `fual_capacity`, `mileage`, `status`, `accessories`) VALUES
-(86, 'Audia1', 20211, 1200, 120, 'GJ33AB12121', 'tata', 'gallery_1.jpg,gallery_2.jpg,gallery_4.jpg,amritsar.jpg,audi_logo.jpg', 331, 'Petrol', 2, '300', 'Diesel engine', 'Carbon break', 20, 1010, 0, 'CD Player, Driver Airbag'),
+(86, 'Audia1', 20211, 1200, 120, 'GJ33AB12121', 'tata', 'gallery_1.jpg,gallery_2.jpg,gallery_4.jpg,amritsar.jpg,audi_logo.jpg', 331, 'Petrol', 2, '300', 'Diesel engine', 'Carbon break', 20, 1010, 1, 'CD Player, Driver Airbag'),
 (87, 'thar', 2022, 100, 2500, 'gj19hj7863', 'tata', 'gallery_2.jpg,gallery_5.jpg,gallery_8.jpg', 5, 'Petrol', 4, '500', 'Diesel engine', 'disc break', 20, 4, 1, 'Power Steering, Central Locking, AntiLock Braking System, Crash Sensor, Power Windows'),
 (88, 'Land Rover', 2025, 100, 100, 'GJ33AB1212', 'webaggx', 'gallery_7.jpg,gallery_8.jpg,gallery_3.jpg,mahindra3.jpeg', 4, 'CNG', 2, '261', 'Diesel engine', 'disc break', 40, 8, 1, 'Power Steering, CD Player, AntiLock Braking System, Brake Assist, Power Windows, Leather Seats'),
-(89, 'audi x7', 1234, 100, 10, 'GJ33AB1212', 'tata', 'gallery_2.jpg,gallery_3.jpg,gallery_4.jpg,gallery_9.jpg', 3, 'Diesel', 2, '500', 'Diesel engine', 'disc break', 40, 12, 0, 'Power Steering, CD Player, Power Door Locks, Central Locking, Brake Assist, Power Windows'),
+(89, 'audi x7', 1234, 100, 10, 'GJ33AB1212', 'tata', 'gallery_2.jpg,gallery_3.jpg,gallery_4.jpg,gallery_9.jpg', 3, 'Diesel', 2, '500', 'Diesel engine', 'disc break', 40, 12, 1, 'Power Steering, CD Player, Power Door Locks, Central Locking, Brake Assist, Power Windows'),
 (90, 'Kia  carens', 1234, 100, 1234, '1111', 'tata', 'gallery_13.jpg,gallery_16.jpg,gallery_17.jpg,c.jpeg', 123, 'Diesel', 4, '500', 'Diesel engine', 'ABS break', 20, 12, 1, 'Air Conditioner, Power Steering, Central Locking, AntiLock Braking System, Brake Assist, Leather Seats'),
-(92, '1dgd', 1213, 100, 1221, '123', 'webaggx', 'gallery_13.jpg,gallery_14.jpg,gallery_15.jpg,about.png', 12, 'Petrol', 5, '400 ', 'Diesel engine', 'Carbon break', 40, 10, 0, 'CD Player, Power Door Locks, Driver Airbag, Brake Assist, Passenger Airbag, Crash Sensor, Leather Seats');
+(92, '1dgd', 1213, 100, 1221, '123', 'webaggx', 'gallery_13.jpg,gallery_14.jpg,gallery_15.jpg,about.png', 12, 'Petrol', 5, '400 ', 'Diesel engine', 'Carbon break', 40, 10, 1, 'CD Player, Power Door Locks, Driver Airbag, Brake Assist, Passenger Airbag, Crash Sensor, Leather Seats');
 
 -- --------------------------------------------------------
 
@@ -210,7 +231,6 @@ CREATE TABLE IF NOT EXISTS `contactusquery` (
 --
 
 INSERT INTO `contactusquery` (`contactid`, `username`, `Email`, `messages`, `PostingDate`) VALUES
-(1, 'Bhupat Vatukiya', 'bvfacts68@gmail.com', 'asdrfaedf', '2025-02-16 18:12:54'),
 (2, 'asdfsdfasd', 'admin', 'fsdfa', '2025-02-16 18:25:04'),
 (3, 'sdfsdf', 'admin', 'sdfasdf', '2025-02-16 18:25:09'),
 (4, 'gdfgdsfg', 'mm2028501@gmail.com', 'dgsdrt', '2025-02-16 18:26:25'),
@@ -297,6 +317,32 @@ INSERT INTO `driver` (`did`, `dfname`, `dlname`, `fnumber`, `hprice`, `dprice`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `feedback`
+--
+
+DROP TABLE IF EXISTS `feedback`;
+CREATE TABLE IF NOT EXISTS `feedback` (
+  `fid` int NOT NULL AUTO_INCREMENT,
+  `uid` int NOT NULL,
+  `vid` int NOT NULL,
+  `rating` int DEFAULT NULL,
+  `comment` text,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`fid`)
+) ;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`fid`, `uid`, `vid`, `rating`, `comment`, `created_at`) VALUES
+(9, 49, 87, 3, 'fyhrtyurtufygjhgh', '2025-03-01 07:43:33'),
+(10, 49, 92, 5, 'lorensdqwedqe\r\n', '2025-03-01 17:13:46'),
+(8, 49, 86, 3, 'ljtfds5', '2025-03-01 04:43:24');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `gallery`
 --
 
@@ -368,9 +414,8 @@ CREATE TABLE IF NOT EXISTS `reguser` (
 --
 
 INSERT INTO `reguser` (`uid`, `profile_picture`, `name`, `mnumber`, `email`, `password`, `DOB`, `gender`, `state`, `address_type`, `pincode`, `address`, `aadhar_number`, `aadhar_file`, `license_number`, `license_file`, `token`, `reset_otp`, `reset_expiry`, `is_verified`, `created_at`) VALUES
-(33, '', 'hardik', 7474747474, 'hr123@gmail.com', '123123123', '0000-00-00', '', '', '', 0, '', 0, '', '', '', '', NULL, NULL, 1, '2025-02-05 03:01:29'),
-(40, 'upload/gallery_1.jpg', 'mahadev', 9898989898, 'mm2028501@gmail.com', '11111111', '2025-02-16', 'male', 'Gujrat', 'office', 364710, 'Hifli Sheri No.4 Botad', 2147483647, 'uploads/1740682352_aadhar_Use_Case_Diagram_with_Boundaries.png', 'GJ132100923', 'uploads/1740682352_license_oracle-II (assignment -3) theory.pdf', '', '157079', NULL, 1, '2025-02-05 04:34:42'),
-(49, '', 'kanudo', 7854785478, 'kkanudo97@gmail.com', '123123123', '0000-00-00', '', '', '', NULL, '', 2147483647, 'uploads/1740680973_aadhar_Screen 1.png', 'GJ132100923', 'uploads/1740680973_license_class (1).pdf', '', NULL, NULL, 1, '2025-02-24 03:42:39');
+(33, 'upload/member2.png', 'hardik', 7474747474, 'hr123@gmail.com', '123123123', '2025-02-06', 'male', 'Maharashtra', 'home', 364710, 'Botad, botad', 2147483647, 'uploads/1740742082_aadhar_about.png', 'GJ132100923', 'uploads/1740742082_license_amritsar.jpg', '', NULL, NULL, 1, '2025-02-05 03:01:29'),
+(49, 'upload/profile_49.jpg', 'kanudo', 7854785478, 'kkanudo97@gmail.com', '123123123', '0000-00-00', '', '', '', NULL, '', 2147483647, 'uploads/1740680973_aadhar_Screen 1.png', 'GJ132100923', 'uploads/1740680973_license_class (1).pdf', '', NULL, NULL, 1, '2025-02-24 03:42:39');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
