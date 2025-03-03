@@ -41,9 +41,12 @@ $order_id = $razorpayOrder['id'];
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
        
-
+       @font-face {
+            font-family: 'pop-regular';
+            src: url('../font/Poppins-Regular.ttf');
+        }
         body {
-           
+            font-family: 'pop-regular';
             margin: 0;
             padding: 0;
             background: linear-gradient(to bottom,rgb(221, 65, 91),rgb(202, 156, 28));

@@ -170,6 +170,7 @@ if (isset($_POST['Book'])) {
     <link rel="stylesheet" href="css/car_details.css">
 
     <style>
+      
         #driver_form {
             position: fixed;
             top: 50%;

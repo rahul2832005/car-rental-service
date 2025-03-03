@@ -70,7 +70,12 @@ $row = mysqli_fetch_assoc($result);
     <title>Booking Details</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        @font-face {
+            font-family: 'pop-regular';
+            src: url('../font/Poppins-Regular.ttf');
+        }
         body {
+            font-family: 'pop-regular';
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;

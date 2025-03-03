@@ -1,5 +1,10 @@
 /* General Styles */
+@font-face {
+    font-family: 'pop-regular';
+    src: url('../font/Poppins-Regular.ttf');
+}
 body, html {
+    font-family: 'pop-regular';
     margin: 0;
     font-family: sans-serif;
     background-color: #f0f0f0;

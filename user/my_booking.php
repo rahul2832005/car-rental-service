@@ -58,7 +58,16 @@ $result = mysqli_query($conn, $sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recent Bookings</title>
     <link rel="stylesheet" href="css/my_booking.css">
+    <style>
+        @font-face {
+            font-family: 'pop-regular';
+            src: url('../font/Poppins-Regular.ttf');
+        }
+        body{
+            font-family: 'pop-regular';
 
+        }
+    </style>
 </head>
 
 <body>
