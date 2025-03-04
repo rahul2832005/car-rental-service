@@ -172,7 +172,7 @@
              </thead>
              <tbody>
                  <?php
-                    $n = 1;
+                    $n = $start+1;
                     while ($row = mysqli_fetch_assoc($result)) {
                     ?>
                      <tr>

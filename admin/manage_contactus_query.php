@@ -158,7 +158,8 @@ $total_pages = ceil($total_entries / $limit);
                 </tr>
             </thead>
             <tbody>
-                <?php $cnt = 1; while($row = mysqli_fetch_assoc($result)) { ?>
+                <?php $cnt = $start + 1; // Start value based on pagination
+                while($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
                         <td><?php echo $cnt++; ?></td>
                         <td><?php echo $row['username']; ?></td>

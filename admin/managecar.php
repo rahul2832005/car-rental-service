@@ -241,7 +241,7 @@ $total_pages = ceil($total_entries / $limit);
                 </thead>
                 <tbody>
                     <?php
-                    $n = 1;
+                    $n = $start+1;
                     while ($row = mysqli_fetch_assoc($result)) {
                        $image= explode(',',$row['image'])
                     ?>

@@ -170,8 +170,10 @@ $oldAccessories = explode(', ', $car['accessories']); // Split string into array
         <h2><?php echo $car['cname']; ?></h2>
 
         <div class="btn-container">
-            <button class="btn">View RC File</button>
-            <button class="btn">View Insurance File</button>
+        <a href="../user/<?php echo $car['rcbook']; ?>" target="_blank" class="btn">View Rc File</a>
+        <a href="../user/<?php echo $car['insurance']; ?>" target="_blank" class="btn">View Insurance File</a>
+            <!-- <button class="btn">View RC File</button>
+            <button class="btn">View Insurance File</button> -->
         </div>
 
         <div class="user-profile">

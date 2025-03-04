@@ -175,6 +175,7 @@ $total_pages = ceil($total_entries / $limit);
         <table>
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>User</th>
                     <th>Car</th>
                     <th>Rating</th>
@@ -184,8 +185,10 @@ $total_pages = ceil($total_entries / $limit);
                 </tr>
             </thead>
             <tbody>
-                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <?php $n=$start+1; 
+                 while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
+                        <td><?php echo $n;?></td>
                         <td><?php echo $row['name']; ?></td>
                         <td><?php echo $row['cname']; ?></td>
                         <td><?php echo str_repeat("⭐", $row['rating']); ?></td>
@@ -200,7 +203,10 @@ $total_pages = ceil($total_entries / $limit);
                             </a>
                         </td>
                     </tr>
-                <?php } ?>
+                <?php
+                $n++;
+            }?>
+                
             </tbody>
         </table>
 

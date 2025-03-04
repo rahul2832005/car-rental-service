@@ -1,8 +1,21 @@
 <?php
 @include "include/config.php";
 
-$sql = "SELECT * FROM reguser";
+
+// Pagination Logic
+$limit = 2;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$start = ($page - 1) * $limit;
+
+// Fetch Cars with Limit and Offset
+$sql = "SELECT * FROM reguser LIMIT $start, $limit";
 $result = mysqli_query($conn, $sql);
+
+// Total Cars for Pagination Count
+$total_result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM reguser");
+$total_row = mysqli_fetch_assoc($total_result);
+$total_entries = $total_row['total'];
+$total_pages = ceil($total_entries / $limit);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -137,6 +150,33 @@ $result = mysqli_query($conn, $sql);
         .delete:hover {
             background: #c82333;
         }
+        .d-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            margin-left: 35px;
+        }
+        .pagination a {
+             padding: 8px 12px;
+             margin: 0 4px;
+             border: 1px solid #ccc;
+             border-radius: 5px;
+             text-decoration: none;
+             color: #333;
+             background-color: white;
+             transition: background-color 0.3s ease;
+         }
+
+         .pagination a.active {
+             background-color: #007bff;
+             color: white;
+             font-weight: bold;
+         }
+
+         .pagination a:hover {
+             background-color: #f0f0f0;
+         }
 
         /* Responsive Design */
         @media screen and (max-width: 768px) {
@@ -171,7 +211,7 @@ $result = mysqli_query($conn, $sql);
                 </thead>
                 <tbody>
                 <?php
-                $n = 1;
+                $n =$start+ 1;
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
                     <tr>
@@ -195,7 +235,24 @@ $result = mysqli_query($conn, $sql);
                 }
                 ?>
                 </tbody>
-            </table>
+                </table>
+                <div class="d-flex">
+                <div>Showing <?php echo $start + 1; ?> to <?php echo min($start + $limit, $total_entries); ?> of <?php echo $total_entries; ?> entries</div>
+                <div class="pagination">
+                    <?php if ($page > 1): ?>
+                        <a href="?page=<?php echo $page - 1; ?>" class="page-link">Previous</a>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                        <a href="?page=<?php echo $i; ?>" class="page-link <?php echo $i == $page ? 'active' : ''; ?>"><?php echo $i; ?></a>
+                    <?php endfor; ?>
+
+                    <?php if ($page < $total_pages): ?>
+                        <a href="?page=<?php echo $page + 1; ?>" class="page-link">Next</a>
+                    <?php endif; ?>
+                </div>
+            </div>
+          
         </div>
     </div>
 

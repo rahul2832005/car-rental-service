@@ -1,13 +1,16 @@
 <?php
 @include "include/config.php";
 
-$limit = 5;
+// Pagination Logic
+$limit = 2;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($page - 1) * $limit;
 
+// Fetch Cars with Limit and Offset
 $sql = "SELECT * FROM driver LIMIT $start, $limit";
 $result = mysqli_query($conn, $sql);
 
+// Total Cars for Pagination Count
 $total_result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM driver");
 $total_row = mysqli_fetch_assoc($total_result);
 $total_entries = $total_row['total'];
@@ -113,6 +116,13 @@ $total_pages = ceil($total_entries / $limit);
         .btn-custom:hover {
             background-color: #bb2d3b;
         }
+        .d-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            margin-left: 35px;
+        }
     </style>
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
@@ -167,11 +177,22 @@ $total_pages = ceil($total_entries / $limit);
             </tbody>
         </table>
 
-        <div class="pagination">
-            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                <a href="?page=<?php echo $i; ?>" class="<?php echo $i == $page ? 'active' : ''; ?>"> <?php echo $i; ?> </a>
-            <?php endfor; ?>
-        </div>
+        <div class="d-flex">
+                <div>Showing <?php echo $start + 1; ?> to <?php echo min($start + $limit, $total_entries); ?> of <?php echo $total_entries; ?> entries</div>
+                <div class="pagination">
+                    <?php if ($page > 1): ?>
+                        <a href="?page=<?php echo $page - 1; ?>" class="page-link">Previous</a>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                        <a href="?page=<?php echo $i; ?>" class="page-link <?php echo $i == $page ? 'active' : ''; ?>"><?php echo $i; ?></a>
+                    <?php endfor; ?>
+
+                    <?php if ($page < $total_pages): ?>
+                        <a href="?page=<?php echo $page + 1; ?>" class="page-link">Next</a>
+                    <?php endif; ?>
+                </div>
+            </div>
     </div>
 
     <script>

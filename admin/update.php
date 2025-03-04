@@ -8,12 +8,15 @@ $cn = $mod = $rp = $np = $cname = $se = $fu = $ire = $mile = $dr = $et = $pr = $
 $car_name = $modal = $rent_price = $no_plate = $company_name = $seat = $fual = $power = $engine = $f_tank = $break = $door = $chprice="";
 
 $vid = $_GET['vid'];
+
 $sql = "select * from car_list where vid=$vid";
 $exsql = mysqli_query($conn, $sql);
 
 $result = mysqli_fetch_assoc($exsql);
 $storedImages = explode(",", $result['image']); // Split the stored image paths
 $oldAccessories = explode(', ', $result['accessories']); // Split string into array
+$old_rcbook_pdf = $result['rcbook'];
+$old_insurance_pdf = $result['insurance'];
 
 
 if (isset($_POST['submit'])) {
@@ -35,7 +38,8 @@ if (isset($_POST['submit'])) {
       // Process selected accessories
       $selectedAccessories = isset($_POST['accessories']) ? $_POST['accessories'] : [];
       $selectedAccessoriesString = implode(", ", $selectedAccessories);
-
+      $rcbook = $old_rcbook_pdf;
+      $insurance = $old_insurance_pdf;
 
 
     if ($car_name == "") {
@@ -115,6 +119,22 @@ if (isset($_POST['submit'])) {
 
 
     if ($count == 0) {
+        // Handle new RC Book upload
+    if (!empty($_FILES['rcbook']['name'])) {
+        $rcbook_target = "uploads/" . $_FILES['rcbook']['name'];
+        if (move_uploaded_file($_FILES['rcbook']['tmp_name'], $rcbook_target)) {
+            $rcbook = $rcbook_target;
+        }
+    }
+
+    // Handle new Insurance upload
+    if (!empty($_FILES['insurance']['name'])) {
+        $insurance_target = "uploads/" . $_FILES['insurance']['name'];
+        if (move_uploaded_file($_FILES['insurance']['tmp_name'], $insurance_target)) {
+            $insurance = $insurance_target;
+        }
+    }
+
         // Fetch existing images
         $existingImages = explode(",", $result['image']);
 
@@ -140,7 +160,7 @@ if (isset($_POST['submit'])) {
             cname='$car_name', modal=$modal, chprice=$chprice ,price=$rent_price, no_plate='$no_plate', 
             brand='$brand', image='$updatedImages', seat=$seat, fual='$fual', 
             door=$door, en_power='$power', en_type='$engine', break_type='$break', 
-            fual_capacity='$f_tank', mileage=$mile,accessories='$selectedAccessoriesString' WHERE vid=$vid";
+            fual_capacity='$f_tank', mileage=$mile,accessories='$selectedAccessoriesString',rcbook='$rcbook', insurance='$insurance' WHERE vid=$vid";
 
         $run = mysqli_query($conn, $update);
 
@@ -302,7 +322,21 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
 
-
+                <div class="up-img">
+                     Rc Book<span style="color: red;">*</span>
+                    <input type="file" name="rcbook" accept="image/*,application/pdf">
+                    <?php if (!empty($old_rcbook_pdf)): ?>
+                        <div>Rc Book  :<a href="../user/<?php echo $old_rcbook_pdf; ?>" target="_blank">View Rc Book</a></div>
+                    <?php endif; ?>
+                </div> 
+                
+                <div class="up-img">
+                     Insurance File<span style="color: red;">*</span>
+                    <input type="file" name="rcbook" accept="image/*,application/pdf">
+                    <?php if (!empty($old_insurance_pdf)): ?>
+                        <div>Current Insurance :<a href="../user/<?php echo $old_insurance_pdf; ?>" target="_blank">View Insurance File</a></div>
+                    <?php endif; ?>
+                </div> 
 
             </div>
 

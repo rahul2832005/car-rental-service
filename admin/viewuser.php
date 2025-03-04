@@ -146,7 +146,7 @@ $user = mysqli_fetch_assoc($result);
     <div class="container">
         <h2>User Profile</h2>
         <div class="profile-section">
-            <img src="<?php echo $user['profile_picture']; ?>" alt="Profile Picture" class="profile-img">
+            <img src="../user/<?php echo $user['profile_picture']; ?>" alt="Profile Picture" class="profile-img">
             <div class="doc-links">
                 <a href="../user/<?php echo $user['aadhar_file']; ?>" target="_blank">View Aadhar File</a>
                 <a href="../user/<?php echo $user['license_file']; ?>" target="_blank">View License File</a>
